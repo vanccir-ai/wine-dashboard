@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酒赛道数据看板</title>
+<style>
+  body{margin:0;background:#0f1117;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'PingFang SC',-apple-system,sans-serif;}
+  .wrap{text-align:center;padding:40px;}
+  h1{color:#F0F0F0;font-size:28px;margin-bottom:8px;}
+  p{color:rgba(255,255,255,.45);margin-bottom:40px;}
+  .cards{display:flex;gap:20px;justify-content:center;}
+  .card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:32px 40px;text-decoration:none;color:#F0F0F0;transition:all .2s;}
+  .card:hover{transform:translateY(-4px);background:rgba(255,255,255,.09);border-color:rgba(255,36,66,.5);}
+  .card .icon{font-size:40px;margin-bottom:12px;}
+  .card .title{font-size:16px;font-weight:600;margin-bottom:6px;}
+  .card .desc{font-size:13px;color:rgba(255,255,255,.4);}
+  .badge{display:inline-block;background:#FF2442;color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🍷 酒赛道数据看板</h1>
+  <p>数据截至 2026年4月3日 · 小红书商业化</p>
+  <div class="cards">
+    <a class="card" href="baijiu-dashboard.html">
+      <div class="icon">🥃</div>
+      <div class="title">白酒赛道看板</div>
+      <div class="desc">含KFS分析、客户分层、四象限矩阵<br>降K专项、智能洞察</div>
+      <div class="badge">深度分析版</div>
+    </a>
+    <a class="card" href="wine-dashboard.html">
+      <div class="icon">🍷</div>
+      <div class="title">全酒赛道总览</div>
+      <div class="desc">白酒 · 啤酒 · 洋酒 · 低度酒<br>跨赛道对比与雷达图</div>
+      <div class="badge">多赛道版</div>
+    </a>
+  </div>
+</div>
+</body>
+</html>

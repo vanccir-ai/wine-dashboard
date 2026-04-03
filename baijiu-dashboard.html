@@ -536,19 +536,19 @@ function renderBarChart(){
     backgroundColor:'transparent',
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
       formatter:function(p){var h='<b>'+p[0].name+'</b><br>';p.forEach(function(x){if(x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
-    legend:{data:['品牌广告','竞价合计','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:0,top:'auto'},
-    grid:{left:40,right:20,top:44,bottom:40,containLabel:true},
-    xAxis:{type:'category',data:['1月','2月','3月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    legend:{data:['品牌广告','竞价合计','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4,top:'auto',itemGap:12},
+    grid:{left:50,right:24,top:52,bottom:68,containLabel:false},
+    xAxis:{type:'category',data:['1月','2月','3月'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:13},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
     yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
-      {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51],itemStyle:{color:'#FF2442'},barWidth:'30%'},
-      {name:'竞价合计',type:'bar',stack:'adv',data:[147.11,188.09,0],itemStyle:{color:'rgba(79,142,247,.75)'},barWidth:'30%'},
-      {name:'竞价-搜索',type:'bar',stack:'adv',data:[0,0,17.04],itemStyle:{color:'#4F8EF7'},barWidth:'30%'},
-      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0],itemStyle:{color:'#00E5A0'},barWidth:'30%'},
-      {name:'竞价-线索',type:'bar',stack:'adv',data:[0,0,20.77],itemStyle:{color:'#FF9500'},barWidth:'30%'},
-      {name:'竞价-其他',type:'bar',stack:'adv',data:[0,0,41.22],itemStyle:{color:'#666'},barWidth:'30%',
-        label:{show:true,position:'top',distance:6,formatter:function(p){var m=months[p.dataIndex];return m.total.toFixed(1)+'w\n'+m.yoy;},color:'rgba(255,255,255,.8)',fontSize:11,lineHeight:16}},
-      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'-50%',data:[0,0,0],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barWidth:'10%'}
+      {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51],itemStyle:{color:'#FF2442'},barMaxWidth:44},
+      {name:'竞价合计',type:'bar',stack:'adv',data:[147.11,188.09,0],itemStyle:{color:'rgba(79,142,247,.75)'},barMaxWidth:44},
+      {name:'竞价-搜索',type:'bar',stack:'adv',data:[0,0,17.04],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
+      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
+      {name:'竞价-线索',type:'bar',stack:'adv',data:[0,0,20.77],itemStyle:{color:'#FF9500'},barMaxWidth:44},
+      {name:'竞价-其他',type:'bar',stack:'adv',data:[0,0,41.22],itemStyle:{color:'#555'},barMaxWidth:44,
+        label:{show:true,position:'top',distance:10,formatter:function(p){var m=months[p.dataIndex];return m.total.toFixed(1)+'w  '+m.yoy;},color:'rgba(255,255,255,.85)',fontSize:12,fontWeight:'bold'}},
+      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[0,0,0],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
     ]
   },true);
 }

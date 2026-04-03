@@ -125,6 +125,9 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .compare-table tr:last-child td{border-bottom:none;}
 .period-note{font-size:12px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.03);border-radius:6px;padding:6px 12px;margin-bottom:20px;display:inline-block;}
 .quadrant-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:12px;color:rgba(255,255,255,.5);}
+.week-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,.6);cursor:pointer;transition:all .15s;}
+.week-tab:hover{background:rgba(255,255,255,.1);}
+.week-tab.active{background:rgba(255,36,66,.2);border-color:#FF2442;color:#FF2442;font-weight:600;}
 </style>
 </head>
 <body>
@@ -168,6 +171,16 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       </tbody>
     </table>
   </div>
+</div>
+<div class="section-title">📅 周度投放节奏 <small style="font-size:12px;color:rgba(255,255,255,.35)">点击月份查看各周明细 · 真实数据</small></div>
+<div class="card mb28" style="padding:20px 24px;">
+  <div style="display:flex;gap:8px;margin-bottom:16px;" id="week-tabs">
+    <button class="week-tab active" onclick="showWeekMonth('all',this)">全览</button>
+    <button class="week-tab" onclick="showWeekMonth('1',this)">1月</button>
+    <button class="week-tab" onclick="showWeekMonth('2',this)">2月</button>
+    <button class="week-tab" onclick="showWeekMonth('3',this)">3月</button>
+  </div>
+  <div id="weekChart" style="height:280px;"></div>
 </div>
 <div class="section-title">⚠️ 月度环比预警 <small>3月 vs 2月</small></div>
 <div class="mom-warning mb28">
@@ -472,8 +485,59 @@ var BRANDS=[
 ];
 
 var currentTab='YTD';
-var barChartInst=null,pieChartInst=null,targetChartInst=null,quadChartInst=null;
+var barChartInst=null,pieChartInst=null,targetChartInst=null,quadChartInst=null,weekChartInst=null;
 var rankFilter='all',tableFilter='all';
+
+// 真实周度数据（从RedBI按日取数聚合，1-3月共90天）
+var weekData=[
+  {label:'W12/29\n~01/04',month:'1',adv:31.84,brand:19.67,cpc:12.18,pub:34.28,days:4},
+  {label:'W01/05\n~01/11',month:'1',adv:57.99,brand:34.42,cpc:23.57,pub:76.69,days:7},
+  {label:'W01/12\n~01/18',month:'1',adv:64.04,brand:34.42,cpc:28.98,pub:36.18,days:7},
+  {label:'W01/19\n~01/25',month:'1',adv:79.22,brand:50.42,cpc:28.45,pub:52.19,days:7},
+  {label:'W01/26\n~02/01',month:'1',adv:79.39,brand:10.22,cpc:69.17,pub:78.00,days:7},
+  {label:'W02/02\n~02/08',month:'2',adv:62.91,brand:15.22,cpc:47.69,pub:91.46,days:7},
+  {label:'W02/09\n~02/15',month:'2',adv:87.77,brand:37.10,cpc:50.09,pub:169.07,days:7},
+  {label:'W02/16\n~02/22',month:'2',adv:68.05,brand:21.10,cpc:46.45,pub:68.89,days:7},
+  {label:'W02/23\n~03/01',month:'2',adv:54.20,brand:20.94,cpc:33.26,pub:14.25,days:7},
+  {label:'W03/02\n~03/08',month:'3',adv:49.26,brand:20.55,cpc:28.71,pub:20.69,days:7},
+  {label:'W03/09\n~03/15',month:'3',adv:31.56,brand:8.76,cpc:22.79,pub:24.02,days:7},
+  {label:'W03/16\n~03/22',month:'3',adv:16.39,brand:4.05,cpc:12.34,pub:19.90,days:7},
+  {label:'W03/23\n~03/29',month:'3',adv:12.25,brand:4.05,cpc:8.20,pub:43.71,days:7},
+  {label:'W03/30\n~04/03',month:'3',adv:3.50,brand:1.16,cpc:2.35,pub:14.86,days:4}
+];
+
+function showWeekMonth(m, btn){
+  document.querySelectorAll('.week-tab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  renderWeekChart(m==='all'?null:m);
+}
+
+function renderWeekChart(filterMonth){
+  var dom=document.getElementById('weekChart');
+  if(!dom)return;
+  if(!weekChartInst)weekChartInst=echarts.init(dom);
+  var data=filterMonth?weekData.filter(function(w){return w.month===filterMonth;}):weekData;
+  var labels=data.map(function(w){return w.label;});
+  var brandVals=data.map(function(w){return w.brand;});
+  var cpcVals=data.map(function(w){return w.cpc;});
+  var pubVals=data.map(function(w){return w.pub;});
+  var advVals=data.map(function(w){return w.adv;});
+  weekChartInst.setOption({
+    backgroundColor:'transparent',
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
+      formatter:function(p){var h='<b>'+p[0].name.replace(/\n/,' ')+'</b><br>';p.forEach(function(x){if(x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
+    legend:{data:['品牌广告','竞价广告','蒲公英(参考)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:0,top:'auto'},
+    grid:{left:50,right:16,top:40,bottom:60,containLabel:false},
+    xAxis:{type:'category',data:labels,axisLabel:{color:'rgba(255,255,255,.6)',fontSize:10,interval:0},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
+    series:[
+      {name:'品牌广告',type:'bar',stack:'adv',data:brandVals,itemStyle:{color:'#FF2442'},barMaxWidth:36},
+      {name:'竞价广告',type:'bar',stack:'adv',data:cpcVals,itemStyle:{color:'#4F8EF7'},barMaxWidth:36,
+        label:{show:true,position:'top',distance:8,formatter:function(p){return advVals[p.dataIndex].toFixed(1)+'w';},color:'rgba(255,255,255,.75)',fontSize:10}},
+      {name:'蒲公英(参考)',type:'bar',stack:'pub',barGap:'30%',data:pubVals,itemStyle:{color:'rgba(255,214,10,.4)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:14}
+    ]
+  },true);
+}
 
 function getTier(adv){
   if(adv>=100)return{label:'头部',color:'#FF2442'};
@@ -745,6 +809,7 @@ function init(){
   renderKFS();
   renderRankBars('all');
   renderTable('all');
+  renderWeekChart(null);
 }
 window.addEventListener('load',init);
 window.addEventListener('resize',function(){
@@ -752,6 +817,7 @@ window.addEventListener('resize',function(){
   if(pieChartInst)pieChartInst.resize();
   if(targetChartInst)targetChartInst.resize();
   if(quadChartInst)quadChartInst.resize();
+  if(weekChartInst)weekChartInst.resize();
 });
 </script>
 </body>

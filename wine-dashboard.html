@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酒赛道商业化看板 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0f1117;
+    --card: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --red: #FF2442;
+    --green: #00E5A0;
+    --orange: #FF9500;
+    --blue: #4F8EF7;
+    --gold: #FFD60A;
+    --text: rgba(255,255,255,0.9);
+    --text-sub: rgba(255,255,255,0.5);
+    --text-dim: rgba(255,255,255,0.3);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'PingFang SC', -apple-system, 'Helvetica Neue', sans-serif;
+    min-width: 1200px;
+    overflow-x: auto;
+  }
+
+  /* Header */
+  .header {
+    padding: 24px 40px 0;
+    background: linear-gradient(180deg, rgba(255,36,66,0.06) 0%, transparent 100%);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .header-title span {
+    color: var(--red);
+  }
+
+  .header-subtitle {
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+
+  .header-badge {
+    background: rgba(255,36,66,0.15);
+    border: 1px solid rgba(255,36,66,0.3);
+    color: var(--red);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Tab Nav */
+  .tab-nav {
+    display: flex;
+    gap: 4px;
+    padding: 20px 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .tab-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--text-sub);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    position: relative;
+    top: 1px;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+
+  .tab-btn.active {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom-color: var(--tab-color, var(--red));
+  }
+
+  .tab-btn[data-tab="overview"] { --tab-color: var(--red); }
+  .tab-btn[data-tab="baijiu"] { --tab-color: #FF2442; }
+  .tab-btn[data-tab="beer"] { --tab-color: #FFD60A; }
+  .tab-btn[data-tab="spirits"] { --tab-color: #4F8EF7; }
+  .tab-btn[data-tab="lowdeg"] { --tab-color: #00E5A0; }
+
+  /* Content sections */
+  .tab-content { display: none; padding: 32px 40px 48px; }
+  .tab-content.active { display: block; }
+
+  /* Section title */
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 3px;
+    height: 16px;
+    background: var(--accent, var(--red));
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    padding: 24px;
+  }
+
+  /* Grid layouts */
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+
+  .mb-24 { margin-bottom: 24px; }
+  .mb-32 { margin-bottom: 32px; }
+
+  /* Metric card */
+  .metric-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent-color, var(--red));
+    opacity: 0.7;
+  }
+
+  .metric-card:hover {
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .metric-label {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    line-height: 1;
+    margin-bottom: 6px;
+    color: var(--accent-color, var(--text));
+  }
+
+  .metric-value .unit {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-sub);
+    font-family: inherit;
+  }
+
+  .metric-yoy {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .metric-yoy.up { color: var(--green); }
+  .metric-yoy.down { color: var(--red); }
+
+  .metric-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* Chart containers */
+  .chart-box {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .chart-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-bottom: 16px;
+  }
+
+  /* Track summary cards for overview */
+  .track-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .track-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--track-color);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .track-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--track-color);
+    opacity: 0.8;
+  }
+
+  .track-emoji {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .track-name {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 6px;
+  }
+
+  .track-value {
+    font-size: 32px;
+    font-weight: 800;
+    font-family: 'SF Mono', monospace;
+    color: var(--track-color);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .track-value span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-sub);
+    font-family: inherit;
+  }
+
+  .track-yoy {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+
+  .track-puyingying {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .track-puyingying b {
+    color: var(--gold);
+    font-family: 'SF Mono', monospace;
+  }
+
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--track-color);
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  /* Ranking list */
+  .rank-list { list-style: none; }
+
+  .rank-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .rank-item:last-child { border-bottom: none; }
+
+  .rank-num {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-family: 'SF Mono', monospace;
+  }
+
+  .rank-num.top1 { background: rgba(255,212,10,0.2); color: var(--gold); }
+  .rank-num.top2 { background: rgba(200,200,200,0.1); color: #bbb; }
+  .rank-num.top3 { background: rgba(255,149,0,0.15); color: var(--orange); }
+  .rank-num.other { background: rgba(255,255,255,0.04); color: var(--text-dim); }
+
+  .rank-name {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .rank-bar-wrap {
+    flex: 2;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .rank-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent, var(--red));
+    transition: width 1s ease;
+  }
+
+  .rank-value {
+    font-size: 13px;
+    font-family: 'SF Mono', monospace;
+    color: var(--text-sub);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  /* Highlight cards */
+  .highlight-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .highlight-card h4 {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .highlight-item::before {
+    content: '▸';
+    color: var(--accent, var(--red));
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Progress ring */
+  .ring-wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .ring-labels { flex: 1; }
+
+  .ring-stat {
+    margin-bottom: 16px;
+  }
+
+  .ring-stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .ring-stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'SF Mono', monospace;
+  }
+
+  /* KFS bars */
+  .kfs-item {
+    margin-bottom: 16px;
+  }
+
+  .kfs-brand {
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .kfs-bars {
+    display: flex;
+    gap: 3px;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .kfs-k { background: var(--accent, var(--blue)); }
+  .kfs-f { background: var(--green); }
+  .kfs-s { background: var(--gold); }
+
+  .kfs-legend {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .kfs-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-sub);
+  }
+
+  .kfs-dot {
+    width: 8px; height: 8px; border-radius: 2px;
+  }
+
+  /* Quadrant scatter info */
+  .quadrant-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .ql-item {
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .ql-item h5 {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .ql-brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .ql-tag {
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: var(--text-sub);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+  /* Total row */
+  .total-row {
+    background: rgba(255,36,66,0.06);
+    border: 1px solid rgba(255,36,66,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .total-row span { font-size: 13px; color: var(--text-sub); }
+  .total-row strong {
+    font-size: 18px;
+    font-family: 'SF Mono', monospace;
+    color: var(--red);
+  }
+
+  /* Animate numbers */
+  .num-animate {
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">🍷 小红书 <span>酒赛道</span> 商业化看板</div>
+      <div class="header-subtitle">数据周期：2026年1-3月 · Q1汇总</div>
+    </div>
+    <div class="header-badge">实时看板 · Q1 2026</div>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="overview">🍷 酒赛道总览</button>
+  <button class="tab-btn" data-tab="baijiu">🥃 白酒</button>
+  <button class="tab-btn" data-tab="beer">🍺 啤酒</button>
+  <button class="tab-btn" data-tab="spirits">🥂 洋酒</button>
+  <button class="tab-btn" data-tab="lowdeg">🍹 低度酒</button>
+</div>
+
+<!-- ===== TAB: 总览 ===== -->
+<div class="tab-content active" id="tab-overview">
+
+  <!-- Track Summary Cards -->
+  <div class="section-title" style="--accent: var(--red);">赛道摘要</div>
+  <div class="grid-4 mb-32">
+    <div class="track-card" style="--track-color: #FF2442;" onclick="switchTab('baijiu')">
+      <div class="track-emoji">🥃</div>
+      <div class="track-name">白酒赛道</div>
+      <div class="track-value">702.5<span>w</span></div>
+      <div class="track-yoy">▲ +169.1%</div>
+      <div class="track-puyingying">蒲公英 <b>752.1w</b> · 商业化总 <b>2222.2w</b></div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:0%" data-width="23.8%"></div>
+      </div>
+      <div class="progress-label"><span>硬广占全酒类</span><span>23.8%</span></div>
+    </div>
+    <div class="track-card" style="--track-color: #FFD60A;" onclick="switchTab('beer')">
+      <div class="track-emoji">🍺</div>
+      <div class="track-name">啤酒赛道</div>
+      <div class="track-value" style="color:#FFD60A">1113.7<span>w</span></div>
+      <div class="track-yoy">▲ +387.1%</div>
+      <div class="track-puyingying">蒲公英 <b>1045.4w</b> · 商业化总 <b>2159.1w</b></div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:0%;background:#FFD60A" data-width="37.7%"></div>
+      </div>
+      <div class="progress-label"><span>硬广占全酒类</span><span>37.7%</span></div>
+    </div>
+    <div class="track-card" style="--track-color: #4F8EF7;" onclick="switchTab('spirits')">
+      <div class="track-emoji">🥂</div>
+      <div class="track-name">洋酒赛道</div>
+      <div class="track-value" style="color:#4F8EF7">907.8<span>w</span></div>
+      <div class="track-yoy">▲ +173.8%</div>
+      <div class="track-puyingying">蒲公英 <b>1016.9w</b> · 商业化总 <b>1924.8w</b></div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:0%;background:#4F8EF7" data-width="30.8%"></div>
+      </div>
+      <div class="progress-label"><span>硬广占全酒类</span><span>30.8%</span></div>
+    </div>
+    <div class="track-card" style="--track-color: #00E5A0;" onclick="switchTab('lowdeg')">
+      <div class="track-emoji">🍹</div>
+      <div class="track-name">低度酒赛道</div>
+      <div class="track-value" style="color:#00E5A0">227.1<span>w</span></div>
+      <div class="track-yoy">▲ +47.1%</div>
+      <div class="track-puyingying">蒲公英 <b>286.4w</b> · 商业化总 <b>513.5w</b></div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" style="width:0%;background:#00E5A0" data-width="7.7%"></div>
+      </div>
+      <div class="progress-label"><span>硬广占全酒类</span><span>7.7%</span></div>
+    </div>
+  </div>
+
+  <!-- Total summary row -->
+  <div class="total-row mb-32">
+    <span>🍷 全赛道硬广合计</span>
+    <strong>2,951.2w</strong>
+    <span style="margin-left:auto;margin-right:20px">蒲公英合计</span>
+    <strong style="color:var(--gold)">3,100.9w</strong>
+    <span style="margin-left:auto;margin-right:20px">商业化总计</span>
+    <strong style="color:var(--green)">6,819.6w</strong>
+  </div>
+
+  <!-- Bar chart + Pie chart -->
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">全赛道硬广 & 蒲公英对比</div>
+      <div id="chart-overview-bar" style="height:300px"></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">商业化收入结构（双环图）</div>
+      <div id="chart-overview-pie" style="height:300px"></div>
+    </div>
+  </div>
+
+  <!-- Radar -->
+  <div class="chart-box mb-32">
+    <div class="chart-title">赛道综合竞争力雷达图</div>
+    <div id="chart-overview-radar" style="height:360px"></div>
+  </div>
+
+</div>
+
+<!-- ===== TAB: 白酒 ===== -->
+<div class="tab-content" id="tab-baijiu">
+  <div class="section-title" style="--accent:#FF2442">🥃 白酒赛道 · Q1 核心指标</div>
+  <div class="grid-6 mb-32">
+    <div class="metric-card" style="--accent-color:#FF2442">
+      <div class="metric-label">硬广流水</div>
+      <div class="metric-value">702.54<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +169.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--blue)">
+      <div class="metric-label">品牌广告</div>
+      <div class="metric-value">283.23<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +73.5%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--orange)">
+      <div class="metric-label">竞价广告</div>
+      <div class="metric-value">417.23<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +326.4%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--gold);border-color:rgba(255,212,10,0.2)">
+      <div class="metric-label">🌼 蒲公英</div>
+      <div class="metric-value" style="color:var(--gold)">752.14<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +242.8%</div>
+      <div class="metric-note">独立于硬广</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--green)">
+      <div class="metric-label">搜索广告</div>
+      <div class="metric-value">101.47<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +173.6%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--text-sub)">
+      <div class="metric-label">线索广告</div>
+      <div class="metric-value">93.08<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +53.9%</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">月度趋势（品牌广告 + 竞价广告）</div>
+      <div id="chart-baijiu-monthly" style="height:280px"></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">客户 TOP10 广告流水</div>
+      <div id="chart-baijiu-top10" style="height:280px"></div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">执行优先级四象限（体量 vs 增速）</div>
+      <div id="chart-baijiu-quadrant" style="height:300px"></div>
+      <div class="quadrant-labels">
+        <div class="ql-item">
+          <h5>🟢 高体量·高增速（重点维护）</h5>
+          <div class="ql-brands">
+            <span class="ql-tag" style="color:#FF2442">五粮液</span>
+            <span class="ql-tag" style="color:#FF2442">泸州老窖</span>
+          </div>
+        </div>
+        <div class="ql-item">
+          <h5>🟡 低体量·高增速（重点突破）</h5>
+          <div class="ql-brands">
+            <span class="ql-tag">甜掌柜</span>
+            <span class="ql-tag">女儿情</span>
+            <span class="ql-tag">郎酒</span>
+          </div>
+        </div>
+        <div class="ql-item">
+          <h5>🔵 高体量·低增速（持续运营）</h5>
+          <div class="ql-brands">
+            <span class="ql-tag">今世缘</span>
+          </div>
+        </div>
+        <div class="ql-item">
+          <h5>⚪ 低体量·低增速（观察期）</h5>
+          <div class="ql-brands">
+            <span class="ql-tag">金徽酒</span>
+            <span class="ql-tag">劲酒</span>
+            <span class="ql-tag">小糊涂仙</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">年度目标达成进度</div>
+      <div class="ring-wrap" style="height:300px;align-items:center;">
+        <div id="chart-baijiu-ring" style="height:240px;width:240px;flex-shrink:0"></div>
+        <div class="ring-labels">
+          <div class="ring-stat">
+            <div class="ring-stat-label">年度目标</div>
+            <div class="ring-stat-value" style="color:var(--text-sub)">6,000<span style="font-size:14px;font-weight:400">w</span></div>
+          </div>
+          <div class="ring-stat">
+            <div class="ring-stat-label">Q1 完成（硬广）</div>
+            <div class="ring-stat-value" style="color:#FF2442">702.54<span style="font-size:14px;font-weight:400">w</span></div>
+          </div>
+          <div class="ring-stat">
+            <div class="ring-stat-label">完成率</div>
+            <div class="ring-stat-value" style="color:var(--orange)">11.7%</div>
+          </div>
+          <div class="ring-stat">
+            <div class="ring-stat-label">预计全年达成</div>
+            <div class="ring-stat-value" style="color:var(--green);font-size:15px">7月底达成目标</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: 啤酒 ===== -->
+<div class="tab-content" id="tab-beer">
+  <div class="section-title" style="--accent:#FFD60A">🍺 啤酒赛道 · Q1 核心指标</div>
+  <div class="grid-6 mb-32">
+    <div class="metric-card" style="--accent-color:#FFD60A">
+      <div class="metric-label">硬广流水</div>
+      <div class="metric-value" style="color:#FFD60A">1113.7<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +387.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--blue)">
+      <div class="metric-label">品牌广告</div>
+      <div class="metric-value">697.5<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +1616%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--orange)">
+      <div class="metric-label">竞价广告</div>
+      <div class="metric-value">416.2<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +122.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--gold);border-color:rgba(255,212,10,0.2)">
+      <div class="metric-label">🌼 蒲公英</div>
+      <div class="metric-value" style="color:var(--gold)">1045.4<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +233.4%</div>
+      <div class="metric-note">独立于硬广</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--green)">
+      <div class="metric-label">搜索广告</div>
+      <div class="metric-value">93.1<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +122.2%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--text-sub)">
+      <div class="metric-label">线索广告</div>
+      <div class="metric-value">0.42<span class="unit">w</span></div>
+      <div class="metric-note" style="color:#FF9500">极低，待开发</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">品牌 TOP8 广告流水分布</div>
+      <div id="chart-beer-brands" style="height:320px"></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">KFS 健康度分析（前5品牌）</div>
+      <div class="kfs-legend">
+        <div class="kfs-legend-item"><div class="kfs-dot" style="background:#FFD60A"></div>品牌广告(K)</div>
+        <div class="kfs-legend-item"><div class="kfs-dot" style="background:var(--green)"></div>蒲公英(F)</div>
+        <div class="kfs-legend-item"><div class="kfs-dot" style="background:var(--blue)"></div>搜索(S)</div>
+      </div>
+      <!-- 喜力 -->
+      <div class="kfs-item">
+        <div class="kfs-brand"><span>喜力啤酒</span><span style="font-size:11px;color:var(--text-dim)">551.9w</span></div>
+        <div class="kfs-bars">
+          <div class="kfs-k" style="width:70%;background:#FFD60A"></div>
+          <div class="kfs-f" style="width:12%"></div>
+          <div class="kfs-s" style="width:6%"></div>
+        </div>
+      </div>
+      <!-- 青岛 -->
+      <div class="kfs-item">
+        <div class="kfs-brand"><span>青岛啤酒</span><span style="font-size:11px;color:var(--text-dim)">140.8w</span></div>
+        <div class="kfs-bars">
+          <div class="kfs-k" style="width:20%;background:#FFD60A"></div>
+          <div class="kfs-f" style="width:69%"></div>
+          <div class="kfs-s" style="width:7%"></div>
+        </div>
+      </div>
+      <!-- 青岛白啤 -->
+      <div class="kfs-item">
+        <div class="kfs-brand"><span>青岛白啤</span><span style="font-size:11px;color:var(--text-dim)">79.6w</span></div>
+        <div class="kfs-bars">
+          <div class="kfs-k" style="width:7%;background:#FFD60A"></div>
+          <div class="kfs-f" style="width:72%"></div>
+          <div class="kfs-s" style="width:8%"></div>
+        </div>
+      </div>
+      <!-- 雪花勇闯 -->
+      <div class="kfs-item">
+        <div class="kfs-brand"><span>雪花勇闯</span><span style="font-size:11px;color:var(--text-dim)">67.3w</span></div>
+        <div class="kfs-bars">
+          <div class="kfs-k" style="width:0%;background:#FFD60A"></div>
+          <div class="kfs-f" style="width:80%"></div>
+          <div class="kfs-s" style="width:6%"></div>
+        </div>
+      </div>
+      <!-- 科罗娜 -->
+      <div class="kfs-item">
+        <div class="kfs-brand"><span>科罗娜</span><span style="font-size:11px;color:var(--text-dim)">61.8w</span></div>
+        <div class="kfs-bars">
+          <div class="kfs-k" style="width:52%;background:#FFD60A"></div>
+          <div class="kfs-f" style="width:30%"></div>
+          <div class="kfs-s" style="width:8%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-card">
+    <h4>🍺 啤酒赛道亮点</h4>
+    <div class="highlight-item">喜力啤酒以551.9w硬广一枝独秀，品牌广告占比92%，高举高打模式</div>
+    <div class="highlight-item">品牌广告同比+1616%，主要增量来自喜力开屏/信息流大额投放</div>
+    <div class="highlight-item">青岛系（青岛+白啤）蒲公英策略显著，内容创作为主要增长引擎</div>
+    <div class="highlight-item">线索广告仅0.42w，是四个赛道中线索化程度最低的赛道，有开发空间</div>
+  </div>
+</div>
+
+<!-- ===== TAB: 洋酒 ===== -->
+<div class="tab-content" id="tab-spirits">
+  <div class="section-title" style="--accent:#4F8EF7">🥂 洋酒赛道 · Q1 核心指标</div>
+  <div class="grid-6 mb-32">
+    <div class="metric-card" style="--accent-color:#4F8EF7">
+      <div class="metric-label">硬广流水</div>
+      <div class="metric-value" style="color:#4F8EF7">907.8<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +173.8%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--blue)">
+      <div class="metric-label">品牌广告</div>
+      <div class="metric-value">179.5<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +2500.8%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--orange)">
+      <div class="metric-label">竞价广告</div>
+      <div class="metric-value">728.2<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +125.5%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--gold);border-color:rgba(255,212,10,0.2)">
+      <div class="metric-label">🌼 蒲公英</div>
+      <div class="metric-value" style="color:var(--gold)">1016.9<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +236.1%</div>
+      <div class="metric-note">独立于硬广</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--green)">
+      <div class="metric-label">搜索广告</div>
+      <div class="metric-value">169.8<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +30.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--text-sub)">
+      <div class="metric-label">线索广告</div>
+      <div class="metric-value">3.0<span class="unit">w</span></div>
+      <div class="metric-note">占比低</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">品牌 TOP8 广告流水分布</div>
+      <div id="chart-spirits-brands" style="height:320px"></div>
+    </div>
+    <div class="chart-box" style="--accent:#4F8EF7">
+      <div class="chart-title">同比亮点分析</div>
+      <div style="margin-top:8px">
+        <div class="highlight-card" style="margin-bottom:12px;border-color:rgba(79,142,247,0.2)">
+          <h4>📈 品牌广告同比 +2500%</h4>
+          <div class="highlight-item">主因：麦卡伦Q1开启大规模品牌广告，投入158w，占品牌广告总量88%</div>
+          <div class="highlight-item">麦卡伦全年有望成为洋酒赛道标杆客户，KA深度运营优先级极高</div>
+        </div>
+        <div class="highlight-card" style="margin-bottom:12px;border-color:rgba(255,149,0,0.2)">
+          <h4>🔍 竞价同比 +125%，搜索占比18.7%</h4>
+          <div class="highlight-item">格兰菲迪、金宾波本、苏格登均以竞价为主，品牌意识尚待培育</div>
+          <div class="highlight-item">搜索场域18.7%占比，在四赛道中最高，用户主动搜索意愿强</div>
+        </div>
+        <div class="highlight-card" style="border-color:rgba(255,212,10,0.2)">
+          <h4>🌼 蒲公英占商业化53%，K比例偏高</h4>
+          <div class="highlight-item">蒲公英(K)渗透深，意味着内容种草生态健康，但需要更多F(蒲公英)转化</div>
+          <div class="highlight-item">人头马、高原骑士蒲公英占比超过70%，内容驱动型品牌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: 低度酒 ===== -->
+<div class="tab-content" id="tab-lowdeg">
+  <div class="section-title" style="--accent:#00E5A0">🍹 低度酒赛道 · Q1 核心指标</div>
+  <div class="grid-6 mb-32">
+    <div class="metric-card" style="--accent-color:#00E5A0">
+      <div class="metric-label">硬广流水</div>
+      <div class="metric-value" style="color:#00E5A0">227.1<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +47.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--blue)">
+      <div class="metric-label">品牌广告</div>
+      <div class="metric-value">8.7<span class="unit">w</span></div>
+      <div class="metric-yoy down">▼ -70.1%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--orange)">
+      <div class="metric-label">竞价广告</div>
+      <div class="metric-value">216<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +76%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--gold);border-color:rgba(255,212,10,0.2)">
+      <div class="metric-label">🌼 蒲公英</div>
+      <div class="metric-value" style="color:var(--gold)">286.4<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +91.6%</div>
+      <div class="metric-note">独立于硬广</div>
+    </div>
+    <div class="metric-card" style="--accent-color:var(--green)">
+      <div class="metric-label">搜索广告</div>
+      <div class="metric-value">28.7<span class="unit">w</span></div>
+      <div class="metric-yoy up">▲ +19.7%</div>
+    </div>
+    <div class="metric-card" style="--accent-color:#FF9500;border-color:rgba(255,149,0,0.2)">
+      <div class="metric-label">🛒 闭环电商</div>
+      <div class="metric-value" style="color:#FF9500">17.4<span class="unit">w</span></div>
+      <div class="metric-note" style="color:#FF9500">四赛道最高占比 7.7%</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb-32">
+    <div class="chart-box">
+      <div class="chart-title">品牌 TOP6 广告流水（硬广 + 蒲公英）</div>
+      <div id="chart-lowdeg-brands" style="height:280px"></div>
+    </div>
+    <div class="chart-box" style="--accent:#00E5A0">
+      <div class="chart-title">赛道亮点分析</div>
+      <div style="margin-top:8px">
+        <div class="highlight-card" style="margin-bottom:12px;border-color:rgba(0,229,160,0.2)">
+          <h4>🥤 RIO系列高度集中</h4>
+          <div class="highlight-item">RIO（锐澳+轻享+强爽+清爽）四个账号合计硬广169.5w，占低度酒总量74.6%</div>
+          <div class="highlight-item">RIO多账号矩阵策略明显，产品线分层精细运营</div>
+        </div>
+        <div class="highlight-card" style="margin-bottom:12px;border-color:rgba(255,149,0,0.2)">
+          <h4>🛒 闭环电商是四赛道最高</h4>
+          <div class="highlight-item">闭环电商占比7.7%，远高于其他三个赛道，低度酒消费者决策链路短</div>
+          <div class="highlight-item">RIO锐澳搜索+闭环并重策略值得其他品牌借鉴</div>
+        </div>
+        <div class="highlight-card" style="border-color:rgba(255,212,10,0.2)">
+          <h4>🌸 梅见增速亮眼</h4>
+          <div class="highlight-item">梅见（江小白系）蒲公英37.8w vs 硬广8.5w，蒲公英占比82%</div>
+          <div class="highlight-item">内容驱动型增长，是低度酒赛道中KFS结构最均衡的新锐品牌</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== Tab Switch ====================
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tabName);
+  });
+  document.querySelectorAll('.tab-content').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.getElementById('tab-' + tabName).classList.add('active');
+  
+  // Re-init charts for the activated tab
+  setTimeout(() => {
+    initChartsForTab(tabName);
+    animateProgressBars();
+    animateNumbers();
+  }, 50);
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
+
+// ==================== ECharts Color Theme ====================
+const COLORS = {
+  red: '#FF2442',
+  gold: '#FFD60A',
+  blue: '#4F8EF7',
+  green: '#00E5A0',
+  orange: '#FF9500',
+  dim: 'rgba(255,255,255,0.15)',
+  textSub: 'rgba(255,255,255,0.5)',
+  text: 'rgba(255,255,255,0.9)',
+  bg: '#0f1117'
+};
+
+const baseTextStyle = { color: COLORS.textSub, fontSize: 12, fontFamily: "'PingFang SC', sans-serif" };
+
+// ==================== Overview Charts ====================
+function initOverviewCharts() {
+  // Bar chart
+  const barEl = document.getElementById('chart-overview-bar');
+  if (!barEl) return;
+  const barChart = echarts.init(barEl, null, { renderer: 'canvas' });
+  barChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(15,17,23,0.95)',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: COLORS.text }
+    },
+    legend: {
+      data: ['硬广流水', '蒲公英流水'],
+      textStyle: baseTextStyle,
+      top: 0
+    },
+    grid: { left: 80, right: 20, top: 40, bottom: 20, containLabel: false },
+    xAxis: {
+      type: 'value',
+      axisLabel: { ...baseTextStyle, formatter: v => v + 'w' },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }
+    },
+    yAxis: {
+      type: 'category',
+      data: ['低度酒', '白酒', '洋酒', '啤酒'],
+      axisLabel: baseTextStyle,
+      axisTick: { show: false },
+      axisLine: { show: false }
+    },
+    series: [
+      {
+        name: '硬广流水',
+        type: 'bar',
+        data: [227.1, 702.5, 907.8, 1113.7],
+        itemStyle: { color: (p) => [COLORS.green, COLORS.red, COLORS.blue, COLORS.gold][p.dataIndex], borderRadius: [0,4,4,0] },
+        label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.text, fontSize: 11 }
+      },
+      {
+        name: '蒲公英流水',
+        type: 'bar',
+        data: [286.4, 752.1, 1016.9, 1045.4],
+        itemStyle: { color: 'rgba(255,212,10,0.6)', borderRadius: [0,4,4,0] },
+        label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.gold, fontSize: 11 }
+      }
+    ]
+  });
+
+  // Pie chart (nested donut)
+  const pieEl = document.getElementById('chart-overview-pie');
+  if (!pieEl) return;
+  const pieChart = echarts.init(pieEl, null, { renderer: 'canvas' });
+  const trackColors = [COLORS.red, COLORS.gold, COLORS.blue, COLORS.green];
+  const trackNames = ['白酒', '啤酒', '洋酒', '低度酒'];
+  const adData = [702.5, 1113.7, 907.8, 227.1];
+  const puyData = [752.1, 1045.4, 1016.9, 286.4];
+  
+  pieChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'item',
+      backgroundColor: 'rgba(15,17,23,0.95)',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: COLORS.text },
+      formatter: p => `${p.seriesName}<br/>${p.name}: <b>${p.value}w</b> (${p.percent}%)`
+    },
+    legend: {
+      data: trackNames,
+      textStyle: baseTextStyle,
+      bottom: 0
+    },
+    graphic: [
+      { type: 'text', left: 'center', top: '42%', style: { text: '硬广合计', fill: COLORS.textSub, fontSize: 12 } },
+      { type: 'text', left: 'center', top: '50%', style: { text: '2951.2w', fill: COLORS.red, fontSize: 18, fontWeight: 'bold', fontFamily: "'SF Mono', monospace" } }
+    ],
+    series: [
+      {
+        name: '硬广',
+        type: 'pie',
+        radius: ['28%', '48%'],
+        center: ['50%', '48%'],
+        data: trackNames.map((n,i) => ({ name: n, value: adData[i], itemStyle: { color: trackColors[i] } })),
+        label: { show: false },
+        emphasis: { scale: true, scaleSize: 6 }
+      },
+      {
+        name: '蒲公英',
+        type: 'pie',
+        radius: ['52%', '68%'],
+        center: ['50%', '48%'],
+        data: trackNames.map((n,i) => ({ name: n, value: puyData[i], itemStyle: { color: trackColors[i], opacity: 0.65 } })),
+        label: { show: false },
+        emphasis: { scale: true, scaleSize: 4 }
+      }
+    ]
+  });
+
+  // Radar chart
+  const radarEl = document.getElementById('chart-overview-radar');
+  if (!radarEl) return;
+  const radarChart = echarts.init(radarEl, null, { renderer: 'canvas' });
+
+  // Normalize data for radar (0-100 scale)
+  // Dimensions: 硬广规模 / 同比增速 / 竞价占比 / 蒲公英规模 / 搜索占比
+  // 硬广规模 max=1113.7, 同比max=387.1, 竞价占比: beer=37%, spirits=80%, baijiu=59%, low=95%; puyingying max=1045.4, 搜索占比: spirits=18.7%, beer=8.4%, baijiu=14.4%, low=12.6%
+  const radarData = {
+    '白酒': [63, 44, 59, 72, 77],
+    '啤酒': [100, 100, 37, 100, 45],
+    '洋酒': [81, 45, 80, 97, 100],
+    '低度酒': [20, 12, 95, 27, 67]
+  };
+
+  radarChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'item',
+      backgroundColor: 'rgba(15,17,23,0.95)',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: COLORS.text }
+    },
+    legend: {
+      data: Object.keys(radarData),
+      textStyle: baseTextStyle,
+      bottom: 0,
+      icon: 'circle'
+    },
+    radar: {
+      indicator: [
+        { name: '硬广规模', max: 100 },
+        { name: '同比增速', max: 100 },
+        { name: '竞价占比', max: 100 },
+        { name: '蒲公英规模', max: 100 },
+        { name: '搜索占比', max: 100 }
+      ],
+      center: ['50%', '48%'],
+      radius: '58%',
+      axisName: { color: COLORS.textSub, fontSize: 12 },
+      splitLine: { lineStyle: { color: 'rgba(255,255,255,0.08)' } },
+      splitArea: { areaStyle: { color: ['rgba(255,255,255,0.01)', 'rgba(255,255,255,0.02)'] } },
+      axisLine: { lineStyle: { color: 'rgba(255,255,255,0.08)' } }
+    },
+    series: [{
+      type: 'radar',
+      data: [
+        { name: '白酒', value: radarData['白酒'], lineStyle: { color: COLORS.red, width: 2 }, itemStyle: { color: COLORS.red }, areaStyle: { color: COLORS.red, opacity: 0.1 } },
+        { name: '啤酒', value: radarData['啤酒'], lineStyle: { color: COLORS.gold, width: 2 }, itemStyle: { color: COLORS.gold }, areaStyle: { color: COLORS.gold, opacity: 0.1 } },
+        { name: '洋酒', value: radarData['洋酒'], lineStyle: { color: COLORS.blue, width: 2 }, itemStyle: { color: COLORS.blue }, areaStyle: { color: COLORS.blue, opacity: 0.1 } },
+        { name: '低度酒', value: radarData['低度酒'], lineStyle: { color: COLORS.green, width: 2 }, itemStyle: { color: COLORS.green }, areaStyle: { color: COLORS.green, opacity: 0.1 } }
+      ]
+    }]
+  });
+}
+
+// ==================== Baijiu Charts ====================
+function initBaijiuCharts() {
+  // Monthly trend
+  const monthEl = document.getElementById('chart-baijiu-monthly');
+  if (!monthEl) return;
+  const monthChart = echarts.init(monthEl);
+  monthChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text } },
+    legend: { data: ['品牌广告', '竞价广告', '蒲公英'], textStyle: baseTextStyle, top: 0 },
+    grid: { left: 16, right: 16, top: 40, bottom: 16, containLabel: true },
+    xAxis: { type: 'category', data: ['1月', '2月', '3月'], axisLabel: baseTextStyle, axisTick: { show: false }, axisLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } } },
+    yAxis: { type: 'value', axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+    series: [
+      { name: '品牌广告', type: 'bar', stack: 'ad', data: [149.06, 91.5, 41.51], itemStyle: { color: COLORS.blue }, barMaxWidth: 40 },
+      { name: '竞价广告', type: 'bar', stack: 'ad', data: [147.11, 188.09, 79.03], itemStyle: { color: COLORS.orange }, barMaxWidth: 40, label: { show: true, position: 'top', formatter: p => (p.value + (p.dataIndex===0?149.06:p.dataIndex===1?91.5:41.51)) + 'w', color: COLORS.text, fontSize: 11 } },
+      { name: '蒲公英', type: 'bar', data: [0, 0, 0], itemStyle: { color: COLORS.gold }, barMaxWidth: 40, barGap: '30%' }
+    ]
+  });
+
+  // TOP10
+  const topEl = document.getElementById('chart-baijiu-top10');
+  if (!topEl) return;
+  const topChart = echarts.init(topEl);
+  const brands = ['古井贡酒','小糊涂仙','劲酒','金徽酒','今世缘','郎酒','女儿情','甜掌柜','泸州老窖','五粮液'];
+  const vals = [5.99,7.69,9.71,15,18.11,24.83,57.49,86.36,105,367.41];
+  topChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text }, formatter: p => p[0].name + ': <b>' + p[0].value + 'w</b>' },
+    grid: { left: 16, right: 80, top: 8, bottom: 8, containLabel: true },
+    xAxis: { type: 'value', axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+    yAxis: { type: 'category', data: brands, axisLabel: baseTextStyle, axisTick: { show: false }, axisLine: { show: false } },
+    series: [{
+      type: 'bar',
+      data: vals.map((v,i) => ({
+        value: v,
+        itemStyle: {
+          color: i===9 ? COLORS.red : i===8 ? COLORS.orange : 'rgba(255,36,66,0.4)',
+          borderRadius: [0,4,4,0]
+        }
+      })),
+      label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.text, fontSize: 11 },
+      barMaxWidth: 20
+    }]
+  });
+
+  // Quadrant scatter
+  const quadEl = document.getElementById('chart-baijiu-quadrant');
+  if (!quadEl) return;
+  const quadChart = echarts.init(quadEl);
+  // x=体量(w), y=增速(%)
+  const quadData = [
+    { name: '五粮液', x: 367.41, y: 280 },
+    { name: '泸州老窖', x: 105, y: 320 },
+    { name: '甜掌柜', x: 86.36, y: 450 },
+    { name: '女儿情', x: 57.49, y: 380 },
+    { name: '郎酒', x: 24.83, y: 190 },
+    { name: '今世缘', x: 18.11, y: 85 },
+    { name: '金徽酒', x: 15, y: 70 },
+    { name: '劲酒', x: 9.71, y: 60 },
+    { name: '小糊涂仙', x: 7.69, y: 40 }
+  ];
+  quadChart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'item', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text }, formatter: p => `${p.data[2]}<br/>体量: ${p.data[0]}w<br/>增速: +${p.data[1]}%` },
+    grid: { left: 50, right: 20, top: 20, bottom: 40, containLabel: false },
+    xAxis: { type: 'value', name: '体量(w)', nameTextStyle: baseTextStyle, axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, min: 0, max: 420 },
+    yAxis: { type: 'value', name: '增速(%)', nameTextStyle: baseTextStyle, axisLabel: { ...baseTextStyle, formatter: v => '+' + v + '%' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } }, min: 0, max: 500 },
+    markLine: { data: [{ xAxis: 100, lineStyle: { color: 'rgba(255,255,255,0.15)', type: 'dashed' } }, { yAxis: 150, lineStyle: { color: 'rgba(255,255,255,0.15)', type: 'dashed' } }] },
+    series: [{
+      type: 'scatter',
+      data: quadData.map(d => [d.x, d.y, d.name]),
+      symbolSize: d => Math.max(10, Math.sqrt(d[0]) * 2.5),
+      itemStyle: { color: p => {
+        const [x, y] = p.data;
+        if (x > 100 && y > 150) return COLORS.red;
+        if (x <= 100 && y > 150) return COLORS.orange;
+        if (x > 100 && y <= 150) return COLORS.blue;
+        return 'rgba(255,255,255,0.3)';
+      }},
+      label: { show: true, formatter: p => p.data[2], color: COLORS.text, fontSize: 11, position: 'top' }
+    }]
+  });
+
+  // Progress ring
+  const ringEl = document.getElementById('chart-baijiu-ring');
+  if (!ringEl) return;
+  const ringChart = echarts.init(ringEl);
+  ringChart.setOption({
+    backgroundColor: 'transparent',
+    series: [{
+      type: 'pie',
+      radius: ['65%', '82%'],
+      center: ['50%', '50%'],
+      startAngle: 90,
+      data: [
+        { value: 11.7, name: '已完成', itemStyle: { color: COLORS.red } },
+        { value: 88.3, name: '未完成', itemStyle: { color: 'rgba(255,255,255,0.06)' } }
+      ],
+      label: { show: false },
+      emphasis: { scale: false }
+    }],
+    graphic: [
+      { type: 'text', left: 'center', top: '42%', style: { text: '11.7%', fill: COLORS.red, fontSize: 24, fontWeight: 'bold', fontFamily: "'SF Mono', monospace" } },
+      { type: 'text', left: 'center', top: '56%', style: { text: '完成率', fill: COLORS.textSub, fontSize: 12 } }
+    ]
+  });
+}
+
+// ==================== Beer Charts ====================
+function initBeerCharts() {
+  const el = document.getElementById('chart-beer-brands');
+  if (!el) return;
+  const chart = echarts.init(el);
+  const brands = ['风花雪月', 'Amstel红爵', '1664啤酒', '科罗娜', '雪花勇闯', '青岛白啤', '青岛啤酒', '喜力啤酒'];
+  const adVals = [15.4, 66.1, 29.9, 61.8, 67.3, 79.6, 140.8, 551.9];
+  const puyVals = [50.3, 0, 150.8, 65.7, 160.9, 179.1, 172.6, 81.7];
+  chart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text } },
+    legend: { data: ['广告流水', '蒲公英'], textStyle: baseTextStyle, top: 0 },
+    grid: { left: 16, right: 80, top: 36, bottom: 8, containLabel: true },
+    xAxis: { type: 'value', axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+    yAxis: { type: 'category', data: brands, axisLabel: baseTextStyle, axisTick: { show: false }, axisLine: { show: false } },
+    series: [
+      { name: '广告流水', type: 'bar', data: adVals, itemStyle: { color: COLORS.gold, borderRadius: [0,4,4,0] }, barMaxWidth: 18, label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.gold, fontSize: 10 } },
+      { name: '蒲公英', type: 'bar', data: puyVals, itemStyle: { color: 'rgba(255,212,10,0.35)', borderRadius: [0,4,4,0] }, barMaxWidth: 18, label: { show: true, position: 'right', formatter: p => p.value > 0 ? p.value + 'w' : '-', color: COLORS.textSub, fontSize: 10 } }
+    ]
+  });
+}
+
+// ==================== Spirits Charts ====================
+function initSpiritsCharts() {
+  const el = document.getElementById('chart-spirits-brands');
+  if (!el) return;
+  const chart = echarts.init(el);
+  const brands = ['高原骑士', '尊尼获加', '苏格登', '百利得', '人头马', '金宾波本', '格兰菲迪', '麦卡伦'];
+  const adVals = [4.4, 55.7, 66.8, 41.2, 29.4, 83, 105.9, 316.4];
+  const puyVals = [56.9, 27.6, 37.9, 79.9, 93.8, 85.1, 83.5, 310.9];
+  chart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text } },
+    legend: { data: ['广告流水', '蒲公英'], textStyle: baseTextStyle, top: 0 },
+    grid: { left: 16, right: 80, top: 36, bottom: 8, containLabel: true },
+    xAxis: { type: 'value', axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+    yAxis: { type: 'category', data: brands, axisLabel: baseTextStyle, axisTick: { show: false }, axisLine: { show: false } },
+    series: [
+      { name: '广告流水', type: 'bar', data: adVals, itemStyle: { color: COLORS.blue, borderRadius: [0,4,4,0] }, barMaxWidth: 18, label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.blue, fontSize: 10 } },
+      { name: '蒲公英', type: 'bar', data: puyVals, itemStyle: { color: 'rgba(79,142,247,0.35)', borderRadius: [0,4,4,0] }, barMaxWidth: 18, label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.textSub, fontSize: 10 } }
+    ]
+  });
+}
+
+// ==================== Low-degree Charts ====================
+function initLowdegCharts() {
+  const el = document.getElementById('chart-lowdeg-brands');
+  if (!el) return;
+  const chart = echarts.init(el);
+  const brands = ['果立方', 'RIO清爽', '梅见', 'RIO强爽', 'RIO轻享', 'RIO锐澳'];
+  const adVals = [13.4, 7.8, 8.5, 15.6, 45.4, 100.7];
+  const puyVals = [11.6, 23.1, 37.8, 65.1, 51.6, 74.6];
+  chart.setOption({
+    backgroundColor: 'transparent',
+    tooltip: { trigger: 'axis', backgroundColor: 'rgba(15,17,23,0.95)', borderColor: 'rgba(255,255,255,0.1)', textStyle: { color: COLORS.text } },
+    legend: { data: ['广告流水', '蒲公英'], textStyle: baseTextStyle, top: 0 },
+    grid: { left: 16, right: 80, top: 36, bottom: 8, containLabel: true },
+    xAxis: { type: 'value', axisLabel: { ...baseTextStyle, formatter: v => v + 'w' }, splitLine: { lineStyle: { color: 'rgba(255,255,255,0.05)' } } },
+    yAxis: { type: 'category', data: brands, axisLabel: baseTextStyle, axisTick: { show: false }, axisLine: { show: false } },
+    series: [
+      { name: '广告流水', type: 'bar', data: adVals, itemStyle: { color: COLORS.green, borderRadius: [0,4,4,0] }, barMaxWidth: 22, label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.green, fontSize: 10 } },
+      { name: '蒲公英', type: 'bar', data: puyVals, itemStyle: { color: 'rgba(0,229,160,0.35)', borderRadius: [0,4,4,0] }, barMaxWidth: 22, label: { show: true, position: 'right', formatter: '{c}w', color: COLORS.textSub, fontSize: 10 } }
+    ]
+  });
+}
+
+// ==================== Chart dispatch ====================
+const chartInitMap = {
+  overview: initOverviewCharts,
+  baijiu: initBaijiuCharts,
+  beer: initBeerCharts,
+  spirits: initSpiritsCharts,
+  lowdeg: initLowdegCharts
+};
+
+const initializedTabs = new Set();
+
+function initChartsForTab(tab) {
+  if (initializedTabs.has(tab)) return;
+  initializedTabs.add(tab);
+  chartInitMap[tab]?.();
+}
+
+// ==================== Progress Bars ====================
+function animateProgressBars() {
+  document.querySelectorAll('.progress-bar-fill[data-width]').forEach(el => {
+    const target = el.getAttribute('data-width');
+    setTimeout(() => { el.style.width = target; }, 100);
+  });
+}
+
+// ==================== Number counter ====================
+function animateNumbers() {
+  // Simple CSS-based, no heavy animation needed here since ECharts handles charts
+}
+
+// ==================== Window resize ====================
+window.addEventListener('resize', () => {
+  document.querySelectorAll('[id^="chart-"]').forEach(el => {
+    const inst = echarts.getInstanceByDom(el);
+    if (inst) inst.resize();
+  });
+});
+
+// ==================== Init ====================
+document.addEventListener('DOMContentLoaded', () => {
+  initChartsForTab('overview');
+  animateProgressBars();
+});
+</script>
+</body>
+</html>

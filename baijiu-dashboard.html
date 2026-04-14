@@ -265,6 +265,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </div>
 <div class="section-title" id="sec-mom">⚠️ 月度环比预警 <small>3月 vs 2月</small></div>
 <div class="mom-warning mb28">
+  <div id="mom-warning-container" style="display:flex;gap:20px;align-items:flex-start;flex:1">
   <div class="mom-cards">
     <div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">▼ 57.1%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">280.69 → 120.53w</div></div>
     <div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">▼ 54.6%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">91.5 → 41.51w</div></div>
@@ -276,6 +277,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     </div>
   </div>
   <div class="mom-note">⚠️ 3月环比大幅下滑，主因IP投放节点性收缩，五粮液IP结束为主要原因。竞价端同比+530%，整体健康。品牌广告同比-38.5%属正常节律性波动。</div>
+  </div>
 </div>
 <div class="section-title" id="sec-insight">📊 智能洞察</div>
 <div class="insight-grid mb28">
@@ -321,9 +323,13 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <div class="search-item"><div class="search-brand">甜掌柜/康得 — 线索型标杆</div><div class="search-desc">线索77w（康得系）全部竞价，CID潜力大，转化型投放效果显著。</div></div>
     <div class="search-item" style="background:rgba(255,149,0,.04);border-color:rgba(255,149,0,.2)"><div class="search-brand" style="color:#FF9500">五粮液电商 0.12w — 刚起步 ⚡</div><div class="search-desc">电商闭环投放极低，CID开环潜力巨大，建议持续推进。</div></div>
   </div>
+  <div class="insight-card" id="monthly-insight-card" style="display:none">
+    <h3>📊 当月投放亮点</h3>
+    <div id="insight-top-brands"></div>
+  </div>
 </div>
 <div class="section-title" id="sec-sales">👥 销售归属视角</div>
-<div class="sales-grid">
+<div class="sales-grid" id="sales-cards-container">
   <div class="sales-card" style="border-color:rgba(255,36,66,.3)">
     <div class="sales-name">一青（张天任）</div><div class="sales-role">负责：五粮液、劲酒</div>
     <div class="sales-brand-list"><span class="sales-brand-tag" style="background:rgba(255,36,66,.15);color:#FF2442">五粮液 382.50w</span><span class="sales-brand-tag">劲酒 9.71w</span></div>
@@ -485,6 +491,60 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </div>
 </div>
 <script>
+var MONTHLY_BRANDS = {
+  M1: [
+    {brand:"五粮液",adv:156.88,brand_adv:130.65,cpc:26.23,pub:66.11,search:8.15,lead:0.0,ecom:0.0,other:18.08,sales:"一青"},
+    {brand:"泸州老窖",adv:51.46,brand_adv:16.0,cpc:35.46,pub:147.25,search:14.84,lead:0.0,ecom:0.0,other:20.62,sales:"弹头"},
+    {brand:"甜掌柜/康得",adv:43.61,brand_adv:0.0,cpc:43.61,pub:0.0,search:6.03,lead:43.61,ecom:0.0,other:0.0,sales:"皓皓"},
+    {brand:"女儿红酱酒",adv:30.12,brand_adv:0.0,cpc:30.12,pub:4.53,search:15.28,lead:0.0,ecom:0.0,other:14.84,sales:"皓皓"},
+    {brand:"劲酒",adv:7.32,brand_adv:0.0,cpc:7.32,pub:5.74,search:0.8,lead:0.0,ecom:0.0,other:6.52,sales:"一青"},
+    {brand:"古井贡酒",adv:2.42,brand_adv:2.42,cpc:0.0,pub:9.64,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"皓皓"},
+    {brand:"小糊涂仙",adv:2.02,brand_adv:0.0,cpc:2.02,pub:13.42,search:0.49,lead:1.73,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"郎酒",adv:1.01,brand_adv:0.0,cpc:1.01,pub:22.19,search:0.02,lead:0.0,ecom:0.0,other:0.99,sales:"皓皓"},
+    {brand:"茅台",adv:0.99,brand_adv:0.0,cpc:0.0,pub:0.0,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"白沙酒类",adv:0.74,brand_adv:0.0,cpc:0.74,pub:1.26,search:0.0,lead:0.0,ecom:0.0,other:0.74,sales:"皓皓"},
+    {brand:"红星白酒",adv:0.47,brand_adv:0.0,cpc:0.47,pub:0.0,search:0.09,lead:0.0,ecom:0.0,other:0.38,sales:"皓皓"},
+  ],
+  M2: [
+    {brand:"五粮液",adv:144.59,brand_adv:89.39,cpc:55.19,pub:109.46,search:5.33,lead:0.0,ecom:0.0,other:49.86,sales:"一青"},
+    {brand:"泸州老窖",adv:53.54,brand_adv:0.0,cpc:53.54,pub:93.63,search:14.19,lead:0.0,ecom:0.0,other:39.35,sales:"弹头"},
+    {brand:"甜掌柜/康得",adv:23.8,brand_adv:0.0,cpc:23.8,pub:0.0,search:3.77,lead:23.8,ecom:0.0,other:0.0,sales:"皓皓"},
+    {brand:"郎酒",adv:23.4,brand_adv:0.0,cpc:23.4,pub:68.49,search:5.31,lead:0.0,ecom:0.0,other:18.09,sales:"皓皓"},
+    {brand:"金徽酒",adv:15.0,brand_adv:0.0,cpc:15.0,pub:0.0,search:0.0,lead:0.0,ecom:0.0,other:15.0,sales:"皓皓"},
+    {brand:"女儿红酱酒",adv:11.7,brand_adv:0.0,cpc:11.7,pub:1.97,search:7.61,lead:0.0,ecom:0.0,other:4.09,sales:"皓皓"},
+    {brand:"古井贡酒",adv:3.57,brand_adv:2.11,cpc:1.47,pub:20.85,search:1.1,lead:0.0,ecom:0.0,other:0.37,sales:"皓皓"},
+    {brand:"小糊涂仙",adv:2.13,brand_adv:0.0,cpc:2.13,pub:18.44,search:0.46,lead:1.74,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"劲酒",adv:1.86,brand_adv:0.0,cpc:0.76,pub:5.29,search:0.0,lead:0.0,ecom:0.0,other:0.76,sales:"一青"},
+    {brand:"汾酒",adv:0.87,brand_adv:0.0,cpc:0.87,pub:4.97,search:0.4,lead:0.0,ecom:0.0,other:0.47,sales:"皓皓"},
+    {brand:"茅台",adv:0.0,brand_adv:0.0,cpc:0.0,pub:14.82,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"今世缘",adv:0.0,brand_adv:0.0,cpc:0.0,pub:11.76,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"皓皓"},
+  ],
+  M3: [
+    {brand:"五粮液",adv:63.84,brand_adv:41.51,cpc:22.33,pub:71.76,search:5.7,lead:0.0,ecom:0.0,other:16.63,sales:"一青"},
+    {brand:"今世缘",adv:18.11,brand_adv:0.0,cpc:18.11,pub:0.0,search:0.02,lead:0.0,ecom:0.0,other:18.09,sales:"皓皓"},
+    {brand:"甜掌柜/康得",adv:17.52,brand_adv:0.0,cpc:17.52,pub:0.0,search:2.31,lead:17.52,ecom:0.0,other:0.0,sales:"皓皓"},
+    {brand:"女儿红酱酒",adv:14.93,brand_adv:0.0,cpc:14.93,pub:11.75,search:7.9,lead:0.0,ecom:0.0,other:7.03,sales:"皓皓"},
+    {brand:"小糊涂仙",adv:3.32,brand_adv:0.0,cpc:3.32,pub:12.38,search:0.67,lead:3.05,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"汾酒",adv:1.85,brand_adv:0.0,cpc:1.85,pub:0.0,search:0.43,lead:0.0,ecom:0.0,other:1.42,sales:"皓皓"},
+    {brand:"郎酒",adv:0.42,brand_adv:0.0,cpc:0.42,pub:0.23,search:0.0,lead:0.0,ecom:0.0,other:0.42,sales:"皓皓"},
+    {brand:"劲酒",adv:0.34,brand_adv:0.0,cpc:0.34,pub:1.84,search:0.0,lead:0.0,ecom:0.0,other:0.34,sales:"一青"},
+    {brand:"泸州老窖",adv:0.0,brand_adv:0.0,cpc:0.0,pub:18.23,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"茅台",adv:0.0,brand_adv:0.0,cpc:0.0,pub:4.57,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"水井坊",adv:0.0,brand_adv:0.0,cpc:0.0,pub:1.88,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"森动"},
+    {brand:"舍得",adv:0.0,brand_adv:0.0,cpc:0.0,pub:1.79,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"森动"},
+  ],
+  M4: [
+    {brand:"五粮液",adv:17.19,brand_adv:7.52,cpc:9.67,pub:11.65,search:1.8,lead:0.0,ecom:0.0,other:7.87,sales:"一青"},
+    {brand:"甜掌柜/康得",adv:8.54,brand_adv:0.0,cpc:8.54,pub:0.0,search:0.91,lead:8.54,ecom:0.0,other:0.0,sales:"皓皓"},
+    {brand:"女儿红酱酒",adv:5.74,brand_adv:0.0,cpc:5.74,pub:3.92,search:2.43,lead:0.0,ecom:0.0,other:3.31,sales:"皓皓"},
+    {brand:"小糊涂仙",adv:1.36,brand_adv:0.0,cpc:1.36,pub:0.53,search:0.32,lead:1.33,ecom:0.0,other:0.0,sales:"弹头"},
+    {brand:"江小白",adv:0.28,brand_adv:0.0,cpc:0.28,pub:0.0,search:0.01,lead:0.0,ecom:0.0,other:0.27,sales:"苦艾"},
+    {brand:"劲酒",adv:0.2,brand_adv:0.0,cpc:0.2,pub:0.09,search:0.0,lead:0.0,ecom:0.0,other:0.2,sales:"一青"},
+    {brand:"郎酒",adv:0.05,brand_adv:0.0,cpc:0.05,pub:0.0,search:0.01,lead:0.0,ecom:0.0,other:0.04,sales:"皓皓"},
+    {brand:"汾酒",adv:0.01,brand_adv:0.0,cpc:0.01,pub:0.0,search:0.0,lead:0.0,ecom:0.0,other:0.01,sales:"皓皓"},
+    {brand:"茅台",adv:0.0,brand_adv:0.0,cpc:0.0,pub:4.95,search:0.0,lead:0.0,ecom:0.0,other:0.0,sales:"弹头"},
+  ],
+};
 var TABS={
   YTD:{label:'YTD总览',period:'2026-01-01 至 2026-04-14',adv:731.80,brand_adv:289.59,cpc:440.12,pub:765.33,search:106.44,ecom:2.86,lead:101.89,cpc_other:null,commercial:1497.13,adv_yoy:1.723,brand_adv_yoy:0.767,cpc_yoy:3.195,pub_yoy:2.662,search_yoy:2.794,lead_yoy:0.527,adv_mom:null,pub_mom:null,note:'YTD截至2026年4月14日。竞价广告占硬广60.1%，五粮液品牌广告大幅领跑'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:31.72,ecom:null,lead:38.66,cpc_other:76.73,commercial:null,adv_yoy:3.005,brand_adv_yoy:2.38,cpc_yoy:3.887,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,pub_mom:null,note:'2026年1月 · 竞价细分按结构比推算（*），同比25年1月74.2w'},
@@ -597,17 +657,21 @@ function switchTab(t){
   document.getElementById('kpi-note').textContent=d.note||'';
   renderKPIs(d);
   renderPieChart(t);
-  // 月度tab时更新周度图表
+  renderMonthlyRankBars(t);
+  renderMonthlySalesCards(t);
+  renderMonthlyInsight(t);
+  renderMonthlyTable(t);
+  renderMonthlyMomWarning(t);
+  renderMonthlyKWarning(t);
   if(t==='M1')renderWeekChart('1');
   else if(t==='M2')renderWeekChart('2');
   else if(t==='M3')renderWeekChart('3');
   else if(t==='M4')renderWeekChart('4');
   else renderWeekChart(null);
-  // 品牌表和图表备注
   var tableNote=document.getElementById('table-tab-note');
-  if(tableNote){
-    tableNote.textContent=t==='YTD'?'':'（排行榜显示YTD总量，切至'+d.label+'视角）';
-  }
+  if(tableNote)tableNote.textContent=t==='YTD'?'':'（当前显示'+d.label+'月度数据）';
+  var monthlyCard=document.getElementById('monthly-insight-card');
+  if(monthlyCard)monthlyCard.style.display=(t==='YTD')?'none':'';
 }
 
 function renderKPIs(d){
@@ -863,6 +927,12 @@ function init(){
   renderRankBars('all');
   renderTable('all');
   renderWeekChart(null);
+  renderMonthlyRankBars('YTD');
+  renderMonthlySalesCards('YTD');
+  renderMonthlyInsight('YTD');
+  renderMonthlyTable('YTD');
+  renderMonthlyMomWarning('YTD');
+  renderMonthlyKWarning('YTD');
 }
 
 var brandDetails={
@@ -889,6 +959,166 @@ function toggleBrand(name){
   el.style.display=isOpen?'none':'block';
   btn.classList.toggle('open',!isOpen);
 }
+// ===== 月度动态渲染函数 =====
+function fw2(v){return(!v||v===0)?'--':(v.toFixed(2)+'w');}
+
+function renderMonthlyRankBars(tab){
+  var container=document.getElementById('rankBarsContainer');
+  if(!container)return;
+  var brands;
+  if(tab==='YTD'){renderRankBars('all');return;}
+  brands=MONTHLY_BRANDS[tab];
+  if(!brands||!brands.length)return;
+  var sorted=brands.slice().sort(function(a,b){return b.adv-a.adv;}).filter(function(b){return b.adv>0||b.pub>0;});
+  var maxVal=sorted[0]?sorted[0].adv:1;
+  container.innerHTML=sorted.map(function(b){
+    var pct=maxVal>0?Math.round(b.adv/maxVal*100):0;
+    var color=b.adv>=100?'#FF2442':b.adv>=10?'#4F8EF7':'rgba(255,255,255,.3)';
+    return '<div class="hbar-item">'+
+      '<div class="hbar-label">'+b.brand+'</div>'+
+      '<div class="hbar-track"><div class="hbar-fill" style="width:'+pct+'%;background:'+color+'"></div></div>'+
+      '<div class="hbar-val">'+b.adv.toFixed(2)+'w'+(b.pub>0?' <span style="color:#FFD60A;font-size:10px">+K'+b.pub.toFixed(1)+'w</span>':'')+'</div>'+
+      '<div style="font-size:10px;color:rgba(255,255,255,.35);min-width:28px">'+b.sales+'</div>'+
+      '</div>';
+  }).join('');
+}
+
+function renderMonthlySalesCards(tab){
+  var container=document.getElementById('sales-cards-container');
+  if(!container)return;
+  if(tab==='YTD'){container.innerHTML=container.getAttribute('data-ytd-html')||container.innerHTML;return;}
+  if(!container.getAttribute('data-ytd-html'))container.setAttribute('data-ytd-html',container.innerHTML);
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands){return;}
+  var salesMap={};
+  brands.forEach(function(b){
+    var s=b.sales||'其他';
+    if(!salesMap[s])salesMap[s]={adv:0,pub:0,brands:[]};
+    salesMap[s].adv=Math.round((salesMap[s].adv+b.adv)*100)/100;
+    salesMap[s].pub=Math.round((salesMap[s].pub+b.pub)*100)/100;
+    if(b.adv>0||b.pub>0)salesMap[s].brands.push(b);
+  });
+  var totalAdv=Object.values(salesMap).reduce(function(s,v){return s+v.adv;},0);
+  var order=['一青','弹头','皓皓','苦艾','森动'];
+  var colors={'一青':'rgba(255,36,66,.3)','弹头':'rgba(79,142,247,.3)','皓皓':'rgba(0,229,160,.3)','苦艾':'rgba(255,149,0,.3)','森动':'rgba(255,255,255,.08)'};
+  var fills={'一青':'#FF2442','弹头':'#4F8EF7','皓皓':'#00E5A0','苦艾':'#FF9500','森动':'rgba(255,255,255,.3)'};
+  var html='';
+  order.forEach(function(s){
+    var v=salesMap[s];
+    if(!v)return;
+    var pct=totalAdv>0?Math.round(v.adv/totalAdv*1000)/10:0;
+    var top=v.brands.sort(function(a,b){return b.adv-a.adv;}).slice(0,4);
+    html+='<div class="sales-card" style="border-color:'+(colors[s]||'rgba(255,255,255,.1)')+'">'+
+      '<div class="sales-name">'+s+'</div>'+
+      '<div class="sales-brand-list">'+top.map(function(b){return '<span class="sales-brand-tag" style="background:rgba(255,36,66,.08)">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';}).join('')+'</div>'+
+      '<div class="sales-kpi-row">'+
+        '<div class="sales-kpi"><div class="sales-kpi-val">'+v.adv.toFixed(2)+'<span>w</span></div><div class="sales-kpi-label">广告流水</div></div>'+
+        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+v.pub.toFixed(2)+'<span>w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+
+        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#00E5A0">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+
+      '</div>'+
+      '<div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:4px">广告流水占团队总量 '+pct+'%</div>'+
+      '<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+(fills[s]||'#fff')+'"></div></div>'+
+      '</div>';
+  });
+  container.innerHTML=html||'<div style="color:rgba(255,255,255,.4);padding:20px">当月无数据</div>';
+}
+
+function renderMonthlyInsight(tab){
+  var card=document.getElementById('monthly-insight-card');
+  var el=document.getElementById('insight-top-brands');
+  if(!card||!el)return;
+  card.style.display=(tab==='YTD')?'none':'';
+  if(tab==='YTD')return;
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands||!brands.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px">暂无数据</div>';return;}
+  var withAdv=brands.filter(function(b){return b.adv>0;}).sort(function(a,b){return b.adv-a.adv;});
+  var searchTop=brands.slice().sort(function(a,b){return b.search-a.search;})[0];
+  var pubTop=brands.filter(function(b){return b.pub>0;}).sort(function(a,b){return b.pub-a.pub;})[0];
+  var html='<div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:10px">'+TABS[tab].label+'月投放 TOP3</div>';
+  withAdv.slice(0,3).forEach(function(b,i){
+    var medals=['🥇','🥈','🥉'];
+    html+='<div class="potential-item"><div class="potential-brand">'+medals[i]+' '+b.brand+' — '+b.adv.toFixed(2)+'w</div>'+
+      '<div class="potential-desc">品牌广告 '+b.brand_adv.toFixed(2)+'w | 竞价 '+b.cpc.toFixed(2)+'w | 蒲公英 '+b.pub.toFixed(2)+'w</div></div>';
+  });
+  if(searchTop&&searchTop.search>0&&searchTop.adv>0){
+    html+='<div class="search-item"><div class="search-brand">🔍 搜索最强：'+searchTop.brand+'</div>'+
+      '<div class="search-desc">搜索消耗 '+searchTop.search.toFixed(2)+'w，占广告流水 '+Math.round(searchTop.search/searchTop.adv*100)+'%</div></div>';
+  }
+  if(pubTop){
+    html+='<div class="search-item" style="border-color:rgba(255,214,10,.2)"><div class="search-brand" style="color:#FFD60A">🌼 蒲公英最高：'+pubTop.brand+' '+pubTop.pub.toFixed(2)+'w</div>'+
+      '<div class="search-desc">K占比 '+Math.round(pubTop.pub/(pubTop.adv+pubTop.pub)*100)+'%，降K潜力'+((pubTop.pub*0.6).toFixed(1))+'w</div></div>';
+  }
+  el.innerHTML=html;
+}
+
+function renderMonthlyTable(tab){
+  if(tab==='YTD'){renderTable(tableFilter);return;}
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands){renderTable(tableFilter);return;}
+  var sorted=brands.slice().sort(function(a,b){return b.adv-a.adv;});
+  document.getElementById('table-body').innerHTML=sorted.map(function(b){
+    var color=b.adv>=100?'#FF2442':b.adv>=10?'#4F8EF7':b.adv>0?'rgba(255,255,255,.5)':'rgba(255,255,255,.25)';
+    var label=b.adv>=100?'头部':b.adv>=10?'腰部':b.adv>0?'尾部':'零消耗';
+    return '<tr>'+
+      '<td style="color:#fff;font-size:13px">'+b.brand+'</td>'+
+      '<td style="color:'+color+'">'+b.adv.toFixed(2)+'w</td>'+
+      '<td>'+fw2(b.brand_adv)+'</td>'+
+      '<td>'+fw2(b.cpc)+'</td>'+
+      '<td>'+fw2(b.search)+'</td>'+
+      '<td>'+fw2(b.lead)+'</td>'+
+      '<td style="color:#FFD60A">'+fw2(b.pub)+'</td>'+
+      '<td style="color:rgba(255,255,255,.6)">'+b.sales+'</td>'+
+      '<td><span style="color:'+color+';font-size:11px">'+label+'</span></td>'+
+      '<td>—</td><td></td>'+
+      '</tr>';
+  }).join('');
+}
+
+function renderMonthlyMomWarning(tab){
+  var el=document.getElementById('mom-warning-container');
+  if(!el)return;
+  var momData={
+    M1:{label:'1月（年度首月）',note:'1月为年度首月，无环比数据。春节旺季，五粮液品牌广告 130.65w 领跑。'},
+    M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'五粮液品牌广告收缩，竞价端郎酒/金徽酒补位，蒲公英持续高位'},
+    M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，五粮液IP投放告一段落；今世缘/女儿红新客维持竞价'},
+    M4:{label:'4月 vs 3月',adv_mom:-0.723,brand_mom:-0.819,cpc_mom:-0.672,curr:33.42,prev:120.53,note:'4月1-14日，淡季阶段，竞价占比升至77.5%，女儿红/甜掌柜维持基础投放'},
+  };
+  var d=momData[tab];
+  if(!d||tab==='YTD'){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前显示YTD总览，环比预警展示月度对比</div>';return;}
+  if(!d.adv_mom){
+    el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
+  }
+  function fmtM(v){var p=(v*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  el.innerHTML='<div class="mom-cards">'+
+    '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
+    '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+
+    '<div class="mom-card"><div class="mom-card-label">竞价广告</div><div class="mom-card-val">'+fmtM(d.cpc_mom)+'</div></div>'+
+    '</div>'+
+    '<div class="mom-note">'+d.label+'：'+d.note+'</div>';
+}
+
+function renderMonthlyKWarning(tab){
+  var el=document.getElementById('k-warning-bars');
+  if(!el)return;
+  if(tab==='YTD'){renderKWarning();return;}
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands){renderKWarning();return;}
+  var withPub=brands.filter(function(b){return b.pub>0;}).map(function(b){
+    var total=b.adv+b.pub;
+    var kPct=total>0?Math.round(b.pub/total*100):0;
+    return {brand:b.brand,kPct:kPct,pub:b.pub,adv:b.adv};
+  }).filter(function(b){return b.kPct>0;}).sort(function(a,b){return b.kPct-a.kPct;});
+  if(!withPub.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无蒲公英投放数据</div>';return;}
+  el.innerHTML=withPub.map(function(b){
+    var color=b.kPct>70?'#FF2442':b.kPct>40?'#FFD60A':'#00E5A0';
+    return '<div class="hbar-item">'+
+      '<div class="hbar-label">'+b.brand+'</div>'+
+      '<div class="hbar-track"><div class="hbar-fill" style="width:'+b.kPct+'%;background:'+color+'"></div></div>'+
+      '<div class="hbar-val">K占'+b.kPct+'% (蒲公英'+b.pub.toFixed(1)+'w)</div>'+
+      '</div>';
+  }).join('');
+}
+
 window.addEventListener('load',init);
 window.addEventListener('resize',function(){
   if(barChartInst)barChartInst.resize();

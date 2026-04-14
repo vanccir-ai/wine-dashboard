@@ -634,30 +634,25 @@ function renderKPIs(d){
 }
 
 function renderBarChart(){
-  var months=[
-    {name:'1月',brand:149.06,cpcTotal:147.11,search:null,ecom:null,lead:null,other:null,total:297.16,yoy:'+220.5%'},
-    {name:'2月',brand:91.5,cpcTotal:188.09,search:null,ecom:null,lead:null,other:null,total:280.69,yoy:'+123%'},
-    {name:'3月',brand:41.51,cpcTotal:null,search:17.04,ecom:0,lead:20.77,other:41.22,total:120.53,yoy:'+50.6%'},
-  ];
   var dom=document.getElementById('barChart');
   if(!barChartInst)barChartInst=echarts.init(dom);
   barChartInst.setOption({
     backgroundColor:'transparent',
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
-      formatter:function(p){var h='<b>'+p[0].name+'</b><br>';p.forEach(function(x){if(x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
+      formatter:function(p){var h='<b>'+p[0].name+'</b><br>';p.forEach(function(x){if(x.value&&x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
     legend:{data:['品牌广告','竞价合计','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4,top:'auto',itemGap:12},
     grid:{left:50,right:24,top:52,bottom:68,containLabel:false},
-    xAxis:{type:'category',data:['1月','2月','3月'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:13},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    xAxis:{type:'category',data:['1月','2月','3月','4月(至14日)'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
     yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
-      {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51],itemStyle:{color:'#FF2442'},barMaxWidth:44,
-        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[297.16,280.69,120.53];var yoys=['+220.5%','+223%','+50.6%'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
-      {name:'竞价合计',type:'bar',stack:'adv',data:[147.11,188.09,0],itemStyle:{color:'rgba(79,142,247,.75)'},barMaxWidth:44},
-      {name:'竞价-搜索',type:'bar',stack:'adv',data:[0,0,17.04],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
-      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
-      {name:'竞价-线索',type:'bar',stack:'adv',data:[0,0,20.77],itemStyle:{color:'#FF9500'},barMaxWidth:44},
-      {name:'竞价-其他',type:'bar',stack:'adv',data:[0,0,41.22],itemStyle:{color:'#555'},barMaxWidth:44},
-      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[270.12,349.65,124.42],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
+      {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51,7.52],itemStyle:{color:'#FF2442'},barMaxWidth:44,
+        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[297.16,280.69,120.53,33.42];var yoys=['+220.5%','+223%','+50.6%','淡季'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
+      {name:'竞价合计',type:'bar',stack:'adv',data:[147.11,188.09,0,0],itemStyle:{color:'rgba(79,142,247,.75)'},barMaxWidth:44},
+      {name:'竞价-搜索',type:'bar',stack:'adv',data:[0,0,17.04,4.97],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
+      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
+      {name:'竞价-线索',type:'bar',stack:'adv',data:[0,0,20.77,8.81],itemStyle:{color:'#FF9500'},barMaxWidth:44},
+      {name:'竞价-其他',type:'bar',stack:'adv',data:[0,0,41.22,12.11],itemStyle:{color:'#555'},barMaxWidth:44},
+      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[270.12,349.65,124.42,21.14],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
     ]
   },true);
 }
@@ -670,16 +665,16 @@ function renderPieChart(){
     tooltip:{trigger:'item',backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},formatter:'{b}：{c}w ({d}%)'},
     series:[
       {name:'内环',type:'pie',radius:['20%','40%'],data:[
-        {value:702.54,name:'硬广总',itemStyle:{color:'#FF2442'}},
-        {value:752.14,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.85)'}}
+        {value:731.80,name:'硬广总',itemStyle:{color:'#FF2442'}},
+        {value:765.33,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.85)'}}
       ],label:{show:true,formatter:'{b}\n{c}w',color:'rgba(255,255,255,.7)',fontSize:11,minMargin:8},labelLine:{length:8,length2:14},emphasis:{scale:true,scaleSize:4}},
       {name:'外环',type:'pie',radius:['50%','68%'],data:[
-        {value:283.23,name:'品牌广告',itemStyle:{color:'#FF2442'}},
-        {value:101.47,name:'竞价-搜索',itemStyle:{color:'#4F8EF7'}},
-        {value:93.08,name:'竞价-线索',itemStyle:{color:'#FF9500'}},
-        {value:2.73,name:'竞价-闭环',itemStyle:{color:'#00E5A0'}},
-        {value:219.95,name:'竞价-其他',itemStyle:{color:'#555'}},
-        {value:752.14,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.7)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+        {value:289.59,name:'品牌广告',itemStyle:{color:'#FF2442'}},
+        {value:106.44,name:'竞价-搜索',itemStyle:{color:'#4F8EF7'}},
+        {value:101.89,name:'竞价-线索',itemStyle:{color:'#FF9500'}},
+        {value:2.86,name:'竞价-闭环',itemStyle:{color:'#00E5A0'}},
+        {value:229.34,name:'竞价-其他',itemStyle:{color:'#555'}},
+        {value:765.33,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.7)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
       ],minShowLabelAngle:8,label:{show:true,formatter:function(p){return p.percent<5?'':p.name+'\n'+p.percent.toFixed(1)+'%'},color:'rgba(255,255,255,.65)',fontSize:10,minMargin:6},labelLine:{length:6,length2:10,minTurnAngle:20},emphasis:{scale:true,scaleSize:4}}
     ]
   });

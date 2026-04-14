@@ -128,7 +128,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .week-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,.6);cursor:pointer;transition:all .15s;}
 .week-tab:hover{background:rgba(255,255,255,.1);}
 .week-tab.active{background:rgba(255,36,66,.2);border-color:#FF2442;color:#FF2442;font-weight:600;}
-#side-nav{position:fixed;left:0;top:50%;transform:translateY(-50%);background:rgba(15,17,23,.92);border:1px solid rgba(255,255,255,.08);border-left:none;border-radius:0 10px 10px 0;padding:14px 10px;z-index:150;display:flex;flex-direction:column;gap:4px;min-width:90px;backdrop-filter:blur(12px);}
+#side-nav{position:fixed;left:0;top:calc(50% + 50px);transform:translateY(-50%);background:rgba(15,17,23,.92);border:1px solid rgba(255,255,255,.08);border-left:none;border-radius:0 10px 10px 0;padding:14px 10px;z-index:150;display:flex;flex-direction:column;gap:4px;min-width:90px;backdrop-filter:blur(12px);}
 #side-nav .nav-title{font-size:11px;color:rgba(255,255,255,.3);padding:0 6px;margin-bottom:4px;letter-spacing:1px;}
 #side-nav a{font-size:11px;color:rgba(255,255,255,.45);text-decoration:none;padding:4px 6px;border-radius:5px;transition:all .15s;white-space:nowrap;}
 #side-nav a:hover,#side-nav a.active{background:rgba(255,36,66,.15);color:#FF2442;}
@@ -487,10 +487,10 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <script>
 var TABS={
   YTD:{label:'YTD总览',period:'2026-01-01 至 2026-04-14',adv:731.80,brand_adv:289.59,cpc:440.12,pub:765.33,search:106.44,ecom:2.86,lead:101.89,cpc_other:null,commercial:1497.13,adv_yoy:1.723,brand_adv_yoy:0.767,cpc_yoy:3.195,pub_yoy:2.662,search_yoy:2.794,lead_yoy:0.527,adv_mom:null,pub_mom:null,note:'YTD截至2026年4月14日。竞价广告占硬广60.1%，五粮液品牌广告大幅领跑'},
-  M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:37.05,ecom:null,lead:39.77,cpc_other:null,commercial:null,adv_yoy:2.205,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,search_yoy:'--*',lead_yoy:'--*',adv_mom:null,pub_mom:null,note:'2026年1月 · 搜索/线索为推算值（*）',search_estimated:true,lead_estimated:true},
-  M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:280.69,brand_adv:91.5,cpc:188.09,pub:349.65,search:47.38,ecom:null,lead:32.54,cpc_other:null,commercial:null,adv_yoy:2.23,brand_adv_yoy:0.78,cpc_yoy:4.33,pub_yoy:null,search_yoy:'--*',lead_yoy:'--*',adv_mom:-0.055,pub_mom:null,note:'2026年2月 · 搜索/线索为推算值（*）',search_estimated:true,lead_estimated:true},
-  M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:120.53,brand_adv:41.51,cpc:79.03,pub:124.42,search:17.04,ecom:0,lead:20.77,cpc_other:41.22,commercial:null,adv_yoy:0.506,brand_adv_yoy:-0.385,cpc_yoy:5.304,pub_yoy:null,search_yoy:8.43,lead_yoy:0.733,adv_mom:-0.571,pub_mom:null,note:'品牌广告同比-38.5%，IP消耗收缩；竞价爆发+530%，今世缘持续投放，女儿红加量投放'},
-  M4:{label:'4月',period:'2026-04-01 至 2026-04-14',adv:33.42,brand_adv:7.52,cpc:25.89,pub:21.14,search:4.97,ecom:0,lead:8.81,cpc_other:null,commercial:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,pub_mom:null,note:'4月1-14日数据（14天），淡季节律，竞价占比77.5%'}
+  M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:31.72,ecom:null,lead:38.66,cpc_other:76.73,commercial:null,adv_yoy:3.005,brand_adv_yoy:2.38,cpc_yoy:3.887,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,pub_mom:null,note:'2026年1月 · 竞价细分按结构比推算（*），同比25年1月74.2w'},
+  M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:280.69,brand_adv:91.5,cpc:188.09,pub:349.65,search:40.55,ecom:null,lead:49.43,cpc_other:98.10,commercial:null,adv_yoy:2.852,brand_adv_yoy:0.78,cpc_yoy:7.765,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:-0.055,pub_mom:null,note:'2026年2月 · 竞价细分按结构比推算（*），同比25年2月72.86w'},
+  M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:120.53,brand_adv:41.51,cpc:79.03,pub:124.42,search:17.04,ecom:0,lead:20.77,cpc_other:41.22,commercial:null,adv_yoy:0.616,brand_adv_yoy:-0.347,cpc_yoy:10.178,pub_yoy:null,search_yoy:8.43,lead_yoy:0.733,adv_mom:-0.571,pub_mom:null,note:'品牌广告同比-34.7%，IP消耗收缩；竞价同比+1018%，今世缘持续投放，女儿红加量投放'},
+  M4:{label:'4月',period:'2026-04-01 至 2026-04-14',adv:33.42,brand_adv:7.52,cpc:25.89,pub:21.14,search:4.97,ecom:0,lead:8.81,cpc_other:12.11,commercial:null,adv_yoy:1.832,brand_adv_yoy:93.0,cpc_yoy:1.518,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:-0.723,pub_mom:null,note:'4月1-14日（14天），淡季节律，竞价占比77.5%，同比25年4月11.8w'}
 };
 var BRANDS=[
   {brand:'五粮液',adv26:382.50,brand_adv26:269.07,cpc26:113.43,pub26:258.97,adv25:110.54,is_new:false,yoy:246.0,sales:'一青',search26:20.98,lead26:0,ecom26:0.12,note:'两账号合并：五粮液+五粮液官方账号'},
@@ -596,6 +596,7 @@ function switchTab(t){
   document.getElementById('kpi-period-label').textContent=d.period;
   document.getElementById('kpi-note').textContent=d.note||'';
   renderKPIs(d);
+  renderPieChart(t);
   // 月度tab时更新周度图表
   if(t==='M1')renderWeekChart('1');
   else if(t==='M2')renderWeekChart('2');
@@ -640,24 +641,32 @@ function renderBarChart(){
     backgroundColor:'transparent',
     tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
       formatter:function(p){var h='<b>'+p[0].name+'</b><br>';p.forEach(function(x){if(x.value&&x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
-    legend:{data:['品牌广告','竞价合计','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4,top:'auto',itemGap:12},
+    legend:{data:['品牌广告','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4,top:'auto',itemGap:12},
     grid:{left:50,right:24,top:52,bottom:68,containLabel:false},
     xAxis:{type:'category',data:['1月','2月','3月','4月(至14日)'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
     yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
       {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51,7.52],itemStyle:{color:'#FF2442'},barMaxWidth:44,
-        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[297.16,280.69,120.53,33.42];var yoys=['+220.5%','+223%','+50.6%','淡季'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
-      {name:'竞价合计',type:'bar',stack:'adv',data:[147.11,188.09,0,0],itemStyle:{color:'rgba(79,142,247,.75)'},barMaxWidth:44},
-      {name:'竞价-搜索',type:'bar',stack:'adv',data:[0,0,17.04,4.97],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
+        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[297.16,280.69,120.53,33.42];var yoys=['+300.5%','+285.2%','+61.6%','+183.2%'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
+      {name:'竞价-搜索',type:'bar',stack:'adv',data:[31.72,40.55,17.04,4.97],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
       {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
-      {name:'竞价-线索',type:'bar',stack:'adv',data:[0,0,20.77,8.81],itemStyle:{color:'#FF9500'},barMaxWidth:44},
-      {name:'竞价-其他',type:'bar',stack:'adv',data:[0,0,41.22,12.11],itemStyle:{color:'#555'},barMaxWidth:44},
+      {name:'竞价-线索',type:'bar',stack:'adv',data:[38.66,49.43,20.77,8.81],itemStyle:{color:'#FF9500'},barMaxWidth:44},
+      {name:'竞价-其他',type:'bar',stack:'adv',data:[76.73,98.10,41.22,12.11],itemStyle:{color:'#555'},barMaxWidth:44},
       {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[270.12,349.65,124.42,21.14],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
     ]
   },true);
 }
 
-function renderPieChart(){
+var PIE_DATA={
+  YTD:{adv:731.80,brand:289.59,search:106.44,lead:101.89,ecom:2.86,other:229.34,pub:765.33},
+  M1:{adv:297.16,brand:149.06,search:31.72,lead:38.66,ecom:0,other:76.73,pub:270.12},
+  M2:{adv:280.69,brand:91.5,search:40.55,lead:49.43,ecom:0,other:98.10,pub:349.65},
+  M3:{adv:120.53,brand:41.51,search:17.04,lead:20.77,ecom:0,other:41.22,pub:124.42},
+  M4:{adv:33.42,brand:7.52,search:4.97,lead:8.81,ecom:0,other:12.11,pub:21.14}
+};
+function renderPieChart(tab){
+  tab=tab||'YTD';
+  var pd=PIE_DATA[tab]||PIE_DATA.YTD;
   var dom=document.getElementById('pieChart');
   if(!pieChartInst)pieChartInst=echarts.init(dom);
   pieChartInst.setOption({
@@ -665,19 +674,19 @@ function renderPieChart(){
     tooltip:{trigger:'item',backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},formatter:'{b}：{c}w ({d}%)'},
     series:[
       {name:'内环',type:'pie',radius:['20%','40%'],data:[
-        {value:731.80,name:'硬广总',itemStyle:{color:'#FF2442'}},
-        {value:765.33,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.85)'}}
+        {value:pd.adv,name:'硬广总',itemStyle:{color:'#FF2442'}},
+        {value:pd.pub,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.85)'}}
       ],label:{show:true,formatter:'{b}\n{c}w',color:'rgba(255,255,255,.7)',fontSize:11,minMargin:8},labelLine:{length:8,length2:14},emphasis:{scale:true,scaleSize:4}},
       {name:'外环',type:'pie',radius:['50%','68%'],data:[
-        {value:289.59,name:'品牌广告',itemStyle:{color:'#FF2442'}},
-        {value:106.44,name:'竞价-搜索',itemStyle:{color:'#4F8EF7'}},
-        {value:101.89,name:'竞价-线索',itemStyle:{color:'#FF9500'}},
-        {value:2.86,name:'竞价-闭环',itemStyle:{color:'#00E5A0'}},
-        {value:229.34,name:'竞价-其他',itemStyle:{color:'#555'}},
-        {value:765.33,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.7)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+        {value:pd.brand,name:'品牌广告',itemStyle:{color:'#FF2442'}},
+        {value:pd.search,name:'竞价-搜索',itemStyle:{color:'#4F8EF7'}},
+        {value:pd.lead,name:'竞价-线索',itemStyle:{color:'#FF9500'}},
+        {value:pd.ecom,name:'竞价-闭环',itemStyle:{color:'#00E5A0'}},
+        {value:pd.other,name:'竞价-其他',itemStyle:{color:'#555'}},
+        {value:pd.pub,name:'蒲公英',itemStyle:{color:'rgba(255,214,10,.7)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
       ],minShowLabelAngle:8,label:{show:true,formatter:function(p){return p.percent<5?'':p.name+'\n'+p.percent.toFixed(1)+'%'},color:'rgba(255,255,255,.65)',fontSize:10,minMargin:6},labelLine:{length:6,length2:10,minTurnAngle:20},emphasis:{scale:true,scaleSize:4}}
     ]
-  });
+  },true);
 }
 
 function renderTargetChart(){
@@ -688,7 +697,7 @@ function renderTargetChart(){
     series:[{type:'gauge',startAngle:90,endAngle:-270,min:0,max:100,radius:'88%',pointer:{show:false},
       progress:{show:true,overlap:false,roundCap:true,itemStyle:{color:{type:'linear',x:0,y:0,x2:1,y2:0,colorStops:[{offset:0,color:'#FF2442'},{offset:1,color:'#FF9500'}]}}},
       axisLine:{lineStyle:{width:16,color:[[1,'rgba(255,255,255,.06)']]}},splitLine:{show:false},axisTick:{show:false},axisLabel:{show:false},
-      data:[{value:11.7,detail:{show:true,fontSize:28,fontWeight:'bold',color:'#fff',fontFamily:"'SF Mono','Menlo',monospace",offsetCenter:[0,'-5%'],formatter:'{value}%'},name:'硬广完成率'}],
+      data:[{value:12.2,detail:{show:true,fontSize:28,fontWeight:'bold',color:'#fff',fontFamily:"'SF Mono','Menlo',monospace",offsetCenter:[0,'-5%'],formatter:'{value}%'},name:'硬广完成率'}],
       title:{show:true,offsetCenter:[0,'45%'],color:'rgba(255,255,255,.45)',fontSize:12}
     }]
   });

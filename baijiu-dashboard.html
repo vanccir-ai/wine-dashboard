@@ -965,20 +965,22 @@ function fw2(v){return(!v||v===0)?'--':(v.toFixed(2)+'w');}
 function renderMonthlyRankBars(tab){
   var container=document.getElementById('rankBarsContainer');
   if(!container)return;
-  var brands;
-  if(tab==='YTD'){renderRankBars('all');return;}
-  brands=MONTHLY_BRANDS[tab];
+  if(tab==='YTD'){renderRankBars(rankFilter||'all');return;}
+  var brands=MONTHLY_BRANDS[tab];
   if(!brands||!brands.length)return;
-  var sorted=brands.slice().sort(function(a,b){return b.adv-a.adv;}).filter(function(b){return b.adv>0||b.pub>0;});
+  var sorted=brands.slice().sort(function(a,b){return b.adv-a.adv;});
   var maxVal=sorted[0]?sorted[0].adv:1;
+  if(maxVal===0)maxVal=1;
   container.innerHTML=sorted.map(function(b){
-    var pct=maxVal>0?Math.round(b.adv/maxVal*100):0;
-    var color=b.adv>=100?'#FF2442':b.adv>=10?'#4F8EF7':'rgba(255,255,255,.3)';
-    return '<div class="hbar-item">'+
-      '<div class="hbar-label">'+b.brand+'</div>'+
-      '<div class="hbar-track"><div class="hbar-fill" style="width:'+pct+'%;background:'+color+'"></div></div>'+
-      '<div class="hbar-val">'+b.adv.toFixed(2)+'w'+(b.pub>0?' <span style="color:#FFD60A;font-size:10px">+K'+b.pub.toFixed(1)+'w</span>':'')+'</div>'+
-      '<div style="font-size:10px;color:rgba(255,255,255,.35);min-width:28px">'+b.sales+'</div>'+
+    var tier=getTier(b.adv);
+    var pct=b.adv/maxVal*100;
+    var pubTag=b.pub>0?'<span style="color:#FFD60A;font-size:11px">+K'+b.pub.toFixed(1)+'w</span>':'';
+    return '<div class="hbar-row">'+
+      '<div class="hbar-label" style="color:'+tier.color+'">'+b.brand+'</div>'+
+      '<div class="hbar-track"><div class="hbar-fill" style="width:'+pct+'%;background:'+tier.color+'"></div></div>'+
+      '<div class="hbar-val">'+b.adv.toFixed(2)+'w</div>'+
+      '<div style="font-size:11px;min-width:80px">'+pubTag+'</div>'+
+      '<div style="font-size:11px;color:rgba(255,255,255,.35);min-width:50px">'+b.sales+'</div>'+
       '</div>';
   }).join('');
 }

@@ -1318,7 +1318,7 @@ function renderPubConv(tab){
       return {brand:b.brand,pub:b.pub26,adv:b.adv26,kPct:kPct};
     }).sort(function(a,b){return b.pub-a.pub;});
     var desc='<div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:10px">以下品牌 <b>YTD蒲公英高</b>，硬广相对较低，是全年降K转硬广核心潜力池：</div>';
-    var tags=candidates.slice(0,6).map(function(b){
+    var tags=candidates.filter(function(b){return b.kPct>=50;}).map(function(b){
       var c=b.kPct>70?'#FF2442':b.kPct>40?'#FF9500':'#FFD60A';
       return '<span style="background:rgba(255,214,10,.10);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:'+c+'">'+b.brand+' 蒲公英'+b.pub.toFixed(2)+'w → 硬广'+b.adv.toFixed(2)+'w（K占'+b.kPct+'%）</span>';
     }).join('');
@@ -1333,7 +1333,7 @@ function renderPubConv(tab){
       return {brand:b.brand,pub:b.pub,adv:b.adv,kPct:kPct};
     }).sort(function(a,b){return b.pub-a.pub;});
     var desc='<div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:10px">'+d.label+'月 蒲公英高但硬广相对低的品牌，当月降K转化优先级：</div>';
-    var tags=candidates.map(function(b){
+    var tags=candidates.filter(function(b){return b.kPct>=50;}).map(function(b){
       var c=b.kPct>70?'#FF2442':b.kPct>40?'#FF9500':'#FFD60A';
       return '<span style="background:rgba(255,214,10,.10);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:'+c+'">'+b.brand+' 蒲公英'+b.pub.toFixed(2)+'w → 硬广'+b.adv.toFixed(2)+'w（K占'+b.kPct+'%）</span>';
     }).join('');

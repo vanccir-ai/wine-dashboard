@@ -3,96 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>酒行业商业化看板</title>
+<title>酒行业商业化看板 2026</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0d0f1a;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
-.header{text-align:center;margin-bottom:48px}
-.header-eyebrow{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:12px}
-.header h1{font-size:28px;font-weight:700;letter-spacing:.5px;margin-bottom:8px}
-.header-sub{font-size:13px;color:rgba(255,255,255,.4)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:780px;width:100%;margin-bottom:20px}
-.card{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 20px;text-decoration:none;color:#fff;transition:.2s;cursor:pointer;position:relative;overflow:hidden}
-.card:hover{background:rgba(255,255,255,.07);transform:translateY(-4px);border-color:rgba(255,255,255,.15);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.card-emoji{font-size:28px;margin-bottom:10px}
-.card-name{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
-.card-adv{font-size:30px;font-weight:700;font-family:'SF Mono','Menlo',monospace;margin-bottom:4px}
-.card-adv span{font-size:14px;font-weight:400}
-.card-label{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:12px}
-.card-progress-wrap{background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:8px;overflow:hidden}
-.card-bar{height:3px;border-radius:3px}
-.card-pct{font-size:12px;font-weight:600}
-.overview-card{background:rgba(0,229,160,.05);border-color:rgba(0,229,160,.2);text-align:center;padding:20px}
-.overview-card:hover{border-color:rgba(0,229,160,.4)}
-.overview-total{font-size:32px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#00E5A0;margin:8px 0 4px}
-.overview-sub{font-size:12px;color:rgba(0,229,160,.6)}
-.footer{margin-top:32px;font-size:11px;color:rgba(255,255,255,.2)}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  background: #0d0f1a;
+  color: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'SF Pro Display', sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  min-height: 100vh;
+}
+/* 顶部 */
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,.28);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,.35);
+}
+/* 汇总行 */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 20px;
+}
+.sum-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+.sum-label { font-size: 11px; color: rgba(255,255,255,.38); margin-bottom: 4px; }
+.sum-val { font-size: 22px; font-weight: 700; font-family: 'SF Mono', 'Menlo', monospace; }
+/* 赛道卡片网格 —— 严格5列对齐 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 14px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: .2s;
+  gap: 5px;
+}
+.card:hover {
+  background: rgba(255,255,255,.08);
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,.16);
+}
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+.emoji { font-size: 20px; line-height: 1; }
+.race-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); }
+.adv { font-size: 24px; font-weight: 700; font-family: 'SF Mono', 'Menlo', monospace; line-height: 1.1; }
+.adv em { font-size: 13px; font-weight: 400; font-style: normal; }
+.sublabel { font-size: 10px; color: rgba(255,255,255,.32); }
+.pub-row { font-size: 11px; color: rgba(255,255,255,.5); }
+.prog-bg { background: rgba(255,255,255,.07); border-radius: 3px; height: 3px; overflow: hidden; }
+.prog-fill { height: 3px; border-radius: 3px; }
+.pct-row { font-size: 11px; font-weight: 600; }
+.goal { color: rgba(255,255,255,.3); font-weight: 400; }
+/* 全酒总览入口 */
+.overview-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(0,229,160,.06);
+  border: 1px solid rgba(0,229,160,.2);
+  border-radius: 14px;
+  padding: 16px 24px;
+  text-decoration: none;
+  color: #fff;
+  transition: .2s;
+}
+.overview-link:hover {
+  background: rgba(0,229,160,.1);
+  border-color: rgba(0,229,160,.38);
+}
+.ov-left { display: flex; align-items: center; gap: 14px; }
+.ov-icon { font-size: 24px; }
+.ov-title { font-size: 15px; font-weight: 700; }
+.ov-sub { font-size: 11px; color: rgba(255,255,255,.38); margin-top: 2px; }
+.ov-right { text-align: right; }
+.ov-total { font-size: 28px; font-weight: 700; font-family: 'SF Mono','Menlo',monospace; color: #00E5A0; }
+.ov-total em { font-size: 14px; font-weight: 400; font-style: normal; }
+.ov-label { font-size: 11px; color: rgba(0,229,160,.6); }
+/* 页脚 */
+.footer { margin-top: 18px; font-size: 10px; color: rgba(255,255,255,.18); }
 </style>
 </head>
 <body>
 <div class="header">
-  <div class="header-eyebrow">XIAOHONGSHU · COMMERCIAL</div>
-  <h1>🍷 酒行业商业化看板</h1>
-  <div class="header-sub">数据截至 2026-04-24 · 点击进入各赛道详情</div>
+  <div class="eyebrow">XIAOHONGSHU · COMMERCIAL · 2026</div>
+  <div class="title">🍷 酒行业商业化看板</div>
+  <div class="subtitle">数据截至 2026-04-24 · 点击赛道卡片进入详细分析</div>
 </div>
-<div class="grid">
 
-  <a class="card" href="baijiu-dashboard.html">
-    <div class="card-emoji">🥃</div>
-    <div class="card-name">白酒</div>
-    <div class="card-adv" style="color:#FF2442">796.81<span>w</span></div>
-    <div class="card-label">YTD硬广流水</div>
-    <div class="card-progress-wrap">
-      <div class="card-bar" style="width:13.3%;background:#FF244222;border-right:2px solid #FF2442"></div>
-    </div>
-    <div class="card-pct" style="color:#FF2442">13.3% <span style="color:rgba(255,255,255,.35)">/ 目标6000w</span></div>
-  </a>
-  <a class="card" href="beer-dashboard.html">
-    <div class="card-emoji">🍺</div>
-    <div class="card-name">啤酒</div>
-    <div class="card-adv" style="color:#F5A623">1227.47<span>w</span></div>
-    <div class="card-label">YTD硬广流水</div>
-    <div class="card-progress-wrap">
-      <div class="card-bar" style="width:20.5%;background:#F5A62322;border-right:2px solid #F5A623"></div>
-    </div>
-    <div class="card-pct" style="color:#F5A623">20.5% <span style="color:rgba(255,255,255,.35)">/ 目标6000w</span></div>
-  </a>
-  <a class="card" href="spirits-dashboard.html">
-    <div class="card-emoji">🥃</div>
-    <div class="card-name">洋酒</div>
-    <div class="card-adv" style="color:#B8860B">992.27<span>w</span></div>
-    <div class="card-label">YTD硬广流水</div>
-    <div class="card-progress-wrap">
-      <div class="card-bar" style="width:49.6%;background:#B8860B22;border-right:2px solid #B8860B"></div>
-    </div>
-    <div class="card-pct" style="color:#B8860B">49.6% <span style="color:rgba(255,255,255,.35)">/ 目标2000w</span></div>
-  </a>
-  <a class="card" href="grape-dashboard.html">
-    <div class="card-emoji">🍷</div>
-    <div class="card-name">葡萄酒</div>
-    <div class="card-adv" style="color:#9B2335">397.57<span>w</span></div>
-    <div class="card-label">YTD硬广流水</div>
-    <div class="card-progress-wrap">
-      <div class="card-bar" style="width:19.9%;background:#9B233522;border-right:2px solid #9B2335"></div>
-    </div>
-    <div class="card-pct" style="color:#9B2335">19.9% <span style="color:rgba(255,255,255,.35)">/ 目标2000w</span></div>
-  </a>
-  <a class="card" href="lowdegree-dashboard.html">
-    <div class="card-emoji">🍹</div>
-    <div class="card-name">低度酒</div>
-    <div class="card-adv" style="color:#C77DFF">285.07<span>w</span></div>
-    <div class="card-label">YTD硬广流水</div>
-    <div class="card-progress-wrap">
-      <div class="card-bar" style="width:28.5%;background:#C77DFF22;border-right:2px solid #C77DFF"></div>
-    </div>
-    <div class="card-pct" style="color:#C77DFF">28.5% <span style="color:rgba(255,255,255,.35)">/ 目标1000w</span></div>
-  </a>
+<div class="summary">
+  <div class="sum-card">
+    <div class="sum-label">五赛道 YTD 硬广合计</div>
+    <div class="sum-val" style="color:#FF2442">3699.19<span style="font-size:13px;font-weight:400">w</span></div>
+  </div>
+  <div class="sum-card">
+    <div class="sum-label">五赛道 YTD 蒲公英合计</div>
+    <div class="sum-val" style="color:#FFD60A">3814.43<span style="font-size:13px;font-weight:400">w</span></div>
+  </div>
+  <div class="sum-card">
+    <div class="sum-label">商业化总计（硬广+蒲公英）</div>
+    <div class="sum-val" style="color:#00E5A0">7513.62<span style="font-size:13px;font-weight:400">w</span></div>
+  </div>
 </div>
-<a class="card overview-card" href="all-dashboard.html" style="max-width:780px;width:100%;display:block;text-decoration:none;color:#fff;border-radius:16px;margin-bottom:0">
-  <div style="font-size:22px;margin-bottom:6px">📊 全酒赛道总览</div>
-  <div class="overview-total">3699.19<span style="font-size:16px;font-weight:400">w</span></div>
-  <div class="overview-sub">五赛道硬广合计 · 点击查看跨赛道分析与品牌排行</div>
+
+<div class="grid">
+    <a href="baijiu-dashboard.html" class="card">
+      <div class="card-top">
+        <span class="emoji">🍶</span>
+        <span class="race-name">白酒</span>
+      </div>
+      <div class="adv" style="color:#FF2442">796.81<em>w</em></div>
+      <div class="sublabel">YTD硬广流水</div>
+      <div class="pub-row">🌻 蒲公英 <span style="color:#FFD60A">862.32w</span></div>
+      <div class="prog-bg"><div class="prog-fill" style="width:13.3%;background:#FF2442"></div></div>
+      <div class="pct-row" style="color:#FF2442">13.3% <span class="goal">/ 年度目标 6000w</span></div>
+    </a>
+    <a href="beer-dashboard.html" class="card">
+      <div class="card-top">
+        <span class="emoji">🍺</span>
+        <span class="race-name">啤酒</span>
+      </div>
+      <div class="adv" style="color:#F5A623">1227.47<em>w</em></div>
+      <div class="sublabel">YTD硬广流水</div>
+      <div class="pub-row">🌻 蒲公英 <span style="color:#FFD60A">1175.01w</span></div>
+      <div class="prog-bg"><div class="prog-fill" style="width:20.5%;background:#F5A623"></div></div>
+      <div class="pct-row" style="color:#F5A623">20.5% <span class="goal">/ 年度目标 6000w</span></div>
+    </a>
+    <a href="spirits-dashboard.html" class="card">
+      <div class="card-top">
+        <span class="emoji">🥃</span>
+        <span class="race-name">洋酒</span>
+      </div>
+      <div class="adv" style="color:#D4A017">992.27<em>w</em></div>
+      <div class="sublabel">YTD硬广流水</div>
+      <div class="pub-row">🌻 蒲公英 <span style="color:#FFD60A">1172.22w</span></div>
+      <div class="prog-bg"><div class="prog-fill" style="width:49.6%;background:#D4A017"></div></div>
+      <div class="pct-row" style="color:#D4A017">49.6% <span class="goal">/ 年度目标 2000w</span></div>
+    </a>
+    <a href="grape-dashboard.html" class="card">
+      <div class="card-top">
+        <span class="emoji">🍷</span>
+        <span class="race-name">葡萄酒</span>
+      </div>
+      <div class="adv" style="color:#C0392B">397.57<em>w</em></div>
+      <div class="sublabel">YTD硬广流水</div>
+      <div class="pub-row">🌻 蒲公英 <span style="color:#FFD60A">215.06w</span></div>
+      <div class="prog-bg"><div class="prog-fill" style="width:19.9%;background:#C0392B"></div></div>
+      <div class="pct-row" style="color:#C0392B">19.9% <span class="goal">/ 年度目标 2000w</span></div>
+    </a>
+    <a href="lowdegree-dashboard.html" class="card">
+      <div class="card-top">
+        <span class="emoji">🍹</span>
+        <span class="race-name">低度酒</span>
+      </div>
+      <div class="adv" style="color:#A855F7">285.07<em>w</em></div>
+      <div class="sublabel">YTD硬广流水</div>
+      <div class="pub-row">🌻 蒲公英 <span style="color:#FFD60A">389.82w</span></div>
+      <div class="prog-bg"><div class="prog-fill" style="width:28.5%;background:#A855F7"></div></div>
+      <div class="pct-row" style="color:#A855F7">28.5% <span class="goal">/ 年度目标 1000w</span></div>
+    </a>
+</div>
+
+<a href="all-dashboard.html" class="overview-link">
+  <div class="ov-left">
+    <div class="ov-icon">📊</div>
+    <div>
+      <div class="ov-title">全酒赛道总览</div>
+      <div class="ov-sub">跨赛道对比分析 · 品牌综合排行</div>
+    </div>
+  </div>
+  <div class="ov-right">
+    <div class="ov-total">3699.19<em>w</em></div>
+    <div class="ov-label">五赛道硬广合计</div>
+  </div>
 </a>
+
 <div class="footer">小红书商业化 · 酒行业 · 2026</div>
 </body>
 </html>

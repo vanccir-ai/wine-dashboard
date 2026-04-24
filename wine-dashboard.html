@@ -1633,5 +1633,63 @@ document.addEventListener('DOMContentLoaded', () => {
   animateProgressBars();
 });
 </script>
+
+<div class="nav-grid">
+  <a class="nav-card" href="baijiu-dashboard.html">
+    <div class="nav-emoji">🥃</div>
+    <div class="nav-name">白酒</div>
+    <div class="nav-adv" style="color:#FF2442">796.81<span>w</span></div>
+    <div class="nav-label">YTD硬广</div>
+    <div class="nav-sub">目标进度 13.3% / 6000w</div>
+  </a>
+  <a class="nav-card" href="beer-dashboard.html">
+    <div class="nav-emoji">🍺</div>
+    <div class="nav-name">啤酒</div>
+    <div class="nav-adv" style="color:#F5A623">1227.47<span>w</span></div>
+    <div class="nav-label">YTD硬广</div>
+    <div class="nav-sub">目标进度 20.5% / 6000w</div>
+  </a>
+  <a class="nav-card" href="spirits-dashboard.html">
+    <div class="nav-emoji">🥃</div>
+    <div class="nav-name">洋酒</div>
+    <div class="nav-adv" style="color:#B8860B">992.27<span>w</span></div>
+    <div class="nav-label">YTD硬广</div>
+    <div class="nav-sub">目标进度 49.6% / 2000w</div>
+  </a>
+  <a class="nav-card" href="grape-dashboard.html">
+    <div class="nav-emoji">🍷</div>
+    <div class="nav-name">葡萄酒</div>
+    <div class="nav-adv" style="color:#9B2335">397.57<span>w</span></div>
+    <div class="nav-label">YTD硬广</div>
+    <div class="nav-sub">目标进度 19.9% / 2000w</div>
+  </a>
+  <a class="nav-card" href="lowdegree-dashboard.html">
+    <div class="nav-emoji">🍹</div>
+    <div class="nav-name">低度酒</div>
+    <div class="nav-adv" style="color:#C77DFF">285.07<span>w</span></div>
+    <div class="nav-label">YTD硬广</div>
+    <div class="nav-sub">目标进度 28.5% / 1000w</div>
+  </a>
+  <a class="nav-card all-card" href="all-dashboard.html">
+    <div class="nav-emoji">📊</div>
+    <div class="nav-name">全酒赛道总览</div>
+    <div class="nav-adv" style="color:#00E5A0">3699.19<span>w</span></div>
+    <div class="nav-label">五赛道硬广合计</div>
+    <div class="nav-sub">点击查看跨赛道分析</div>
+  </a>
+</div>
+<style>
+.nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto;padding:20px}
+.nav-card{display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;text-decoration:none;color:#fff;text-align:center;transition:.2s;cursor:pointer}
+.nav-card:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);border-color:rgba(255,255,255,.15)}
+.all-card{grid-column:span 3;background:rgba(0,229,160,.06);border-color:rgba(0,229,160,.2)}
+.nav-emoji{font-size:32px;margin-bottom:8px}
+.nav-name{font-size:15px;font-weight:600;margin-bottom:8px;color:rgba(255,255,255,.9)}
+.nav-adv{font-size:28px;font-weight:700;font-family:'SF Mono','Menlo',monospace}
+.nav-adv span{font-size:14px;font-weight:400}
+.nav-label{font-size:11px;color:rgba(255,255,255,.4);margin:4px 0}
+.nav-sub{font-size:11px;color:rgba(255,255,255,.3)}
+</style>
+
 </body>
 </html>

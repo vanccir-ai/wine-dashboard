@@ -445,7 +445,28 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <span>● <span style="color:#555">停投</span></span>
     <span style="margin-left:8px">气泡大小=蒲公英 | X轴=广告流水(w) | Y轴=增长势能(%)</span>
   </div>
-  <div id="quadrantChart" style="height:420px"></div>
+  <div style="position:relative;height:420px;overflow:hidden">
+    <!-- 四象限背景色块：HTML层，z-index低于ECharts canvas -->
+    <div style="position:absolute;inset:0;pointer-events:none">
+      <div style="position:absolute;left:8.5%;top:9%;width:38%;height:42%;background:rgba(79,142,247,.20);border:2px solid rgba(79,142,247,.55);border-radius:6px">
+        <div style="padding:6px 8px;font-size:11px;font-weight:700;color:rgba(130,180,255,1)">💡 潜力客户</div>
+        <div style="padding:0 8px;font-size:10px;color:rgba(130,180,255,.75)">低流水 · 高增长</div>
+      </div>
+      <div style="position:absolute;left:50.5%;top:9%;width:42%;height:42%;background:rgba(0,229,160,.18);border:2px solid rgba(0,229,160,.55);border-radius:6px">
+        <div style="padding:6px 8px;font-size:11px;font-weight:700;color:rgba(0,229,160,1)">⭐ 明星客户</div>
+        <div style="padding:0 8px;font-size:10px;color:rgba(0,229,160,.75)">高流水 · 高增长</div>
+      </div>
+      <div style="position:absolute;left:8.5%;top:54%;width:38%;height:35%;background:rgba(160,160,180,.12);border:2px solid rgba(180,180,200,.32);border-radius:6px">
+        <div style="padding:6px 8px;font-size:11px;font-weight:700;color:rgba(200,200,220,.85)">👁 观察名单</div>
+        <div style="padding:0 8px;font-size:10px;color:rgba(200,200,220,.55)">低流水 · 低增长</div>
+      </div>
+      <div style="position:absolute;left:50.5%;top:54%;width:42%;height:35%;background:rgba(255,149,0,.16);border:2px solid rgba(255,149,0,.55);border-radius:6px">
+        <div style="padding:6px 8px;font-size:11px;font-weight:700;color:rgba(255,165,50,1)">💰 现金奶牛</div>
+        <div style="padding:0 8px;font-size:10px;color:rgba(255,165,50,.75)">高流水 · 低增长</div>
+      </div>
+    </div>
+    <div id="quadrantChart" style="position:absolute;inset:0;width:100%;height:100%;background:transparent"></div>
+  </div>
 </div>
 <div class="section-title" id="sec-kfs">📊 KFS健康度 &amp; 蒲公英转化</div>
 <div class="card mb28">
@@ -907,20 +928,20 @@ function renderMonthlyKFS(tab){
   var withPub=brands.filter(function(b){return b.adv>0||b.pub>0;}).map(function(b){
     var total=b.adv+b.pub;
     var K=total>0?Math.round(b.pub/total*100):0;
-    var F=total>0&&b.adv>0?Math.round(b.search/b.adv*100):0;
-    var S=total>0&&b.adv>0?Math.round((b.lead||0)/b.adv*100):0;
-    var score=K>70?'⚠️ K过高':K>40?'🟡 待优化':F>30?'✅ 搜索强':'✅ 健康';
+    var F=b.adv>0?Math.min(Math.round(b.search/b.adv*100),100-K):0;
+    var S=b.adv>0?Math.min(Math.round((b.lead||0)/b.adv*100),100-K-F):0;
+    var score=K>70?'⚠️ K过高':K>40?'🟡 待优化':F>30?'✅ 搜索强':S>20?'✅ 转化型':'✅ 健康';
     var sc=K>70?'#FF2442':K>40?'#FF9500':'#00E5A0';
-    return {brand:b.brand,K:K,F:Math.min(F,100-K),S:Math.min(S,100-K),score:score,sc:sc};
+    var kAmt=b.pub>0?'('+b.pub.toFixed(1)+'w)':'';
+    var fAmt=b.search>0?'('+b.search.toFixed(1)+'w)':'';
+    var sAmt=(b.lead||0)>0?('('+(b.lead||0).toFixed(1)+'w)'):'';
+    return {brand:b.brand,K:K,F:F,S:S,score:score,sc:sc,kAmt:kAmt,fAmt:fAmt,sAmt:sAmt};
   }).sort(function(a,b){return b.K-a.K;});
   if(!withPub.length){container.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无投放数据</div>';return;}
   container.innerHTML=withPub.map(function(d){
     var rem=100-d.K;var fCap=Math.min(d.F,rem);var sCap=Math.min(d.S,rem-fCap);
-    var kAmt=b.pub>0?'('+b.pub.toFixed(1)+'w)':'';var fAmt=b.search>0?'('+b.search.toFixed(1)+'w)':'';var sAmt=(b.lead||0)>0?('('+(b.lead||0).toFixed(1)+'w)'):'';
-    return '<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%'+kAmt+'  F:'+d.F+'%'+fAmt+'  S:'+d.S+'%'+sAmt+'</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
+    return '<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%'+d.kAmt+'  F:'+d.F+'%'+d.fAmt+'  S:'+d.S+'%'+d.sAmt+'</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
   }).join('');
-  // 同步更新蒲公英→硬广转化区域
-  var convEl=document.querySelector('#sec-kfs ~ .card .kfs-container');
 }
 
 function renderRankBars(filter){

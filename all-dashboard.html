@@ -2,1005 +2,372 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>全酒赛道商业化总览 2026</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"><\/script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0f1117;color:rgba(255,255,255,.9);font-family:"PingFang SC","SF Pro Display",-apple-system,sans-serif;min-width:1200px;line-height:1.6}
-::-webkit-scrollbar{width:6px;height:6px}
-::-webkit-scrollbar-track{background:#1a1d24}
-::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
-.header{background:rgba(15,17,23,.97);border-bottom:1px solid rgba(255,255,255,.08);padding:20px 40px 0;position:sticky;top:0;z-index:200;backdrop-filter:blur(20px)}
-.header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.title-row{display:flex;align-items:center;gap:12px}
-.title-row h1{font-size:22px;font-weight:700;color:#fff}
-.badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
-.badge-red{background:#FF2442;color:#fff}.badge-orange{background:#FF9500;color:#fff}
-.tabs{display:flex;gap:4px}
-.tab{padding:10px 20px;border-radius:10px 10px 0 0;cursor:pointer;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);border:1px solid transparent;border-bottom:none;transition:all .2s;background:transparent}
-.tab:hover{color:#fff;background:rgba(255,255,255,.04)}
-.tab.active{background:rgba(255,36,66,.12);color:#FF2442;border-color:rgba(255,36,66,.3);border-bottom:2px solid #FF2442}
-.main{padding:28px 40px;max-width:1800px;margin:0 auto}
-.section-title{font-size:16px;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.section-title::before{content:"";display:block;width:3px;height:18px;background:#FF2442;border-radius:2px}
-.section-title small{font-size:12px;color:rgba(255,255,255,.4);font-weight:400;margin-left:4px}
-.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;backdrop-filter:blur(12px)}
-.mb28{margin-bottom:28px}.mb16{margin-bottom:16px}
-.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
-.kpi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px 16px;position:relative;overflow:hidden}
-.kpi-label{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px}
-.kpi-value{font-size:26px;font-weight:700;font-family:"SF Mono","Menlo",monospace;color:#fff;margin-bottom:4px}
-.kpi-value span{font-size:14px;color:rgba(255,255,255,.5)}
-.kpi-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,36,66,.3),transparent)}
-.track-summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:28px}
-.track-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
-.track-card:hover{transform:translateY(-2px);border-color:var(--tc);box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.track-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--tc);opacity:.8}
-.track-emoji{font-size:28px;margin-bottom:8px}
-.track-name{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:6px}
-.track-adv{font-size:28px;font-weight:800;font-family:"SF Mono",monospace;color:var(--tc);line-height:1}
-.track-adv span{font-size:14px;font-weight:400;color:rgba(255,255,255,.5);font-family:inherit}
-.track-pub{font-size:12px;color:rgba(255,255,255,.4);margin-top:6px}
-.track-pub b{color:#FFD60A;font-family:"SF Mono",monospace}
-.track-goal-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:11px;color:rgba(255,255,255,.3)}
-.track-pct{font-weight:600}
-.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
-.data-table{width:100%;border-collapse:collapse;font-size:13px}
-.data-table th{padding:10px 12px;text-align:left;background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);font-weight:500;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}
-.data-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);font-family:"SF Mono","Menlo",monospace;font-size:12px;white-space:nowrap}
-.data-table tr:hover td{background:rgba(255,255,255,.03)}
-.mono{font-family:"SF Mono","Menlo",monospace}
-.rank-num{display:inline-block;width:22px;height:22px;border-radius:6px;text-align:center;line-height:22px;font-size:11px;font-weight:700}
-.rank-num.top1{background:rgba(255,214,10,.2);color:#FFD60A}
-.rank-num.top2{background:rgba(200,200,200,.1);color:#bbb}
-.rank-num.top3{background:rgba(255,149,0,.15);color:#FF9500}
-.total-row{background:rgba(255,36,66,.06);border:1px solid rgba(255,36,66,.15);border-radius:8px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
-.total-row .label{font-size:13px;color:rgba(255,255,255,.5)}
-.total-row .val{font-size:20px;font-weight:700;font-family:"SF Mono",monospace;color:#FF2442}
-.total-row .val.gold{color:#FFD60A}
-.total-row .val.green{color:#00E5A0}
-.track-link{font-size:12px;color:rgba(255,255,255,.3);margin-top:8px}
-.track-link a{color:var(--tc);text-decoration:none}
-.track-link a:hover{text-decoration:underline}
-.period-note{font-size:12px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.03);border-radius:6px;padding:6px 12px;margin-bottom:20px;display:inline-block}
+body{background:#0d0f1a;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','SF Pro Display',sans-serif;min-height:100vh}
+.header{background:linear-gradient(135deg,rgba(255,36,66,.08),rgba(79,142,247,.08));border-bottom:1px solid rgba(255,255,255,.06);padding:18px 32px;display:flex;align-items:center;gap:16px}
+.header h1{font-size:22px;font-weight:700;letter-spacing:.5px}
+.header-meta{font-size:12px;color:rgba(255,255,255,.4);margin-left:auto}
+.tabs{display:flex;gap:4px;padding:16px 32px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.tab{padding:8px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-size:13px;color:rgba(255,255,255,.5);border:1px solid transparent;border-bottom:none;transition:.2s}
+.tab:hover{color:#fff;background:rgba(255,255,255,.05)}
+.tab.active{color:#fff;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.1)}
+.content{padding:24px 32px;max-width:1400px;margin:0 auto}
+.section-title{font-size:16px;font-weight:700;color:#fff;margin:24px 0 14px;letter-spacing:.3px}
+.card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;margin-bottom:20px}
+.mb28{margin-bottom:28px}
+/* 赛道KPI卡片 */
+.race-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:24px}
+.race-kpi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 14px;cursor:pointer;transition:.2s;text-align:center}
+.race-kpi-card:hover{background:rgba(255,255,255,.07);transform:translateY(-2px)}
+.race-emoji{font-size:24px;margin-bottom:6px}
+.race-name{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px}
+.race-adv{font-size:28px;font-weight:700;font-family:'SF Mono','Menlo',monospace}
+.race-adv span{font-size:14px;font-weight:400}
+.race-label{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:4px}
+.race-pub{font-size:12px;color:#FFD60A;margin-bottom:10px}
+.race-progress{background:rgba(255,255,255,.06);border-radius:4px;height:4px;margin-bottom:6px}
+.race-bar{height:4px;border-radius:4px;transition:.6s}
+.race-pct{font-size:11px}
+/* 总览汇总卡 */
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.summary-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px}
+.summary-label{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:6px}
+.summary-val{font-size:24px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442}
+.summary-val.gold{color:#FFD60A}
+/* 排行榜 */
+.hbar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.hbar-label{font-size:13px;color:rgba(255,255,255,.8);min-width:100px;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar-track{flex:1;background:rgba(255,255,255,.06);border-radius:4px;height:8px}
+.hbar-fill{height:8px;border-radius:4px}
+.hbar-val{font-size:12px;color:rgba(255,255,255,.6);min-width:60px;text-align:right;font-family:'SF Mono','Menlo',monospace}
+/* tab内容 */
+.tab-panel{display:none}.tab-panel.active{display:block}
+/* 赛道概览 */
+.race-overview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.kpi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px}
+.kpi-label{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px}
+.kpi-value{font-size:20px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442}
+.kpi-value span{font-size:12px;font-weight:400}
+.section-back{font-size:12px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:8px;margin-bottom:4px}
+a.ext-link{color:#4F8EF7;font-size:12px;text-decoration:none}a.ext-link:hover{text-decoration:underline}
 </style>
 </head>
 <body>
 <div class="header">
-<div class="header-top">
-<div class="title-row"><h1>🍷 全酒赛道商业化总览</h1><span class="badge badge-red">小红书</span><span class="badge badge-orange">v1</span></div>
-<div style="color:rgba(255,255,255,.45);font-size:13px">数据截至 2026-04-24 | 单位：万元</div>
+  <div>
+    <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:4px">XIAOHONGSHU COMMERCIAL</div>
+    <h1>🍷 全酒赛道商业化总览</h1>
+  </div>
+  <div class="header-meta">数据截至 2026-04-24 | 单位：万元</div>
 </div>
 <div class="tabs">
-<div class="tab active" onclick="switchTab('overview',this)">🏠 全酒总览</div>
-<div class="tab" onclick="switchTab('baijiu',this)">🥃 白酒</div>
-<div class="tab" onclick="switchTab('beer',this)">🍺 啤酒</div>
-<div class="tab" onclick="switchTab('low',this)">🍹 低度酒</div>
-<div class="tab" onclick="switchTab('grape',this)">🍷 葡萄酒</div>
-<div class="tab" onclick="switchTab('spirits',this)">🥂 洋酒</div>
+  <div class="tab active" onclick="switchTab(0,this)">📊 全酒总览</div>
+  <div class="tab" onclick="switchTab(1,this)">🥃 白酒</div>
+  <div class="tab" onclick="switchTab(2,this)">🍺 啤酒</div>
+  <div class="tab" onclick="switchTab(3,this)">🥃 洋酒</div>
+  <div class="tab" onclick="switchTab(4,this)">🍷 葡萄酒</div>
+  <div class="tab" onclick="switchTab(5,this)">🍹 低度酒</div>
+</div>
+
+<!-- Tab0: 全酒总览 -->
+<div class="tab-panel active" id="panel-0">
+<div class="content">
+  <div class="section-title">📈 五赛道 YTD 汇总</div>
+  <div class="summary-grid">
+    <div class="summary-card"><div class="summary-label">全赛道硬广总流水</div><div class="summary-val">3699.19<span style="font-size:14px">w</span></div></div>
+    <div class="summary-card"><div class="summary-label">全赛道蒲公英总流水</div><div class="summary-val gold">3814.43<span style="font-size:14px">w</span></div></div>
+    <div class="summary-card"><div class="summary-label">全赛道商业化合计</div><div class="summary-val" style="color:#00E5A0">7513.62<span style="font-size:14px">w</span></div></div>
+    <div class="summary-card"><div class="summary-label">活跃品牌数</div><div class="summary-val" style="color:#4F8EF7">111<span style="font-size:14px">个</span></div></div>
+  </div>
+
+  <div class="section-title">🏆 各赛道 KPI 一览</div>
+  <div class="race-kpi-grid"><div class="race-kpi-card" onclick="location.href='baijiu-dashboard.html'">
+      <div class="race-emoji">🥃</div>
+      <div class="race-name">白酒</div>
+      <div class="race-adv" style="color:#FF2442">796.81<span>w</span></div>
+      <div class="race-label">硬广流水</div>
+      <div class="race-pub">蒲公英 862.32w</div>
+      <div class="race-progress"><div class="race-bar" style="width:13.3%;background:#FF2442"></div></div>
+      <div class="race-pct" style="color:#FF2442">13.3% / 年度目标6000w</div>
+    </div><div class="race-kpi-card" onclick="location.href='beer-dashboard.html'">
+      <div class="race-emoji">🍺</div>
+      <div class="race-name">啤酒</div>
+      <div class="race-adv" style="color:#F5A623">1227.47<span>w</span></div>
+      <div class="race-label">硬广流水</div>
+      <div class="race-pub">蒲公英 1175.01w</div>
+      <div class="race-progress"><div class="race-bar" style="width:20.5%;background:#F5A623"></div></div>
+      <div class="race-pct" style="color:#F5A623">20.5% / 年度目标6000w</div>
+    </div><div class="race-kpi-card" onclick="location.href='spirits-dashboard.html'">
+      <div class="race-emoji">🥃</div>
+      <div class="race-name">洋酒</div>
+      <div class="race-adv" style="color:#B8860B">992.27<span>w</span></div>
+      <div class="race-label">硬广流水</div>
+      <div class="race-pub">蒲公英 1172.22w</div>
+      <div class="race-progress"><div class="race-bar" style="width:49.6%;background:#B8860B"></div></div>
+      <div class="race-pct" style="color:#B8860B">49.6% / 年度目标2000w</div>
+    </div><div class="race-kpi-card" onclick="location.href='grape-dashboard.html'">
+      <div class="race-emoji">🍷</div>
+      <div class="race-name">葡萄酒</div>
+      <div class="race-adv" style="color:#9B2335">397.57<span>w</span></div>
+      <div class="race-label">硬广流水</div>
+      <div class="race-pub">蒲公英 215.06w</div>
+      <div class="race-progress"><div class="race-bar" style="width:19.9%;background:#9B2335"></div></div>
+      <div class="race-pct" style="color:#9B2335">19.9% / 年度目标2000w</div>
+    </div><div class="race-kpi-card" onclick="location.href='lowdegree-dashboard.html'">
+      <div class="race-emoji">🍹</div>
+      <div class="race-name">低度酒</div>
+      <div class="race-adv" style="color:#C77DFF">285.07<span>w</span></div>
+      <div class="race-label">硬广流水</div>
+      <div class="race-pub">蒲公英 389.82w</div>
+      <div class="race-progress"><div class="race-bar" style="width:28.5%;background:#C77DFF"></div></div>
+      <div class="race-pct" style="color:#C77DFF">28.5% / 年度目标1000w</div>
+    </div></div>
+
+  <div class="card mb28">
+    <div class="section-title" style="margin-top:0">📊 赛道对比：硬广 vs 蒲公英</div>
+    <div id="compareChart" style="height:320px"></div>
+  </div>
+
+  <div class="card mb28">
+    <div class="section-title" style="margin-top:0">🏅 跨赛道客户总排行 TOP25（YTD硬广）</div>
+    <div id="rank-all"><div class="hbar-row">
+      <div class="hbar-label">喜力啤酒</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:100.0%;background:#F5A623"></div></div>
+      <div class="hbar-val">561.90w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">五粮液</div>
+      <span class="race-tag" style="background:#FF244222;color:#FF2442;border:1px solid #FF244244;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">白酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:69.7%;background:#FF2442"></div></div>
+      <div class="hbar-val">391.44w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">THE MACALL</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:61.5%;background:#B8860B"></div></div>
+      <div class="hbar-val">345.59w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">Penfolds奔富</div>
+      <span class="race-tag" style="background:#9B233522;color:#9B2335;border:1px solid #9B233544;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">葡萄酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:45.6%;background:#9B2335"></div></div>
+      <div class="hbar-val">256.09w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">青岛啤酒</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:28.0%;background:#F5A623"></div></div>
+      <div class="hbar-val">157.12w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">RIO锐澳鸡尾酒</div>
+      <span class="race-tag" style="background:#C77DFF22;color:#C77DFF;border:1px solid #C77DFF44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">低度酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:21.8%;background:#C77DFF"></div></div>
+      <div class="hbar-val">122.41w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">泸州老窖</div>
+      <span class="race-tag" style="background:#FF244222;color:#FF2442;border:1px solid #FF244244;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">白酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:19.7%;background:#FF2442"></div></div>
+      <div class="hbar-val">110.51w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">格兰菲迪</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:19.1%;background:#B8860B"></div></div>
+      <div class="hbar-val">107.29w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">甜掌柜/康得</div>
+      <span class="race-tag" style="background:#FF244222;color:#FF2442;border:1px solid #FF244244;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">白酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:17.8%;background:#FF2442"></div></div>
+      <div class="hbar-val">100.22w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">青岛啤酒白啤</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:15.7%;background:#F5A623"></div></div>
+      <div class="hbar-val">88.35w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">JimBeam金宾波</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:15.4%;background:#B8860B"></div></div>
+      <div class="hbar-val">86.52w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">苏格登单一麦芽威士忌</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:12.1%;background:#B8860B"></div></div>
+      <div class="hbar-val">68.12w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">雪花啤酒勇闯天涯</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:12.0%;background:#F5A623"></div></div>
+      <div class="hbar-val">67.27w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">女儿红酱酒</div>
+      <span class="race-tag" style="background:#FF244222;color:#FF2442;border:1px solid #FF244244;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">白酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:12.0%;background:#FF2442"></div></div>
+      <div class="hbar-val">67.25w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">Amstel红爵啤酒</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:11.8%;background:#F5A623"></div></div>
+      <div class="hbar-val">66.14w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">corona科罗娜</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:11.7%;background:#F5A623"></div></div>
+      <div class="hbar-val">65.52w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">百利得单一调和威士忌</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:11.2%;background:#B8860B"></div></div>
+      <div class="hbar-val">62.84w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">舍得自在微醺club</div>
+      <span class="race-tag" style="background:#FF244222;color:#FF2442;border:1px solid #FF244244;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">白酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:10.5%;background:#FF2442"></div></div>
+      <div class="hbar-val">59.15w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">尊尼获加 Johnn</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:10.3%;background:#B8860B"></div></div>
+      <div class="hbar-val">58.13w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">RIO轻享</div>
+      <span class="race-tag" style="background:#C77DFF22;color:#C77DFF;border:1px solid #C77DFF44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">低度酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:10.1%;background:#C77DFF"></div></div>
+      <div class="hbar-val">56.50w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">Kronenbour</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:7.0%;background:#F5A623"></div></div>
+      <div class="hbar-val">39.50w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">酒類美術館Wine </div>
+      <span class="race-tag" style="background:#9B233522;color:#9B2335;border:1px solid #9B233544;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">葡萄酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:6.8%;background:#9B2335"></div></div>
+      <div class="hbar-val">38.09w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">格兰威特单一麦芽威士</div>
+      <span class="race-tag" style="background:#B8860B22;color:#B8860B;border:1px solid #B8860B44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">洋酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:6.3%;background:#B8860B"></div></div>
+      <div class="hbar-val">35.47w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">黑狮LOWEN</div>
+      <span class="race-tag" style="background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">啤酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:6.3%;background:#F5A623"></div></div>
+      <div class="hbar-val">35.17w</div>
+    </div><div class="hbar-row">
+      <div class="hbar-label">RIO强爽</div>
+      <span class="race-tag" style="background:#C77DFF22;color:#C77DFF;border:1px solid #C77DFF44;font-size:10px;padding:2px 6px;border-radius:4px;margin-right:6px">低度酒</span>
+      <div class="hbar-track"><div class="hbar-fill" style="width:6.2%;background:#C77DFF"></div></div>
+      <div class="hbar-val">34.99w</div>
+    </div></div>
+  </div>
 </div>
 </div>
-<div class="main">
-<!-- TAB: overview -->
-<div id="tab-overview" class="tab-pane">
-<div class="section-title">全酒赛道总览 <small>5赛道 KPI 对比 · 2026 YTD</small></div>
-<div class="period-note">2026-01-01 至 2026-04-24 | 啤酒、低度酒、葡萄酒、洋酒数据为BI初版，白酒为RedBI精确口径</div>
-<div class="total-row">
-<span class="label">📊 全赛道硬广合计</span><span class="val" id="total-adv">3699.19w</span>
-<span class="label">🌼 蒲公英合计</span><span class="val gold" id="total-pub">3814.43w</span>
-<span class="label">💰 商业化总计</span><span class="val green" id="total-com">11208.15w</span>
-</div>
-<div class="track-summary-grid mb28">
-<div class="track-card" style="--tc:#FF2442" onclick="window.open('baijiu-dashboard.html','_blank')">
-<div class="track-emoji">🥃</div>
-<div class="track-name">白酒赛道</div>
-<div class="track-adv">796.81<span>w</span></div>
-<div class="track-pub">蒲公英 <b>862.32w</b></div>
-<div class="track-goal-row"><span>目标 6000w</span><span class="track-pct" style="color:#FF2442">13.3%</span></div>
-</div>
-<div class="track-card" style="--tc:#FFD60A" onclick="window.open('beer-dashboard.html','_blank')">
-<div class="track-emoji">🍺</div>
-<div class="track-name">啤酒赛道</div>
-<div class="track-adv">1227.47<span>w</span></div>
-<div class="track-pub">蒲公英 <b>1175.01w</b></div>
-<div class="track-goal-row"><span>目标 5000w</span><span class="track-pct" style="color:#FFD60A">24.5%</span></div>
-</div>
-<div class="track-card" style="--tc:#00E5A0" onclick="window.open('low-dashboard.html','_blank')">
-<div class="track-emoji">🍹</div>
-<div class="track-name">低度酒赛道</div>
-<div class="track-adv">285.07<span>w</span></div>
-<div class="track-pub">蒲公英 <b>389.82w</b></div>
-<div class="track-goal-row"><span>目标 2000w</span><span class="track-pct" style="color:#00E5A0">14.3%</span></div>
-</div>
-<div class="track-card" style="--tc:#A855F7" onclick="window.open('grape-dashboard.html','_blank')">
-<div class="track-emoji">🍷</div>
-<div class="track-name">葡萄酒赛道</div>
-<div class="track-adv">397.57<span>w</span></div>
-<div class="track-pub">蒲公英 <b>215.06w</b></div>
-<div class="track-goal-row"><span>目标 2000w</span><span class="track-pct" style="color:#A855F7">19.9%</span></div>
-</div>
-<div class="track-card" style="--tc:#4F8EF7" onclick="window.open('spirits-dashboard.html','_blank')">
-<div class="track-emoji">🥂</div>
-<div class="track-name">洋酒赛道</div>
-<div class="track-adv">992.27<span>w</span></div>
-<div class="track-pub">蒲公英 <b>1172.22w</b></div>
-<div class="track-goal-row"><span>目标 5000w</span><span class="track-pct" style="color:#4F8EF7">19.8%</span></div>
+
+<div class="tab-panel" id="panel-1">
+<div class="content">
+  <div class="section-back"><a class="ext-link" href="baijiu-dashboard.html">→ 打开完整版看板</a></div>
+  <div class="section-title">白酒 YTD 概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">硬广总消耗</div><div class="kpi-value" style="color:#FF2442">796.81<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value" style="color:#FF2442">307.19<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value" style="color:#FF2442">487.53<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">蒲公英</div><div class="kpi-value" style="color:#FFD60A">862.32<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标完成率</div><div class="kpi-value" style="color:#FF2442">13.3<span>%</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标</div><div class="kpi-value" style="color:rgba(255,255,255,.4)">6000<span>w</span></div></div>
+  </div>
+  <div class="card"><div class="section-title" style="margin-top:0">客户排行榜 TOP15（YTD硬广）</div><div style="color:rgba(255,255,255,.4);font-size:12px">暂无数据</div></div>
 </div>
 </div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">五赛道硬广 & 蒲公英对比</div>
-<div id="chart-track-compare" style="height:320px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">全酒商业化收入结构</div>
-<div id="chart-all-pie" style="height:320px"></div></div>
-</div>
-<div class="section-title">跨赛道客户总排行 <small>按硬广排序 TOP20</small></div>
-<div class="card mb28">
-<table class="data-table" id="rank-table">
-<thead><tr><th style="width:40px">排名</th><th>品牌</th><th style="text-align:center">赛道</th>
-<th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-<tr><td><span class="rank-num top1">1</span></td>
-<td>喜力啤酒</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">561.9</td>
-<td style="text-align:right">90.68</td></tr>
-<tr><td><span class="rank-num top2">2</span></td>
-<td>THE MACALLAN 麦卡伦</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">345.59</td>
-<td style="text-align:right">377.26</td></tr>
-<tr><td><span class="rank-num top3">3</span></td>
-<td>Penfolds奔富</td>
-<td style="text-align:center;color:#A855F7">🍷葡萄酒</td>
-<td style="text-align:right">256.09</td>
-<td style="text-align:right">138.25</td></tr>
-<tr><td><span class="rank-num ">4</span></td>
-<td>青岛啤酒</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">157.12</td>
-<td style="text-align:right">197.67</td></tr>
-<tr><td><span class="rank-num ">5</span></td>
-<td>RIO锐澳鸡尾酒</td>
-<td style="text-align:center;color:#00E5A0">🍹低度酒</td>
-<td style="text-align:right">122.41</td>
-<td style="text-align:right">93.84</td></tr>
-<tr><td><span class="rank-num ">6</span></td>
-<td>格兰菲迪</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">107.29</td>
-<td style="text-align:right">83.53</td></tr>
-<tr><td><span class="rank-num ">7</span></td>
-<td>青岛啤酒白啤</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">88.35</td>
-<td style="text-align:right">190.94</td></tr>
-<tr><td><span class="rank-num ">8</span></td>
-<td>JimBeam金宾波本威士忌</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">86.52</td>
-<td style="text-align:right">85.12</td></tr>
-<tr><td><span class="rank-num ">9</span></td>
-<td>苏格登单一麦芽威士忌</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">68.12</td>
-<td style="text-align:right">37.94</td></tr>
-<tr><td><span class="rank-num ">10</span></td>
-<td>雪花啤酒勇闯天涯</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">67.27</td>
-<td style="text-align:right">160.96</td></tr>
-<tr><td><span class="rank-num ">11</span></td>
-<td>Amstel红爵啤酒</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">66.14</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">12</span></td>
-<td>corona科罗娜</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">65.52</td>
-<td style="text-align:right">65.67</td></tr>
-<tr><td><span class="rank-num ">13</span></td>
-<td>百利得单一调和威士忌</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">62.84</td>
-<td style="text-align:right">133.35</td></tr>
-<tr><td><span class="rank-num ">14</span></td>
-<td>尊尼获加 Johnnie Walker</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">58.13</td>
-<td style="text-align:right">33.77</td></tr>
-<tr><td><span class="rank-num ">15</span></td>
-<td>RIO轻享</td>
-<td style="text-align:center;color:#00E5A0">🍹低度酒</td>
-<td style="text-align:right">56.5</td>
-<td style="text-align:right">66.13</td></tr>
-<tr><td><span class="rank-num ">16</span></td>
-<td>Kronenbourg 1664啤酒</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">39.5</td>
-<td style="text-align:right">173.17</td></tr>
-<tr><td><span class="rank-num ">17</span></td>
-<td>酒類美術館Wine Gallery</td>
-<td style="text-align:center;color:#A855F7">🍷葡萄酒</td>
-<td style="text-align:right">38.09</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">18</span></td>
-<td>格兰威特单一麦芽威士忌</td>
-<td style="text-align:center;color:#4F8EF7">🥂洋酒</td>
-<td style="text-align:right">35.47</td>
-<td style="text-align:right">16.54</td></tr>
-<tr><td><span class="rank-num ">19</span></td>
-<td>黑狮LOWEN</td>
-<td style="text-align:center;color:#FFD60A">🍺啤酒</td>
-<td style="text-align:right">35.17</td>
-<td style="text-align:right">33.29</td></tr>
-<tr><td><span class="rank-num ">20</span></td>
-<td>RIO强爽</td>
-<td style="text-align:center;color:#00E5A0">🍹低度酒</td>
-<td style="text-align:right">34.99</td>
-<td style="text-align:right">94.33</td></tr>
-</tbody></table></div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">赛道综合竞争力雷达图</div>
-<div id="chart-radar" style="height:360px"></div>
+<div class="tab-panel" id="panel-2">
+<div class="content">
+  <div class="section-back"><a class="ext-link" href="beer-dashboard.html">→ 打开完整版看板</a></div>
+  <div class="section-title">啤酒 YTD 概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">硬广总消耗</div><div class="kpi-value" style="color:#F5A623">1227.47<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value" style="color:#F5A623">701.17<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value" style="color:#F5A623">526.29<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">蒲公英</div><div class="kpi-value" style="color:#FFD60A">1175.01<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标完成率</div><div class="kpi-value" style="color:#F5A623">20.5<span>%</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标</div><div class="kpi-value" style="color:rgba(255,255,255,.4)">6000<span>w</span></div></div>
+  </div>
+  <div class="card"><div class="section-title" style="margin-top:0">客户排行榜 TOP15（YTD硬广）</div><div class="hbar-row"><div class="hbar-label">喜力啤酒</div><div class="hbar-track"><div class="hbar-fill" style="width:100.0%;background:#F5A623"></div></div><div class="hbar-val">561.90w</div></div><div class="hbar-row"><div class="hbar-label">青岛啤酒</div><div class="hbar-track"><div class="hbar-fill" style="width:28.0%;background:#F5A623"></div></div><div class="hbar-val">157.12w</div></div><div class="hbar-row"><div class="hbar-label">青岛啤酒白啤</div><div class="hbar-track"><div class="hbar-fill" style="width:15.7%;background:#F5A623"></div></div><div class="hbar-val">88.35w</div></div><div class="hbar-row"><div class="hbar-label">雪花啤酒勇闯天涯</div><div class="hbar-track"><div class="hbar-fill" style="width:12.0%;background:#F5A623"></div></div><div class="hbar-val">67.27w</div></div><div class="hbar-row"><div class="hbar-label">Amstel红爵啤酒</div><div class="hbar-track"><div class="hbar-fill" style="width:11.8%;background:#F5A623"></div></div><div class="hbar-val">66.14w</div></div><div class="hbar-row"><div class="hbar-label">corona科罗娜</div><div class="hbar-track"><div class="hbar-fill" style="width:11.7%;background:#F5A623"></div></div><div class="hbar-val">65.52w</div></div><div class="hbar-row"><div class="hbar-label">Kronenbour</div><div class="hbar-track"><div class="hbar-fill" style="width:7.0%;background:#F5A623"></div></div><div class="hbar-val">39.50w</div></div><div class="hbar-row"><div class="hbar-label">黑狮LOWEN</div><div class="hbar-track"><div class="hbar-fill" style="width:6.3%;background:#F5A623"></div></div><div class="hbar-val">35.17w</div></div><div class="hbar-row"><div class="hbar-label">新零无酒精</div><div class="hbar-track"><div class="hbar-fill" style="width:4.3%;background:#F5A623"></div></div><div class="hbar-val">24.14w</div></div><div class="hbar-row"><div class="hbar-label">尹记鸿运啤酒屋</div><div class="hbar-track"><div class="hbar-fill" style="width:3.6%;background:#F5A623"></div></div><div class="hbar-val">20.26w</div></div><div class="hbar-row"><div class="hbar-label">海岛啤酒屋</div><div class="hbar-track"><div class="hbar-fill" style="width:2.9%;background:#F5A623"></div></div><div class="hbar-val">16.05w</div></div><div class="hbar-row"><div class="hbar-label">山海聚鲜啤酒屋</div><div class="hbar-track"><div class="hbar-fill" style="width:2.8%;background:#F5A623"></div></div><div class="hbar-val">15.58w</div></div><div class="hbar-row"><div class="hbar-label">风花雪月啤酒</div><div class="hbar-track"><div class="hbar-fill" style="width:2.7%;background:#F5A623"></div></div><div class="hbar-val">15.38w</div></div><div class="hbar-row"><div class="hbar-label">鲜啤福鹿家</div><div class="hbar-track"><div class="hbar-fill" style="width:2.6%;background:#F5A623"></div></div><div class="hbar-val">14.67w</div></div><div class="hbar-row"><div class="hbar-label">百威</div><div class="hbar-track"><div class="hbar-fill" style="width:2.1%;background:#F5A623"></div></div><div class="hbar-val">12.07w</div></div></div>
 </div>
 </div>
-<!-- TAB: 白酒 -->
-<div id="tab-baijiu" class="tab-pane" style="display:none">
-<div class="section-title">🥃 白酒赛道 · YTD 概览 <small>2026-01-01 至 2026-04-24</small></div>
-<div class="kpi-grid mb28">
-<div class="kpi-card" style="border-color:rgba(255,255,255,.1)"><div class="kpi-label">硬广流水</div>
-<div class="kpi-value" style="color:#FF2442">796.81<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value">307.19<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value">487.53<span>w</span></div></div>
-<div class="kpi-card" style="border-color:rgba(255,214,10,.3)"><div class="kpi-label">🌼 蒲公英</div>
-<div class="kpi-value" style="color:#FFD60A">862.32<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">搜索广告</div><div class="kpi-value">104.68<span>w</span></div></div>
+<div class="tab-panel" id="panel-3">
+<div class="content">
+  <div class="section-back"><a class="ext-link" href="spirits-dashboard.html">→ 打开完整版看板</a></div>
+  <div class="section-title">洋酒 YTD 概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">硬广总消耗</div><div class="kpi-value" style="color:#B8860B">992.27<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value" style="color:#B8860B">186.86<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value" style="color:#B8860B">805.29<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">蒲公英</div><div class="kpi-value" style="color:#FFD60A">1172.22<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标完成率</div><div class="kpi-value" style="color:#B8860B">49.6<span>%</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标</div><div class="kpi-value" style="color:rgba(255,255,255,.4)">2000<span>w</span></div></div>
+  </div>
+  <div class="card"><div class="section-title" style="margin-top:0">客户排行榜 TOP15（YTD硬广）</div><div class="hbar-row"><div class="hbar-label">THE MACALL</div><div class="hbar-track"><div class="hbar-fill" style="width:100.0%;background:#B8860B"></div></div><div class="hbar-val">345.59w</div></div><div class="hbar-row"><div class="hbar-label">格兰菲迪</div><div class="hbar-track"><div class="hbar-fill" style="width:31.0%;background:#B8860B"></div></div><div class="hbar-val">107.29w</div></div><div class="hbar-row"><div class="hbar-label">JimBeam金宾波</div><div class="hbar-track"><div class="hbar-fill" style="width:25.0%;background:#B8860B"></div></div><div class="hbar-val">86.52w</div></div><div class="hbar-row"><div class="hbar-label">苏格登单一麦芽威士忌</div><div class="hbar-track"><div class="hbar-fill" style="width:19.7%;background:#B8860B"></div></div><div class="hbar-val">68.12w</div></div><div class="hbar-row"><div class="hbar-label">百利得单一调和威士忌</div><div class="hbar-track"><div class="hbar-fill" style="width:18.2%;background:#B8860B"></div></div><div class="hbar-val">62.84w</div></div><div class="hbar-row"><div class="hbar-label">尊尼获加 Johnn</div><div class="hbar-track"><div class="hbar-fill" style="width:16.8%;background:#B8860B"></div></div><div class="hbar-val">58.13w</div></div><div class="hbar-row"><div class="hbar-label">格兰威特单一麦芽威士</div><div class="hbar-track"><div class="hbar-fill" style="width:10.3%;background:#B8860B"></div></div><div class="hbar-val">35.47w</div></div><div class="hbar-row"><div class="hbar-label">Remy Marti</div><div class="hbar-track"><div class="hbar-fill" style="width:8.9%;background:#B8860B"></div></div><div class="hbar-val">30.82w</div></div><div class="hbar-row"><div class="hbar-label">Don Julio </div><div class="hbar-track"><div class="hbar-fill" style="width:7.5%;background:#B8860B"></div></div><div class="hbar-val">25.82w</div></div><div class="hbar-row"><div class="hbar-label">Bacardi百加得</div><div class="hbar-track"><div class="hbar-fill" style="width:7.2%;background:#B8860B"></div></div><div class="hbar-val">25.03w</div></div><div class="hbar-row"><div class="hbar-label">马爹利MARTELL</div><div class="hbar-track"><div class="hbar-fill" style="width:5.9%;background:#B8860B"></div></div><div class="hbar-val">20.49w</div></div><div class="hbar-row"><div class="hbar-label">TALISKER泰斯</div><div class="hbar-track"><div class="hbar-fill" style="width:5.4%;background:#B8860B"></div></div><div class="hbar-val">18.67w</div></div><div class="hbar-row"><div class="hbar-label">THE BALVEN</div><div class="hbar-track"><div class="hbar-fill" style="width:5.2%;background:#B8860B"></div></div><div class="hbar-val">17.99w</div></div><div class="hbar-row"><div class="hbar-label">叠川 THE CHU</div><div class="hbar-track"><div class="hbar-fill" style="width:4.6%;background:#B8860B"></div></div><div class="hbar-val">15.88w</div></div><div class="hbar-row"><div class="hbar-label">百瑞卡baraka</div><div class="hbar-track"><div class="hbar-fill" style="width:2.7%;background:#B8860B"></div></div><div class="hbar-val">9.48w</div></div></div>
 </div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">白酒赛道收入结构</div>
-<div id="chart-baijiu-pie" style="height:280px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">白酒赛道客户 TOP10</div>
-<div id="chart-baijiu-top10" style="height:280px"></div></div>
 </div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">白酒赛道品牌明细</div>
-<table class="data-table"><thead><tr><th>排名</th><th>品牌</th><th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-</tbody></table></div>
-<div class="track-link">→ 查看完整 <a href="baijiu-dashboard.html">白酒赛道看板</a></div>
+<div class="tab-panel" id="panel-4">
+<div class="content">
+  <div class="section-back"><a class="ext-link" href="grape-dashboard.html">→ 打开完整版看板</a></div>
+  <div class="section-title">葡萄酒 YTD 概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">硬广总消耗</div><div class="kpi-value" style="color:#9B2335">397.57<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value" style="color:#9B2335">39.83<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value" style="color:#9B2335">357.74<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">蒲公英</div><div class="kpi-value" style="color:#FFD60A">215.06<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标完成率</div><div class="kpi-value" style="color:#9B2335">19.9<span>%</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标</div><div class="kpi-value" style="color:rgba(255,255,255,.4)">2000<span>w</span></div></div>
+  </div>
+  <div class="card"><div class="section-title" style="margin-top:0">客户排行榜 TOP15（YTD硬广）</div><div class="hbar-row"><div class="hbar-label">Penfolds奔富</div><div class="hbar-track"><div class="hbar-fill" style="width:100.0%;background:#9B2335"></div></div><div class="hbar-val">256.09w</div></div><div class="hbar-row"><div class="hbar-label">酒類美術館Wine </div><div class="hbar-track"><div class="hbar-fill" style="width:14.9%;background:#9B2335"></div></div><div class="hbar-val">38.09w</div></div><div class="hbar-row"><div class="hbar-label">侍酒猫SommCat</div><div class="hbar-track"><div class="hbar-fill" style="width:11.6%;background:#9B2335"></div></div><div class="hbar-val">29.65w</div></div><div class="hbar-row"><div class="hbar-label">疆进酒少庄主精选葡萄</div><div class="hbar-track"><div class="hbar-fill" style="width:6.9%;background:#9B2335"></div></div><div class="hbar-val">17.66w</div></div><div class="hbar-row"><div class="hbar-label">长尾猫</div><div class="hbar-track"><div class="hbar-fill" style="width:6.7%;background:#9B2335"></div></div><div class="hbar-val">17.03w</div></div><div class="hbar-row"><div class="hbar-label">VSPT葡萄酒</div><div class="hbar-track"><div class="hbar-fill" style="width:2.8%;background:#9B2335"></div></div><div class="hbar-val">7.15w</div></div><div class="hbar-row"><div class="hbar-label">美贺庄园</div><div class="hbar-track"><div class="hbar-fill" style="width:2.6%;background:#9B2335"></div></div><div class="hbar-val">6.55w</div></div><div class="hbar-row"><div class="hbar-label">KWV</div><div class="hbar-track"><div class="hbar-fill" style="width:2.5%;background:#9B2335"></div></div><div class="hbar-val">6.30w</div></div><div class="hbar-row"><div class="hbar-label">SOGOOD蛮好</div><div class="hbar-track"><div class="hbar-fill" style="width:2.0%;background:#9B2335"></div></div><div class="hbar-val">5.06w</div></div><div class="hbar-row"><div class="hbar-label">蚝湾 Oyster </div><div class="hbar-track"><div class="hbar-fill" style="width:1.1%;background:#9B2335"></div></div><div class="hbar-val">2.84w</div></div><div class="hbar-row"><div class="hbar-label">西鸽酒庄</div><div class="hbar-track"><div class="hbar-fill" style="width:1.1%;background:#9B2335"></div></div><div class="hbar-val">2.84w</div></div><div class="hbar-row"><div class="hbar-label">BRUTO WINE</div><div class="hbar-track"><div class="hbar-fill" style="width:1.0%;background:#9B2335"></div></div><div class="hbar-val">2.60w</div></div><div class="hbar-row"><div class="hbar-label">意大利Masi玛希酒</div><div class="hbar-track"><div class="hbar-fill" style="width:0.7%;background:#9B2335"></div></div><div class="hbar-val">1.86w</div></div><div class="hbar-row"><div class="hbar-label">圣醅罗1865</div><div class="hbar-track"><div class="hbar-fill" style="width:0.5%;background:#9B2335"></div></div><div class="hbar-val">1.36w</div></div><div class="hbar-row"><div class="hbar-label">黑猫GatoNegr</div><div class="hbar-track"><div class="hbar-fill" style="width:0.5%;background:#9B2335"></div></div><div class="hbar-val">1.28w</div></div></div>
 </div>
-<!-- TAB: 啤酒 -->
-<div id="tab-beer" class="tab-pane" style="display:none">
-<div class="section-title">🍺 啤酒赛道 · YTD 概览 <small>2026-01-01 至 2026-04-24</small></div>
-<div class="kpi-grid mb28">
-<div class="kpi-card" style="border-color:rgba(255,255,255,.1)"><div class="kpi-label">硬广流水</div>
-<div class="kpi-value" style="color:#FFD60A">1227.47<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value">701.17<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value">526.29<span>w</span></div></div>
-<div class="kpi-card" style="border-color:rgba(255,214,10,.3)"><div class="kpi-label">🌼 蒲公英</div>
-<div class="kpi-value" style="color:#FFD60A">1175.01<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">搜索广告</div><div class="kpi-value">109.65<span>w</span></div></div>
 </div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">啤酒赛道收入结构</div>
-<div id="chart-beer-pie" style="height:280px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">啤酒赛道客户 TOP10</div>
-<div id="chart-beer-top10" style="height:280px"></div></div>
-</div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">啤酒赛道品牌明细</div>
-<table class="data-table"><thead><tr><th>排名</th><th>品牌</th><th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-<tr><td><span class="rank-num top1">1</span></td>
-<td>喜力啤酒</td>
-<td style="text-align:right">561.9</td>
-<td style="text-align:right">90.68</td></tr>
-<tr><td><span class="rank-num top2">2</span></td>
-<td>青岛啤酒</td>
-<td style="text-align:right">157.12</td>
-<td style="text-align:right">197.67</td></tr>
-<tr><td><span class="rank-num top3">3</span></td>
-<td>青岛啤酒白啤</td>
-<td style="text-align:right">88.35</td>
-<td style="text-align:right">190.94</td></tr>
-<tr><td><span class="rank-num ">4</span></td>
-<td>雪花啤酒勇闯天涯</td>
-<td style="text-align:right">67.27</td>
-<td style="text-align:right">160.96</td></tr>
-<tr><td><span class="rank-num ">5</span></td>
-<td>Amstel红爵啤酒</td>
-<td style="text-align:right">66.14</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">6</span></td>
-<td>corona科罗娜</td>
-<td style="text-align:right">65.52</td>
-<td style="text-align:right">65.67</td></tr>
-<tr><td><span class="rank-num ">7</span></td>
-<td>Kronenbourg 1664啤酒</td>
-<td style="text-align:right">39.5</td>
-<td style="text-align:right">173.17</td></tr>
-<tr><td><span class="rank-num ">8</span></td>
-<td>黑狮LOWEN</td>
-<td style="text-align:right">35.17</td>
-<td style="text-align:right">33.29</td></tr>
-<tr><td><span class="rank-num ">9</span></td>
-<td>新零无酒精</td>
-<td style="text-align:right">24.14</td>
-<td style="text-align:right">26.34</td></tr>
-<tr><td><span class="rank-num ">10</span></td>
-<td>尹记鸿运啤酒屋</td>
-<td style="text-align:right">20.26</td>
-<td style="text-align:right">10.16</td></tr>
-<tr><td><span class="rank-num ">11</span></td>
-<td>海岛啤酒屋</td>
-<td style="text-align:right">16.05</td>
-<td style="text-align:right">11.36</td></tr>
-<tr><td><span class="rank-num ">12</span></td>
-<td>山海聚鲜啤酒屋</td>
-<td style="text-align:right">15.58</td>
-<td style="text-align:right">6.41</td></tr>
-<tr><td><span class="rank-num ">13</span></td>
-<td>风花雪月啤酒</td>
-<td style="text-align:right">15.38</td>
-<td style="text-align:right">50.34</td></tr>
-<tr><td><span class="rank-num ">14</span></td>
-<td>鲜啤福鹿家</td>
-<td style="text-align:right">14.67</td>
-<td style="text-align:right">21.57</td></tr>
-<tr><td><span class="rank-num ">15</span></td>
-<td>百威</td>
-<td style="text-align:right">12.07</td>
-<td style="text-align:right">31.37</td></tr>
-<tr><td><span class="rank-num ">16</span></td>
-<td>乐堡啤酒</td>
-<td style="text-align:right">7.0</td>
-<td style="text-align:right">15.6</td></tr>
-<tr><td><span class="rank-num ">17</span></td>
-<td>京A精酿啤酒</td>
-<td style="text-align:right">5.0</td>
-<td style="text-align:right">23.96</td></tr>
-<tr><td><span class="rank-num ">18</span></td>
-<td>AsahiSuperDry朝日啤酒</td>
-<td style="text-align:right">4.88</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">19</span></td>
-<td>青岛啤酒新鲜直送</td>
-<td style="text-align:right">4.01</td>
-<td style="text-align:right">9.94</td></tr>
-<tr><td><span class="rank-num ">20</span></td>
-<td>大九酿造</td>
-<td style="text-align:right">3.81</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">21</span></td>
-<td>青岛啤酒Tsingtao</td>
-<td style="text-align:right">2.0</td>
-<td style="text-align:right">9.1</td></tr>
-<tr><td><span class="rank-num ">22</span></td>
-<td>晚所Homebar微醺小酒馆</td>
-<td style="text-align:right">0.74</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">23</span></td>
-<td>JollyShandy怡乐仙地</td>
-<td style="text-align:right">0.67</td>
-<td style="text-align:right">18.11</td></tr>
-<tr><td><span class="rank-num ">24</span></td>
-<td>鲜啤福鹿家合作中心</td>
-<td style="text-align:right">0.2</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">25</span></td>
-<td>GUINNESS健力士</td>
-<td style="text-align:right">0.01</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">26</span></td>
-<td>千岛湖啤酒cheerday</td>
-<td style="text-align:right">0.01</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">27</span></td>
-<td>乌苏啤酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">15.42</td></tr>
-<tr><td><span class="rank-num ">28</span></td>
-<td>布鲁克林Brooklyn精酿啤酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">8.32</td></tr>
-<tr><td><span class="rank-num ">29</span></td>
-<td>白熊啤酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">4.4</td></tr>
-<tr><td><span class="rank-num ">30</span></td>
-<td>Paulaner保拉纳啤酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.22</td></tr>
-<tr><td><span class="rank-num ">31</span></td>
-<td>Hoegaarden福佳白啤酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-</tbody></table></div>
-<div class="track-link">→ 查看完整 <a href="beer-dashboard.html">啤酒赛道看板</a></div>
-</div>
-<!-- TAB: 低度酒 -->
-<div id="tab-low" class="tab-pane" style="display:none">
-<div class="section-title">🍹 低度酒赛道 · YTD 概览 <small>2026-01-01 至 2026-04-24</small></div>
-<div class="kpi-grid mb28">
-<div class="kpi-card" style="border-color:rgba(255,255,255,.1)"><div class="kpi-label">硬广流水</div>
-<div class="kpi-value" style="color:#00E5A0">285.07<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value">8.7<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value">273.93<span>w</span></div></div>
-<div class="kpi-card" style="border-color:rgba(255,214,10,.3)"><div class="kpi-label">🌼 蒲公英</div>
-<div class="kpi-value" style="color:#FFD60A">389.82<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">搜索广告</div><div class="kpi-value">35.97<span>w</span></div></div>
-</div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">低度酒赛道收入结构</div>
-<div id="chart-low-pie" style="height:280px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">低度酒赛道客户 TOP10</div>
-<div id="chart-low-top10" style="height:280px"></div></div>
-</div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">低度酒赛道品牌明细</div>
-<table class="data-table"><thead><tr><th>排名</th><th>品牌</th><th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-<tr><td><span class="rank-num top1">1</span></td>
-<td>RIO锐澳鸡尾酒</td>
-<td style="text-align:right">122.41</td>
-<td style="text-align:right">93.84</td></tr>
-<tr><td><span class="rank-num top2">2</span></td>
-<td>RIO轻享</td>
-<td style="text-align:right">56.5</td>
-<td style="text-align:right">66.13</td></tr>
-<tr><td><span class="rank-num top3">3</span></td>
-<td>RIO强爽</td>
-<td style="text-align:right">34.99</td>
-<td style="text-align:right">94.33</td></tr>
-<tr><td><span class="rank-num ">4</span></td>
-<td>果立方</td>
-<td style="text-align:right">15.83</td>
-<td style="text-align:right">23.54</td></tr>
-<tr><td><span class="rank-num ">5</span></td>
-<td>009酃酃酒</td>
-<td style="text-align:right">12.9</td>
-<td style="text-align:right">3.57</td></tr>
-<tr><td><span class="rank-num ">6</span></td>
-<td>三得利梅酒</td>
-<td style="text-align:right">10.61</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">7</span></td>
-<td>梅见</td>
-<td style="text-align:right">10.15</td>
-<td style="text-align:right">49.36</td></tr>
-<tr><td><span class="rank-num ">8</span></td>
-<td>RIO清爽</td>
-<td style="text-align:right">7.85</td>
-<td style="text-align:right">27.02</td></tr>
-<tr><td><span class="rank-num ">9</span></td>
-<td>时光梅酒</td>
-<td style="text-align:right">6.04</td>
-<td style="text-align:right">12.53</td></tr>
-<tr><td><span class="rank-num ">10</span></td>
-<td>TEMPT诱惑果酒</td>
-<td style="text-align:right">2.74</td>
-<td style="text-align:right">6.3</td></tr>
-<tr><td><span class="rank-num ">11</span></td>
-<td>三得利和乐怡HOROYOI</td>
-<td style="text-align:right">2.64</td>
-<td style="text-align:right">0.55</td></tr>
-<tr><td><span class="rank-num ">12</span></td>
-<td>椿山晓</td>
-<td style="text-align:right">1.59</td>
-<td style="text-align:right">0.29</td></tr>
-<tr><td><span class="rank-num ">13</span></td>
-<td>动力火车潮饮酒</td>
-<td style="text-align:right">0.7</td>
-<td style="text-align:right">12.19</td></tr>
-<tr><td><span class="rank-num ">14</span></td>
-<td>小酒岛JIUDAO</td>
-<td style="text-align:right">0.06</td>
-<td style="text-align:right">0.19</td></tr>
-<tr><td><span class="rank-num ">15</span></td>
-<td>新魂烧酒</td>
-<td style="text-align:right">0.04</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">16</span></td>
-<td>RIO锐澳品牌馆</td>
-<td style="text-align:right">0.02</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">17</span></td>
-<td>SUNTORY -196水果汽泡酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">18</span></td>
-<td>零酷ZEROCOOL</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">19</span></td>
-<td>OKKISS</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-</tbody></table></div>
-<div class="track-link">→ 查看完整 <a href="low-dashboard.html">低度酒赛道看板</a></div>
-</div>
-<!-- TAB: 葡萄酒 -->
-<div id="tab-grape" class="tab-pane" style="display:none">
-<div class="section-title">🍷 葡萄酒赛道 · YTD 概览 <small>2026-01-01 至 2026-04-24</small></div>
-<div class="kpi-grid mb28">
-<div class="kpi-card" style="border-color:rgba(255,255,255,.1)"><div class="kpi-label">硬广流水</div>
-<div class="kpi-value" style="color:#A855F7">397.57<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value">39.83<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value">357.74<span>w</span></div></div>
-<div class="kpi-card" style="border-color:rgba(255,214,10,.3)"><div class="kpi-label">🌼 蒲公英</div>
-<div class="kpi-value" style="color:#FFD60A">215.06<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">搜索广告</div><div class="kpi-value">24.1<span>w</span></div></div>
-</div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">葡萄酒赛道收入结构</div>
-<div id="chart-grape-pie" style="height:280px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">葡萄酒赛道客户 TOP10</div>
-<div id="chart-grape-top10" style="height:280px"></div></div>
-</div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">葡萄酒赛道品牌明细</div>
-<table class="data-table"><thead><tr><th>排名</th><th>品牌</th><th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-<tr><td><span class="rank-num top1">1</span></td>
-<td>Penfolds奔富</td>
-<td style="text-align:right">256.09</td>
-<td style="text-align:right">138.25</td></tr>
-<tr><td><span class="rank-num top2">2</span></td>
-<td>酒類美術館Wine Gallery</td>
-<td style="text-align:right">38.09</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num top3">3</span></td>
-<td>侍酒猫SommCat</td>
-<td style="text-align:right">29.65</td>
-<td style="text-align:right">0.06</td></tr>
-<tr><td><span class="rank-num ">4</span></td>
-<td>疆进酒少庄主精选葡萄酒</td>
-<td style="text-align:right">17.66</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">5</span></td>
-<td>长尾猫</td>
-<td style="text-align:right">17.03</td>
-<td style="text-align:right">31.97</td></tr>
-<tr><td><span class="rank-num ">6</span></td>
-<td>VSPT葡萄酒</td>
-<td style="text-align:right">7.15</td>
-<td style="text-align:right">8.18</td></tr>
-<tr><td><span class="rank-num ">7</span></td>
-<td>美贺庄园</td>
-<td style="text-align:right">6.55</td>
-<td style="text-align:right">4.07</td></tr>
-<tr><td><span class="rank-num ">8</span></td>
-<td>KWV</td>
-<td style="text-align:right">6.3</td>
-<td style="text-align:right">19.52</td></tr>
-<tr><td><span class="rank-num ">9</span></td>
-<td>SOGOOD蛮好</td>
-<td style="text-align:right">5.06</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">10</span></td>
-<td>蚝湾 Oyster Bay</td>
-<td style="text-align:right">2.84</td>
-<td style="text-align:right">3.49</td></tr>
-<tr><td><span class="rank-num ">11</span></td>
-<td>西鸽酒庄</td>
-<td style="text-align:right">2.84</td>
-<td style="text-align:right">0.63</td></tr>
-<tr><td><span class="rank-num ">12</span></td>
-<td>BRUTO WINES</td>
-<td style="text-align:right">2.6</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">13</span></td>
-<td>意大利Masi玛希酒庄</td>
-<td style="text-align:right">1.86</td>
-<td style="text-align:right">2.73</td></tr>
-<tr><td><span class="rank-num ">14</span></td>
-<td>圣醅罗1865</td>
-<td style="text-align:right">1.36</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">15</span></td>
-<td>黑猫GatoNegro</td>
-<td style="text-align:right">1.28</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">16</span></td>
-<td>木桐嘉棣 Mouton Cadet</td>
-<td style="text-align:right">0.44</td>
-<td style="text-align:right">3.11</td></tr>
-<tr><td><span class="rank-num ">17</span></td>
-<td>百浪启醴</td>
-<td style="text-align:right">0.3</td>
-<td style="text-align:right">1.8</td></tr>
-<tr><td><span class="rank-num ">18</span></td>
-<td>Ca\' del Bosco 泊诗柯</td>
-<td style="text-align:right">0.21</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">19</span></td>
-<td>西鸽酒庄・品酒小札</td>
-<td style="text-align:right">0.2</td>
-<td style="text-align:right">1.26</td></tr>
-<tr><td><span class="rank-num ">20</span></td>
-<td>长和翡翠</td>
-<td style="text-align:right">0.05</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">21</span></td>
-<td>CloudyBay云雾之湾</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">22</span></td>
-<td>迈思特澳洲联盟</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">23</span></td>
-<td>荒原朝暮</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">24</span></td>
-<td>黄尾袋鼠</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-</tbody></table></div>
-<div class="track-link">→ 查看完整 <a href="grape-dashboard.html">葡萄酒赛道看板</a></div>
-</div>
-<!-- TAB: 洋酒 -->
-<div id="tab-spirits" class="tab-pane" style="display:none">
-<div class="section-title">🥂 洋酒赛道 · YTD 概览 <small>2026-01-01 至 2026-04-24</small></div>
-<div class="kpi-grid mb28">
-<div class="kpi-card" style="border-color:rgba(255,255,255,.1)"><div class="kpi-label">硬广流水</div>
-<div class="kpi-value" style="color:#4F8EF7">992.27<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value">186.86<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value">805.29<span>w</span></div></div>
-<div class="kpi-card" style="border-color:rgba(255,214,10,.3)"><div class="kpi-label">🌼 蒲公英</div>
-<div class="kpi-value" style="color:#FFD60A">1172.22<span>w</span></div></div>
-<div class="kpi-card"><div class="kpi-label">搜索广告</div><div class="kpi-value">193.82<span>w</span></div></div>
-</div>
-<div class="charts-row mb28">
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">洋酒赛道收入结构</div>
-<div id="chart-spirits-pie" style="height:280px"></div></div>
-<div class="card"><div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">洋酒赛道客户 TOP10</div>
-<div id="chart-spirits-top10" style="height:280px"></div></div>
-</div>
-<div class="card mb28">
-<div style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:8px">洋酒赛道品牌明细</div>
-<table class="data-table"><thead><tr><th>排名</th><th>品牌</th><th style="text-align:right">硬广</th><th style="text-align:right">蒲公英</th></tr></thead>
-<tbody>
-<tr><td><span class="rank-num top1">1</span></td>
-<td>THE MACALLAN 麦卡伦</td>
-<td style="text-align:right">345.59</td>
-<td style="text-align:right">377.26</td></tr>
-<tr><td><span class="rank-num top2">2</span></td>
-<td>格兰菲迪</td>
-<td style="text-align:right">107.29</td>
-<td style="text-align:right">83.53</td></tr>
-<tr><td><span class="rank-num top3">3</span></td>
-<td>JimBeam金宾波本威士忌</td>
-<td style="text-align:right">86.52</td>
-<td style="text-align:right">85.12</td></tr>
-<tr><td><span class="rank-num ">4</span></td>
-<td>苏格登单一麦芽威士忌</td>
-<td style="text-align:right">68.12</td>
-<td style="text-align:right">37.94</td></tr>
-<tr><td><span class="rank-num ">5</span></td>
-<td>百利得单一调和威士忌</td>
-<td style="text-align:right">62.84</td>
-<td style="text-align:right">133.35</td></tr>
-<tr><td><span class="rank-num ">6</span></td>
-<td>尊尼获加 Johnnie Walker</td>
-<td style="text-align:right">58.13</td>
-<td style="text-align:right">33.77</td></tr>
-<tr><td><span class="rank-num ">7</span></td>
-<td>格兰威特单一麦芽威士忌</td>
-<td style="text-align:right">35.47</td>
-<td style="text-align:right">16.54</td></tr>
-<tr><td><span class="rank-num ">8</span></td>
-<td>Remy Martin人头马</td>
-<td style="text-align:right">30.82</td>
-<td style="text-align:right">93.79</td></tr>
-<tr><td><span class="rank-num ">9</span></td>
-<td>Don Julio  唐.胡里奥</td>
-<td style="text-align:right">25.82</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">10</span></td>
-<td>Bacardi百加得</td>
-<td style="text-align:right">25.03</td>
-<td style="text-align:right">11.77</td></tr>
-<tr><td><span class="rank-num ">11</span></td>
-<td>马爹利MARTELL</td>
-<td style="text-align:right">20.49</td>
-<td style="text-align:right">8.01</td></tr>
-<tr><td><span class="rank-num ">12</span></td>
-<td>TALISKER泰斯卡</td>
-<td style="text-align:right">18.67</td>
-<td style="text-align:right">12.91</td></tr>
-<tr><td><span class="rank-num ">13</span></td>
-<td>THE BALVENIE苏格兰百富</td>
-<td style="text-align:right">17.99</td>
-<td style="text-align:right">42.92</td></tr>
-<tr><td><span class="rank-num ">14</span></td>
-<td>叠川 THE CHUAN</td>
-<td style="text-align:right">15.88</td>
-<td style="text-align:right">44.29</td></tr>
-<tr><td><span class="rank-num ">15</span></td>
-<td>百瑞卡baraka</td>
-<td style="text-align:right">9.48</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">16</span></td>
-<td>WILDMOOR远慕威士忌</td>
-<td style="text-align:right">7.81</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">17</span></td>
-<td>Smirnoff 斯米诺伏特加</td>
-<td style="text-align:right">7.69</td>
-<td style="text-align:right">2.2</td></tr>
-<tr><td><span class="rank-num ">18</span></td>
-<td>SKYY深蓝伏特加</td>
-<td style="text-align:right">6.91</td>
-<td style="text-align:right">9.21</td></tr>
-<tr><td><span class="rank-num ">19</span></td>
-<td>路易十三LOUISXIII</td>
-<td style="text-align:right">6.78</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">20</span></td>
-<td>BACARDI 百加得</td>
-<td style="text-align:right">6.59</td>
-<td style="text-align:right">1.58</td></tr>
-<tr><td><span class="rank-num ">21</span></td>
-<td>芝华士CHIVAS</td>
-<td style="text-align:right">5.43</td>
-<td style="text-align:right">4.51</td></tr>
-<tr><td><span class="rank-num ">22</span></td>
-<td>高原骑士HighlandPark</td>
-<td style="text-align:right">4.42</td>
-<td style="text-align:right">56.94</td></tr>
-<tr><td><span class="rank-num ">23</span></td>
-<td>亨利爵士金酒</td>
-<td style="text-align:right">4.12</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">24</span></td>
-<td>轩尼诗Hennessy</td>
-<td style="text-align:right">2.8</td>
-<td style="text-align:right">42.01</td></tr>
-<tr><td><span class="rank-num ">25</span></td>
-<td>三得利世家</td>
-<td style="text-align:right">2.58</td>
-<td style="text-align:right">52.9</td></tr>
-<tr><td><span class="rank-num ">26</span></td>
-<td>CODIGO 秘曜龙舌兰</td>
-<td style="text-align:right">1.95</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">27</span></td>
-<td>绝对伏特加中国</td>
-<td style="text-align:right">1.77</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">28</span></td>
-<td>阿佩罗橙光</td>
-<td style="text-align:right">1.55</td>
-<td style="text-align:right">6.24</td></tr>
-<tr><td><span class="rank-num ">29</span></td>
-<td>三得利角瓶</td>
-<td style="text-align:right">1.52</td>
-<td style="text-align:right">12.31</td></tr>
-<tr><td><span class="rank-num ">30</span></td>
-<td>三只猴子 Monkey Shoulder</td>
-<td style="text-align:right">1.26</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">31</span></td>
-<td>帝亚吉欧会客厅</td>
-<td style="text-align:right">0.86</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">32</span></td>
-<td>Tanqueray 添加利金酒</td>
-<td style="text-align:right">0.1</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">33</span></td>
-<td>崃州烈酒</td>
-<td style="text-align:right">0.01</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">34</span></td>
-<td>杰克丹尼威士忌</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">3.13</td></tr>
-<tr><td><span class="rank-num ">35</span></td>
-<td>LAPHROAIG拉弗格</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">36</span></td>
-<td>宝树行</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">37</span></td>
-<td>君度橙酒</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-<tr><td><span class="rank-num ">38</span></td>
-<td>马爹利名士</td>
-<td style="text-align:right">0.0</td>
-<td style="text-align:right">0.0</td></tr>
-</tbody></table></div>
-<div class="track-link">→ 查看完整 <a href="spirits-dashboard.html">洋酒赛道看板</a></div>
+<div class="tab-panel" id="panel-5">
+<div class="content">
+  <div class="section-back"><a class="ext-link" href="lowdegree-dashboard.html">→ 打开完整版看板</a></div>
+  <div class="section-title">低度酒 YTD 概览</div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">硬广总消耗</div><div class="kpi-value" style="color:#C77DFF">285.07<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">品牌广告</div><div class="kpi-value" style="color:#C77DFF">8.70<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">竞价广告</div><div class="kpi-value" style="color:#C77DFF">273.93<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">蒲公英</div><div class="kpi-value" style="color:#FFD60A">389.82<span>w</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标完成率</div><div class="kpi-value" style="color:#C77DFF">28.5<span>%</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">年度目标</div><div class="kpi-value" style="color:rgba(255,255,255,.4)">1000<span>w</span></div></div>
+  </div>
+  <div class="card"><div class="section-title" style="margin-top:0">客户排行榜 TOP15（YTD硬广）</div><div class="hbar-row"><div class="hbar-label">RIO锐澳鸡尾酒</div><div class="hbar-track"><div class="hbar-fill" style="width:100.0%;background:#C77DFF"></div></div><div class="hbar-val">122.41w</div></div><div class="hbar-row"><div class="hbar-label">RIO轻享</div><div class="hbar-track"><div class="hbar-fill" style="width:46.2%;background:#C77DFF"></div></div><div class="hbar-val">56.50w</div></div><div class="hbar-row"><div class="hbar-label">RIO强爽</div><div class="hbar-track"><div class="hbar-fill" style="width:28.6%;background:#C77DFF"></div></div><div class="hbar-val">34.99w</div></div><div class="hbar-row"><div class="hbar-label">果立方</div><div class="hbar-track"><div class="hbar-fill" style="width:12.9%;background:#C77DFF"></div></div><div class="hbar-val">15.83w</div></div><div class="hbar-row"><div class="hbar-label">009酃酃酒</div><div class="hbar-track"><div class="hbar-fill" style="width:10.5%;background:#C77DFF"></div></div><div class="hbar-val">12.90w</div></div><div class="hbar-row"><div class="hbar-label">三得利梅酒</div><div class="hbar-track"><div class="hbar-fill" style="width:8.7%;background:#C77DFF"></div></div><div class="hbar-val">10.61w</div></div><div class="hbar-row"><div class="hbar-label">梅见</div><div class="hbar-track"><div class="hbar-fill" style="width:8.3%;background:#C77DFF"></div></div><div class="hbar-val">10.15w</div></div><div class="hbar-row"><div class="hbar-label">RIO清爽</div><div class="hbar-track"><div class="hbar-fill" style="width:6.4%;background:#C77DFF"></div></div><div class="hbar-val">7.85w</div></div><div class="hbar-row"><div class="hbar-label">时光梅酒</div><div class="hbar-track"><div class="hbar-fill" style="width:4.9%;background:#C77DFF"></div></div><div class="hbar-val">6.04w</div></div><div class="hbar-row"><div class="hbar-label">TEMPT诱惑果酒</div><div class="hbar-track"><div class="hbar-fill" style="width:2.2%;background:#C77DFF"></div></div><div class="hbar-val">2.74w</div></div><div class="hbar-row"><div class="hbar-label">三得利和乐怡HORO</div><div class="hbar-track"><div class="hbar-fill" style="width:2.2%;background:#C77DFF"></div></div><div class="hbar-val">2.64w</div></div><div class="hbar-row"><div class="hbar-label">椿山晓</div><div class="hbar-track"><div class="hbar-fill" style="width:1.3%;background:#C77DFF"></div></div><div class="hbar-val">1.59w</div></div><div class="hbar-row"><div class="hbar-label">动力火车潮饮酒</div><div class="hbar-track"><div class="hbar-fill" style="width:0.6%;background:#C77DFF"></div></div><div class="hbar-val">0.70w</div></div><div class="hbar-row"><div class="hbar-label">小酒岛JIUDAO</div><div class="hbar-track"><div class="hbar-fill" style="width:0.0%;background:#C77DFF"></div></div><div class="hbar-val">0.06w</div></div><div class="hbar-row"><div class="hbar-label">新魂烧酒</div><div class="hbar-track"><div class="hbar-fill" style="width:0.0%;background:#C77DFF"></div></div><div class="hbar-val">0.04w</div></div></div>
 </div>
 </div>
 <script>
-var TRACKS=[
-  {name:'白酒',key:'baijiu',emoji:'🥃',color:'#FF2442',adv:796.81,brand:307.19,cpc:487.53,pub:862.32,search:104.68,lead:123.08},
-  {name:'啤酒',key:'beer',emoji:'🍺',color:'#FFD60A',adv:1227.47,brand:701.17,cpc:526.29,pub:1175.01,search:109.65,lead:0.86},
-  {name:'低度酒',key:'low',emoji:'🍹',color:'#00E5A0',adv:285.07,brand:8.7,cpc:273.93,pub:389.82,search:35.97,lead:0.0},
-  {name:'葡萄酒',key:'grape',emoji:'🍷',color:'#A855F7',adv:397.57,brand:39.83,cpc:357.74,pub:215.06,search:24.1,lead:3.92},
-  {name:'洋酒',key:'spirits',emoji:'🥂',color:'#4F8EF7',adv:992.27,brand:186.86,cpc:805.29,pub:1172.22,search:193.82,lead:3.16},
-];
-var TRACK_BRANDS={
-  baijiu:[
-  ],
-  beer:[
-    {name:'喜力啤酒',adv:561.9,pub:90.68},
-    {name:'青岛啤酒',adv:157.12,pub:197.67},
-    {name:'青岛啤酒白啤',adv:88.35,pub:190.94},
-    {name:'雪花啤酒勇闯天涯',adv:67.27,pub:160.96},
-    {name:'Amstel红爵啤酒',adv:66.14,pub:0.0},
-    {name:'corona科罗娜',adv:65.52,pub:65.67},
-    {name:'Kronenbourg 1664啤酒',adv:39.5,pub:173.17},
-    {name:'黑狮LOWEN',adv:35.17,pub:33.29},
-    {name:'新零无酒精',adv:24.14,pub:26.34},
-    {name:'尹记鸿运啤酒屋',adv:20.26,pub:10.16},
-  ],
-  low:[
-    {name:'RIO锐澳鸡尾酒',adv:122.41,pub:93.84},
-    {name:'RIO轻享',adv:56.5,pub:66.13},
-    {name:'RIO强爽',adv:34.99,pub:94.33},
-    {name:'果立方',adv:15.83,pub:23.54},
-    {name:'009酃酃酒',adv:12.9,pub:3.57},
-    {name:'三得利梅酒',adv:10.61,pub:0.0},
-    {name:'梅见',adv:10.15,pub:49.36},
-    {name:'RIO清爽',adv:7.85,pub:27.02},
-    {name:'时光梅酒',adv:6.04,pub:12.53},
-    {name:'TEMPT诱惑果酒',adv:2.74,pub:6.3},
-  ],
-  grape:[
-    {name:'Penfolds奔富',adv:256.09,pub:138.25},
-    {name:'酒類美術館Wine Gallery',adv:38.09,pub:0.0},
-    {name:'侍酒猫SommCat',adv:29.65,pub:0.06},
-    {name:'疆进酒少庄主精选葡萄酒',adv:17.66,pub:0.0},
-    {name:'长尾猫',adv:17.03,pub:31.97},
-    {name:'VSPT葡萄酒',adv:7.15,pub:8.18},
-    {name:'美贺庄园',adv:6.55,pub:4.07},
-    {name:'KWV',adv:6.3,pub:19.52},
-    {name:'SOGOOD蛮好',adv:5.06,pub:0.0},
-    {name:'蚝湾 Oyster Bay',adv:2.84,pub:3.49},
-  ],
-  spirits:[
-    {name:'THE MACALLAN 麦卡伦',adv:345.59,pub:377.26},
-    {name:'格兰菲迪',adv:107.29,pub:83.53},
-    {name:'JimBeam金宾波本威士忌',adv:86.52,pub:85.12},
-    {name:'苏格登单一麦芽威士忌',adv:68.12,pub:37.94},
-    {name:'百利得单一调和威士忌',adv:62.84,pub:133.35},
-    {name:'尊尼获加 Johnnie Walker',adv:58.13,pub:33.77},
-    {name:'格兰威特单一麦芽威士忌',adv:35.47,pub:16.54},
-    {name:'Remy Martin人头马',adv:30.82,pub:93.79},
-    {name:'Don Julio  唐.胡里奥',adv:25.82,pub:0.0},
-    {name:'Bacardi百加得',adv:25.03,pub:11.77},
-  ],
-};
-
-var COLORS={red:'#FF2442',gold:'#FFD60A',blue:'#4F8EF7',green:'#00E5A0',orange:'#FF9500',purple:'#A855F7',textSub:'rgba(255,255,255,.5)',text:'rgba(255,255,255,.9)',bg:'#0f1117'};
-var baseTextStyle={color:COLORS.textSub,fontSize:12,fontFamily:"PingFang SC",sans-serif:""};
-
-function switchTab(name, el) {
+function switchTab(i, el){
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
-  document.querySelectorAll('.tab-pane').forEach(function(p){p.style.display='none';});
-  if(el) el.classList.add('active');
-  var pane=document.getElementById('tab-'+name);
-  if(pane) pane.style.display='block';
-  setTimeout(function(){initTabCharts(name);},50);
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  el.classList.add('active');
+  document.getElementById('panel-'+i).classList.add('active');
+  if(i===0 && !window._compareInited){ initCompareChart(); window._compareInited=true; }
 }
-
-var initTabs={};
-function initTabCharts(name){
-  if(initTabs[name]) return;
-  initTabs[name]=true;
-  if(name==='overview') initOverviewCharts();
-  initTrackCharts(name);
-}
-
-function initOverviewCharts(){
-  var barEl=document.getElementById('chart-track-compare');
-  if(!barEl) return;
-  var bar=echarts.init(barEl);
-  bar.setOption({
+function initCompareChart(){
+  var dom=document.getElementById('compareChart');
+  if(!dom)return;
+  var chart=echarts.init(dom);
+  chart.setOption({
     backgroundColor:'transparent',
-    tooltip:{trigger:'axis',backgroundColor:'rgba(15,17,23,.95)',borderColor:'rgba(255,255,255,.1)',textStyle:{color:COLORS.text}},
-    legend:{data:['硬广','蒲公英'],textStyle:{color:COLORS.textSub,fontSize:12},top:0},
-    grid:{left:80,right:20,top:40,bottom:20,containLabel:false},
-    xAxis:{type:'value',axisLabel:{color:COLORS.textSub,fontSize:12,formatter:function(v){return v+'w'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
-    yAxis:{type:'category',data:TRACKS.map(function(t){return t.emoji+' '+t.name}),axisLabel:{color:COLORS.textSub,fontSize:12},axisTick:{show:false},axisLine:{show:false}},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12}},
+    legend:{data:['硬广流水','蒲公英流水'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4},
+    grid:{left:60,right:24,top:40,bottom:50},
+    xAxis:{type:'category',data:['白酒', '啤酒', '洋酒', '葡萄酒', '低度酒'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
-      {name:'硬广',type:'bar',data:TRACKS.map(function(t){return{value:t.adv,itemStyle:{color:t.color,borderRadius:[0,4,4,0]}}}),label:{show:true,position:'right',formatter:'{c}w',color:COLORS.text,fontSize:11}},
-      {name:'蒲公英',type:'bar',data:TRACKS.map(function(t){return{value:t.pub,itemStyle:{color:t.color,opacity:.5,borderRadius:[0,4,4,0]}}}),label:{show:true,position:'right',formatter:'{c}w',color:COLORS.textSub,fontSize:11}}
+      {name:'硬广流水',type:'bar',data:[796.81, 1227.47, 992.27, 397.57, 285.07],itemStyle:{color:function(p){var cs=['#FF2442', '#F5A623', '#B8860B', '#9B2335', '#C77DFF'];return cs[p.dataIndex];}},barMaxWidth:44,
+        label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(1)+'w';},color:'rgba(255,255,255,.8)',fontSize:11}},
+      {name:'蒲公英流水',type:'bar',data:[862.32, 1175.01, 1172.22, 215.06, 389.82],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:28,barGap:'30%'}
     ]
   });
-
-  var pieEl=document.getElementById('chart-all-pie');
-  if(pieEl){
-    var pie=echarts.init(pieEl);
-    pie.setOption({
-      backgroundColor:'transparent',
-      tooltip:{trigger:'item',backgroundColor:'rgba(15,17,23,.95)',borderColor:'rgba(255,255,255,.1)',textStyle:{color:COLORS.text}},
-      legend:{data:TRACKS.map(function(t){return t.name}),textStyle:{color:COLORS.textSub,fontSize:12},bottom:0},
-      graphic:[
-        {type:'text',left:'center',top:'42%',style:{text:'硬广合计',fill:COLORS.textSub,fontSize:12}},
-        {type:'text',left:'center',top:'50%',style:{text:'3699.19w',fill:COLORS.red,fontSize:18,fontWeight:'bold',fontFamily:'SF Mono'}}
-      ],
-      series:[
-        {name:'硬广',type:'pie',radius:['28%','48%'],center:['50%','48%'],
-         data:TRACKS.map(function(t){return{name:t.name,value:t.adv,itemStyle:{color:t.color}}}),label:{show:false},emphasis:{scale:true,scaleSize:6}},
-        {name:'蒲公英',type:'pie',radius:['52%','68%'],center:['50%','48%'],
-         data:TRACKS.map(function(t){return{name:t.name,value:t.pub,itemStyle:{color:t.color,opacity:.6}}}),label:{show:false},emphasis:{scale:true,scaleSize:4}}
-      ]
-    });
-  }
-
-  var radarEl=document.getElementById('chart-radar');
-  if(!radarEl) return;
-  var radar=echarts.init(radarEl);
-  var advMax=Math.max.apply(null,TRACKS.map(function(t){return t.adv}));
-  var pubMax=Math.max.apply(null,TRACKS.map(function(t){return t.pub}));
-  radar.setOption({
-    backgroundColor:'transparent',
-    tooltip:{trigger:'item',backgroundColor:'rgba(15,17,23,.95)',borderColor:'rgba(255,255,255,.1)',textStyle:{color:COLORS.text}},
-    legend:{data:TRACKS.map(function(t){return t.name}),textStyle:{color:COLORS.textSub,fontSize:12},bottom:0,icon:'circle'},
-    radar:{
-      indicator:[{name:'硬广规模',max:100},{name:'蒲公英规模',max:100},{name:'搜索占比',max:100},{name:'竞价占比',max:100},{name:'线索转化',max:100}],
-      center:['50%','48%'],radius:'58%',axisName:{color:COLORS.textSub,fontSize:12},
-      splitLine:{lineStyle:{color:'rgba(255,255,255,.08)'}},splitArea:{areaStyle:{color:['rgba(255,255,255,.01)','rgba(255,255,255,.02)']}},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}
-    },
-    series:[{type:'radar',data:TRACKS.map(function(t){
-      return{name:t.name,value:[+(t.adv/advMax*100).toFixed(0),+(t.pub/pubMax*100).toFixed(0),t.adv>0?+(t.search/t.adv*100).toFixed(1):0,t.adv>0?+(t.cpc/t.adv*100).toFixed(0):0,t.lead>0?30:5],
-        lineStyle:{color:t.color,width:2},itemStyle:{color:t.color},areaStyle:{color:t.color,opacity:.1}};
-    })}]
-  });
+  window.addEventListener('resize',function(){chart.resize();});
 }
-
-function initTrackCharts(key){
-  var track=TRACKS.find(function(t){return t.key===key;});
-  if(!track) return;
-  var pieEl=document.getElementById('chart-'+key+'-pie');
-  if(pieEl){
-    var pie=echarts.init(pieEl);
-    pie.setOption({
-      backgroundColor:'transparent',
-      tooltip:{trigger:'item',backgroundColor:'rgba(15,17,23,.95)',borderColor:'rgba(255,255,255,.1)',textStyle:{color:COLORS.text}},
-      legend:{data:['硬广','品牌广告','竞价广告','蒲公英','搜索'],textStyle:{color:COLORS.textSub,fontSize:12},bottom:0},
-      series:[{type:'pie',radius:['35%','65%'],center:['50%','50%'],
-        data:[{name:'硬广',value:track.adv,itemStyle:{color:track.color}},{name:'品牌广告',value:track.brand,itemStyle:{color:COLORS.blue}},
-              {name:'竞价广告',value:track.cpc,itemStyle:{color:COLORS.orange}},{name:'蒲公英',value:track.pub,itemStyle:{color:COLORS.gold}},
-              {name:'搜索',value:track.search,itemStyle:{color:COLORS.green}}],
-        label:{show:true,formatter:'{b}\\n{d}%',color:COLORS.textSub,fontSize:11},emphasis:{scale:true,scaleSize:4}}]
-    });
-  }
-  var topEl=document.getElementById('chart-'+key+'-top10');
-  var brands=TRACK_BRANDS[key];
-  if(topEl&&brands){
-    var top=echarts.init(topEl);
-    var names=brands.map(function(b){return b.name}).reverse();
-    var vals=brands.map(function(b){return b.adv}).reverse();
-    top.setOption({
-      backgroundColor:'transparent',
-      tooltip:{trigger:'axis',backgroundColor:'rgba(15,17,23,.95)',borderColor:'rgba(255,255,255,.1)',textStyle:{color:COLORS.text},formatter:function(p){return p[0].name+': <b>'+p[0].value+'w</b>'}},
-      grid:{left:16,right:80,top:8,bottom:8,containLabel:true},
-      xAxis:{type:'value',axisLabel:{color:COLORS.textSub,fontSize:12,formatter:function(v){return v+'w'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
-      yAxis:{type:'category',data:names,axisLabel:{color:COLORS.textSub,fontSize:12},axisTick:{show:false},axisLine:{show:false}},
-      series:[{type:'bar',data:vals.map(function(v,i){return{value:v,itemStyle:{color:i===vals.length-1?track.color:track.color+'88',borderRadius:[0,4,4,0]}}}),
-        label:{show:true,position:'right',formatter:'{c}w',color:COLORS.text,fontSize:11},barMaxWidth:18}]
-    });
-  }
-}
-
-window.addEventListener('resize',function(){
-  document.querySelectorAll('[id^="chart-"]').forEach(function(el){
-    var inst=echarts.getInstanceByDom(el);
-    if(inst) inst.resize();
-  });
-});
-document.addEventListener('DOMContentLoaded',function(){initTabCharts('overview');});
-<\/script>
+window.addEventListener('load',function(){initCompareChart();window._compareInited=true;});
+</script>
 </body>
 </html>

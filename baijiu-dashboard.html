@@ -191,10 +191,10 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
   <div class="target-layout">
     <div style="text-align:center">
       <div id="targetChart" style="width:260px;height:260px;margin:0 auto"></div>
-      <div style="margin-top:10px">
+      <div id="monthly-target-info" style="margin-top:10px">
         <div style="font-size:13px;color:rgba(255,255,255,.5)">月均速率</div>
         <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF9500">234.18w / 月</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span style="color:#FF2442;font-weight:600">11.7%</span>，淡季阶段</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">13.3%</span>，淡季阶段</div>
         <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px">旺季（中秋）发力预计达 75%</div>
       </div>
     </div>
@@ -279,8 +279,9 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
   <div class="mom-note">4月（1-24日）硬广环比3月▼ -18.3%。舍得/郎酒集中投放拉动蒲公英大幅回升，竞价端▼ -7.2%基本持平。蒲公英环比▼ -5.1%，仍是赛道主力收入。</div>
   </div>
 </div>
-<div class="section-title" id="sec-insight">📊 智能洞察</div>
-<div class="insight-grid mb28">
+<div class="section-title" id="sec-insight">📊 智能洞察 <small id="insight-period-label" style="font-size:12px;color:rgba(255,255,255,.4)">YTD总览</small></div>
+<div id="monthly-full-insight-container"></div>
+<div class="insight-grid mb28" id="insight-grid-main">
   <div class="insight-card">
     <h3>📈 涨跌分析 &amp; 停投风险</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
@@ -377,7 +378,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
   </div>
 </div>
 <div style="margin-bottom:28px"></div>
-<div class="section-title" id="sec-rank">客户排行榜 <small>YTD 广告流水降序</small><span id="table-tab-note" style="font-size:11px;color:rgba(255,149,0,.7);font-weight:400;margin-left:8px"></span></div>
+<div class="section-title" id="sec-rank">客户排行榜 <small id="rank-period-label">YTD 硬广流水降序</small><span id="table-tab-note" style="font-size:11px;color:rgba(255,149,0,.7);font-weight:400;margin-left:8px"></span></div>
 <div class="card mb28">
   <div class="filter-bar">
     <button class="filter-btn active" onclick="filterRank('all',this)">全部</button>
@@ -448,7 +449,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </div>
 <div class="section-title" id="sec-kfs">📊 KFS健康度 &amp; 蒲公英转化</div>
 <div class="card mb28">
-  <div style="background:rgba(255,214,10,.06);border:1px solid rgba(255,214,10,.2);border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+  <div id="kfs-pub-conv" style="background:rgba(255,214,10,.06);border:1px solid rgba(255,214,10,.2);border-radius:10px;padding:14px 18px;margin-bottom:18px;">
     <div style="font-size:13px;font-weight:600;color:#FFD60A;margin-bottom:8px;">🌸 蒲公英→硬广转化机会</div>
     <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;">
       以下品牌有蒲公英投放但<b>硬广极低或为零</b>，是降K转硬广的核心潜力池：
@@ -672,11 +673,16 @@ function switchTab(t){
   renderMonthlyTable(t);
   renderMonthlyMomWarning(t);
   renderMonthlyKWarning(t);
+  renderMonthlyKFS(t);
+  renderTargetProgress(t);
+  renderMonthlyFullInsight(t);
   if(t==='M1')renderWeekChart('1');
   else if(t==='M2')renderWeekChart('2');
   else if(t==='M3')renderWeekChart('3');
   else if(t==='M4')renderWeekChart('4');
   else renderWeekChart(null);
+  var rankLabel=document.getElementById('rank-period-label');
+  if(rankLabel)rankLabel.textContent=(t==='YTD')?'YTD 硬广流水降序':(TABS[t].label+'月 硬广流水降序');
   var tableNote=document.getElementById('table-tab-note');
   if(tableNote)tableNote.textContent=t==='YTD'?'':'（当前显示'+d.label+'月度数据）';
   var monthlyCard=document.getElementById('monthly-insight-card');
@@ -777,6 +783,58 @@ function renderTargetChart(){
   });
 }
 
+
+function renderTargetProgress(tab){
+  var ytdAdv=796.81, goal=6000;
+  var monthData={
+    YTD:{adv:796.81,label:'YTD（1-4月）',prev:null},
+    M1:{adv:297.16,label:'1月',prev:null},
+    M2:{adv:280.69,label:'2月',prev:297.16},
+    M3:{adv:120.53,label:'3月',prev:280.69},
+    M4:{adv:98.43,label:'4月（截至24日）',prev:120.53}
+  };
+  var d=monthData[tab]||monthData.YTD;
+  var ytdPct=(ytdAdv/goal*100).toFixed(1);
+  var monthPct=(d.adv/goal*100).toFixed(1);
+  var infoEl=document.getElementById('monthly-target-info');
+  var gaugeEl=document.getElementById('targetChart');
+  var progEl=document.getElementById('ytd-pct-label');
+  if(tab==='YTD'){
+    // 显示YTD完成率
+    if(progEl)progEl.textContent=ytdPct+'%';
+    if(gaugeEl)gaugeEl.style.display='';
+    if(infoEl){
+      infoEl.querySelector('div:nth-child(1)').textContent='月均速率';
+      infoEl.querySelector('div:nth-child(2)').textContent='234.18w / 月';
+      var sub=infoEl.querySelector('div:nth-child(3)');
+      if(sub){sub.innerHTML='当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">'+ytdPct+'%</span>，淡季阶段';}
+    }
+    if(targetChartInst){
+      targetChartInst.setOption({series:[{data:[{value:parseFloat(ytdPct)}]}]});
+    }
+    // YTD进度条
+    var pb=document.querySelector('#sec-target ~ .card .progress-fill, .target-layout .progress-fill');
+    if(pb)pb.style.width=ytdPct+'%';
+    return;
+  }
+  // 月度：显示当月 vs YTD
+  var mom=d.prev?((d.adv-d.prev)/d.prev*100).toFixed(1):null;
+  if(targetChartInst){
+    targetChartInst.setOption({series:[{
+      data:[{value:parseFloat(monthPct),detail:{formatter:monthPct+'%'}}],
+      title:{show:true,offsetCenter:[0,'45%']}
+    }]});
+  }
+  if(infoEl){
+    infoEl.innerHTML=
+      '<div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:4px">'+d.label+'</div>'+
+      '<div style="font-size:26px;font-weight:700;font-family:\'SF Mono\',\'Menlo\',monospace;color:#FF9500">'+d.adv.toFixed(2)+'<span style="font-size:14px">w</span></div>'+
+      '<div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:6px">占年度目标 <span style="color:#FF2442;font-weight:600">'+monthPct+'%</span></div>'+
+      '<div style="font-size:12px;color:rgba(255,255,255,.5)">YTD累计进度 <span style="color:#FF9500;font-weight:600">'+ytdPct+'%</span></div>'+
+      (mom?'<div style="font-size:11px;margin-top:4px;color:'+(parseFloat(mom)>=0?'#00E5A0':'#FF2442')+'">环比上月 '+(parseFloat(mom)>=0?'↑+':'↓')+mom+'%</div>':'<div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px">年度首月，无环比</div>');
+  }
+}
+
 function renderQuadrant(){
   var dom=document.getElementById('quadrantChart');
   if(!quadChartInst)quadChartInst=echarts.init(dom);
@@ -806,14 +864,14 @@ function renderQuadrant(){
     series:[{type:'scatter',symbolSize:function(v){return Math.max(Math.sqrt(v[2])*4,10);},
       data:pts.map(function(d){return{name:d.name,value:[d.x,d.y,Math.max(d.b,0.3)],itemStyle:{color:d.c,opacity:.85},label:{show:true,formatter:d.name,color:'#eee',fontSize:11,position:'right'}};})}],
     graphic:[
-      {type:'rect',left:'8%',top:'8%',shape:{width:'39%',height:'40%'},style:{fill:'rgba(79,142,247,.07)'},silent:true,z:-2},
-      {type:'rect',left:'51%',top:'8%',shape:{width:'42%',height:'40%'},style:{fill:'rgba(0,229,160,.07)'},silent:true,z:-2},
-      {type:'rect',left:'8%',top:'52%',shape:{width:'39%',height:'38%'},style:{fill:'rgba(255,255,255,.03)'},silent:true,z:-2},
-      {type:'rect',left:'51%',top:'52%',shape:{width:'42%',height:'38%'},style:{fill:'rgba(255,149,0,.06)'},silent:true,z:-2},
-      {type:'text',left:'10%',top:'10%',style:{text:'💡 潜力客户',fill:'rgba(79,142,247,.55)',fontSize:11},silent:true},
-      {type:'text',left:'53%',top:'10%',style:{text:'⭐ 明星客户',fill:'rgba(0,229,160,.55)',fontSize:11},silent:true},
-      {type:'text',left:'10%',top:'54%',style:{text:'👁 观察名单',fill:'rgba(255,255,255,.3)',fontSize:11},silent:true},
-      {type:'text',left:'53%',top:'54%',style:{text:'💰 现金奶牛',fill:'rgba(255,149,0,.45)',fontSize:11},silent:true},
+      {type:'rect',left:'8%',top:'8%',shape:{width:'39%',height:'40%'},style:{fill:'rgba(79,142,247,.14)',stroke:'rgba(79,142,247,.3)',lineWidth:1},silent:true,z:-2},
+      {type:'rect',left:'51%',top:'8%',shape:{width:'42%',height:'40%'},style:{fill:'rgba(0,229,160,.14)',stroke:'rgba(0,229,160,.3)',lineWidth:1},silent:true,z:-2},
+      {type:'rect',left:'8%',top:'52%',shape:{width:'39%',height:'38%'},style:{fill:'rgba(120,120,140,.10)',stroke:'rgba(255,255,255,.12)',lineWidth:1},silent:true,z:-2},
+      {type:'rect',left:'51%',top:'52%',shape:{width:'42%',height:'38%'},style:{fill:'rgba(255,149,0,.12)',stroke:'rgba(255,149,0,.3)',lineWidth:1},silent:true,z:-2},
+      {type:'text',left:'10%',top:'10%',style:{text:'💡 潜力客户\n低流水·高增长',fill:'rgba(79,142,247,.85)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
+      {type:'text',left:'53%',top:'10%',style:{text:'⭐ 明星客户\n高流水·高增长',fill:'rgba(0,229,160,.85)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
+      {type:'text',left:'10%',top:'54%',style:{text:'👁 观察名单\n低流水·低增长',fill:'rgba(200,200,220,.6)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
+      {type:'text',left:'53%',top:'54%',style:{text:'💰 现金奶牛\n高流水·低增长',fill:'rgba(255,149,0,.8)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
     ]
   });
 }
@@ -856,6 +914,32 @@ function renderKFS(){
     var rem=100-d.K; var fCap=Math.min(d.F,rem); var sCap=Math.min(d.S,rem-fCap);
     return'<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%  F:'+d.F+'%  S:'+d.S+'%</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
   }).join('');
+}
+
+
+function renderMonthlyKFS(tab){
+  var container=document.getElementById('kfs-container');
+  if(!container)return;
+  if(tab==='YTD'){renderKFS();return;}
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands||!brands.length){renderKFS();return;}
+  // 从当月数据计算KFS比例
+  var withPub=brands.filter(function(b){return b.adv>0||b.pub>0;}).map(function(b){
+    var total=b.adv+b.pub;
+    var K=total>0?Math.round(b.pub/total*100):0;
+    var F=total>0&&b.adv>0?Math.round(b.search/b.adv*100):0;
+    var S=total>0&&b.adv>0?Math.round((b.lead||0)/b.adv*100):0;
+    var score=K>70?'⚠️ K过高':K>40?'🟡 待优化':F>30?'✅ 搜索强':'✅ 健康';
+    var sc=K>70?'#FF2442':K>40?'#FF9500':'#00E5A0';
+    return {brand:b.brand,K:K,F:Math.min(F,100-K),S:Math.min(S,100-K),score:score,sc:sc};
+  }).sort(function(a,b){return b.K-a.K;});
+  if(!withPub.length){container.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无投放数据</div>';return;}
+  container.innerHTML=withPub.map(function(d){
+    var rem=100-d.K;var fCap=Math.min(d.F,rem);var sCap=Math.min(d.S,rem-fCap);
+    return '<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%  F:'+d.F+'%  S:'+d.S+'%</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
+  }).join('');
+  // 同步更新蒲公英→硬广转化区域
+  var convEl=document.querySelector('#sec-kfs ~ .card .kfs-container');
 }
 
 function renderRankBars(filter){
@@ -1129,6 +1213,93 @@ function renderMonthlyKWarning(tab){
       '<div class="hbar-val">K占'+b.kPct+'% (蒲公英'+b.pub.toFixed(1)+'w)</div>'+
       '</div>';
   }).join('');
+}
+
+
+function renderMonthlyFullInsight(tab){
+  var labelEl=document.getElementById('insight-period-label');
+  var container=document.getElementById('monthly-full-insight-container');
+  var mainGrid=document.getElementById('insight-grid-main');
+  if(!container||!mainGrid)return;
+  var d=TABS[tab];
+  if(labelEl)labelEl.textContent=d?d.label:'YTD总览';
+  if(tab==='YTD'){
+    container.style.display='none';
+    mainGrid.style.display='';
+    return;
+  }
+  mainGrid.style.display='none';
+  container.style.display='';
+  var brands=MONTHLY_BRANDS[tab];
+  if(!brands||!brands.length){container.innerHTML='<div style="color:rgba(255,255,255,.4);padding:20px">当月暂无数据</div>';return;}
+  var prevTab={M2:'M1',M3:'M2',M4:'M3'}[tab];
+  var prevBrands=prevTab?MONTHLY_BRANDS[prevTab]:null;
+  // 涨跌分析：当月 vs 上月（如有）
+  var sorted=brands.slice().sort(function(a,b){return b.adv-a.adv;});
+  var topGrow=[],newB=[],stopB=[];
+  if(prevBrands){
+    var prevMap={};prevBrands.forEach(function(b){prevMap[b.brand]=b.adv;});
+    var growing=brands.filter(function(b){return b.adv>0&&prevMap[b.brand]>0;}).map(function(b){return{brand:b.brand,grow:(b.adv-prevMap[b.brand])/prevMap[b.brand]*100};}).sort(function(a,b){return b.grow-a.grow;});
+    topGrow=growing.slice(0,3);
+    newB=brands.filter(function(b){return b.adv>0&&!prevMap[b.brand];});
+    stopB=(prevBrands||[]).filter(function(b){return b.adv>0&&!brands.find(function(c){return c.brand===b.brand&&c.adv>0;});});
+  }else{
+    newB=brands.filter(function(b){return b.adv>0;}).slice(0,3);
+  }
+  // 搜索亮点
+  var searchTop=brands.slice().sort(function(a,b){return b.search-a.search;}).filter(function(b){return b.search>0;});
+  // 降K
+  var kWarning=brands.filter(function(b){return b.pub>0;}).map(function(b){return{brand:b.brand,kPct:Math.round(b.pub/(b.adv+b.pub)*100),adv:b.adv,pub:b.pub};}).sort(function(a,b){return b.kPct-a.kPct;});
+  var html='<div class="insight-grid mb28">';
+  // Card1: 涨跌分析
+  html+='<div class="insight-card"><h3>📈 涨跌分析 &amp; 停投风险</h3>';
+  html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px"><div>';
+  if(topGrow.length){
+    html+='<div style="font-size:12px;color:#00E5A0;font-weight:600;margin-bottom:6px">增长 TOP3（vs上月）</div>';
+    topGrow.forEach(function(b){html+='<div class="insight-row"><span class="insight-brand">'+b.brand+'</span><span style="font-size:13px;font-family:\'SF Mono\',\'Menlo\',monospace;color:#00E5A0">+'+(b.grow.toFixed(1))+'%</span></div>';});
+  }else{
+    html+='<div style="font-size:12px;color:#00E5A0;font-weight:600;margin-bottom:6px">当月 TOP3</div>';
+    sorted.slice(0,3).forEach(function(b){html+='<div class="insight-row"><span class="insight-brand">'+b.brand+'</span><span style="font-size:12px;color:#00E5A0">'+b.adv.toFixed(2)+'w</span></div>';});
+  }
+  html+='</div><div><div style="font-size:12px;color:#FF9500;font-weight:600;margin-bottom:6px">新入局</div>';
+  newB.slice(0,3).forEach(function(b){html+='<div class="insight-row"><span class="insight-brand">'+b.brand+'</span><span style="font-size:12px;color:#FF9500">🆕 '+b.adv.toFixed(2)+'w</span></div>';});
+  html+='</div></div>';
+  if(stopB.length){
+    html+='<div style="font-size:12px;color:#FF2442;font-weight:600;margin-bottom:8px">⚠️ 本月停投</div>';
+    stopB.slice(0,3).forEach(function(b){html+='<div class="stop-risk-item"><span class="stop-brand">'+b.brand+'</span><span class="stop-meta">上月 '+b.adv.toFixed(2)+'w | 本月 0w</span><span class="priority-high">需跟进</span></div>';});
+  }
+  html+='</div>';
+  // Card2: 降K专项（当月）
+  html+='<div class="insight-card"><h3>🌼 降K专项（当月）</h3>';
+  html+='<div class="hbar-container">';
+  if(kWarning.length){
+    kWarning.slice(0,8).forEach(function(b){
+      var c=b.kPct>70?'#FF2442':b.kPct>40?'#FF9500':'#00E5A0';
+      var w=b.kPct>70?'⚠️ 降K重点':b.kPct>40?'🟡 待关注':'✅ 健康';
+      html+='<div class="hbar-row"><div class="hbar-label">'+b.brand+'</div><div class="hbar-track"><div class="hbar-fill" style="width:'+Math.min(b.kPct,100)+'%;background:'+c+'"></div></div><div class="hbar-val" style="color:'+c+'">'+b.kPct+'%</div><div style="font-size:11px;min-width:90px;color:'+c+'">'+w+'</div></div>';
+    });
+  }else{html+='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无蒲公英投放</div>';}
+  html+='</div><div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,.35)">K&gt;70%=降K重点 | &gt;40%=待关注 | &lt;40%=健康</div></div>';
+  // Card3: 潜力客户（当月）
+  html+='<div class="insight-card"><h3>💡 当月投放亮点</h3>';
+  sorted.filter(function(b){return b.adv>0;}).slice(0,5).forEach(function(b,i){
+    var medals=['🥇','🥈','🥉','4️⃣','5️⃣'];
+    var kPct=b.pub>0?Math.round(b.pub/(b.adv+b.pub)*100):0;
+    html+='<div class="potential-item"><div class="potential-brand">'+medals[i]+' '+b.brand+' — '+b.adv.toFixed(2)+'w</div>'+
+      '<div class="potential-desc">品牌 '+b.brand_adv.toFixed(2)+'w | 竞价 '+b.cpc.toFixed(2)+'w | 蒲公英 '+b.pub.toFixed(2)+'w | K占'+kPct+'%</div></div>';
+  });
+  html+='</div>';
+  // Card4: 搜索亮点（当月）
+  html+='<div class="insight-card"><h3>🔍 搜索 &amp; 效果投放（当月）</h3>';
+  searchTop.slice(0,4).forEach(function(b){
+    var searchPct=b.adv>0?Math.round(b.search/b.adv*100):0;
+    html+='<div class="search-item"><div class="search-brand">'+b.brand+(searchPct>40?' 🔥':'')+'</div>'+
+      '<div class="search-desc">搜索消耗 '+b.search.toFixed(2)+'w，占广告流水 '+searchPct+'%</div></div>';
+  });
+  if(!searchTop.length)html+='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无搜索数据</div>';
+  html+='</div>';
+  html+='</div>';
+  container.innerHTML=html;
 }
 
 window.addEventListener('load',init);

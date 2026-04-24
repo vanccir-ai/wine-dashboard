@@ -13,8 +13,8 @@ body{background:#0d0f1a;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFo
 .back:hover{color:#fff;border-color:rgba(255,255,255,.25)}
 .topbar h1{font-size:17px;font-weight:700}
 .meta{font-size:11px;color:rgba(255,255,255,.3);margin-left:auto}
-.tabs{display:flex;gap:4px;padding:12px 28px 0;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02)}
-.tab{padding:7px 16px;border-radius:7px 7px 0 0;cursor:pointer;font-size:13px;color:rgba(255,255,255,.48);border:1px solid transparent;border-bottom:none;transition:.15s}
+.tabs{display:flex;gap:4px;padding:10px 28px 0;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);overflow-x:auto}
+.tab{padding:7px 16px;border-radius:7px 7px 0 0;cursor:pointer;font-size:12px;color:rgba(255,255,255,.48);border:1px solid transparent;border-bottom:none;transition:.15s;white-space:nowrap}
 .tab:hover{color:#fff;background:rgba(255,255,255,.05)}
 .tab.active{color:#fff;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
 .panel{display:none}.panel.active{display:block}
@@ -27,659 +27,1093 @@ body{background:#0d0f1a;color:#f0f0f0;font-family:-apple-system,BlinkMacSystemFo
   <div class="meta">数据截至 2026-04-24 | 单位：万元</div>
 </div>
 <div class="tabs"><div class="tab active" onclick="switchTab(0,this)">📊 全酒总览</div><div class="tab" onclick="switchTab(1,this)">🍶 白酒</div><div class="tab" onclick="switchTab(2,this)">🍺 啤酒</div><div class="tab" onclick="switchTab(3,this)">🥃 洋酒</div><div class="tab" onclick="switchTab(4,this)">🍷 葡萄酒</div><div class="tab" onclick="switchTab(5,this)">🍹 低度酒</div></div>
-<div class="panel  active" id="p0"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px"><div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道硬广合计</div><div style="font-size:26px;font-weight:700;font-family:monospace;color:#FF2442">3699.19<span style="font-size:13px;font-weight:400">w</span></div></div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px"><div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道蒲公英合计</div><div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">3814.43<span style="font-size:13px;font-weight:400">w</span></div></div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px"><div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">商业化总计</div><div style="font-size:26px;font-weight:700;font-family:monospace;color:#00E5A0">7513.62<span style="font-size:13px;font-weight:400">w</span></div></div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px"><div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">活跃品牌数</div><div style="font-size:26px;font-weight:700;font-family:monospace;color:#4F8EF7">116<span style="font-size:13px;font-weight:400">个</span></div></div>
+<div class="panel active" id="p0"><div style="padding:20px 28px">
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px">
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道 YTD 硬广</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF2442">3699.19<span style="font-size:12px;font-weight:400">w</span></div>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px"><a href="baijiu-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:20px">🍶</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">白酒</span></div>
-  <div style="font-size:24px;font-weight:700;font-family:monospace;color:#FF2442;margin-bottom:2px">796.81<span style="font-size:12px;font-weight:400">w</span></div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道 品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">1243.75<span style="font-size:12px;font-weight:400">w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道 竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">2452.87<span style="font-size:12px;font-weight:400">w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">五赛道 蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">3814.43<span style="font-size:12px;font-weight:400">w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">商业化总计</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#00E5A0">7513.62<span style="font-size:12px;font-weight:400">w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:4px">活跃品牌数</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#4F8EF7">116<span style="font-size:12px;font-weight:400">个</span></div>
+  </div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px"><a href="baijiu-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div style="display:flex;align-items:center;gap:7px"><span style="font-size:18px">🍶</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7)">白酒</span></div>
+    <span style="color:#ef4444;font-size:11px">▼ 24.0%</span>
+  </div>
+  <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF2442;margin-bottom:1px">796.81<span style="font-size:12px;font-weight:400">w</span></div>
   <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px">YTD硬广</div>
-  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 862.32w</div>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px">
+    <span>品牌 307.2w</span><span>竞价 489.6w</span>
+  </div>
+  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 862.32w <span style="color:#ef4444;font-size:11px">▼ 10.3%</span></div>
   <div style="background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:5px"><div style="width:13.3%;height:3px;border-radius:3px;background:#FF2442"></div></div>
-  <div style="font-size:11px;font-weight:600;color:#FF2442">13.3% <span style="color:rgba(255,255,255,.28);font-weight:400">/ 6000w</span></div>
-</a><a href="beer-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:20px">🍺</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">啤酒</span></div>
-  <div style="font-size:24px;font-weight:700;font-family:monospace;color:#F5A623;margin-bottom:2px">1227.47<span style="font-size:12px;font-weight:400">w</span></div>
+  <div style="font-size:10px;font-weight:600;color:#FF2442">13.3% <span style="color:rgba(255,255,255,.25);font-weight:400">/ 6000w</span></div>
+</a><a href="beer-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div style="display:flex;align-items:center;gap:7px"><span style="font-size:18px">🍺</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7)">啤酒</span></div>
+    <span style="color:#22c55e;font-size:11px">▲ 358.8%</span>
+  </div>
+  <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F5A623;margin-bottom:1px">1227.47<span style="font-size:12px;font-weight:400">w</span></div>
   <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px">YTD硬广</div>
-  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 1175.01w</div>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px">
+    <span>品牌 701.2w</span><span>竞价 526.3w</span>
+  </div>
+  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 1175.01w <span style="color:#22c55e;font-size:11px">▲ 98.1%</span></div>
   <div style="background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:5px"><div style="width:20.5%;height:3px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;font-weight:600;color:#F5A623">20.5% <span style="color:rgba(255,255,255,.28);font-weight:400">/ 6000w</span></div>
-</a><a href="spirits-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:20px">🥃</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">洋酒</span></div>
-  <div style="font-size:24px;font-weight:700;font-family:monospace;color:#D4A017;margin-bottom:2px">992.27<span style="font-size:12px;font-weight:400">w</span></div>
+  <div style="font-size:10px;font-weight:600;color:#F5A623">20.5% <span style="color:rgba(255,255,255,.25);font-weight:400">/ 6000w</span></div>
+</a><a href="spirits-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div style="display:flex;align-items:center;gap:7px"><span style="font-size:18px">🥃</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7)">洋酒</span></div>
+    <span style="color:#22c55e;font-size:11px">▲ 164.2%</span>
+  </div>
+  <div style="font-size:22px;font-weight:700;font-family:monospace;color:#D4A017;margin-bottom:1px">992.27<span style="font-size:12px;font-weight:400">w</span></div>
   <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px">YTD硬广</div>
-  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 1172.22w</div>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px">
+    <span>品牌 186.9w</span><span>竞价 805.3w</span>
+  </div>
+  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 1172.22w <span style="color:#22c55e;font-size:11px">▲ 184.5%</span></div>
   <div style="background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:5px"><div style="width:49.6%;height:3px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;font-weight:600;color:#D4A017">49.6% <span style="color:rgba(255,255,255,.28);font-weight:400">/ 2000w</span></div>
-</a><a href="grape-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:20px">🍷</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">葡萄酒</span></div>
-  <div style="font-size:24px;font-weight:700;font-family:monospace;color:#C0392B;margin-bottom:2px">397.57<span style="font-size:12px;font-weight:400">w</span></div>
+  <div style="font-size:10px;font-weight:600;color:#D4A017">49.6% <span style="color:rgba(255,255,255,.25);font-weight:400">/ 2000w</span></div>
+</a><a href="grape-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div style="display:flex;align-items:center;gap:7px"><span style="font-size:18px">🍷</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7)">葡萄酒</span></div>
+    <span style="color:#22c55e;font-size:11px">▲ 20.8%</span>
+  </div>
+  <div style="font-size:22px;font-weight:700;font-family:monospace;color:#C0392B;margin-bottom:1px">397.57<span style="font-size:12px;font-weight:400">w</span></div>
   <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px">YTD硬广</div>
-  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 215.06w</div>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px">
+    <span>品牌 39.8w</span><span>竞价 357.7w</span>
+  </div>
+  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 215.06w <span style="color:#22c55e;font-size:11px">▲ 29.3%</span></div>
   <div style="background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:5px"><div style="width:19.9%;height:3px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;font-weight:600;color:#C0392B">19.9% <span style="color:rgba(255,255,255,.28);font-weight:400">/ 2000w</span></div>
-</a><a href="lowdegree-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="font-size:20px">🍹</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,.7)">低度酒</span></div>
-  <div style="font-size:24px;font-weight:700;font-family:monospace;color:#A855F7;margin-bottom:2px">285.07<span style="font-size:12px;font-weight:400">w</span></div>
+  <div style="font-size:10px;font-weight:600;color:#C0392B">19.9% <span style="color:rgba(255,255,255,.25);font-weight:400">/ 2000w</span></div>
+</a><a href="lowdegree-dashboard.html" style="display:block;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-decoration:none;color:#fff;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <div style="display:flex;align-items:center;gap:7px"><span style="font-size:18px">🍹</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.7)">低度酒</span></div>
+    <span style="color:#22c55e;font-size:11px">▲ 6.1%</span>
+  </div>
+  <div style="font-size:22px;font-weight:700;font-family:monospace;color:#A855F7;margin-bottom:1px">285.07<span style="font-size:12px;font-weight:400">w</span></div>
   <div style="font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px">YTD硬广</div>
-  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 389.82w</div>
+  <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.45);margin-bottom:4px">
+    <span>品牌 8.7w</span><span>竞价 273.9w</span>
+  </div>
+  <div style="font-size:11px;color:#FFD60A;margin-bottom:8px">🌻 389.82w <span style="color:#22c55e;font-size:11px">▲ 125.4%</span></div>
   <div style="background:rgba(255,255,255,.06);border-radius:3px;height:3px;margin-bottom:5px"><div style="width:28.5%;height:3px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;font-weight:600;color:#A855F7">28.5% <span style="color:rgba(255,255,255,.28);font-weight:400">/ 1000w</span></div>
+  <div style="font-size:10px;font-weight:600;color:#A855F7">28.5% <span style="color:rgba(255,255,255,.25);font-weight:400">/ 1000w</span></div>
 </a></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
-      <div style="font-size:13px;font-weight:700;margin-bottom:12px">📊 赛道对比：硬广 vs 蒲公英</div>
-      <div id="compareChart" style="height:240px"></div>
-    </div>
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;max-height:360px;overflow-y:auto">
-      <div style="font-size:13px;font-weight:700;margin-bottom:12px">🥇 跨赛道品牌排行 TOP30</div>
-      <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+<div style="display:grid;grid-template-columns:3fr 2fr;gap:16px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px">📊 赛道对比（硬广 / 品牌广告 / 蒲公英）</div>
+    <div id="compareChart" style="height:260px"></div>
+  </div>
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;max-height:360px;overflow-y:auto">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px">🥇 跨赛道品牌排行 TOP30</div>
+    <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">1</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">喜力啤酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:100.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">561.90w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">2</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">五粮液</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:69.7%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">391.44w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">3</div>
-  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE MACALLAN 麦卡</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE MACALLAN 麦卡伦</div>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:61.5%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">345.59w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">4</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Penfolds奔富</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:40px;text-align:center">葡萄酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:38px;text-align:center">葡萄酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:45.6%;height:6px;border-radius:3px;background:#C0392B"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">256.09w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">5</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:28.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">157.12w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">6</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO锐澳鸡尾酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:40px;text-align:center">低度酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:38px;text-align:center">低度酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:21.8%;height:6px;border-radius:3px;background:#A855F7"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">122.41w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">7</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">泸州老窖</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:19.7%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">110.51w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">8</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰菲迪</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:19.1%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">107.29w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">9</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">甜掌柜/康得</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:17.8%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">100.22w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">10</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒白啤</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:15.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">88.35w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">11</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">JimBeam金宾波本威士忌</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:15.4%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">86.52w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">12</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苏格登单一麦芽威士忌</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:12.1%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">68.12w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">13</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雪花啤酒勇闯天涯</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:12.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">67.27w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">14</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">女儿红酱酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:12.0%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">67.25w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">15</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Amstel红爵啤酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.8%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">66.14w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">16</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">corona科罗娜</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">65.52w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">17</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百利得单一调和威士忌</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.2%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">62.84w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">18</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">舍得自在微醺club</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:10.5%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">59.15w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">19</div>
-  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尊尼获加 Johnnie Wa</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尊尼获加 Johnnie Wal</div>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:10.3%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">58.13w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">20</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO轻享</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:40px;text-align:center">低度酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:38px;text-align:center">低度酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:10.1%;height:6px;border-radius:3px;background:#A855F7"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">56.50w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">21</div>
-  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kronenbourg 166</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kronenbourg 1664</div>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:7.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">39.50w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">22</div>
-  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">酒類美術館Wine Galle</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:40px;text-align:center">葡萄酒</span>
+  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">酒類美術館Wine Galler</div>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:38px;text-align:center">葡萄酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.8%;height:6px;border-radius:3px;background:#C0392B"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">38.09w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">23</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰威特单一麦芽威士忌</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.3%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">35.47w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">24</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">黑狮LOWEN</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:40px;text-align:center">啤酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#F5A62322;color:#F5A623;border:1px solid #F5A62344;white-space:nowrap;min-width:38px;text-align:center">啤酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.3%;height:6px;border-radius:3px;background:#F5A623"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">35.17w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">25</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO强爽</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:40px;text-align:center">低度酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;white-space:nowrap;min-width:38px;text-align:center">低度酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.2%;height:6px;border-radius:3px;background:#A855F7"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">34.99w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">26</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Remy Martin人头马</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:5.5%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">30.82w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">27</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">侍酒猫SommCat</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:40px;text-align:center">葡萄酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#C0392B22;color:#C0392B;border:1px solid #C0392B44;white-space:nowrap;min-width:38px;text-align:center">葡萄酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:5.3%;height:6px;border-radius:3px;background:#C0392B"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">29.65w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">28</div>
-  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Don Julio  唐.胡里</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Don Julio  唐.胡里奥</div>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.6%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">25.82w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">29</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">郎酒</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:40px;text-align:center">白酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#FF244222;color:#FF2442;border:1px solid #FF244244;white-space:nowrap;min-width:38px;text-align:center">白酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.5%;height:6px;border-radius:3px;background:#FF2442"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">25.18w</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
   <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:22px;text-align:right">30</div>
   <div style="font-size:12px;min-width:130px;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bacardi百加得</div>
-  <span style="font-size:10px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:40px;text-align:center">洋酒</span>
+  <span style="font-size:9px;padding:1px 5px;border-radius:3px;background:#D4A01722;color:#D4A017;border:1px solid #D4A01744;white-space:nowrap;min-width:38px;text-align:center">洋酒</span>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.5%;height:6px;border-radius:3px;background:#D4A017"></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:58px;text-align:right;font-family:monospace">25.03w</div>
 </div>
-    </div>
   </div>
+</div>
 </div></div><div class="panel" id="p1"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD硬广流水</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FF2442">796.81<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD蒲公英</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">862.32<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标完成率</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FF2442">13.3<span style="font-size:13px;font-weight:400">%</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.35)">6000<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px">
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD硬广流水</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF2442">796.81<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 197.8%</span></div>
   </div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px">客户排行 TOP15（YTD硬广）</div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">307.19<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 655.9%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">489.62<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="font-size:10px;color:rgba(255,255,255,.3)">搜索104.7w 线索123.1w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">862.32<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 45.4%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标完成率</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF2442">13.3<span style="font-size:11px;font-weight:400">%</span></div>
+    <div style="background:rgba(255,255,255,.08);border-radius:3px;height:3px;margin-top:6px"><div style="width:13.3%;height:3px;border-radius:3px;background:#FF2442"></div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.3)">6000<span style="font-size:11px;font-weight:400">w</span></div>
+  </div>
+</div>
+<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px">月度趋势（硬广 / 品牌广告 / 蒲公英）</div>
+  <div id="barChart_白酒" style="height:220px"></div>
+  <script>
+  (function(){
+    var dom=document.getElementById('barChart_白酒');
+    if(!dom||dom._inited)return; dom._inited=true;
+    var c=echarts.init(dom);
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+      legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+      grid:{left:44,right:12,top:16,bottom:36},
+      xAxis:{type:'category',data:['1月','2月','3月','4月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
+      yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
+      series:[
+        {name:'硬广',type:'bar',data:[203.24, 557.44, 346.19, 120.58],barMaxWidth:24,itemStyle:{color:'#FF2442',opacity:.9},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+        {name:'品牌广告',type:'bar',data:[99.06, 378.22, 219.76, 4.13],barMaxWidth:16,itemStyle:{color:'#FF6B9D',opacity:.8}},
+        {name:'蒲公英',type:'bar',data:[343.32, 361.47, 332.77, 137.44],barMaxWidth:20,barGap:'40%',itemStyle:{color:'rgba(255,214,10,.5)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){c.resize();});
+  })();
+  </script>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:14px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:700">客户排行 TOP20（YTD硬广）</div>
+      <a href="baijiu-dashboard.html" style="font-size:11px;color:#4F8EF7;text-decoration:none">→ 完整版看板（含月度明细）</a>
+    </div>
     <div style="color:rgba(255,255,255,.3);font-size:12px">暂无数据</div>
   </div>
-  <a href="baijiu-dashboard.html" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;text-decoration:none;font-size:12px">→ 打开完整版白酒看板（含月度明细）</a>
+</div>
 </div></div><div class="panel" id="p2"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD硬广流水</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#F5A623">1227.47<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD蒲公英</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">1175.01<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标完成率</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#F5A623">20.5<span style="font-size:13px;font-weight:400">%</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.35)">6000<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px">
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD硬广流水</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F5A623">1227.47<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 358.8%</span></div>
   </div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px">客户排行 TOP15（YTD硬广）</div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">701.17<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 1625.3%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">526.29<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="font-size:10px;color:rgba(255,255,255,.3)">搜索109.7w 线索0.9w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">1175.01<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 98.1%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标完成率</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F5A623">20.5<span style="font-size:11px;font-weight:400">%</span></div>
+    <div style="background:rgba(255,255,255,.08);border-radius:3px;height:3px;margin-top:6px"><div style="width:20.5%;height:3px;border-radius:3px;background:#F5A623"></div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.3)">6000<span style="font-size:11px;font-weight:400">w</span></div>
+  </div>
+</div>
+<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px">月度趋势（硬广 / 品牌广告 / 蒲公英）</div>
+  <div id="barChart_啤酒" style="height:220px"></div>
+  <script>
+  (function(){
+    var dom=document.getElementById('barChart_啤酒');
+    if(!dom||dom._inited)return; dom._inited=true;
+    var c=echarts.init(dom);
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+      legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+      grid:{left:44,right:12,top:16,bottom:36},
+      xAxis:{type:'category',data:['1月','2月','3月','4月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
+      yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
+      series:[
+        {name:'硬广',type:'bar',data:[203.24, 557.44, 346.19, 120.58],barMaxWidth:24,itemStyle:{color:'#F5A623',opacity:.9},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+        {name:'品牌广告',type:'bar',data:[99.06, 378.22, 219.76, 4.13],barMaxWidth:16,itemStyle:{color:'#FF6B9D',opacity:.8}},
+        {name:'蒲公英',type:'bar',data:[343.32, 361.47, 332.77, 137.44],barMaxWidth:20,barGap:'40%',itemStyle:{color:'rgba(255,214,10,.5)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){c.resize();});
+  })();
+  </script>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:14px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:700">客户排行 TOP20（YTD硬广）</div>
+      <a href="beer-dashboard.html" style="font-size:11px;color:#4F8EF7;text-decoration:none">→ 完整版看板（含月度明细）</a>
+    </div>
     <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">1</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">喜力啤酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">1</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">喜力啤酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:100.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">561.90w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬561.9 蒲90.7w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">2</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">2</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:28.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">157.12w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬157.1 蒲197.7w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">3</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒白啤</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">3</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒白啤</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:15.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">88.35w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬88.3 蒲190.9w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">4</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雪花啤酒勇闯天涯</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">4</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">雪花啤酒勇闯天涯</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:12.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">67.27w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬67.3 蒲161.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">5</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Amstel红爵啤酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">5</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Amstel红爵啤酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.8%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">66.14w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬66.1 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">6</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">corona科罗娜</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">6</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">corona科罗娜</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">65.52w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬65.5 蒲65.7w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">7</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kronenbourg 16</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">7</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Kronenbourg 1664啤酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:7.0%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">39.50w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬39.5 蒲173.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">8</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">黑狮LOWEN</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">8</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">黑狮LOWEN</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.3%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">35.17w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬35.2 蒲33.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">9</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">新零无酒精</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">9</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">新零无酒精</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.3%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">24.14w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬24.1 蒲26.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">10</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尹记鸿运啤酒屋</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">10</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尹记鸿运啤酒屋</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:3.6%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">20.26w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬20.3 蒲10.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">11</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">海岛啤酒屋</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">11</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">海岛啤酒屋</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.9%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">16.05w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬16.1 蒲11.4w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">12</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">山海聚鲜啤酒屋</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">12</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">山海聚鲜啤酒屋</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.8%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">15.58w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬15.6 蒲6.4w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">13</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">风花雪月啤酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">13</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">风花雪月啤酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">15.38w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬15.4 蒲50.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">14</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">鲜啤福鹿家</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">14</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">鲜啤福鹿家</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.6%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">14.67w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬14.7 蒲21.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">15</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百威</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">15</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百威</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.1%;height:6px;border-radius:3px;background:#F5A623"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">12.07w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬12.1 蒲31.4w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">16</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">乐堡啤酒</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.2%;height:6px;border-radius:3px;background:#F5A623"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬7.0 蒲15.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">17</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">京A精酿啤酒</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.9%;height:6px;border-radius:3px;background:#F5A623"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬5.0 蒲24.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">18</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">AsahiSuperDry朝日啤酒</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.9%;height:6px;border-radius:3px;background:#F5A623"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬4.9 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">19</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">青岛啤酒新鲜直送</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬4.0 蒲9.9w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">20</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">大九酿造</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.7%;height:6px;border-radius:3px;background:#F5A623"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬3.8 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div>
   </div>
-  <a href="beer-dashboard.html" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;text-decoration:none;font-size:12px">→ 打开完整版啤酒看板（含月度明细）</a>
+</div>
 </div></div><div class="panel" id="p3"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD硬广流水</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#D4A017">992.27<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD蒲公英</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">1172.22<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标完成率</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#D4A017">49.6<span style="font-size:13px;font-weight:400">%</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.35)">2000<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px">
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD硬广流水</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#D4A017">992.27<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 164.2%</span></div>
   </div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px">客户排行 TOP15（YTD硬广）</div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">186.86<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 2151.3%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">805.29<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="font-size:10px;color:rgba(255,255,255,.3)">搜索193.8w 线索3.2w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">1172.22<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 184.5%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标完成率</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#D4A017">49.6<span style="font-size:11px;font-weight:400">%</span></div>
+    <div style="background:rgba(255,255,255,.08);border-radius:3px;height:3px;margin-top:6px"><div style="width:49.6%;height:3px;border-radius:3px;background:#D4A017"></div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.3)">2000<span style="font-size:11px;font-weight:400">w</span></div>
+  </div>
+</div>
+<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px">月度趋势（硬广 / 品牌广告 / 蒲公英）</div>
+  <div id="barChart_洋酒" style="height:220px"></div>
+  <script>
+  (function(){
+    var dom=document.getElementById('barChart_洋酒');
+    if(!dom||dom._inited)return; dom._inited=true;
+    var c=echarts.init(dom);
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+      legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+      grid:{left:44,right:12,top:16,bottom:36},
+      xAxis:{type:'category',data:['1月','2月','3月','4月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
+      yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
+      series:[
+        {name:'硬广',type:'bar',data:[207.18, 413.77, 286.0, 85.33],barMaxWidth:24,itemStyle:{color:'#D4A017',opacity:.9},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+        {name:'品牌广告',type:'bar',data:[20.94, 143.71, 14.14, 8.07],barMaxWidth:16,itemStyle:{color:'#FF6B9D',opacity:.8}},
+        {name:'蒲公英',type:'bar',data:[342.52, 398.6, 268.13, 162.96],barMaxWidth:20,barGap:'40%',itemStyle:{color:'rgba(255,214,10,.5)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){c.resize();});
+  })();
+  </script>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:14px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:700">客户排行 TOP20（YTD硬广）</div>
+      <a href="spirits-dashboard.html" style="font-size:11px;color:#4F8EF7;text-decoration:none">→ 完整版看板（含月度明细）</a>
+    </div>
     <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">1</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE MACALLAN 麦</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">1</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE MACALLAN 麦卡伦</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:100.0%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">345.59w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬345.6 蒲377.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">2</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰菲迪</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">2</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰菲迪</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:31.0%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">107.29w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬107.3 蒲83.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">3</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">JimBeam金宾波本威士忌</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">3</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">JimBeam金宾波本威士忌</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:25.0%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">86.52w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬86.5 蒲85.1w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">4</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苏格登单一麦芽威士忌</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">4</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">苏格登单一麦芽威士忌</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:19.7%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">68.12w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬68.1 蒲37.9w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">5</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百利得单一调和威士忌</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">5</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百利得单一调和威士忌</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:18.2%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">62.84w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬62.8 蒲133.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">6</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尊尼获加 Johnnie W</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">6</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">尊尼获加 Johnnie Walke</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:16.8%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">58.13w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬58.1 蒲33.8w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">7</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰威特单一麦芽威士忌</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">7</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">格兰威特单一麦芽威士忌</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:10.3%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">35.47w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬35.5 蒲16.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">8</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Remy Martin人头马</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">8</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Remy Martin人头马</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:8.9%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">30.82w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬30.8 蒲93.8w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">9</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Don Julio  唐.胡</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">9</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Don Julio  唐.胡里奥</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:7.5%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">25.82w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬25.8 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">10</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bacardi百加得</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">10</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bacardi百加得</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:7.2%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">25.03w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬25.0 蒲11.8w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">11</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">马爹利MARTELL</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">11</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">马爹利MARTELL</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:5.9%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">20.49w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬20.5 蒲8.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">12</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TALISKER泰斯卡</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">12</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TALISKER泰斯卡</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:5.4%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">18.67w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬18.7 蒲12.9w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">13</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE BALVENIE苏格</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">13</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">THE BALVENIE苏格兰百富</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:5.2%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">17.99w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬18.0 蒲42.9w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">14</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">叠川 THE CHUAN</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">14</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">叠川 THE CHUAN</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.6%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">15.88w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬15.9 蒲44.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">15</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百瑞卡baraka</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">15</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百瑞卡baraka</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.7%;height:6px;border-radius:3px;background:#D4A017"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">9.48w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬9.5 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">16</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">WILDMOOR远慕威士忌</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.3%;height:6px;border-radius:3px;background:#D4A017"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬7.8 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">17</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Smirnoff 斯米诺伏特加</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.2%;height:6px;border-radius:3px;background:#D4A017"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬7.7 蒲2.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">18</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SKYY深蓝伏特加</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.0%;height:6px;border-radius:3px;background:#D4A017"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.9 蒲9.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">19</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">路易十三LOUISXIII</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.0%;height:6px;border-radius:3px;background:#D4A017"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.8 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">20</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">BACARDI 百加得</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.9%;height:6px;border-radius:3px;background:#D4A017"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.6 蒲1.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div>
   </div>
-  <a href="spirits-dashboard.html" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;text-decoration:none;font-size:12px">→ 打开完整版洋酒看板（含月度明细）</a>
+</div>
 </div></div><div class="panel" id="p4"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD硬广流水</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#C0392B">397.57<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD蒲公英</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">215.06<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标完成率</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#C0392B">19.9<span style="font-size:13px;font-weight:400">%</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.35)">2000<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px">
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD硬广流水</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#C0392B">397.57<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 20.8%</span></div>
   </div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px">客户排行 TOP15（YTD硬广）</div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">39.83<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#ef4444;font-size:11px">▼ 73.3%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">357.74<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="font-size:10px;color:rgba(255,255,255,.3)">搜索24.1w 线索3.9w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">215.06<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 29.3%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标完成率</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#C0392B">19.9<span style="font-size:11px;font-weight:400">%</span></div>
+    <div style="background:rgba(255,255,255,.08);border-radius:3px;height:3px;margin-top:6px"><div style="width:19.9%;height:3px;border-radius:3px;background:#C0392B"></div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.3)">2000<span style="font-size:11px;font-weight:400">w</span></div>
+  </div>
+</div>
+<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px">月度趋势（硬广 / 品牌广告 / 蒲公英）</div>
+  <div id="barChart_葡萄酒" style="height:220px"></div>
+  <script>
+  (function(){
+    var dom=document.getElementById('barChart_葡萄酒');
+    if(!dom||dom._inited)return; dom._inited=true;
+    var c=echarts.init(dom);
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+      legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+      grid:{left:44,right:12,top:16,bottom:36},
+      xAxis:{type:'category',data:['1月','2月','3月','4月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
+      yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
+      series:[
+        {name:'硬广',type:'bar',data:[189.8, 141.17, 41.34, 25.26],barMaxWidth:24,itemStyle:{color:'#C0392B',opacity:.9},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+        {name:'品牌广告',type:'bar',data:[27.87, 4.92, 5.45, 1.58],barMaxWidth:16,itemStyle:{color:'#FF6B9D',opacity:.8}},
+        {name:'蒲公英',type:'bar',data:[89.37, 88.88, 25.87, 10.94],barMaxWidth:20,barGap:'40%',itemStyle:{color:'rgba(255,214,10,.5)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){c.resize();});
+  })();
+  </script>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:14px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:700">客户排行 TOP20（YTD硬广）</div>
+      <a href="grape-dashboard.html" style="font-size:11px;color:#4F8EF7;text-decoration:none">→ 完整版看板（含月度明细）</a>
+    </div>
     <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">1</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Penfolds奔富</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">1</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Penfolds奔富</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:100.0%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">256.09w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬256.1 蒲138.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">2</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">酒類美術館Wine Gall</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">2</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">酒類美術館Wine Gallery</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:14.9%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">38.09w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬38.1 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">3</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">侍酒猫SommCat</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">3</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">侍酒猫SommCat</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:11.6%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">29.65w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬29.6 蒲0.1w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">4</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">疆进酒少庄主精选葡萄酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">4</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">疆进酒少庄主精选葡萄酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.9%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">17.66w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬17.7 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">5</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">长尾猫</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">5</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">长尾猫</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.7%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">17.03w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬17.0 蒲32.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">6</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">VSPT葡萄酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">6</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">VSPT葡萄酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.8%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">7.15w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬7.2 蒲8.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">7</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">美贺庄园</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">7</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">美贺庄园</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.6%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">6.55w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.5 蒲4.1w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">8</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">KWV</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">8</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">KWV</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.5%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">6.30w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.3 蒲19.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">9</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SOGOOD蛮好</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">9</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SOGOOD蛮好</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.0%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">5.06w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬5.1 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">10</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">蚝湾 Oyster Bay</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">10</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">蚝湾 Oyster Bay</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.1%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">2.84w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬2.8 蒲3.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">11</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">西鸽酒庄</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">11</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">西鸽酒庄</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.1%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">2.84w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬2.8 蒲0.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">12</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">BRUTO WINES</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">12</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">BRUTO WINES</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.0%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">2.60w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬2.6 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">13</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">意大利Masi玛希酒庄</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">13</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">意大利Masi玛希酒庄</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.7%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">1.86w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬1.9 蒲2.7w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">14</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">圣醅罗1865</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">14</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">圣醅罗1865</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.5%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">1.36w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬1.4 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">15</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">黑猫GatoNegro</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">15</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">黑猫GatoNegro</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.5%;height:6px;border-radius:3px;background:#C0392B"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">1.28w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬1.3 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">16</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">木桐嘉棣 Mouton Cadet</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.2%;height:6px;border-radius:3px;background:#C0392B"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.4 蒲3.1w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">17</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">百浪启醴</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.1%;height:6px;border-radius:3px;background:#C0392B"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.3 蒲1.8w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">18</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ca\' del Bosco 泊诗柯</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.1%;height:6px;border-radius:3px;background:#C0392B"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.2 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">19</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">西鸽酒庄・品酒小札</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.1%;height:6px;border-radius:3px;background:#C0392B"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.2 蒲1.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">20</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">长和翡翠</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#C0392B"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.1 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div>
   </div>
-  <a href="grape-dashboard.html" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;text-decoration:none;font-size:12px">→ 打开完整版葡萄酒看板（含月度明细）</a>
+</div>
 </div></div><div class="panel" id="p5"><div style="padding:20px 28px">
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD硬广流水</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#A855F7">285.07<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">YTD蒲公英</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#FFD60A">389.82<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标完成率</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:#A855F7">28.5<span style="font-size:13px;font-weight:400">%</span></div>
-    </div>
-    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px">
-      <div style="font-size:11px;color:rgba(255,255,255,.38);margin-bottom:4px">年度目标</div>
-      <div style="font-size:26px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.35)">1000<span style="font-size:13px;font-weight:400">w</span></div>
-    </div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:18px">
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD硬广流水</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#A855F7">285.07<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 6.1%</span></div>
   </div>
-  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
-    <div style="font-size:13px;font-weight:700;margin-bottom:12px">客户排行 TOP15（YTD硬广）</div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">品牌广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FF6B9D">8.70<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#ef4444;font-size:11px">▼ 90.9%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">竞价广告</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#F97316">273.93<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="font-size:10px;color:rgba(255,255,255,.3)">搜索36.0w 线索0.0w</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">YTD蒲公英</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#FFD60A">389.82<span style="font-size:11px;font-weight:400">w</span></div>
+    <div style="margin-top:2px"><span style="color:#22c55e;font-size:11px">▲ 125.4%</span></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标完成率</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:#A855F7">28.5<span style="font-size:11px;font-weight:400">%</span></div>
+    <div style="background:rgba(255,255,255,.08);border-radius:3px;height:3px;margin-top:6px"><div style="width:28.5%;height:3px;border-radius:3px;background:#A855F7"></div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px">
+    <div style="font-size:10px;color:rgba(255,255,255,.38);margin-bottom:3px">年度目标</div>
+    <div style="font-size:22px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.3)">1000<span style="font-size:11px;font-weight:400">w</span></div>
+  </div>
+</div>
+<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px;margin-bottom:14px">
+  <div style="font-size:13px;font-weight:700;margin-bottom:12px">月度趋势（硬广 / 品牌广告 / 蒲公英）</div>
+  <div id="barChart_低度酒" style="height:220px"></div>
+  <script>
+  (function(){
+    var dom=document.getElementById('barChart_低度酒');
+    if(!dom||dom._inited)return; dom._inited=true;
+    var c=echarts.init(dom);
+    c.setOption({
+      backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+      legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+      grid:{left:44,right:12,top:16,bottom:36},
+      xAxis:{type:'category',data:['1月','2月','3月','4月'],axisLabel:{color:'rgba(255,255,255,.6)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
+      yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
+      series:[
+        {name:'硬广',type:'bar',data:[91.29, 95.32, 32.35, 66.11],barMaxWidth:24,itemStyle:{color:'#A855F7',opacity:.9},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+        {name:'品牌广告',type:'bar',data:[4.73, 1.88, 2.09, 0.0],barMaxWidth:16,itemStyle:{color:'#FF6B9D',opacity:.8}},
+        {name:'蒲公英',type:'bar',data:[115.11, 96.33, 68.42, 109.97],barMaxWidth:20,barGap:'40%',itemStyle:{color:'rgba(255,214,10,.5)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      ]
+    });
+    window.addEventListener('resize',function(){c.resize();});
+  })();
+  </script>
+</div>
+<div style="display:grid;grid-template-columns:1fr;gap:14px">
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:13px;font-weight:700">客户排行 TOP20（YTD硬广）</div>
+      <a href="lowdegree-dashboard.html" style="font-size:11px;color:#4F8EF7;text-decoration:none">→ 完整版看板（含月度明细）</a>
+    </div>
     <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">1</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO锐澳鸡尾酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">1</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO锐澳鸡尾酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:100.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">122.41w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬122.4 蒲93.8w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">2</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO轻享</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">2</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO轻享</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:46.2%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">56.50w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬56.5 蒲66.1w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">3</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO强爽</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">3</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO强爽</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:28.6%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">34.99w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬35.0 蒲94.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">4</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">果立方</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">4</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">果立方</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:12.9%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">15.83w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬15.8 蒲23.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">5</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">009酃酃酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">5</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">009酃酃酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:10.5%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">12.90w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬12.9 蒲3.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">6</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">三得利梅酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">6</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">三得利梅酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:8.7%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">10.61w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬10.6 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">7</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">梅见</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">7</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">梅见</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:8.3%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">10.15w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬10.2 蒲49.4w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">8</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO清爽</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">8</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO清爽</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:6.4%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">7.85w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬7.8 蒲27.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">9</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">时光梅酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">9</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">时光梅酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:4.9%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">6.04w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬6.0 蒲12.5w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">10</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TEMPT诱惑果酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">10</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TEMPT诱惑果酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.2%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">2.74w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬2.7 蒲6.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">11</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">三得利和乐怡HOROYOI</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">11</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">三得利和乐怡HOROYOI</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:2.2%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">2.64w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬2.6 蒲0.6w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">12</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">椿山晓</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">12</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">椿山晓</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:1.3%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">1.59w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬1.6 蒲0.3w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">弹头</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">13</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">动力火车潮饮酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">13</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">动力火车潮饮酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.6%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">0.70w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.7 蒲12.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">喷火</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">14</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">小酒岛JIUDAO</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">14</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">小酒岛JIUDAO</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">0.06w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.1 蒲0.2w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-  <div style="font-size:11px;color:rgba(255,255,255,.3);min-width:20px;text-align:right">15</div>
-  <div style="font-size:12px;min-width:120px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">新魂烧酒</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">15</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">新魂烧酒</div>
   <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
-  <div style="font-size:11px;color:rgba(255,255,255,.55);min-width:55px;text-align:right;font-family:monospace">0.04w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.0 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">苦艾</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">16</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">RIO锐澳品牌馆</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.0 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">一青</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">17</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUNTORY -196水果汽泡酒</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.0 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">18</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">零酷ZEROCOOL</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.0 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
+</div><div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="font-size:11px;color:rgba(255,255,255,.28);min-width:20px;text-align:right">19</div>
+  <div style="font-size:12px;min-width:140px;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">OKKISS</div>
+  <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:6px"><div style="width:0.0%;height:6px;border-radius:3px;background:#A855F7"></div></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.4);min-width:80px;text-align:right">硬0.0 蒲0.0w</div>
+  <div style="font-size:10px;color:rgba(255,255,255,.3);min-width:32px;text-align:right">皓皓</div>
 </div>
   </div>
-  <a href="lowdegree-dashboard.html" style="display:inline-block;padding:8px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;text-decoration:none;font-size:12px">→ 打开完整版低度酒看板（含月度明细）</a>
+</div>
 </div></div>
 <script>
 function switchTab(i,el){
@@ -687,26 +1121,27 @@ function switchTab(i,el){
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
   el.classList.add('active');
   document.getElementById('p'+i).classList.add('active');
-  if(i===0&&!window._ci){initChart();window._ci=true;}
+  if(i===0&&!window._ci){initCompare();window._ci=true;}
 }
-function initChart(){
+function initCompare(){
   var dom=document.getElementById('compareChart');if(!dom)return;
   var c=echarts.init(dom);
   c.setOption({
     backgroundColor:'transparent',
-    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12}},
-    legend:{data:['硬广','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:11},bottom:0},
-    grid:{left:44,right:12,top:20,bottom:40},
-    xAxis:{type:'category',data:['白酒', '啤酒', '洋酒', '葡萄酒', '低度酒'],axisLabel:{color:'rgba(255,255,255,.65)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:11}},
+    legend:{data:['硬广','品牌广告','蒲公英'],textStyle:{color:'rgba(255,255,255,.5)',fontSize:10},bottom:0},
+    grid:{left:44,right:12,top:16,bottom:40},
+    xAxis:{type:'category',data:['白酒', '啤酒', '洋酒', '葡萄酒', '低度酒'],axisLabel:{color:'rgba(255,255,255,.65)',fontSize:11},axisLine:{lineStyle:{color:'rgba(255,255,255,.08)'}}},
     yAxis:{type:'value',axisLabel:{color:'rgba(255,255,255,.4)',fontSize:10,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.05)'}}},
     series:[
-      {name:'硬广',type:'bar',data:[796.81, 1227.47, 992.27, 397.57, 285.07],barMaxWidth:40,itemStyle:{color:function(p){var cs=['#FF2442', '#F5A623', '#D4A017', '#C0392B', '#A855F7'];return cs[p.dataIndex];}},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:10}},
-      {name:'蒲公英',type:'bar',data:[862.32, 1175.01, 1172.22, 215.06, 389.82],barMaxWidth:24,barGap:'30%',itemStyle:{color:'rgba(255,214,10,.4)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
+      {name:'硬广',type:'bar',data:[796.81, 1227.47, 992.27, 397.57, 285.07],barMaxWidth:32,itemStyle:{color:function(p){var cs=['#FF2442', '#F5A623', '#D4A017', '#C0392B', '#A855F7'];return cs[p.dataIndex];}},label:{show:true,position:'top',formatter:function(p){return p.value.toFixed(0)+'w';},color:'rgba(255,255,255,.7)',fontSize:9}},
+      {name:'品牌广告',type:'bar',data:[307.19, 701.17, 186.86, 39.83, 8.7],barMaxWidth:20,itemStyle:{color:'#FF6B9D',opacity:.8}},
+      {name:'蒲公英',type:'bar',data:[862.32, 1175.01, 1172.22, 215.06, 389.82],barMaxWidth:22,barGap:'35%',itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'}}
     ]
   });
   window.addEventListener('resize',function(){c.resize();});
 }
-window.addEventListener('load',function(){initChart();window._ci=true;});
+window.addEventListener('load',function(){initCompare();window._ci=true;});
 </script>
 </body>
 </html>

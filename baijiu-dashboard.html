@@ -449,19 +449,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </div>
 <div class="section-title" id="sec-kfs">📊 KFS健康度 &amp; 蒲公英转化</div>
 <div class="card mb28">
-  <div id="kfs-pub-conv" style="background:rgba(255,214,10,.06);border:1px solid rgba(255,214,10,.2);border-radius:10px;padding:14px 18px;margin-bottom:18px;">
-    <div style="font-size:13px;font-weight:600;color:#FFD60A;margin-bottom:8px;">🌸 蒲公英→硬广转化机会</div>
-    <div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;">
-      以下品牌有蒲公英投放但<b>硬广极低或为零</b>，是降K转硬广的核心潜力池：
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
-      <span style="background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:#FFD60A;">茅台 蒲公英33.86w → 硬广0.99w</span>
-      <span style="background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:#FFD60A;">泸州老窖官方 蒲公英27.9w → 硬广0w</span>
-      <span style="background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:#FFD60A;">郎酒 蒲公英98.49w → 硬广25.18w</span>
-      <span style="background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:#FFD60A;">小糊涂仙 蒲公英45.88w → 硬广11.08w</span>
-      <span style="background:rgba(255,214,10,.12);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:#FFD60A;">古井贡酒 蒲公英35.71w → 硬广7.40w</span>
-    </div>
-  </div>
+  <div id="kfs-pub-conv" style="background:rgba(255,214,10,.06);border:1px solid rgba(255,214,10,.2);border-radius:10px;padding:14px 18px;margin-bottom:18px;"></div>
   <div style="display:flex;align-items:center;gap:20px;margin-bottom:14px;flex-wrap:wrap">
     <div style="display:flex;gap:16px;font-size:12px;color:rgba(255,255,255,.6)">
       <span><span style="display:inline-block;width:10px;height:10px;background:#FFD60A;border-radius:2px;margin-right:4px;vertical-align:middle"></span>K 蒲公英占比</span>
@@ -537,10 +525,9 @@ var MONTHLY_BRANDS = {
   M4: [
     {brand:"舍得自在微醺club",adv:59.15,brand_adv:29.54,cpc:29.61,pub:29.61,search:3.71,lead:25.90,ecom:0.00,other:0.00,sales:"森动"},
     {brand:"五粮液",adv:26.13,brand_adv:12.33,cpc:13.80,pub:20.02,search:3.03,lead:2.06,ecom:0.00,other:8.71,sales:"一青"},
-    {brand:"甜掌柜/康得",adv:14.71,brand_adv:0.00,cpc:14.71,pub:0.00,search:1.56,lead:14.71,ecom:0.00,other:0.00,sales:"皓皓"},
+    {brand:"甜掌柜/康得",adv:21.28,brand_adv:0.00,cpc:21.28,pub:0.00,search:2.05,lead:21.28,ecom:0.00,other:0.00,sales:"皓皓"},
     {brand:"泸州老窖",adv:5.51,brand_adv:5.51,cpc:0.00,pub:29.38,search:1.05,lead:0.00,ecom:0.00,other:4.46,sales:"弹头"},
     {brand:"女儿红酱酒",adv:4.76,brand_adv:0.00,cpc:4.76,pub:5.45,search:1.87,lead:0.00,ecom:0.00,other:2.89,sales:"皓皓"},
-    {brand:"康得系分销",adv:6.57,brand_adv:0.00,cpc:6.57,pub:0.00,search:0.49,lead:6.57,ecom:0.00,other:0.00,sales:"皓皓"},
     {brand:"小糊涂仙",adv:2.25,brand_adv:0.00,cpc:2.25,pub:1.11,search:0.59,lead:2.18,ecom:0.00,other:0.00,sales:"弹头"},
     {brand:"今世缘",adv:1.50,brand_adv:0.00,cpc:1.50,pub:0.00,search:0.02,lead:0.00,ecom:0.00,other:1.48,sales:"皓皓"},
     {brand:"古井贡酒",adv:1.41,brand_adv:1.27,cpc:0.14,pub:5.22,search:0.27,lead:0.00,ecom:0.00,other:0.00,sales:"皓皓"},
@@ -561,11 +548,11 @@ var TABS={
   M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:98.43,brand_adv:25.12,cpc:73.30,pub:118.13,search:15.37,ecom:0.12,lead:14.22,cpc_other:43.58,commercial:null,adv_yoy:7.342,brand_adv_yoy:93.0,cpc_yoy:1.518,pub_yoy:1.916,search_yoy:1.536,lead_yoy:1.569,adv_mom:-0.183,brand_adv_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,note:'4月1-24日（24天），舍得/郎酒集中投放，竞价占比74.5%'}
 };
 var BRANDS=[
-  {brand:'舍得自在微醺club',adv26:59.15,brand_adv26:29.54,cpc26:29.61,pub26:29.61,adv25:0,is_new:true,yoy:null,sales:'森动',search26:3.71,lead26:25.90,ecom26:0,note:'4月最大增量'},
   {brand:'五粮液',adv26:391.44,brand_adv26:273.88,cpc26:117.56,pub26:267.34,adv25:110.54,is_new:false,yoy:254.1,sales:'一青',search26:22.21,lead26:2.06,ecom26:0.12,note:''},
   {brand:'泸州老窖',adv26:110.51,brand_adv26:21.51,cpc26:89.00,pub26:288.48,adv25:50.08,is_new:false,yoy:120.7,sales:'弹头',search26:30.09,lead26:0,ecom26:0,note:''},
   {brand:'甜掌柜/康得',adv26:100.22,brand_adv26:0,cpc26:100.22,pub26:0,adv25:47.54,is_new:false,yoy:110.8,sales:'皓皓',search26:12.72,lead26:83.17,ecom26:0,note:''},
   {brand:'女儿红酱酒',adv26:67.25,brand_adv26:0,cpc26:67.25,pub26:27.61,adv25:0.01,is_new:true,yoy:null,sales:'皓皓',search26:35.09,lead26:0,ecom26:0,note:'搜索效率全赛道领先'},
+  {brand:'舍得自在微醺club',adv26:59.15,brand_adv26:29.54,cpc26:29.61,pub26:29.61,adv25:0,is_new:true,yoy:null,sales:'森动',search26:3.71,lead26:25.90,ecom26:0,note:'4月最大增量'},
   {brand:'郎酒',adv26:25.18,brand_adv26:0,cpc26:25.18,pub26:98.49,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:5.35,lead26:0,ecom26:0,note:''},
   {brand:'今世缘',adv26:19.61,brand_adv26:0,cpc26:19.61,pub26:11.76,adv25:3.27,is_new:false,yoy:499.7,sales:'皓皓',search26:0.04,lead26:0,ecom26:0,note:''},
   {brand:'金徽酒',adv26:15.64,brand_adv26:0,cpc26:15.64,pub26:0,adv25:0,is_new:true,yoy:null,sales:'-',search26:0,lead26:0,ecom26:0,note:''},
@@ -573,10 +560,10 @@ var BRANDS=[
   {brand:'劲酒',adv26:10.28,brand_adv26:0,cpc26:9.19,pub26:13.39,adv25:0.41,is_new:false,yoy:2407.3,sales:'一青',search26:0.80,lead26:0,ecom26:0,note:''},
   {brand:'古井贡酒',adv26:7.40,brand_adv26:5.79,cpc26:1.61,pub26:35.71,adv25:3.42,is_new:false,yoy:116.4,sales:'皓皓',search26:1.37,lead26:0,ecom26:0,note:''},
   {brand:'汾酒',adv26:3.21,brand_adv26:0,cpc26:3.21,pub26:4.97,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0.82,lead26:0,ecom26:0.51,note:''},
-  {brand:'茅台',adv26:0.99,brand_adv26:0,cpc26:0,pub26:33.86,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0,lead26:0,ecom26:0,note:'仅蒲公英'},
+  {brand:'江小白',adv26:0.76,brand_adv26:0,cpc26:0.76,pub26:0,adv25:0.2,is_new:false,yoy:280.0,sales:'苦艾',search26:0.01,lead26:0,ecom26:0,note:''},
   {brand:'白沙液',adv26:0.74,brand_adv26:0,cpc26:0.74,pub26:1.26,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0,lead26:0,ecom26:0,note:''},
   {brand:'红星二锅头',adv26:0.66,brand_adv26:0,cpc26:0.66,pub26:0,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0.09,lead26:0,ecom26:0,note:''},
-  {brand:'江小白',adv26:0.76,brand_adv26:0,cpc26:0.76,pub26:0,adv25:0.2,is_new:false,yoy:280.0,sales:'苦艾',search26:0.01,lead26:0,ecom26:0,note:''},
+  {brand:'茅台',adv26:0.99,brand_adv26:0,cpc26:0,pub26:33.86,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0,lead26:0,ecom26:0,note:'仅蒲公英'},
   {brand:'舍得',adv26:0,brand_adv26:0,cpc26:0,pub26:3.58,adv25:0,is_new:false,yoy:null,sales:'森动',search26:0,lead26:0,ecom26:0,note:''},
   {brand:'水井坊',adv26:0,brand_adv26:0,cpc26:0,pub26:3.76,adv25:32.48,is_new:false,yoy:-100,sales:'森动',search26:0,lead26:0,ecom26:0,note:''},
   {brand:'知交酒/习酒',adv26:0,brand_adv26:0,cpc26:0,pub26:0,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0,lead26:0,ecom26:0,note:''},
@@ -674,6 +661,7 @@ function switchTab(t){
   renderMonthlyMomWarning(t);
   renderMonthlyKWarning(t);
   renderMonthlyKFS(t);
+  renderPubConv(t);
   renderTargetProgress(t);
   renderMonthlyFullInsight(t);
   if(t==='M1')renderWeekChart('1');
@@ -863,16 +851,7 @@ function renderQuadrant(){
       markLine:{silent:true,symbol:'none',data:[{yAxis:100}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'100%分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
     series:[{type:'scatter',symbolSize:function(v){return Math.max(Math.sqrt(v[2])*4,10);},
       data:pts.map(function(d){return{name:d.name,value:[d.x,d.y,Math.max(d.b,0.3)],itemStyle:{color:d.c,opacity:.85},label:{show:true,formatter:d.name,color:'#eee',fontSize:11,position:'right'}};})}],
-    graphic:[
-      {type:'rect',left:'8%',top:'8%',shape:{width:'39%',height:'40%'},style:{fill:'rgba(79,142,247,.14)',stroke:'rgba(79,142,247,.3)',lineWidth:1},silent:true,z:-2},
-      {type:'rect',left:'51%',top:'8%',shape:{width:'42%',height:'40%'},style:{fill:'rgba(0,229,160,.14)',stroke:'rgba(0,229,160,.3)',lineWidth:1},silent:true,z:-2},
-      {type:'rect',left:'8%',top:'52%',shape:{width:'39%',height:'38%'},style:{fill:'rgba(120,120,140,.10)',stroke:'rgba(255,255,255,.12)',lineWidth:1},silent:true,z:-2},
-      {type:'rect',left:'51%',top:'52%',shape:{width:'42%',height:'38%'},style:{fill:'rgba(255,149,0,.12)',stroke:'rgba(255,149,0,.3)',lineWidth:1},silent:true,z:-2},
-      {type:'text',left:'10%',top:'10%',style:{text:'💡 潜力客户\n低流水·高增长',fill:'rgba(79,142,247,.85)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
-      {type:'text',left:'53%',top:'10%',style:{text:'⭐ 明星客户\n高流水·高增长',fill:'rgba(0,229,160,.85)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
-      {type:'text',left:'10%',top:'54%',style:{text:'👁 观察名单\n低流水·低增长',fill:'rgba(200,200,220,.6)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
-      {type:'text',left:'53%',top:'54%',style:{text:'💰 现金奶牛\n高流水·低增长',fill:'rgba(255,149,0,.8)',fontSize:12,fontWeight:'bold',lineHeight:18},silent:true},
-    ]
+    graphic:[]
   });
 }
 
@@ -898,21 +877,22 @@ function renderKWarning(){
 }
 
 function renderKFS(){
-  var kd=[
-    {brand:'茅台',K:96,F:0,S:0,score:'⚠️ 严重失衡',sc:'#FF2442'},
-    {brand:'小糊涂仙',K:85,F:2,S:13,score:'⚠️ K过高',sc:'#FF2442'},
-    {brand:'古井贡酒',K:84,F:3,S:0,score:'⚠️ K过高',sc:'#FF2442'},
-    {brand:'郎酒',K:79,F:5,S:0,score:'⚠️ K过高',sc:'#FF2442'},
-    {brand:'泸州老窖',K:71,F:8,S:0,score:'⚠️ K偏高',sc:'#FF9500'},
-    {brand:'劲酒',K:57,F:4,S:0,score:'🟡 待优化',sc:'#FF9500'},
-    {brand:'五粮液',K:40,F:3,S:0,score:'🟡 正常偏K',sc:'#FF9500'},
-    {brand:'今世缘',K:39,F:0,S:0,score:'✅ 基本健康',sc:'#00E5A0'},
-    {brand:'女儿情',K:25,F:40,S:0,score:'✅ 健康(搜索强)',sc:'#00E5A0'},
-    {brand:'甜掌柜',K:0,F:14,S:100,score:'✅ 纯效果型',sc:'#00E5A0'},
-  ];
+  // YTD KFS，从BRANDS数组动态计算，带金额
+  var kd=BRANDS.filter(function(b){return b.adv26>0||b.pub26>0;}).map(function(b){
+    var total=b.adv26+b.pub26;
+    var K=total>0?Math.round(b.pub26/total*100):0;
+    var F=b.adv26>0?Math.min(Math.round(b.search26/b.adv26*100),100-K):0;
+    var S=b.adv26>0?Math.min(Math.round(b.lead26/b.adv26*100),100-K-F):0;
+    var score=K>70?'⚠️ K过高':K>40?'🟡 待优化':F>30?'✅ 搜索强':S>30?'✅ 转化型':'✅ 健康';
+    var sc=K>70?'#FF2442':K>40?'#FF9500':'#00E5A0';
+    return {brand:b.brand,K:K,F:F,S:S,score:score,sc:sc,pub:b.pub26,adv:b.adv26,search:b.search26,lead:b.lead26};
+  }).sort(function(a,b){return b.K-a.K;});
   document.getElementById('kfs-container').innerHTML=kd.map(function(d){
-    var rem=100-d.K; var fCap=Math.min(d.F,rem); var sCap=Math.min(d.S,rem-fCap);
-    return'<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%  F:'+d.F+'%  S:'+d.S+'%</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
+    var rem=100-d.K;var fCap=Math.min(d.F,rem);var sCap=Math.min(d.S,rem-fCap);
+    var kAmt=d.pub>0?'('+d.pub.toFixed(1)+'w)':'';
+    var fAmt=d.search>0?'('+d.search.toFixed(1)+'w)':'';
+    var sAmt=d.lead>0?'('+d.lead.toFixed(1)+'w)':'';
+    return'<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%'+kAmt+'  F:'+d.F+'%'+fAmt+'  S:'+d.S+'%'+sAmt+'</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
   }).join('');
 }
 
@@ -936,7 +916,8 @@ function renderMonthlyKFS(tab){
   if(!withPub.length){container.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无投放数据</div>';return;}
   container.innerHTML=withPub.map(function(d){
     var rem=100-d.K;var fCap=Math.min(d.F,rem);var sCap=Math.min(d.S,rem-fCap);
-    return '<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%  F:'+d.F+'%  S:'+d.S+'%</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
+    var kAmt=b.pub>0?'('+b.pub.toFixed(1)+'w)':'';var fAmt=b.search>0?'('+b.search.toFixed(1)+'w)':'';var sAmt=(b.lead||0)>0?('('+(b.lead||0).toFixed(1)+'w)'):'';
+    return '<div class="kfs-row"><div class="kfs-brand">'+d.brand+'</div><div class="kfs-bars"><div class="kfs-track"><div class="kfs-k" style="width:'+d.K+'%"></div><div class="kfs-f" style="width:'+fCap+'%"></div><div class="kfs-s" style="width:'+sCap+'%"></div></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">K:'+d.K+'%'+kAmt+'  F:'+d.F+'%'+fAmt+'  S:'+d.S+'%'+sAmt+'</div></div><div class="kfs-score" style="color:'+d.sc+'">'+d.score+'</div></div>';
   }).join('');
   // 同步更新蒲公英→硬广转化区域
   var convEl=document.querySelector('#sec-kfs ~ .card .kfs-container');
@@ -950,7 +931,7 @@ function renderRankBars(filter){
     if(filter==='zero')return b.adv26===0;
     if(filter==='new')return b.is_new;
     return true;
-  });
+  }).sort(function(a,b){return b.adv26-a.adv26;});
   var maxAdv=Math.max.apply(null,data.map(function(b){return b.adv26;}));
   if(maxAdv===0)maxAdv=1;
   document.getElementById('rankBarsContainer').innerHTML=data.map(function(b){
@@ -983,7 +964,7 @@ function renderTable(filter){
     if(filter==='zero')return b.adv26===0;
     if(filter==='new')return b.is_new;
     return true;
-  });
+  }).sort(function(a,b){return b.adv26-a.adv26;});
   document.getElementById('table-body').innerHTML=data.map(function(b){
     var tier=getTier(b.adv26);
     var yoy=fmtYoyHTML(b.yoy,b.is_new,b.adv25);
@@ -1027,6 +1008,7 @@ function init(){
   renderMonthlyTable('YTD');
   renderMonthlyMomWarning('YTD');
   renderMonthlyKWarning('YTD');
+  renderPubConv('YTD');
 }
 
 var brandDetails={
@@ -1300,6 +1282,42 @@ function renderMonthlyFullInsight(tab){
   html+='</div>';
   html+='</div>';
   container.innerHTML=html;
+}
+
+
+function renderPubConv(tab){
+  var el=document.getElementById('kfs-pub-conv');
+  if(!el)return;
+  var header='<div style="font-size:13px;font-weight:600;color:#FFD60A;margin-bottom:8px;">🌸 蒲公英→硬广转化机会</div>';
+  if(tab==='YTD'){
+    // YTD：从BRANDS取全年数据，按蒲公英/硬广比例排，找K占比高的
+    var candidates=BRANDS.filter(function(b){return b.pub26>0;}).map(function(b){
+      var total=b.adv26+b.pub26;
+      var kPct=total>0?Math.round(b.pub26/total*100):100;
+      return {brand:b.brand,pub:b.pub26,adv:b.adv26,kPct:kPct};
+    }).sort(function(a,b){return b.pub-a.pub;});
+    var desc='<div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:10px">以下品牌 <b>YTD蒲公英高</b>，硬广相对较低，是全年降K转硬广核心潜力池：</div>';
+    var tags=candidates.slice(0,6).map(function(b){
+      var c=b.kPct>70?'#FF2442':b.kPct>40?'#FF9500':'#FFD60A';
+      return '<span style="background:rgba(255,214,10,.10);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:'+c+'">'+b.brand+' 蒲公英'+b.pub.toFixed(2)+'w → 硬广'+b.adv.toFixed(2)+'w（K占'+b.kPct+'%）</span>';
+    }).join('');
+    el.innerHTML=header+desc+'<div style="display:flex;flex-wrap:wrap;gap:8px">'+tags+'</div>';
+  }else{
+    var brands=MONTHLY_BRANDS[tab];
+    if(!brands||!brands.length){el.innerHTML=header+'<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">当月无数据</div>';return;}
+    var d=TABS[tab];
+    var candidates=brands.filter(function(b){return b.pub>0;}).map(function(b){
+      var total=b.adv+b.pub;
+      var kPct=total>0?Math.round(b.pub/total*100):100;
+      return {brand:b.brand,pub:b.pub,adv:b.adv,kPct:kPct};
+    }).sort(function(a,b){return b.pub-a.pub;});
+    var desc='<div style="font-size:12px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:10px">'+d.label+'月 蒲公英高但硬广相对低的品牌，当月降K转化优先级：</div>';
+    var tags=candidates.map(function(b){
+      var c=b.kPct>70?'#FF2442':b.kPct>40?'#FF9500':'#FFD60A';
+      return '<span style="background:rgba(255,214,10,.10);border:1px solid rgba(255,214,10,.3);border-radius:6px;padding:4px 10px;font-size:12px;color:'+c+'">'+b.brand+' 蒲公英'+b.pub.toFixed(2)+'w → 硬广'+b.adv.toFixed(2)+'w（K占'+b.kPct+'%）</span>';
+    }).join('');
+    el.innerHTML=header+desc+'<div style="display:flex;flex-wrap:wrap;gap:8px">'+tags+'</div>';
+  }
 }
 
 window.addEventListener('load',init);

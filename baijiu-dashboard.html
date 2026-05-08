@@ -172,7 +172,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <span class="badge badge-red">小红书</span>
       <span class="badge badge-orange">v3</span>
     </div>
-    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-04-24 | 单位：万元</div>
+    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-08 | 单位：万元</div>
   </div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('YTD')">YTD总览</div>
@@ -180,6 +180,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <div class="tab" onclick="switchTab('M2')">2月</div>
     <div class="tab" onclick="switchTab('M3')">3月</div>
     <div class="tab" onclick="switchTab('M4')">4月</div>
+    <div class=\"tab\" onclick=\"switchTab('M5')\">5月</div>
   </div>
 </div>
 <div class="main" style="margin-left:110px;">
@@ -193,8 +194,8 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <div id="targetChart" style="width:260px;height:260px;margin:0 auto"></div>
       <div id="monthly-target-info" style="margin-top:10px">
         <div style="font-size:13px;color:rgba(255,255,255,.5)">月均速率</div>
-        <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF9500">234.18w / 月</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">13.3%</span>，淡季阶段</div>
+        <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF9500">190.27w / 月</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">15.9%</span>，淡季阶段</div>
         <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px">旺季（中秋）发力预计达 75%</div>
       </div>
     </div>
@@ -202,13 +203,13 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <div style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px">
         <div style="background:rgba(255,36,66,.06);border:1px solid rgba(255,36,66,.15);border-radius:10px;padding:16px;text-align:center">
           <div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:4px">硬广年度目标 6000w</div>
-          <div style="font-size:36px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442">13.3%</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.35)">当前 796.81w / 目标 6000w</div>
+          <div style="font-size:36px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442">15.9%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35)">当前 951.33w / 目标 6000w</div>
         </div>
       </div>
       <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:12px">⏱️ 旺季节律时间轴</div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FFD60A;box-shadow:0 0 8px rgba(255,214,10,.6)"></div><div class="ms-label">春节冲刺（1月底）</div><div class="ms-val">冲刺期</div><span class="ms-tag" style="background:rgba(255,214,10,.15);color:#FFD60A">已过</span></div>
-      <div class="milestone-item"><div class="ms-dot" style="background:#00E5A0;box-shadow:0 0 8px rgba(0,229,160,.6)"></div><div class="ms-label">当前位置 4月下 797w ✅</div><div class="ms-val">796.81w</div><span class="ms-tag" style="background:rgba(0,229,160,.15);color:#00E5A0">已达成</span></div>
+      <div class="milestone-item"><div class="ms-dot" style="background:#00E5A0;box-shadow:0 0 8px rgba(0,229,160,.6)"></div><div class="ms-label">当前位置 5月 951w ✅</div><div class="ms-val">951.33w</div><span class="ms-tag" style="background:rgba(0,229,160,.15);color:#00E5A0">已达成</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#4F8EF7"></div><div class="ms-label">淡季维持（6月底目标）</div><div class="ms-val">2000w</div><span class="ms-tag" style="background:rgba(79,142,247,.15);color:#4F8EF7">进行中</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FF9500"></div><div class="ms-label">中秋爆发（9月底）</div><div class="ms-val">4500w</div><span class="ms-tag" style="background:rgba(255,149,0,.15);color:#FF9500">旺季发力</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FF2442"></div><div class="ms-label">年度目标（12月底）</div><div class="ms-val">6000w</div><span class="ms-tag" style="background:rgba(255,36,66,.15);color:#FF2442">年度目标</span></div>
@@ -237,7 +238,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <table class="compare-table">
       <thead><tr><th>类型</th><th>26年YTD</th><th>25年同期</th><th>同比</th></tr></thead>
       <tbody>
-        <tr><td>硬广</td><td class="mono">796.81w</td><td class="mono">261.08w</td><td style="color:#00E5A0" class="mono">+196.4%</td></tr>
+        <tr><td>硬广</td><td class="mono">951.33w</td><td class="mono">261.08w</td><td style="color:#00E5A0" class="mono">+196.4%</td></tr>
         <tr><td>品牌广告</td><td class="mono">307.19w</td><td class="mono">163.23w</td><td style="color:#00E5A0" class="mono">+88.2%</td></tr>
         <tr><td>竞价广告</td><td class="mono">487.53w</td><td class="mono">97.84w</td><td style="color:#00E5A0" class="mono">+398.3%</td></tr>
         <tr><td style="color:#FFD60A">蒲公英</td><td class="mono" style="color:#FFD60A">862.32w</td><td class="mono">219.41w</td><td style="color:#00E5A0" class="mono">+293.0%</td></tr>
@@ -560,36 +561,38 @@ var MONTHLY_BRANDS = {
     {brand:"茅台",adv:0.00,brand_adv:0.00,cpc:0.00,pub:9.53,search:0.00,lead:0.00,ecom:0.00,other:0.00,sales:"弹头"},
     {brand:"水井坊",adv:0.00,brand_adv:0.00,cpc:0.00,pub:1.88,search:0.00,lead:0.00,ecom:0.00,other:0.00,sales:"森动"}
   ],
+  M5:[{brand:'舍得自在微醺club',adv:12.65,brand_adv:0.46,cpc:12.18,pub:9.33,sales:'森动(李涛)'},{brand:'女儿红酱酒',adv:4.06,brand_adv:0.0,cpc:4.06,pub:0.2,sales:'皓皓(GUO YILUN)'},{brand:'甜掌柜/康得',adv:3.84,brand_adv:0.0,cpc:3.84,pub:0.0,sales:'皓皓(GUO YILUN)'},{brand:'这一生今世缘',adv:3.09,brand_adv:0.0,cpc:3.09,pub:0.76,sales:'皓皓(GUO YILUN)'},{brand:'五粮液',adv:2.36,brand_adv:1.74,cpc:0.63,pub:0.29,sales:'一青(张天任)'},{brand:'五粮液官方账号',adv:1.17,brand_adv:0.0,cpc:1.17,pub:0.81,sales:'一青(张天任)'},{brand:'江小白',adv:0.43,brand_adv:0.0,cpc:0.43,pub:0.0,sales:'苦艾(朱灵琳)'},{brand:'小糊涂仙幸福行动指南',adv:0.38,brand_adv:0.0,cpc:0.38,pub:0.53,sales:'弹头(张皓纯)'},{brand:'西凤酒',adv:0.35,brand_adv:0.0,cpc:0.35,pub:0.0,sales:'皓皓(GUO YILUN)'},{brand:'吴总说好酒',adv:0.04,brand_adv:0.0,cpc:0.04,pub:0.0,sales:'皓皓(GUO YILUN)'},{brand:'汾酒杏花村竹叶青',adv:0.0,brand_adv:0.0,cpc:0.0,pub:0.0,sales:'皓皓(GUO YILUN)'}]
 };
-var TABS={
-  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-04-24',adv:796.81,brand_adv:307.19,cpc:487.53,pub:862.32,search:104.68,ecom:0.12,lead:123.08,cpc_other:null,commercial:1659.13,adv_yoy:1.964,brand_adv_yoy:0.767,cpc_yoy:3.195,pub_yoy:2.662,search_yoy:2.794,lead_yoy:0.527,adv_mom:null,pub_mom:null,note:'YTD截至2026年4月24日。竞价广告占硬广74.5%，舍得自在微醺club 4月贡献59w'},
+var TABS = {
+  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-08',adv:951.33,brand_adv:360.57,cpc:588.68,pub:1024.64,search:138.78,ecom:3.12,lead:123.33,cpc_other:326.57,commercial:null,adv_yoy:-71.8,brand_adv_yoy:-82.3,cpc_yoy:-55.8,pub_yoy:-64.0,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'白酒YTD总览'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:31.72,ecom:null,lead:38.66,cpc_other:76.73,commercial:null,adv_yoy:0.6026,brand_adv_yoy:0.69,cpc_yoy:0.5132,pub_yoy:0.0467,search_yoy:0.1662,lead_yoy:-0.2283,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'2026年1月 · 竞价细分按结构比推算（*），同比25年1月（RedBI口径：硬广185.42w）'},
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:280.69,brand_adv:91.5,cpc:188.09,pub:349.65,search:40.55,ecom:null,lead:49.43,cpc_other:98.10,commercial:null,adv_yoy:0.619,brand_adv_yoy:-0.11,cpc_yoy:1.6661,pub_yoy:7.1924,search_yoy:0.7524,lead_yoy:0.1166,adv_mom:-0.055,brand_adv_mom:-0.386,cpc_mom:0.279,pub_mom:null,note:'2026年2月 · 竞价细分按结构比推算（*），同比25年2月（RedBI口径：硬广173.37w）'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:120.53,brand_adv:41.51,cpc:79.03,pub:124.42,search:17.04,ecom:0,lead:20.77,cpc_other:41.22,commercial:null,adv_yoy:0.616,brand_adv_yoy:-0.347,cpc_yoy:10.178,pub_yoy:0.930,search_yoy:8.43,lead_yoy:0.733,adv_mom:-0.571,brand_adv_mom:-0.546,cpc_mom:-0.580,pub_mom:null,note:'品牌广告同比-34.7%，IP消耗收缩；竞价同比+1018%，今世缘持续投放，女儿红加量投放'},
-  M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:98.43,brand_adv:25.12,cpc:73.30,pub:118.13,search:15.37,ecom:0.12,lead:14.22,cpc_other:43.58,commercial:null,adv_yoy:7.342,brand_adv_yoy:93.0,cpc_yoy:1.518,pub_yoy:1.916,search_yoy:1.536,lead_yoy:1.569,adv_mom:-0.183,brand_adv_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,note:'4月1-24日（24天），舍得/郎酒集中投放，竞价占比74.5%'}
+  M4:{label:'4月',period:'2026-04-01 至 2026-04-30',adv:213.46,brand_adv:76.3,cpc:137.16,pub:231.96,search:31.66,ecom:0.39,lead:19.68,cpc_other:85.82,commercial:null,adv_yoy:890.5,brand_adv_yoy:8983.3,cpc_yoy:562.3,pub_yoy:701.8,search_yoy:null,lead_yoy:null,adv_mom:0.771,brand_adv_mom:0.8381,cpc_mom:0.7355,pub_mom:0.8643,note:'白酒4月'},
+  M5:{label:'5月',period:'2026-05-01 至 2026-05-08',adv:28.38,brand_adv:2.2,cpc:26.18,pub:28.67,search:5.62,ecom:0.0,lead:4.26,cpc_other:16.3,commercial:null,adv_yoy:188.1,brand_adv_yoy:null,cpc_yoy:165.8,pub_yoy:11.3,search_yoy:null,lead_yoy:null,adv_mom:-0.867,brand_adv_mom:-0.9712,cpc_mom:-0.8091,pub_mom:-0.8764,note:'白酒5月'}
 };
 var BRANDS=[
-  {brand:'五粮液',adv26:391.44,brand_adv26:273.88,cpc26:117.56,pub26:267.34,adv25:110.54,is_new:false,yoy:254.1,sales:'一青',search26:22.21,lead26:2.06,ecom26:0.12,note:''},
-  {brand:'泸州老窖',adv26:110.51,brand_adv26:21.51,cpc26:89.00,pub26:288.48,adv25:50.08,is_new:false,yoy:120.7,sales:'弹头',search26:30.09,lead26:0,ecom26:0,note:''},
-  {brand:'甜掌柜/康得',adv26:100.22,brand_adv26:0,cpc26:100.22,pub26:0,adv25:47.54,is_new:false,yoy:110.8,sales:'皓皓',search26:12.72,lead26:83.17,ecom26:0,note:''},
-  {brand:'女儿红酱酒',adv26:67.25,brand_adv26:0,cpc26:67.25,pub26:27.61,adv25:0.01,is_new:true,yoy:null,sales:'皓皓',search26:35.09,lead26:0,ecom26:0,note:'搜索效率全赛道领先'},
-  {brand:'舍得自在微醺club',adv26:59.15,brand_adv26:29.54,cpc26:29.61,pub26:29.61,adv25:0,is_new:true,yoy:null,sales:'森动',search26:3.71,lead26:25.90,ecom26:0,note:'4月最大增量'},
-  {brand:'郎酒',adv26:25.18,brand_adv26:0,cpc26:25.18,pub26:98.49,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:5.35,lead26:0,ecom26:0,note:''},
-  {brand:'今世缘',adv26:19.61,brand_adv26:0,cpc26:19.61,pub26:11.76,adv25:3.27,is_new:false,yoy:499.7,sales:'皓皓',search26:0.04,lead26:0,ecom26:0,note:''},
-  {brand:'金徽酒',adv26:15.64,brand_adv26:0,cpc26:15.64,pub26:0,adv25:0,is_new:true,yoy:null,sales:'-',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'小糊涂仙',adv26:11.08,brand_adv26:0,cpc26:11.08,pub26:45.88,adv25:0,is_new:true,yoy:null,sales:'弹头',search26:2.53,lead26:10.03,ecom26:0,note:''},
-  {brand:'劲酒',adv26:10.28,brand_adv26:0,cpc26:9.19,pub26:13.39,adv25:0.41,is_new:false,yoy:2407.3,sales:'一青',search26:0.80,lead26:0,ecom26:0,note:''},
-  {brand:'古井贡酒',adv26:7.40,brand_adv26:5.79,cpc26:1.61,pub26:35.71,adv25:3.42,is_new:false,yoy:116.4,sales:'皓皓',search26:1.37,lead26:0,ecom26:0,note:''},
-  {brand:'汾酒',adv26:3.21,brand_adv26:0,cpc26:3.21,pub26:4.97,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0.82,lead26:0,ecom26:0.51,note:''},
-  {brand:'江小白',adv26:0.76,brand_adv26:0,cpc26:0.76,pub26:0,adv25:0.2,is_new:false,yoy:280.0,sales:'苦艾',search26:0.01,lead26:0,ecom26:0,note:''},
-  {brand:'白沙液',adv26:0.74,brand_adv26:0,cpc26:0.74,pub26:1.26,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'红星二锅头',adv26:0.66,brand_adv26:0,cpc26:0.66,pub26:0,adv25:0,is_new:true,yoy:null,sales:'皓皓',search26:0.09,lead26:0,ecom26:0,note:''},
-  {brand:'茅台',adv26:0.99,brand_adv26:0,cpc26:0,pub26:33.86,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0,lead26:0,ecom26:0,note:'仅蒲公英'},
-  {brand:'舍得',adv26:0,brand_adv26:0,cpc26:0,pub26:3.58,adv25:0,is_new:false,yoy:null,sales:'森动',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'水井坊',adv26:0,brand_adv26:0,cpc26:0,pub26:3.76,adv25:32.48,is_new:false,yoy:-100,sales:'森动',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'知交酒/习酒',adv26:0,brand_adv26:0,cpc26:0,pub26:0,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'毛铺草本酒',adv26:0,brand_adv26:0,cpc26:0,pub26:0,adv25:0.2,is_new:false,yoy:-100,sales:'弹头',search26:0,lead26:0,ecom26:0,note:''},
-  {brand:'珍酒',adv26:0,brand_adv26:0,cpc26:0,pub26:0,adv25:0,is_new:false,yoy:null,sales:'森动',search26:0,lead26:0,ecom26:0,note:''}
+  {brand:'五粮液',adv26:312.05,brand26:280.65,cpc26:31.4,pub26:117.85,search26:9.24,lead26:0.0,ecom26:0.36,sales:'一青(张天任)'},
+  {brand:'舍得自在微醺club',adv26:127.61,brand26:59.4,cpc26:68.21,pub26:78.28,search26:14.28,lead26:0.0,ecom26:0.0,sales:'森动(李涛)'},
+  {brand:'泸州老窖',adv26:125.0,brand26:16.0,cpc26:109.0,pub26:316.65,search26:34.01,lead26:0.0,ecom26:0.0,sales:'弹头(张皓纯)'},
+  {brand:'甜掌柜/康得',adv26:105.55,brand26:0.0,cpc26:105.55,pub26:0.0,search26:14.79,lead26:105.52,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'五粮液官方账号',adv26:97.73,brand26:0.0,cpc26:97.73,pub26:171.26,search26:14.76,lead26:0.0,ecom26:0.02,sales:'一青(张天任)'},
+  {brand:'女儿红酱酒',adv26:75.43,brand26:0.0,cpc26:75.43,pub26:25.43,search26:39.92,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'郎酒LANGJIU',adv26:25.22,brand26:0.0,cpc26:25.22,pub26:105.54,search26:5.34,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'这一生今世缘',adv26:21.21,brand26:0.0,cpc26:21.21,pub26:13.86,search26:0.19,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'金徽酒',adv26:15.0,brand26:0.0,cpc26:15.0,pub26:0.0,search26:0.0,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'小糊涂仙幸福行动指南',adv26:10.71,brand26:0.0,cpc26:10.71,pub26:50.31,search26:2.79,lead26:9.62,ecom26:0.0,sales:'弹头(张皓纯)'},
+  {brand:'中国劲酒',adv26:10.6,brand26:0.0,cpc26:9.51,pub26:14.13,search26:0.8,lead26:0.0,ecom26:0.0,sales:'一青(张天任)'},
+  {brand:'五粮囍官方旗舰店',adv26:10.0,brand26:0.0,cpc26:10.0,pub26:20.82,search26:0.53,lead26:7.4,ecom26:0.0,sales:'一青(张天任)'},
+  {brand:'古井贡酒·年份原浆',adv26:5.99,brand26:4.52,cpc26:1.47,pub26:44.55,search26:1.1,lead26:0.0,ecom26:0.0,sales:'森动(李涛)'},
+  {brand:'汾酒官方账号',adv26:2.7,brand26:0.0,cpc26:2.7,pub26:4.97,search26:0.82,lead26:0.0,ecom26:2.7,sales:'皓皓(GUO YILUN)'},
+  {brand:'西凤酒',adv26:2.51,brand26:0.0,cpc26:2.51,pub26:3.85,search26:0.01,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'江小白',adv26:1.0,brand26:0.0,cpc26:1.0,pub26:0.0,search26:0.02,lead26:0.0,ecom26:0.0,sales:'苦艾(朱灵琳)'},
+  {brand:'茅台酱香酒',adv26:0.99,brand26:0.0,cpc26:0.0,pub26:24.33,search26:0.0,lead26:0.0,ecom26:0.0,sales:'弹头(张皓纯)'},
+  {brand:'吴总说好酒',adv26:0.77,brand26:0.0,cpc26:0.77,pub26:0.0,search26:0.05,lead26:0.77,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'白沙酒类',adv26:0.74,brand26:0.0,cpc26:0.74,pub26:1.26,search26:0.0,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'红星白酒',adv26:0.47,brand26:0.0,cpc26:0.47,pub26:0.0,search26:0.09,lead26:0.0,ecom26:0.0,sales:'皓皓(GUO YILUN)'},
+  {brand:'汾酒杏花村竹叶青',adv26:0.04,brand26:0.0,cpc26:0.04,pub26:0.0,search26:0.02,lead26:0.0,ecom26:0.04,sales:'皓皓(GUO YILUN)'}
 ];
 
 var currentTab='YTD';
@@ -668,7 +671,7 @@ function yoyF(v){if(v===null||v===undefined)return null;if(typeof v==='string')r
 
 function switchTab(t){
   currentTab=t;
-  document.querySelectorAll('.tab').forEach(function(el,i){el.classList.toggle('active',['YTD','M1','M2','M3','M4'][i]===t);});
+  document.querySelectorAll('.tab').forEach(function(el,i){el.classList.toggle('active',['YTD','M1','M2','M3','M4','M5'][i]===t);});
   var d=TABS[t];
   document.getElementById('header-meta').textContent='数据区间：'+d.period+' | 单位：万元';
   document.getElementById('kpi-period-label').textContent=d.period;
@@ -689,6 +692,7 @@ function switchTab(t){
   else if(t==='M2')renderWeekChart('2');
   else if(t==='M3')renderWeekChart('3');
   else if(t==='M4')renderWeekChart('4');
+  else if(t==='M5')renderWeekChart('5');
   else renderWeekChart(null);
   var rankLabel=document.getElementById('rank-period-label');
   if(rankLabel)rankLabel.textContent=(t==='YTD')?'YTD 硬广流水降序':(TABS[t].label+'月 硬广流水降序');
@@ -746,12 +750,13 @@ function renderBarChart(){
   },true);
 }
 
-var PIE_DATA={
-  YTD:{adv:796.81,brand:307.19,search:104.68,lead:123.08,ecom:0.12,other:259.63,pub:862.32},
+var PIE_DATA = {
+  YTD:{adv:951.33,brand:360.57,search:138.78,lead:123.33,ecom:3.12,other:326.57,pub:1024.64},
   M1:{adv:297.16,brand:149.06,search:31.72,lead:38.66,ecom:0,other:76.73,pub:270.12},
   M2:{adv:280.69,brand:91.5,search:40.55,lead:49.43,ecom:0,other:98.10,pub:349.65},
   M3:{adv:120.53,brand:41.51,search:17.04,lead:20.77,ecom:0,other:41.22,pub:124.42},
-  M4:{adv:98.43,brand:25.12,search:15.37,lead:14.22,ecom:0.12,other:43.58,pub:118.13}
+  M4:{adv:98.43,brand:25.12,search:15.37,lead:14.22,ecom:0.12,other:43.58,pub:118.13},
+  M5:{adv:28.38,brand:2.2,search:5.62,lead:4.26,ecom:0.0,other:16.3,pub:28.67}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -794,13 +799,14 @@ function renderTargetChart(){
 
 
 function renderTargetProgress(tab){
-  var ytdAdv=796.81, goal=6000;
+  var ytdAdv=951.33, goal=6000;
   var monthData={
-    YTD:{adv:796.81,label:'YTD（1-4月）',prev:null},
+    YTD:{adv:951.33,label:'YTD（1-5月）',prev:null},
     M1:{adv:297.16,label:'1月',prev:null},
     M2:{adv:280.69,label:'2月',prev:297.16},
     M3:{adv:120.53,label:'3月',prev:280.69},
-    M4:{adv:98.43,label:'4月（截至24日）',prev:120.53}
+    M4:{adv:213.46,label:'4月',prev:120.53},
+    M5:{adv:28.38,label:'5月（截至8日）',prev:213.46}
   };
   var d=monthData[tab]||monthData.YTD;
   var ytdPct=(ytdAdv/goal*100).toFixed(1);

@@ -80,11 +80,11 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-label{font-size:13px;color:rgba(255,255,255,.7);flex:1;}
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
-.sales-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;}
+.sales-grid{display:block;margin-bottom:28px;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;height:100%;box-sizing:border-box;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
-.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:60px;align-content:flex-start;overflow:hidden;}
+.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:56px;align-content:flex-start;overflow:hidden;}
 .sales-brand-tag{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);white-space:nowrap;}
 .sales-kpi-row{display:flex;gap:12px;margin-bottom:12px;}
 .sales-kpi{text-align:center;flex:1;}
@@ -1202,44 +1202,70 @@ function renderMonthlyRankBars(tab){
 function renderMonthlySalesCards(tab){
   var container=document.getElementById('sales-cards-container');
   if(!container)return;
-  var data=SALES_DATA[tab];
+  var data=SALES_DATA&&SALES_DATA[tab];
+  // 若SALES_DATA无数据，从MONTHLY_BRANDS聚合
   if(!data||!data.length){
-    var brands=MONTHLY_BRANDS[tab];
-    if(!brands){container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px">暂无数据</div>';return;}
-    var salesMap={};
-    brands.forEach(function(b){
+    var rawBrands=MONTHLY_BRANDS[tab];
+    if(!rawBrands||!rawBrands.length){
+      container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px;text-align:center">暂无数据</div>';
+      return;
+    }
+    var smap={};
+    rawBrands.forEach(function(b){
       var s=b.sales||'其他';
-      if(!salesMap[s])salesMap[s]={adv:0,pub:0,brands:[]};
-      salesMap[s].adv=Math.round((salesMap[s].adv+b.adv)*100)/100;
-      salesMap[s].pub=Math.round((salesMap[s].pub+b.pub)*100)/100;
-      salesMap[s].brands.push(b);
+      if(!smap[s])smap[s]={adv:0,pub:0,brands:[]};
+      smap[s].adv=Math.round((smap[s].adv+(b.adv||0))*100)/100;
+      smap[s].pub=Math.round((smap[s].pub+(b.pub||0))*100)/100;
+      if((b.adv||0)>0)smap[s].brands.push(b);
     });
-    data=Object.entries(salesMap).map(function(e){return {name:e[0],adv:e[1].adv,pub:e[1].pub,brands:e[1].brands};});
+    data=Object.entries(smap).map(function(kv){
+      return {name:kv[0],adv:kv[1].adv,pub:kv[1].pub,brands:kv[1].brands};
+    });
   }
-  var colors={'一青':['rgba(255,36,66,.35)','#FF2442'],'弹头':['rgba(79,142,247,.35)','#4F8EF7'],'皓皓':['rgba(0,229,160,.3)','#00E5A0'],'苦艾':['rgba(255,149,0,.35)','#FF9500'],'森动':['rgba(200,200,200,.2)','rgba(200,200,200,.5)'],'喷火':['rgba(108,99,255,.35)','#6C63FF']};
+  var COLORS={
+    '一青':['rgba(255,36,66,.35)','#FF2442'],
+    '弹头':['rgba(79,142,247,.35)','#4F8EF7'],
+    '皓皓':['rgba(0,229,160,.3)','#00E5A0'],
+    '苦艾':['rgba(255,149,0,.35)','#FF9500'],
+    '森动':['rgba(200,200,200,.18)','rgba(200,200,200,.5)'],
+    '喷火':['rgba(108,99,255,.35)','#6C63FF']
+  };
   var totalAdv=data.reduce(function(s,d){return s+(d.adv||0);},0);
   var sorted=data.slice().sort(function(a,b){return (b.adv||0)-(a.adv||0);});
   var cards=sorted.filter(function(d){return (d.adv||0)>0;}).map(function(d){
-    var c=colors[d.name]||['rgba(255,255,255,.15)','#fff'];
+    var c=COLORS[d.name]||['rgba(255,255,255,.15)','#ccc'];
     var pct=totalAdv>0?+(d.adv/totalAdv*100).toFixed(1):0;
-    var topBrands=(d.brands||[]).slice().sort(function(a,b){return (b.adv||0)-(a.adv||0);}).slice(0,3);
-    var tags=topBrands.map(function(b){
-      return '<span class="sales-brand-tag" style="background:'+c[0]+'">'+b.brand+' '+(b.adv||0).toFixed(2)+'w</span>';
+    var topB=(d.brands||[]).slice().sort(function(a,b){return (b.adv||0)-(a.adv||0);}).slice(0,3);
+    var tags=topB.map(function(b){
+      return '<span class="sales-brand-tag" style="background:'+c[0]+';color:#fff">'+
+        (b.brand||b.name||'')+(b.adv?' '+b.adv.toFixed(2)+'w':'')+'</span>';
     }).join('');
     return '<div class="sales-card" style="border-color:'+c[0]+'">'+
       '<div class="sales-name">'+d.name+'</div>'+
       '<div class="sales-brand-list">'+tags+'</div>'+
-      '<div class="sales-kpi-row" style="margin-top:auto">'+
-        '<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">广告流水</div></div>'+
-        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+
-        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+
+      '<div style="margin-top:auto">'+
+        '<div class="sales-kpi-row">'+
+          '<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+
+            '<span style="font-size:12px;font-weight:400">w</span></div>'+
+            '<div class="sales-kpi-label">广告流水</div></div>'+
+          '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+
+            '<span style="font-size:12px;font-weight:400">w</span></div>'+
+            '<div class="sales-kpi-label">蒲公英</div></div>'+
+          '<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+
+            '%</div><div class="sales-kpi-label">占比</div></div>'+
+        '</div>'+
+        '<div style="font-size:11px;color:rgba(255,255,255,.35);margin:4px 0">广告流水占团队总量 '+pct+'%</div>'+
+        '<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+
       '</div>'+
-      '<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+
     '</div>';
   });
+  // note单独放grid上方
   var note='';
-  if(tab==='YTD')note='<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>';
-  container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:100%">'+cards.join('')+'</div>';
+  if(tab==='YTD')note='<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">'+
+    '📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>';
+  container.innerHTML=note+
+    '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:100%;box-sizing:border-box">'+
+    cards.join('')+'</div>';
 }
 function renderMonthlyInsight(tab){
   var card=document.getElementById('monthly-insight-card');
@@ -1572,11 +1598,11 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-label{font-size:13px;color:rgba(255,255,255,.7);flex:1;}
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
-.sales-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;}
+.sales-grid{display:block;margin-bottom:28px;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;height:100%;box-sizing:border-box;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
-.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:60px;align-content:flex-start;overflow:hidden;}
+.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:56px;align-content:flex-start;overflow:hidden;}
 .sales-brand-tag{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);white-space:nowrap;}
 .sales-kpi-row{display:flex;gap:12px;margin-bottom:12px;}
 .sales-kpi{text-align:center;flex:1;}

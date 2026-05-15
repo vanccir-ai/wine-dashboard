@@ -81,7 +81,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
 .sales-grid{display:block;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;height:100%;box-sizing:border-box;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;height:100%;box-sizing:border-box;min-width:0;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
 .sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:56px;align-content:flex-start;overflow:hidden;}
@@ -1167,7 +1167,7 @@ function renderMonthlySalesCards(tab){
   if(tab==='YTD')note='<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">'+
     '📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>';
   container.innerHTML=note+
-    '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:100%;box-sizing:border-box">'+
+    '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%;max-width:100%;box-sizing:border-box;overflow:hidden">'+
     cards.join('')+'</div>';
 }
 function renderMonthlyInsight(tab){

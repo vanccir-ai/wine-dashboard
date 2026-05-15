@@ -265,6 +265,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <button class="week-tab" onclick="showWeekMonth('2',this)">2月</button>
     <button class="week-tab" onclick="showWeekMonth('3',this)">3月</button>
     <button class="week-tab" onclick="showWeekMonth('4',this)">4月</button>
+    <button class="week-tab" onclick="showWeekMonth('5',this)">5月</button>
   </div>
   <div id="weekChart" style="height:280px;"></div>
 </div>
@@ -624,22 +625,14 @@ var weekData=[
   {label:'W03/16\n~03/22',month:'3',adv:16.39,brand:4.05,cpc:12.34,pub:19.9,days:7},
   {label:'W03/23\n~03/29',month:'3',adv:12.25,brand:4.05,cpc:8.2,pub:43.71,days:7},
   {label:'W03/30\n~04/03',month:'3',adv:3.5,brand:1.16,cpc:2.35,pub:14.86,days:4},
-  {label:'W04/01
-~04/06',month:'4',adv:42.69,brand:15.26,cpc:27.43,pub:46.39,days:6}
-  {label:'W04/07
-~04/13',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7}
-  {label:'W04/14
-~04/20',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7}
-  {label:'W04/21
-~04/27',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7}
-  {label:'W04/28
-~04/30',month:'4',adv:21.35,brand:7.63,cpc:13.72,pub:23.2,days:3}
-  {label:'W04/28
-~05/04',month:'5',adv:5.75,brand:0.63,cpc:5.12,pub:23.09,days:4}
-  {label:'W05/05
-~05/11',month:'5',adv:10.06,brand:1.1,cpc:8.96,pub:40.41,days:7}
-  {label:'W05/12
-~05/14',month:'5',adv:4.31,brand:0.47,cpc:3.84,pub:17.32,days:3,estimated:true}
+  {label:'W04/01\n~04/06',month:'4',adv:42.69,brand:15.26,cpc:27.43,pub:46.39,days:6},
+  {label:'W04/07\n~04/13',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
+  {label:'W04/14\n~04/20',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
+  {label:'W04/21\n~04/27',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
+  {label:'W04/28\n~04/30',month:'4',adv:21.35,brand:7.63,cpc:13.72,pub:23.2,days:3},
+  {label:'W04/28\n~05/04',month:'5',adv:5.75,brand:0.63,cpc:5.12,pub:23.09,days:4},
+  {label:'W05/05\n~05/11',month:'5',adv:10.06,brand:1.1,cpc:8.96,pub:40.41,days:7},
+  {label:'W05/12\n~05/14',month:'5',adv:4.31,brand:0.47,cpc:3.84,pub:17.32,days:3,estimated:true}
 ];
 
 function showWeekMonth(m, btn){

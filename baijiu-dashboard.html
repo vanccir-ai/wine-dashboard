@@ -190,6 +190,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div class="section-title" id="sec-kpi">核心指标 <small id="kpi-period-label">YTD 2026-01-01 至 2026-05-14</small></div>
 <div id="kpi-note" class="period-note"></div>
 <div class="kpi-grid" id="kpi-grid"></div>
+<div id="kpi-formula-note" style="font-size:12px;color:rgba(255,255,255,.3);margin:8px 0 0 2px"></div>
 <div class="section-title" id="sec-target">📈 硬广目标达成 &amp; 旺季节律 <small>年度硬广目标 6000w</small></div>
 <div class="card mb28">
   <div class="target-layout">
@@ -732,7 +733,16 @@ function renderKPIs(d){
       '<div class="kpi-value">'+vs+'<span>w</span></div>'+
       yoyS+momS+estimatedMark+'</div>';
   }).join('');
-}
+
+  // 公式说明：硬广总消耗 = 品牌广告 + 竞价广告 + 未归类（约2w精度差）
+  //           竞价广告 = 搜索 + 线索 + 电商 + 其他竞价(cpc_other)
+  var formulaNote=document.getElementById('kpi-formula-note');
+  if(formulaNote&&d.adv!=null&&d.brand_adv!=null&&d.cpc!=null){
+    var sumBC=+(d.brand_adv+d.cpc).toFixed(2);
+    var diffBC=+(d.adv-sumBC).toFixed(2);
+    var diffStr=diffBC===0?'':('（未归类'+diffBC.toFixed(2)+'w）');
+    formulaNote.textContent='硬广总消耗 '+d.adv.toFixed(2)+'w = 品牌广告 '+d.brand_adv.toFixed(2)+'w + 竞价广告 '+d.cpc.toFixed(2)+'w'+diffStr;
+  }}
 
 function renderBarChart(){
   var dom=document.getElementById('barChart');
@@ -1122,7 +1132,7 @@ function renderMonthlySalesCards(tab){
     '</div>';
   });
   var note="";
-  if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水合计 951.32w（含舍得自在微醺club 127.61w 归属森动）</div>';
+  if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水来自客户全量快照（951.32w），与KPI卡片时间口径不同，差异属正常</div>';
   if(tab==="M4")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细录入124.44w（部分品牌跨月汇总已在YTD卡片中体现）</div>';
   container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">'+cards.join('')+'</div>';
 }

@@ -80,15 +80,15 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-label{font-size:13px;color:rgba(255,255,255,.7);flex:1;}
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
-.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;}
+.sales-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
-.sales-brand-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.sales-brand-tag{font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);}
+.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:60px;align-content:flex-start;overflow:hidden;}
+.sales-brand-tag{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);white-space:nowrap;}
 .sales-kpi-row{display:flex;gap:12px;margin-bottom:12px;}
 .sales-kpi{text-align:center;flex:1;}
-.sales-kpi-val{font-size:18px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
+.sales-kpi-val{font-size:16px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .sales-kpi-val span{font-size:12px;color:rgba(255,255,255,.5);}
 .sales-kpi-label{font-size:11px;color:rgba(255,255,255,.4);}
 .progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-top:8px;}
@@ -1134,7 +1134,7 @@ function renderMonthlySalesCards(tab){
     html+='<div class="sales-card" style="border-color:'+(colors[s]||'rgba(255,255,255,.1)')+'">'+
       '<div class="sales-name">'+s+'</div>'+
       '<div class="sales-brand-list">'+top.map(function(b){return '<span class="sales-brand-tag" style="background:rgba(255,36,66,.08)">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';}).join('')+'</div>'+
-      '<div class="sales-kpi-row">'+
+      '<div class="sales-kpi-row" style="margin-top:auto">'+
         '<div class="sales-kpi"><div class="sales-kpi-val">'+v.adv.toFixed(2)+'<span>w</span></div><div class="sales-kpi-label">广告流水</div></div>'+
         '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+v.pub.toFixed(2)+'<span>w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+
         '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#00E5A0">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+

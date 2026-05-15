@@ -521,38 +521,53 @@ var MONTHLY_BRANDS = {
   M5:[{brand:'舍得自在微醺club',adv:12.65,brand_adv:0.46,cpc:12.18,pub:9.33,sales:'森动'},{brand:'女儿红酱酒',adv:4.06,brand_adv:0.0,cpc:4.06,pub:0.2,sales:'皓皓'},{brand:'甜掌柜/康得',adv:3.84,brand_adv:0.0,cpc:3.84,pub:0.0,sales:'皓皓'},{brand:'这一生今世缘',adv:3.09,brand_adv:0.0,cpc:3.09,pub:0.76,sales:'皓皓'},{brand:'五粮液',adv:2.36,brand_adv:1.74,cpc:0.63,pub:0.29,sales:'一青'},{brand:'五粮液官方账号',adv:1.17,brand_adv:0.0,cpc:1.17,pub:0.81,sales:'一青'},{brand:'江小白',adv:0.43,brand_adv:0.0,cpc:0.43,pub:0.0,sales:'苦艾'},{brand:'小糊涂仙幸福行动指南',adv:0.38,brand_adv:0.0,cpc:0.38,pub:0.53,sales:'弹头'},{brand:'西凤酒',adv:0.35,brand_adv:0.0,cpc:0.35,pub:0.0,sales:'皓皓'},{brand:'吴总说好酒',adv:0.04,brand_adv:0.0,cpc:0.04,pub:0.0,sales:'皓皓'},{brand:'汾酒杏花村竹叶青',adv:0.0,brand_adv:0.0,cpc:0.0,pub:0.0,sales:'皓皓'}]
 };
 
-const SALES_DATA = {
-  YTD:  [{name:"一青",adv:405.06,pub:281.76,brands:[{brand:"五粮液",adv:393.8},{brand:"劲酒",adv:10.09},{brand:"五粮液官方账号",adv:1.17}]},
-    {name:"弹头",adv:121.6,pub:363.29,brands:[{brand:"泸州老窖",adv:110.51},{brand:"小糊涂仙",adv:9.72},{brand:"茅台",adv:0.99},{brand:"小糊涂仙幸福行动指南",adv:0.38}]},
-    {name:"皓皓",adv:251.27,pub:176.85,brands:[{brand:"甜掌柜/康得",adv:110.05},{brand:"女儿红酱酒",adv:65.57},{brand:"郎酒",adv:25.12},{brand:"今世缘",adv:19.61},{brand:"金徽酒",adv:15.64},{brand:"古井贡酒",adv:7.4},{brand:"汾酒",adv:3.19},{brand:"这一生今世缘",adv:3.09},{brand:"白沙酒类",adv:0.74},{brand:"红星白酒",adv:0.47},{brand:"西凤酒",adv:0.35},{brand:"吴总说好酒",adv:0.04}]},
-    {name:"苦艾",adv:0.91,pub:0.0,brands:[{brand:"江小白",adv:0.91}]},
-    {name:"森动",adv:71.8,pub:44.49,brands:[{brand:"舍得自在微醺club",adv:71.8}]}],
-  M1:   [{name:"一青",adv:164.2,pub:71.85,brands:[{brand:"五粮液",adv:156.88},{brand:"劲酒",adv:7.32}]},
-    {name:"弹头",adv:54.47,pub:160.67,brands:[{brand:"泸州老窖",adv:51.46},{brand:"小糊涂仙",adv:2.02},{brand:"茅台",adv:0.99}]},
-    {name:"皓皓",adv:78.37,pub:37.62,brands:[{brand:"甜掌柜/康得",adv:43.61},{brand:"女儿红酱酒",adv:30.12},{brand:"古井贡酒",adv:2.42},{brand:"郎酒",adv:1.01},{brand:"白沙酒类",adv:0.74},{brand:"红星白酒",adv:0.47}]},
-    {name:"苦艾",adv:0,pub:0,brands:[]},
-    {name:"森动",adv:0,pub:0,brands:[]}],
-  M2:   [{name:"一青",adv:146.45,pub:114.75,brands:[{brand:"五粮液",adv:144.59},{brand:"劲酒",adv:1.86}]},
-    {name:"弹头",adv:55.67,pub:126.89,brands:[{brand:"泸州老窖",adv:53.54},{brand:"小糊涂仙",adv:2.13}]},
-    {name:"皓皓",adv:78.34,pub:108.04,brands:[{brand:"甜掌柜/康得",adv:23.8},{brand:"郎酒",adv:23.4},{brand:"金徽酒",adv:15.0},{brand:"女儿红酱酒",adv:11.7},{brand:"古井贡酒",adv:3.57},{brand:"汾酒",adv:0.87}]},
-    {name:"苦艾",adv:0,pub:0,brands:[]},
-    {name:"森动",adv:0,pub:0,brands:[]}],
-  M3:   [{name:"一青",adv:64.18,pub:73.6,brands:[{brand:"五粮液",adv:63.84},{brand:"劲酒",adv:0.34}]},
-    {name:"弹头",adv:3.32,pub:35.18,brands:[{brand:"小糊涂仙",adv:3.32}]},
-    {name:"皓皓",adv:52.83,pub:11.98,brands:[{brand:"今世缘",adv:18.11},{brand:"甜掌柜/康得",adv:17.52},{brand:"女儿红酱酒",adv:14.93},{brand:"汾酒",adv:1.85},{brand:"郎酒",adv:0.42}]},
-    {name:"苦艾",adv:0,pub:0,brands:[]},
-    {name:"森动",adv:0,pub:0,brands:[]}],
-  M4:   [{name:"一青",adv:26.7,pub:20.46,brands:[{brand:"五粮液",adv:26.13},{brand:"劲酒",adv:0.57}]},
-    {name:"弹头",adv:7.76,pub:40.02,brands:[{brand:"泸州老窖",adv:5.51},{brand:"小糊涂仙",adv:2.25}]},
-    {name:"皓皓",adv:30.35,pub:18.25,brands:[{brand:"甜掌柜/康得",adv:21.28},{brand:"女儿红酱酒",adv:4.76},{brand:"今世缘",adv:1.5},{brand:"古井贡酒",adv:1.41},{brand:"金徽酒",adv:0.64},{brand:"汾酒",adv:0.47},{brand:"郎酒",adv:0.29}]},
-    {name:"苦艾",adv:0.48,pub:0.0,brands:[{brand:"江小白",adv:0.48}]},
-    {name:"森动",adv:59.15,pub:31.49,brands:[{brand:"舍得自在微醺club",adv:59.15}]}],
-  M5:   [{name:"一青",adv:3.53,pub:1.1,brands:[{brand:"五粮液",adv:2.36},{brand:"五粮液官方账号",adv:1.17}]},
-    {name:"弹头",adv:0.38,pub:0.53,brands:[{brand:"小糊涂仙幸福行动指南",adv:0.38}]},
-    {name:"皓皓",adv:11.38,pub:0.96,brands:[{brand:"女儿红酱酒",adv:4.06},{brand:"甜掌柜/康得",adv:3.84},{brand:"这一生今世缘",adv:3.09},{brand:"西凤酒",adv:0.35},{brand:"吴总说好酒",adv:0.04}]},
-    {name:"苦艾",adv:0.43,pub:0.0,brands:[{brand:"江小白",adv:0.43}]},
-    {name:"森动",adv:12.65,pub:9.33,brands:[{brand:"舍得自在微醺club",adv:12.65}]}]
+const SALES_DATA={
+  YTD:[
+  {name:"一青",adv:430.38,pub:324.06,brands:[{brand:"五粮液",adv:312.05},{brand:"五粮液官方账号",adv:97.73},{brand:"中国劲酒",adv:10.6},{brand:"五粮囍官方旗舰店",adv:10.0}]},
+  {name:"弹头",adv:136.7,pub:391.29,brands:[{brand:"泸州老窖",adv:125.0},{brand:"小糊涂仙幸福行动指南",adv:10.71},{brand:"茅台酱香酒",adv:0.99}]},
+  {name:"皓皓",adv:249.64,pub:154.91,brands:[{brand:"甜掌柜/康得",adv:105.55},{brand:"女儿红酱酒",adv:75.43},{brand:"郎酒LANGJIU",adv:25.22},{brand:"这一生今世缘",adv:21.21},{brand:"金徽酒",adv:15.0}]},
+  {name:"苦艾",adv:1.0,pub:0.0,brands:[{brand:"江小白",adv:1.0}]},
+  {name:"森动",adv:133.6,pub:122.83,brands:[{brand:"舍得自在微醺club",adv:127.61},{brand:"古井贡酒·年份原浆",adv:5.99}]}
+],
+  M1:[
+  {name:"一青",adv:164.2,pub:71.85,brands:[{brand:"五粮液",adv:156.88},{brand:"劲酒",adv:7.32}]},
+  {name:"弹头",adv:54.47,pub:160.67,brands:[{brand:"泸州老窖",adv:51.46},{brand:"小糊涂仙",adv:2.02},{brand:"茅台",adv:0.99}]},
+  {name:"皓皓",adv:78.37,pub:37.62,brands:[{brand:"甜掌柜/康得",adv:43.61},{brand:"女儿红酱酒",adv:30.12},{brand:"古井贡酒",adv:2.42},{brand:"郎酒",adv:1.01},{brand:"白沙酒类",adv:0.74}]},
+  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
+  {name:"森动",adv:0.0,pub:0.0,brands:[]}
+],
+  M2:[
+  {name:"一青",adv:146.45,pub:114.75,brands:[{brand:"五粮液",adv:144.59},{brand:"劲酒",adv:1.86}]},
+  {name:"弹头",adv:55.67,pub:126.89,brands:[{brand:"泸州老窖",adv:53.54},{brand:"小糊涂仙",adv:2.13}]},
+  {name:"皓皓",adv:78.34,pub:108.04,brands:[{brand:"甜掌柜/康得",adv:23.8},{brand:"郎酒",adv:23.4},{brand:"金徽酒",adv:15.0},{brand:"女儿红酱酒",adv:11.7},{brand:"古井贡酒",adv:3.57}]},
+  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
+  {name:"森动",adv:0.0,pub:0.0,brands:[]}
+],
+  M3:[
+  {name:"一青",adv:64.18,pub:73.6,brands:[{brand:"五粮液",adv:63.84},{brand:"劲酒",adv:0.34}]},
+  {name:"弹头",adv:3.32,pub:35.18,brands:[{brand:"小糊涂仙",adv:3.32}]},
+  {name:"皓皓",adv:52.83,pub:11.98,brands:[{brand:"今世缘",adv:18.11},{brand:"甜掌柜/康得",adv:17.52},{brand:"女儿红酱酒",adv:14.93},{brand:"汾酒",adv:1.85},{brand:"郎酒",adv:0.42}]},
+  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
+  {name:"森动",adv:0.0,pub:3.67,brands:[]}
+],
+  M4:[
+  {name:"一青",adv:26.7,pub:20.46,brands:[{brand:"五粮液",adv:26.13},{brand:"劲酒",adv:0.57}]},
+  {name:"弹头",adv:7.76,pub:40.02,brands:[{brand:"泸州老窖",adv:5.51},{brand:"小糊涂仙",adv:2.25}]},
+  {name:"皓皓",adv:30.35,pub:18.25,brands:[{brand:"甜掌柜/康得",adv:21.28},{brand:"女儿红酱酒",adv:4.76},{brand:"今世缘",adv:1.5},{brand:"古井贡酒",adv:1.41},{brand:"金徽酒",adv:0.64}]},
+  {name:"苦艾",adv:0.48,pub:0.0,brands:[{brand:"江小白",adv:0.48}]},
+  {name:"森动",adv:59.15,pub:31.49,brands:[{brand:"舍得自在微醺club",adv:59.15}]}
+],
+  M5:[
+  {name:"一青",adv:3.53,pub:1.1,brands:[{brand:"五粮液",adv:2.36},{brand:"五粮液官方账号",adv:1.17}]},
+  {name:"弹头",adv:0.38,pub:0.53,brands:[{brand:"小糊涂仙幸福行动指南",adv:0.38}]},
+  {name:"皓皓",adv:11.38,pub:0.96,brands:[{brand:"女儿红酱酒",adv:4.06},{brand:"甜掌柜/康得",adv:3.84},{brand:"这一生今世缘",adv:3.09},{brand:"西凤酒",adv:0.35},{brand:"吴总说好酒",adv:0.04}]},
+  {name:"苦艾",adv:0.43,pub:0.0,brands:[{brand:"江小白",adv:0.43}]},
+  {name:"森动",adv:12.65,pub:9.33,brands:[{brand:"舍得自在微醺club",adv:12.65}]}
+]
 };
+// YTD数据来源: var BRANDS (adv26字段，完整YTD); 月度来源: MONTHLY_BRANDS (月度明细)
+// M4说明: MONTHLY_BRANDS M4只录124.44w，差额89w品牌已在BRANDS YTD中体现
+
 // YTD各销售adv合计=850.64w，差额81.32w为品牌明细未录入部分（主要在M4，差89.02w）
 
 var TABS = {
@@ -1107,8 +1122,8 @@ function renderMonthlySalesCards(tab){
     '</div>';
   });
   var note="";
-  if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水合计 850.64w，差额 81.32w 为品牌明细数据缺口（主要在M4）</div>';
-  if(tab==="M4")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细只录入124.44w，差额89w暂无销售归属</div>';
+  if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水合计 951.32w（含舍得自在微醺club 127.61w 归属森动）</div>';
+  if(tab==="M4")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细录入124.44w（部分品牌跨月汇总已在YTD卡片中体现）</div>';
   container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">'+cards.join('')+'</div>';
 }
 

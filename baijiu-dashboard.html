@@ -80,15 +80,15 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-label{font-size:13px;color:rgba(255,255,255,.7);flex:1;}
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
-.sales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;}
+.sales-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;display:flex;flex-direction:column;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
-.sales-brand-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.sales-brand-tag{font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);}
+.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:60px;align-content:flex-start;overflow:hidden;}
+.sales-brand-tag{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);white-space:nowrap;}
 .sales-kpi-row{display:flex;gap:12px;margin-bottom:12px;}
 .sales-kpi{text-align:center;flex:1;}
-.sales-kpi-val{font-size:18px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
+.sales-kpi-val{font-size:16px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .sales-kpi-val span{font-size:12px;color:rgba(255,255,255,.5);}
 .sales-kpi-label{font-size:11px;color:rgba(255,255,255,.4);}
 .progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-top:8px;}
@@ -1124,13 +1124,13 @@ function renderMonthlySalesCards(tab){
     var c=colors[d.name]||["rgba(255,255,255,.2)","rgba(255,255,255,.1)","#fff","#fff"];
     var pct=totalAdv>0?+(d.adv/totalAdv*100).toFixed(1):0;
     var tags=(d.brands||[]).slice(0,4).map(function(b){
-      return '<span class="brand-tag" style="background:'+c[1]+'">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';
+      return '<span class="sales-brand-tag" style="background:'+c[1]+'">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';
     }).join('');
     return '<div class="sales-card" style="border-color:'+c[0]+'">'+
       '<div class="sales-name">'+d.name+'</div>'+
       '<div class="sales-role" style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px">负责：'+(roles[d.name]||'')+'</div>'+
-      '<div style="margin-bottom:12px;line-height:2">'+tags+'</div>'+
-      '<div class="sales-kpi-row">'+
+      '<div class="sales-brand-list">'+tags+'</div>'+
+      '<div class="sales-kpi-row" style="margin-top:auto">'+
         '<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4)">广告流水</div></div>'+
         '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4)">蒲公英</div></div>'+
         '<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[3]+'">'+pct+'%</div><div style="font-size:11px;color:rgba(255,255,255,.4)">占比</div></div>'+
@@ -1141,7 +1141,7 @@ function renderMonthlySalesCards(tab){
   var note="";
   if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水来自客户全量快照（951.32w），与KPI卡片时间口径不同，差异属正常</div>';
   if(tab==="M4")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细录入124.44w（部分品牌跨月汇总已在YTD卡片中体现）</div>';
-  container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">'+cards.join('')+'</div>';
+  container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">'+cards.join('')+'</div>';
 }
 
 function renderMonthlyInsight(tab){

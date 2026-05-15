@@ -144,6 +144,9 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .brand-detail td{padding:3px 4px;color:rgba(255,255,255,.65);}
 .brand-detail td:first-child{color:rgba(255,255,255,.4);font-size:10px;}
 .brand-detail .mono{font-family:'SF Mono',monospace;color:#00E5A0;font-size:11px;}
+
+.brand-tag{display:inline-block;background:rgba(255,255,255,.1);border-radius:4px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0;white-space:nowrap;}
+#sales-cards-container .sales-kpi-row{justify-content:space-between;}
 </style>
 </head>
 <body>
@@ -1082,34 +1085,30 @@ function renderMonthlySalesCards(tab){
   if(!container)return;
   var data=SALES_DATA[tab];
   if(!data||!data.length){container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px">暂无数据</div>';return;}
-  var colors={"一青":{border:"rgba(255,36,66,.5)",tag:"rgba(255,36,66,.25)",fill:"#FF2442",pct:"#FF2442"},"弹头":{border:"rgba(79,142,247,.5)",tag:"rgba(79,142,247,.25)",fill:"#4F8EF7",pct:"#4F8EF7"},"皓皓":{border:"rgba(0,229,160,.5)",tag:"rgba(0,229,160,.2)",fill:"#00E5A0",pct:"#00E5A0"},"苦艾":{border:"rgba(255,149,0,.5)",tag:"rgba(255,149,0,.2)",fill:"#FF9500",pct:"#FF9500"},"森动":{border:"rgba(200,200,200,.3)",tag:"rgba(200,200,200,.12)",fill:"rgba(200,200,200,.5)",pct:"rgba(200,200,200,.7)"}};
+  var colors={"一青":["rgba(255,36,66,.5)","rgba(255,36,66,.25)","#FF2442","#FF2442"],"弹头":["rgba(79,142,247,.5)","rgba(79,142,247,.25)","#4F8EF7","#4F8EF7"],"皓皓":["rgba(0,229,160,.5)","rgba(0,229,160,.2)","#00E5A0","#00E5A0"],"苦艾":["rgba(255,149,0,.5)","rgba(255,149,0,.2)","#FF9500","#FF9500"],"森动":["rgba(200,200,200,.3)","rgba(200,200,200,.12)","rgba(200,200,200,.5)","rgba(200,200,200,.7)"]};
   var roles={"一青":"五粮液、劲酒","弹头":"泸州老窖、劲酒、小糊涂仙、茅台","皓皓":"甜掌柜/康得、女儿红、郎酒、今世缘、古井贡酒、汾酒、金徽酒","苦艾":"江小白","森动":"舍得"};
   var totalAdv=data.reduce(function(s,d){return s+(d.adv||0);},0);
-  var tabAdv={'YTD':931.96,'M1':297.16,'M2':280.69,'M3':120.53,'M4':213.46,'M5':20.12};
-  var raceAdv=tabAdv[tab]||totalAdv;
-  var cards=data.filter(function(d){return d.adv>0||tab==='YTD';}).map(function(d){
-    var c=colors[d.name]||{border:'rgba(255,255,255,.2)',tag:'rgba(255,255,255,.1)',fill:'#fff',pct:'#fff'};
-    var pctOfTeam=totalAdv>0?(d.adv/totalAdv*100).toFixed(1):0;
+  var cards=data.filter(function(d){return d.adv>0;}).map(function(d){
+    var c=colors[d.name]||["rgba(255,255,255,.2)","rgba(255,255,255,.1)","#fff","#fff"];
+    var pct=totalAdv>0?+(d.adv/totalAdv*100).toFixed(1):0;
     var tags=(d.brands||[]).slice(0,4).map(function(b){
-      return '<span style="background:'+c.tag+';border-radius:4px;padding:3px 8px;font-size:12px;margin:3px 4px 3px 0;display:inline-block">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';
+      return '<span class="brand-tag" style="background:'+c[1]+'">'+b.brand+' '+b.adv.toFixed(2)+'w</span>';
     }).join('');
-    return '<div style="background:rgba(255,255,255,.04);border:1px solid '+c.border+';border-radius:12px;padding:18px 20px;min-width:0">'+
-      '<div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">'+d.name+'</div>'+
-      '<div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px">负责：'+(roles[d.name]||'')+'</div>'+
-      '<div style="margin-bottom:4px;line-height:1.8">'+tags+'</div>'+
-      '<div style="display:flex;gap:20px;margin:14px 0 8px">'+
-        '<div><div style="font-size:22px;font-weight:700;color:#fff">'+d.adv.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">广告流水</div></div>'+
-        '<div><div style="font-size:22px;font-weight:700;color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">蒲公英</div></div>'+
-        '<div><div style="font-size:22px;font-weight:700;color:'+c.pct+'">'+pctOfTeam+'%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">占比</div></div>'+
+    return '<div class="sales-card" style="border-color:'+c[0]+'">'+
+      '<div class="sales-name">'+d.name+'</div>'+
+      '<div class="sales-role" style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px">负责：'+(roles[d.name]||'')+'</div>'+
+      '<div style="margin-bottom:12px;line-height:2">'+tags+'</div>'+
+      '<div class="sales-kpi-row">'+
+        '<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4)">广告流水</div></div>'+
+        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:13px;font-weight:400">w</span></div><div style="font-size:11px;color:rgba(255,255,255,.4)">蒲公英</div></div>'+
+        '<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[3]+'">'+pct+'%</div><div style="font-size:11px;color:rgba(255,255,255,.4)">占比</div></div>'+
       '</div>'+
-      '<div style="height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:6px">'+
-        '<div style="width:'+pctOfTeam+'%;height:4px;background:'+c.fill+';border-radius:2px"></div>'+
-      '</div>'+
+      '<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[2]+'"></div></div>'+
     '</div>';
   });
-  var note='';
-  if(tab==='YTD'){note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水合计 850.64w，差额 81.32w（含M4未录入明细 89w）为品牌明细数据缺口，不影响赛道总量统计</div>';}
-  if(tab==='M4'){note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细只录入124.44w，差额89w暂无销售归属数据</div>';}
+  var note="";
+  if(tab==="YTD")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 各销售广告流水合计 850.64w，差额 81.32w 为品牌明细数据缺口（主要在M4）</div>';
+  if(tab==="M4")note='<div style="font-size:12px;color:rgba(255,255,255,.3);margin-bottom:10px">📌 M4品牌明细只录入124.44w，差额89w暂无销售归属</div>';
   container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">'+cards.join('')+'</div>';
 }
 

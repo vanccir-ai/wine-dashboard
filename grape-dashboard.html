@@ -1056,9 +1056,7 @@ function renderMonthlySalesCards(tab){
   var data=window.SALES_DATA&&window.SALES_DATA[tab];
   if(!data||!data.length){
     var rawBrands=MONTHLY_BRANDS[tab];
-    if(!rawBrands||!rawBrands.length){
-      container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px;text-align:center">暂无数据</div>';return;
-    }
+    if(!rawBrands||!rawBrands.length){container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px;text-align:center">暂无数据</div>';return;}
     var smap={};
     rawBrands.forEach(function(b){
       var s=b.sales||'其他';
@@ -1078,32 +1076,11 @@ function renderMonthlySalesCards(tab){
     var c=COLORS[d.name]||['rgba(255,255,255,.15)','#ccc'];
     var pct=totalAdv>0?+(d.adv/totalAdv*100).toFixed(1):0;
     var topB=(d.brands||[]).slice().sort(function(a,b){return (b.adv||0)-(a.adv||0);}).slice(0,3);
-    var tags=topB.map(function(b){
-      return '<span class="sales-brand-tag" style="background:'+c[0]+';color:#fff">'+
-        (b.brand||b.name||'')+(b.adv?' '+b.adv.toFixed(2)+'w':'')+'</span>';
-    }).join('');
-    return '<div class="sales-card" style="border-color:'+c[0]+'">'+
-      '<div class="sales-name">'+d.name+'</div>'+
-      '<div class="sales-brand-list">'+tags+'</div>'+
-      '<div style="margin-top:auto">'+
-        '<div class="sales-kpi-row">'+
-          '<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+
-            '<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">广告流水</div></div>'+
-          '<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+
-            '<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+
-          '<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+
-            '%</div><div class="sales-kpi-label">占比</div></div>'+
-        '</div>'+
-        '<div style="font-size:11px;color:rgba(255,255,255,.35);margin:4px 0">广告流水占团队总量 '+pct+'%</div>'+
-        '<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+
-      '</div>'+
-    '</div>';
+    var tags=topB.map(function(b){return '<span class="sales-brand-tag" style="background:'+c[0]+';color:#fff">'+(b.brand||b.name||'')+(b.adv?' '+b.adv.toFixed(2)+'w':'')+'</span>';}).join('');
+    return '<div class="sales-card" style="border-color:'+c[0]+'">'+'<div class="sales-name">'+d.name+'</div>'+'<div class="sales-brand-list">'+tags+'</div>'+'<div style="margin-top:auto">'+'<div class="sales-kpi-row">'+'<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">广告流水</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+'</div>'+'<div style="font-size:11px;color:rgba(255,255,255,.35);margin:4px 0">广告流水占团队总量 '+pct+'%</div>'+'<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+'</div>'+'</div>';
   });
-  var note=(tab==='YTD')?'<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">'+
-    '📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>':'';
-  container.innerHTML=note+
-    '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%;box-sizing:border-box">'+
-    cards.join('')+'</div>';
+  var note=(tab==='YTD')?'<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>':'';
+  container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%;box-sizing:border-box">'+cards.join('')+'</div>';
 }
 function renderMonthlyInsight(tab){
   var card=document.getElementById('monthly-insight-card');

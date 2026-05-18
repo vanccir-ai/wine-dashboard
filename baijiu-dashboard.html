@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>白酒赛道商业化看板 v3 — 2026</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display',-apple-system,sans-serif;min-width:1200px;line-height:1.6;}
@@ -93,6 +93,9 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .sales-kpi-label{font-size:11px;color:rgba(255,255,255,.4);}
 .progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-top:8px;}
 .progress-fill{height:100%;border-radius:3px;}
+</style>
+<body>
+
 .lifecycle-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%;box-sizing:border-box"side-nav">
   <div class="nav-group-title">业绩概览</div>
   <a href="#sec-kpi">核心指标</a>
@@ -821,26 +824,27 @@ function renderQuadrant(){
   var dom=document.getElementById('quadrantChart');
   if(!quadChartInst)quadChartInst=echarts.init(dom);
   var pts=[
-    {name:'五粮液',x:367.41,y:232,b:249.08,c:'#FF2442'},
-    {name:'泸州老窖',x:105,y:109.7,b:259.1,c:'#FF2442'},
-    {name:'甜掌柜',x:86.36,y:81.7,b:0,c:'#4F8EF7'},
-    {name:'女儿情',x:57.49,y:200,b:19.48,c:'#FF9500'},
-    {name:'郎酒',x:24.83,y:200,b:90.91,c:'#FF9500'},
-    {name:'今世缘',x:18.11,y:453.8,b:11.76,c:'#FF9500'},
-    {name:'金徽酒',x:15,y:200,b:0,c:'#FF9500'},
-    {name:'劲酒',x:9.71,y:300,b:12.86,c:'#4F8EF7'},
-    {name:'古井贡酒',x:5.99,y:75.2,b:30.49,c:'#4F8EF7'},
-    {name:'水井坊',x:0.1,y:-100,b:1.88,c:'#555'},
-    {name:'茅台',x:0.99,y:50,b:24.33,c:'#FFD60A'},
+    {name:'五粮液',x:156.88,y:262.8,b:66.11,c:'#FF2442'},
+    {name:'五粮液',x:144.59,y:244.6,b:109.46,c:'#FF2442'},
+    {name:'五粮液',x:63.84,y:226.4,b:71.76,c:'#FF2442'},
+    {name:'舍得自在微醺club',x:59.15,y:200.3,b:29.61,c:'#FF2442'},
+    {name:'泸州老窖',x:53.54,y:198.9,b:93.63,c:'#FF2442'},
+    {name:'泸州老窖',x:51.46,y:180.7,b:147.25,c:'#FF2442'},
+    {name:'甜掌柜/康得',x:43.61,y:154.5,b:0.0,c:'#00E5A0'},
+    {name:'女儿红酱酒',x:30.12,y:123.5,b:4.53,c:'#FF9500'},
+    {name:'五粮液',x:26.13,y:117.3,b:20.02,c:'#FF9500'},
+    {name:'甜掌柜/康得',x:23.8,y:100.0,b:0.0,c:'#FF9500'},
+    {name:'郎酒',x:23.4,y:85.8,b:68.49,c:'#FF9500'},
+    {name:'甜掌柜/康得',x:21.28,y:63.6,b:0.0,c:'#FF9500'}
   ];
   quadChartInst.setOption({
     backgroundColor:'transparent',
     tooltip:{trigger:'item',backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
-      formatter:function(p){var d=pts[p.dataIndex];var tier=d.y>100&&d.x>50?'⭐ 巩固型':d.y>100&&d.x<=50?'🔥 冲刺型':d.y<=100&&d.x>50?'🛡️ 防守型':'👁️ 观察型';
+      formatter:function(p){var d=pts[p.dataIndex];var tier=d.y>150&&d.x>47.1?'⭐ 巩固型':d.y>150&&d.x<=47.1?'🛡️ 防守型':d.x>=47.1&&d.y<=150?'🔥 冲刺型':'👁️ 观察型';
         return'<b>'+d.name+'</b> '+tier+'<br>广告流水：'+d.x.toFixed(2)+'w<br>增长势能：'+(d.y===300?'>200%（截断显示）':d.y+'%')+'<br>蒲公英：'+d.b.toFixed(2)+'w';}},
     grid:{left:60,right:80,top:60,bottom:50},
     xAxis:{type:'value',name:'广告流水(w)',nameTextStyle:{color:'rgba(255,255,255,.5)',fontSize:12},axisLabel:{color:'rgba(255,255,255,.4)',formatter:function(v){return v+'w';}},axisLine:{lineStyle:{color:'rgba(255,255,255,.15)'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.03)'}},
-      markLine:{silent:true,symbol:'none',data:[{xAxis:50}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'50w分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
+      markLine:{silent:true,symbol:'none',data:[{xAxis:47.1}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'47.1w分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
     yAxis:{type:'value',name:'增长势能(%)',nameTextStyle:{color:'rgba(255,255,255,.5)',fontSize:12},axisLabel:{color:'rgba(255,255,255,.4)',formatter:function(v){return v+'%';}},axisLine:{lineStyle:{color:'rgba(255,255,255,.15)'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.03)'}},min:-150,max:500,
       markLine:{silent:true,symbol:'none',data:[{yAxis:100}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'100%分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
     series:[{type:'scatter',symbolSize:function(v){return Math.max(Math.sqrt(v[2])*4,10);},
@@ -1006,21 +1010,68 @@ function init(){
 }
 
 var brandDetails={
-  '五粮液':{adv:280.09,brand:261.55,cpc:18.54,pub:101.85,search:5.45,lead:0},
-  '五粮液官方账号':{adv:85.21,brand:0,cpc:85.21,pub:145.47,search:13.73,lead:0},
-  '泸州老窖':{adv:105,brand:16,cpc:89,pub:231.21,search:29.04,lead:0},
-  '泸州老窖官方':{adv:0,brand:0,cpc:0,pub:27.9,search:0,lead:0},
-  '甜掌柜(含康得系)':{adv:86.37,brand:0,cpc:86.37,pub:0,search:6.74,lead:86.37},
-  '女儿情':{adv:57.49,brand:0,cpc:57.49,pub:18.24,search:30.79,lead:0},
-  '郎酒':{adv:24.83,brand:0,cpc:24.83,pub:90.91,search:5.33,lead:0},
-  '今世缘':{adv:18.11,brand:0,cpc:18.11,pub:11.76,search:0.02,lead:0},
-  '金徽酒':{adv:15,brand:0,cpc:15,pub:0,search:0,lead:0},
-  '劲酒':{adv:9.51,brand:0,cpc:8.42,pub:12.86,search:0.8,lead:0},
-  '小糊涂仙':{adv:7.47,brand:0,cpc:7.47,pub:44.24,search:1.62,lead:6.51},
-  '古井贡酒':{adv:5.99,brand:4.52,cpc:1.47,pub:30.49,search:1.1,lead:0},
-  '汾酒':{adv:2.7,brand:0,cpc:2.7,pub:4.97,search:0.82,lead:0},
-  '茅台':{adv:0.99,brand:0,cpc:0,pub:19.38,search:0,lead:0}
-};
+  '五粮液':{adv:156.88,brand:130.65,cpc:26.23,pub:66.11,search:0},
+  '五粮液':{adv:144.59,brand:89.39,cpc:55.19,pub:109.46,search:0},
+  '五粮液':{adv:63.84,brand:41.51,cpc:22.33,pub:71.76,search:0},
+  '舍得自在微醺club':{adv:59.15,brand:29.54,cpc:29.61,pub:29.61,search:0},
+  '泸州老窖':{adv:53.54,brand:0.0,cpc:53.54,pub:93.63,search:0},
+  '泸州老窖':{adv:51.46,brand:16.0,cpc:35.46,pub:147.25,search:0},
+  '甜掌柜/康得':{adv:43.61,brand:0.0,cpc:43.61,pub:0.0,search:0},
+  '女儿红酱酒':{adv:30.12,brand:0.0,cpc:30.12,pub:4.53,search:0},
+  '五粮液':{adv:26.13,brand:12.33,cpc:13.8,pub:20.02,search:0},
+  '甜掌柜/康得':{adv:23.8,brand:0.0,cpc:23.8,pub:0.0,search:0},
+  '郎酒':{adv:23.4,brand:0.0,cpc:23.4,pub:68.49,search:0},
+  '甜掌柜/康得':{adv:21.28,brand:0.0,cpc:21.28,pub:0.0,search:0},
+  '今世缘':{adv:18.11,brand:0.0,cpc:18.11,pub:0.0,search:0},
+  '甜掌柜/康得':{adv:17.52,brand:0.0,cpc:17.52,pub:0.0,search:0},
+  '金徽酒':{adv:15.0,brand:0.0,cpc:15.0,pub:0.0,search:0},
+  '女儿红酱酒':{adv:14.93,brand:0.0,cpc:14.93,pub:11.75,search:0},
+  '舍得自在微醺club':{adv:12.65,brand:0.46,cpc:12.18,pub:9.33,search:0},
+  '女儿红酱酒':{adv:11.7,brand:0.0,cpc:11.7,pub:1.97,search:0},
+  '劲酒':{adv:7.32,brand:0.0,cpc:7.32,pub:5.74,search:0},
+  '泸州老窖':{adv:5.51,brand:5.51,cpc:0.0,pub:29.38,search:0},
+  '女儿红酱酒':{adv:4.76,brand:0.0,cpc:4.76,pub:5.45,search:0},
+  '女儿红酱酒':{adv:4.06,brand:0.0,cpc:4.06,pub:0.2,search:0},
+  '甜掌柜/康得':{adv:3.84,brand:0.0,cpc:3.84,pub:0.0,search:0},
+  '古井贡酒':{adv:3.57,brand:2.11,cpc:1.47,pub:20.85,search:0},
+  '小糊涂仙':{adv:3.32,brand:0.0,cpc:3.32,pub:12.38,search:0},
+  '这一生今世缘':{adv:3.09,brand:0.0,cpc:3.09,pub:0.76,search:0},
+  '古井贡酒':{adv:2.42,brand:2.42,cpc:0.0,pub:9.64,search:0},
+  '五粮液':{adv:2.36,brand:1.74,cpc:0.63,pub:0.29,search:0},
+  '小糊涂仙':{adv:2.25,brand:0.0,cpc:2.25,pub:1.11,search:0},
+  '小糊涂仙':{adv:2.13,brand:0.0,cpc:2.13,pub:18.44,search:0},
+  '小糊涂仙':{adv:2.02,brand:0.0,cpc:2.02,pub:13.42,search:0},
+  '劲酒':{adv:1.86,brand:0.0,cpc:0.76,pub:5.29,search:0},
+  '汾酒':{adv:1.85,brand:0.0,cpc:1.85,pub:0.0,search:0},
+  '今世缘':{adv:1.5,brand:0.0,cpc:1.5,pub:0.0,search:0},
+  '古井贡酒':{adv:1.41,brand:1.27,cpc:0.14,pub:5.22,search:0},
+  '五粮液官方账号':{adv:1.17,brand:0.0,cpc:1.17,pub:0.81,search:0},
+  '郎酒':{adv:1.01,brand:0.0,cpc:1.01,pub:22.19,search:0},
+  '茅台':{adv:0.99,brand:0.0,cpc:0.0,pub:0.0,search:0},
+  '汾酒':{adv:0.87,brand:0.0,cpc:0.87,pub:4.97,search:0},
+  '白沙酒类':{adv:0.74,brand:0.0,cpc:0.74,pub:1.26,search:0},
+  '金徽酒':{adv:0.64,brand:0.0,cpc:0.64,pub:0.0,search:0},
+  '劲酒':{adv:0.57,brand:0.0,cpc:0.57,pub:0.44,search:0},
+  '江小白':{adv:0.48,brand:0.0,cpc:0.48,pub:0.0,search:0},
+  '红星白酒':{adv:0.47,brand:0.0,cpc:0.47,pub:0.0,search:0},
+  '汾酒':{adv:0.47,brand:0.0,cpc:0.47,pub:0.0,search:0},
+  '江小白':{adv:0.43,brand:0.0,cpc:0.43,pub:0.0,search:0},
+  '郎酒':{adv:0.42,brand:0.0,cpc:0.42,pub:0.23,search:0},
+  '小糊涂仙幸福行动指南':{adv:0.38,brand:0.0,cpc:0.38,pub:0.53,search:0},
+  '西凤酒':{adv:0.35,brand:0.0,cpc:0.35,pub:0.0,search:0},
+  '劲酒':{adv:0.34,brand:0.0,cpc:0.34,pub:1.84,search:0},
+  '郎酒':{adv:0.29,brand:0.0,cpc:0.29,pub:7.58,search:0},
+  '吴总说好酒':{adv:0.04,brand:0.0,cpc:0.04,pub:0.0,search:0},
+  '茅台':{adv:0.0,brand:0.0,cpc:0.0,pub:14.82,search:0},
+  '今世缘':{adv:0.0,brand:0.0,cpc:0.0,pub:11.76,search:0},
+  '泸州老窖':{adv:0.0,brand:0.0,cpc:0.0,pub:18.23,search:0},
+  '茅台':{adv:0.0,brand:0.0,cpc:0.0,pub:4.57,search:0},
+  '水井坊':{adv:0.0,brand:0.0,cpc:0.0,pub:1.88,search:0},
+  '舍得':{adv:0.0,brand:0.0,cpc:0.0,pub:1.79,search:0},
+  '茅台':{adv:0.0,brand:0.0,cpc:0.0,pub:9.53,search:0},
+  '水井坊':{adv:0.0,brand:0.0,cpc:0.0,pub:1.88,search:0},
+  '汾酒杏花村竹叶青':{adv:0.0,brand:0.0,cpc:0.0,pub:0.0,search:0},
+};;
 function toggleBrand(name){
   var el=document.getElementById('detail-'+name.replace(/[()（）]/g,''));
   var btn=event.currentTarget;

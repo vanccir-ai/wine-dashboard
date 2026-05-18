@@ -893,16 +893,12 @@ function renderQuadrant(){
 
 function renderKWarning(){
   var kd=[
-     {brand:'青岛啤酒',k:50,total:100,'投放稳定'},
-     {brand:'喜力啤酒',k:48,total:144,'增长中'},
-     {brand:'雪花啤酒勇闯天涯',k:46,total:184,'新客获取'},
-     {brand:'Amstel红爵啤酒',k:38,total:190,'品牌建设'},
-     {brand:'corona科罗娜',k:36,total:72,'投放稳定'},
-     {brand:'青岛啤酒白啤',k:34,total:102,'增长中'},
-     {brand:'百威啤酒',k:26,total:104,'新客获取'},
-     {brand:'嘉士伯',k:24,total:120,'品牌建设'},
-     {brand:'乌苏啤酒',k:22,total:44,'投放稳定'},
-     {brand:'1664啤酒',k:14,total:42,'增长中'},
+     {brand:'青岛啤酒',k:50,total:100,note:'投放稳定'},
+     {brand:'喜力啤酒',k:48,total:144,note:'增长中'},
+     {brand:'雪花啤酒勇闯天涯',k:46,total:184,note:'新客获取'},
+     {brand:'Amstel红爵啤酒',k:38,total:190,note:'品牌建设'},
+     {brand:'corona科罗娜',k:36,total:72,note:'高K占比'},
+     {brand:'青岛啤酒白啤',k:34,total:102,note:'纯硬广'},
    ];
   document.getElementById('k-warning-bars').innerHTML=kd.map(function(d){
     var pct=d.total>0?d.k/d.total*100:0;

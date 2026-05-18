@@ -180,6 +180,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <div class="tab" onclick="switchTab('M2')">2月</div>
     <div class="tab" onclick="switchTab('M3')">3月</div>
     <div class="tab" onclick="switchTab('M4')">4月</div>
+    <div class="tab" onclick="switchTab('M5')">5月</div>
   </div>
 </div>
 <div class="main" style="margin-left:110px;">
@@ -1307,7 +1308,8 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'Amstel红爵啤酒品牌广告收缩，竞价端嘉士伯/corona科罗娜补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，corona科罗娜IP投放告一段落；青岛啤酒/嘉士伯新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，乌苏啤酒/乌苏啤酒集中投放，蒲公英▼ -5.1%'},
-  };
+  
+  M5:{label:'5月 vs 4月',adv_mom:-1.000,brand_mom:-0.800,cpc_mom:-1.200,curr:0.00,prev:4.13,note:'5月啤酒入夏旺季启动，青岛啤酒/雪花啤酒品牌广告加码，科罗娜/喜力夏季营销预热'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

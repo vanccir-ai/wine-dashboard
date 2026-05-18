@@ -830,16 +830,12 @@ function renderQuadrant(){
 
 function renderKWarning(){
   var kd=[
-     {brand:'RIO锐澳鸡尾酒',k:50,total:100,'投放稳定'},
-     {brand:'RIO轻享',k:48,total:144,'增长中'},
-     {brand:'RIO强爽',k:46,total:184,'新客获取'},
-     {brand:'果立方',k:38,total:190,'品牌建设'},
-     {brand:'009酃酃酒',k:36,total:72,'投放稳定'},
-     {brand:'梅见',k:34,total:102,'增长中'},
-     {brand:'狮子歌歌',k:26,total:104,'新客获取'},
-     {brand:'通明山',k:24,total:120,'品牌建设'},
-     {brand:'三生石',k:22,total:44,'投放稳定'},
-     {brand:'醉鹅娘',k:14,total:42,'增长中'},
+     {brand:'RIO锐澳鸡尾酒',k:50,total:100,note:'投放稳定'},
+     {brand:'RIO轻享',k:48,total:144,note:'增长中'},
+     {brand:'RIO强爽',k:46,total:184,note:'新客获取'},
+     {brand:'果立方',k:38,total:190,note:'品牌建设'},
+     {brand:'009酃酃酒',k:36,total:72,note:'高K占比'},
+     {brand:'梅见',k:34,total:102,note:'纯硬广'},
    ];
   document.getElementById('k-warning-bars').innerHTML=kd.map(function(d){
     var pct=d.total>0?d.k/d.total*100:0;

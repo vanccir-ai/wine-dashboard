@@ -1056,16 +1056,31 @@ function renderMonthlySalesCards(tab){
   var data=window.SALES_DATA&&window.SALES_DATA[tab];
   if(!data||!data.length){
     var rawBrands=MONTHLY_BRANDS[tab];
+    if(!rawBrands||!rawBrands.length){
+      // YTD不存在时，聚合所有月份数据
+      var allBrands=[];
+      ['M1','M2','M3','M4','M5'].forEach(function(k){
+        if(MONTHLY_BRANDS[k]&&MONTHLY_BRANDS[k].length) allBrands=allBrands.concat(MONTHLY_BRANDS[k]);
+      });
+      rawBrands=allBrands;
+    }
     if(!rawBrands||!rawBrands.length){container.innerHTML='<div style="color:rgba(255,255,255,.3);padding:20px;text-align:center">暂无数据</div>';return;}
     var smap={};
     rawBrands.forEach(function(b){
       var s=b.sales||'其他';
-      if(!smap[s])smap[s]={adv:0,pub:0,brands:[]};
+      if(!smap[s])smap[s]={adv:0,pub:0,brands:{}};
+      if(!smap[s].brands[b.brand]){
+        smap[s].brands[b.brand]={brand:b.brand,adv:0,pub:0,sales:s};
+      }
+      smap[s].brands[b.brand].adv=Math.round((smap[s].brands[b.brand].adv+(b.adv||0))*100)/100;
+      smap[s].brands[b.brand].pub=Math.round((smap[s].brands[b.brand].pub+(b.pub||0))*100)/100;
       smap[s].adv=Math.round((smap[s].adv+(b.adv||0))*100)/100;
       smap[s].pub=Math.round((smap[s].pub+(b.pub||0))*100)/100;
-      if((b.adv||0)>0)smap[s].brands.push(b);
     });
-    data=Object.entries(smap).map(function(kv){return {name:kv[0],adv:kv[1].adv,pub:kv[1].pub,brands:kv[1].brands};});
+    data=Object.entries(smap).map(function(kv){
+      var brands=Object.values(kv[1].brands).filter(function(b){return (b.adv||0)>0;});
+      return {name:kv[0],adv:kv[1].adv,pub:kv[1].pub,brands:brands};
+    });
   }
   var COLORS={'一青':['rgba(255,36,66,.35)','#FF2442'],'弹头':['rgba(79,142,247,.35)','#4F8EF7'],
     '皓皓':['rgba(0,229,160,.3)','#00E5A0'],'苦艾':['rgba(255,149,0,.35)','#FF9500'],
@@ -1077,11 +1092,12 @@ function renderMonthlySalesCards(tab){
     var pct=totalAdv>0?+(d.adv/totalAdv*100).toFixed(1):0;
     var topB=(d.brands||[]).slice().sort(function(a,b){return (b.adv||0)-(a.adv||0);}).slice(0,3);
     var tags=topB.map(function(b){return '<span class="sales-brand-tag" style="background:'+c[0]+';color:#fff">'+(b.brand||b.name||'')+(b.adv?' '+b.adv.toFixed(2)+'w':'')+'</span>';}).join('');
-    return '<div class="sales-card" style="border-color:'+c[0]+'">'+'<div class="sales-name">'+d.name+'</div>'+'<div class="sales-brand-list">'+tags+'</div>'+'<div style="margin-top:auto">'+'<div class="sales-kpi-row">'+'<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">广告流水</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+'</div>'+'<div style="font-size:11px;color:rgba(255,255,255,.35);margin:4px 0">广告流水占团队总量 '+pct+'%</div>'+'<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+'</div>'+'</div>';
+    return '<div class="sales-card" style="border-color:'+c[0]+'">'+'<div class="sales-name">'+d.name+'</div>'+'<div class="sales-brand-list">'+tags+'</div>'+'<div style="margin-top:auto">'+'<div class="sales-kpi-row">'+'<div class="sales-kpi"><div class="sales-kpi-val">'+d.adv.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">广告流水</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:#FFD60A">'+d.pub.toFixed(2)+'<span style="font-size:12px;font-weight:400">w</span></div><div class="sales-kpi-label">蒲公英</div></div>'+'<div class="sales-kpi"><div class="sales-kpi-val" style="color:'+c[1]+'">'+pct+'%</div><div class="sales-kpi-label">占比</div></div>'+'</div>'+'<div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%;background:'+c[1]+'"></div></div>'+'</div>'+'</div>';
   });
-  var note=(tab==='YTD')?'<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">📌 YTD数据来自客户全量快照，与KPI卡片时间口径可能存在差异</div>':'';
+  var note=(tab==='YTD')?'<div style="font-size:11px;color:rgba(255,255,255,.28);margin-bottom:10px">📌 YTD数据来自各月汇总，与KPI卡片时间口径可能存在差异</div>':'';
   container.innerHTML=note+'<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;width:100%;box-sizing:border-box">'+cards.join('')+'</div>';
 }
+
 function renderMonthlyInsight(tab){
   var card=document.getElementById('monthly-insight-card');
   var el=document.getElementById('insight-top-brands');

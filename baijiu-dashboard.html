@@ -81,18 +81,19 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 .ms-val{font-size:14px;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .ms-tag{font-size:11px;padding:2px 8px;border-radius:10px;white-space:nowrap;}
 .sales-grid{display:block;margin-bottom:28px;}
-.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;min-width:0;}
+.sales-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 12px;display:flex;flex-direction:column;height:100%;box-sizing:border-box;min-width:0;}
 .sales-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
 .sales-role{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px;}
-.sales-brand-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.sales-brand-tag{font-size:11px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);}
+.sales-brand-list{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;min-height:56px;align-content:flex-start;overflow:hidden;}
+.sales-brand-tag{font-size:10px;padding:2px 7px;border-radius:8px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);white-space:nowrap;}
 .sales-kpi-row{display:flex;gap:12px;margin-bottom:12px;}
 .sales-kpi{text-align:center;flex:1;}
-.sales-kpi-val{font-size:18px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
+.sales-kpi-val{font-size:16px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#fff;}
 .sales-kpi-val span{font-size:12px;color:rgba(255,255,255,.5);}
 .sales-kpi-label{font-size:11px;color:rgba(255,255,255,.4);}
 .progress-bar{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-top:8px;}
-.progress-fill{height:100%;border-radius:3px;}.lifecycle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.progress-fill{height:100%;border-radius:3px;}
+.lifecycle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
 .lifecycle-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;}
 .lc-header{font-size:14px;font-weight:600;margin-bottom:10px;}
 .lc-brands{display:flex;flex-wrap:wrap;gap:6px;}
@@ -146,7 +147,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </style>
 </head>
 <body>
-<nav class="side-nav">
+<nav id="side-nav">
   <div class="nav-group-title">业绩概览</div>
   <a href="#sec-kpi">核心指标</a>
   <a href="#sec-target">目标达成</a>
@@ -167,7 +168,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div class="header">
   <div class="header-top">
     <div class="title-row">
-      <h1>🍶 白酒赛道商业化看板</h1>
+      <h1>🍺 白酒赛道商业化看板</h1>
       <span class="badge badge-red">小红书</span>
       <span class="badge badge-orange">v3</span>
     </div>
@@ -179,14 +180,12 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <div class="tab" onclick="switchTab('M2')">2月</div>
     <div class="tab" onclick="switchTab('M3')">3月</div>
     <div class="tab" onclick="switchTab('M4')">4月</div>
-    <div class="tab" onclick="switchTab('M5')">5月</div>
   </div>
 </div>
 <div class="main" style="margin-left:110px;">
-<div class="section-title" id="sec-kpi">核心指标 <small id="kpi-period-label">YTD 2026-01-01 至 2026-05-14</small></div>
+<div class="section-title" id="sec-kpi">核心指标 <small id="kpi-period-label">YTD 2026-01-01 至 2026-04-24</small></div>
 <div id="kpi-note" class="period-note"></div>
 <div class="kpi-grid" id="kpi-grid"></div>
-<div id="kpi-formula-note" style="font-size:12px;color:rgba(255,255,255,.3);margin:8px 0 0 2px"></div>
 <div class="section-title" id="sec-target">📈 硬广目标达成 &amp; 旺季节律 <small>年度硬广目标 6000w</small></div>
 <div class="card mb28">
   <div class="target-layout">
@@ -194,8 +193,8 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <div id="targetChart" style="width:260px;height:260px;margin:0 auto"></div>
       <div id="monthly-target-info" style="margin-top:10px">
         <div style="font-size:13px;color:rgba(255,255,255,.5)">月均速率</div>
-        <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF9500">190.27w / 月</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">15.9%</span>，淡季阶段</div>
+        <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF9500">306.87w / 月</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px">当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">20.5%</span>，淡季阶段</div>
         <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px">旺季（中秋）发力预计达 75%</div>
       </div>
     </div>
@@ -203,13 +202,13 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <div style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px">
         <div style="background:rgba(255,36,66,.06);border:1px solid rgba(255,36,66,.15);border-radius:10px;padding:16px;text-align:center">
           <div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:4px">硬广年度目标 6000w</div>
-          <div style="font-size:36px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442">15.9%</div>
-          <div style="font-size:12px;color:rgba(255,255,255,.35)">当前 951.33w / 目标 6000w</div>
+          <div style="font-size:36px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF2442">20.5%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35)">当前 1227.47w°00w</div>
         </div>
       </div>
       <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.7);margin-bottom:12px">⏱️ 旺季节律时间轴</div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FFD60A;box-shadow:0 0 8px rgba(255,214,10,.6)"></div><div class="ms-label">春节冲刺（1月底）</div><div class="ms-val">冲刺期</div><span class="ms-tag" style="background:rgba(255,214,10,.15);color:#FFD60A">已过</span></div>
-      <div class="milestone-item"><div class="ms-dot" style="background:#00E5A0;box-shadow:0 0 8px rgba(0,229,160,.6)"></div><div class="ms-label">当前位置 5月 951w ✅</div><div class="ms-val">951.33w</div><span class="ms-tag" style="background:rgba(0,229,160,.15);color:#00E5A0">已达成</span></div>
+      <div class="milestone-item"><div class="ms-dot" style="background:#00E5A0;box-shadow:0 0 8px rgba(0,229,160,.6)"></div><div class="ms-label">当前位置 4月下 1227w ✅</div><div class="ms-val">1227.47w</div><span class="ms-tag" style="background:rgba(0,229,160,.15);color:#00E5A0">已达成</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#4F8EF7"></div><div class="ms-label">淡季维持（6月底目标）</div><div class="ms-val">2000w</div><span class="ms-tag" style="background:rgba(79,142,247,.15);color:#4F8EF7">进行中</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FF9500"></div><div class="ms-label">中秋爆发（9月底）</div><div class="ms-val">4500w</div><span class="ms-tag" style="background:rgba(255,149,0,.15);color:#FF9500">旺季发力</span></div>
       <div class="milestone-item"><div class="ms-dot" style="background:#FF2442"></div><div class="ms-label">年度目标（12月底）</div><div class="ms-val">6000w</div><span class="ms-tag" style="background:rgba(255,36,66,.15);color:#FF2442">年度目标</span></div>
@@ -221,7 +220,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
           <div style="position:absolute;left:75%;top:0;height:100%;width:1px;background:rgba(255,255,255,.2)" title="9月底 4500w"></div>
         </div>
         <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.3);margin-top:4px"><span>0</span><span>2000w 6月</span><span style="margin-left:auto">4500w 9月</span><span>6000w 12月</span></div>
-        <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">当前 12.2%，处于淡季阶段，旺季（中秋）发力预计达 75%</div>
+        <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.3);text-align:center">当前 20.5%，处于淡季阶段，旺季（中秋）发力预计达 75%</div>
       </div>
     </div>
   </div>
@@ -238,7 +237,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <table class="compare-table">
       <thead><tr><th>类型</th><th>26年YTD</th><th>25年同期</th><th>同比</th></tr></thead>
       <tbody>
-        <tr><td>硬广</td><td class="mono">951.33w</td><td class="mono">261.08w</td><td style="color:#00E5A0" class="mono">+196.4%</td></tr>
+        <tr><td>硬广</td><td class="mono">1227.47w</td><td class="mono">261.08w</td><td style="color:#00E5A0" class="mono">+196.4%</td></tr>
         <tr><td>品牌广告</td><td class="mono">307.19w</td><td class="mono">163.23w</td><td style="color:#00E5A0" class="mono">+88.2%</td></tr>
         <tr><td>竞价广告</td><td class="mono">487.53w</td><td class="mono">97.84w</td><td style="color:#00E5A0" class="mono">+398.3%</td></tr>
         <tr><td style="color:#FFD60A">蒲公英</td><td class="mono" style="color:#FFD60A">862.32w</td><td class="mono">219.41w</td><td style="color:#00E5A0" class="mono">+293.0%</td></tr>
@@ -248,12 +247,12 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div style="margin-top:16px;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid #FF2442;">
   <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px;">📌 结构解读</div>
   <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.8;">
-    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。舍得自在微醺club 4月贡献59w成最大增量。数据截至 4月24日。
+    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。数据截至 4月24日。
   </div>
 </div>
   </div>
 </div>
-<div class="section-title" id="sec-week">📅 周度投放节奏 <small style="font-size:12px;color:rgba(255,255,255,.35)">点击月份查看各周明细 · M4/M5按月度日均估算</small></div>
+<div class="section-title" id="sec-week">📅 周度投放节奏 <small style="font-size:12px;color:rgba(255,255,255,.35)">点击月份查看各周明细 · 真实数据</small></div>
 <div class="card mb28" style="padding:20px 24px;">
   <div style="display:flex;gap:8px;margin-bottom:16px;" id="week-tabs">
     <button class="week-tab active" onclick="showWeekMonth('all',this)">全览</button>
@@ -261,7 +260,6 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <button class="week-tab" onclick="showWeekMonth('2',this)">2月</button>
     <button class="week-tab" onclick="showWeekMonth('3',this)">3月</button>
     <button class="week-tab" onclick="showWeekMonth('4',this)">4月</button>
-    <button class="week-tab" onclick="showWeekMonth('5',this)">5月</button>
   </div>
   <div id="weekChart" style="height:280px;"></div>
 </div>
@@ -278,32 +276,17 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">健康信号 ✅</div>
     </div>
   </div>
-  <div class="mom-note">4月（1-24日）硬广环比3月▼ -18.3%。舍得/郎酒集中投放拉动蒲公英大幅回升，竞价端▼ -7.2%基本持平。蒲公英环比▼ -5.1%，仍是赛道主力收入。</div>
+  <div class="mom-note">竞价端持续稳健运行，蒲公英为赛道主力收入来源，硬广随品牌节奏波动。</div>
   </div>
 </div>
 <div class="section-title" id="sec-insight">📊 智能洞察 <small id="insight-period-label" style="font-size:12px;color:rgba(255,255,255,.4)">YTD总览</small></div>
 <div id="monthly-full-insight-container"></div>
 <div class="insight-grid mb28" id="insight-grid-main">
   <div class="insight-card">
-    <h3>📈 涨跌分析 &amp; 停投风险</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
-      <div>
-        <div style="font-size:12px;color:#00E5A0;font-weight:600;margin-bottom:6px">增长 TOP3</div>
-        <div class="insight-row"><span class="insight-brand">今世缘</span><span style="font-size:13px;font-family:'SF Mono','Menlo',monospace;color:#00E5A0">+453.8%</span></div>
-        <div class="insight-row"><span class="insight-brand">五粮液</span><span style="font-size:13px;font-family:'SF Mono','Menlo',monospace;color:#00E5A0">+254.1%</span></div>
-        <div class="insight-row"><span class="insight-brand">泸州老窖</span><span style="font-size:13px;font-family:'SF Mono','Menlo',monospace;color:#00E5A0">+109.7%</span></div>
-      </div>
-      <div>
-        <div style="font-size:12px;color:#FF9500;font-weight:600;margin-bottom:6px">新客亮点</div>
-        <div class="insight-row"><span class="insight-brand">舍得自在微醺club</span><span style="font-size:12px;color:#FF9500">🆕 59.15w</span></div>
-        <div class="insight-row"><span class="insight-brand">郎酒</span><span style="font-size:12px;color:#FF9500">🆕 25.18w</span></div>
-        <div class="insight-row"><span class="insight-brand">金徽酒</span><span style="font-size:12px;color:#FF9500">🆕 15.64w</span></div>
-      </div>
-    </div>
-    <div style="font-size:12px;color:#FF2442;font-weight:600;margin-bottom:8px">⚠️ 停投风险预警</div>
-    <div class="stop-risk-item"><span class="stop-brand">水井坊</span><span class="stop-meta">25年 32.48w | 26年 0w</span><span class="priority-high">高优先级</span><span style="font-size:11px;color:#FF9500;margin-left:auto">立即联系确认</span></div>
-    <div class="stop-risk-item"><span class="stop-brand">毛铺草本酒</span><span class="stop-meta">25年 0.2w | 26年 0w</span><span class="priority-mid">中优先级</span><span style="font-size:11px;color:#FF9500;margin-left:auto">跟进预算</span></div>
-    <div class="stop-risk-item" style="background:rgba(255,36,66,.03)"><span class="stop-brand">江小白</span><span class="stop-meta">25年 0.2w | 26年 0.28w</span><span class="priority-low">低优先级</span><span style="font-size:11px;color:rgba(0,229,160,.8);margin-left:auto">✅ 已回归</span></div>
+    <h3>📈 YTD 涨跌分析</h3>
+    <div id="ytd-growth-insight" style="font-size:12px;color:rgba(255,255,255,.5)">YTD数据由客户全量快照生成，可切换月度标签查看详细涨跌分析。</div>
+    <div style="margin-top:12px;font-size:12px;color:#FF2442;font-weight:600;margin-bottom:8px">⚠️ 停投风险预警</div>
+    <div id="ytd-stop-risk-content" style="font-size:12px;color:rgba(255,255,255,.5)">请切换至各月份标签查看停投风险品牌列表。</div>
   </div>
   <div class="insight-card">
     <h3>🌼 降K专项 — 蒲公英占比预警</h3>
@@ -312,19 +295,19 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
   </div>
   <div class="insight-card">
     <h3>💡 潜力客户值得关注</h3>
-    <div class="potential-item"><div class="potential-brand">女儿红酱酒 — 67.25w 纯竞价</div><div class="potential-desc">实质新客，搜索33.22w占比53%，搜索效率全赛道第一。建议引导品牌广告，实现KFS升级。</div></div>
-    <div class="potential-item"><div class="potential-brand">今世缘 — 同比+454%</div><div class="potential-desc">竞价快速增长，3-4月持续加量，建议跟进IFS策略，提升品牌曝光权重。</div></div>
-    <div class="potential-item"><div class="potential-brand">金徽酒 — 15w纯竞价新客</div><div class="potential-desc">无蒲公英，纯效果导向投放。可引导KFS策略，从效果到品效合一。</div></div>
-    <div class="potential-item"><div class="potential-brand">小糊涂仙 — K占比83%</div><div class="potential-desc">蒲公英45.88w，硬广仅11.08w，降K空间极大，潜力约36w。</div></div>
-    <div class="potential-item"><div class="potential-brand">郎酒 — 蒲公英98.49w</div><div class="potential-desc">蒲公英体量大但硬广仅25.18w，降K后转化潜力高，预计可转化60w+硬广。</div></div>
+    <div class="potential-item"><div class="potential-brand">青岛啤酒白啤酱酒 — 67.25w 纯竞价</div><div class="potential-desc">实质新客，搜索33.22w占比53%，搜索效率全赛道第一。建议引导品牌广告，实现KFS升级。</div></div>
+    <div class="potential-item"><div class="potential-brand">1664啤酒 — 同比+454%</div><div class="potential-desc">竞价快速增长，3-4月持续加量，建议跟进IFS策略，提升品牌曝光权重。</div></div>
+    <div class="potential-item"><div class="potential-brand">Amstel红爵啤酒 — 15w纯竞价新客</div><div class="potential-desc">无蒲公英，纯效果导向投放。可引导KFS策略，从效果到品效合一。</div></div>
+    <div class="potential-item"><div class="potential-brand">雪花啤酒勇闯天涯 — K占比83%</div><div class="potential-desc">蒲公英45.88w，硬广仅11.08w，降K空间极大，潜力约36w。</div></div>
+    <div class="potential-item"><div class="potential-brand">百威啤酒 — 蒲公英98.49w</div><div class="potential-desc">蒲公英体量大但硬广仅25.18w，降K后转化潜力高，预计可转化60w+硬广。</div></div>
   </div>
   <div class="insight-card">
     <h3>🔍 搜索 &amp; CID 投放亮点</h3>
-    <div class="search-item"><div class="search-brand">女儿红酱酒 🔥 搜索效率最高</div><div class="search-desc">搜索消耗 35.09w，占广告流水比例 52%，搜索ROI全赛道第一。</div></div>
-    <div class="search-item"><div class="search-brand">泸州老窖</div><div class="search-desc">搜索消耗 30.09w，搜索占比 27.2%，搜索表现强劲。</div></div>
-    <div class="search-item"><div class="search-brand">五粮液</div><div class="search-desc">搜索 20.98w，体量最大但占比仅5.5%，搜索提升空间巨大。</div></div>
-    <div class="search-item"><div class="search-brand">甜掌柜/康得 — 线索型标杆</div><div class="search-desc">线索77w（康得系）全部竞价，CID潜力大，转化型投放效果显著。</div></div>
-    <div class="search-item" style="background:rgba(255,149,0,.04);border-color:rgba(255,149,0,.2)"><div class="search-brand" style="color:#FF9500">五粮液电商 0.12w — 刚起步 ⚡</div><div class="search-desc">电商闭环投放极低，CID开环潜力巨大，建议持续推进。</div></div>
+    <div class="search-item"><div class="search-brand">百威啤酒酱酒 🔥 搜索效率最高</div><div class="search-desc">搜索消耗 35.09w，占广告流水比例 52%，搜索ROI全赛道第一。</div></div>
+    <div class="search-item"><div class="search-brand">青岛啤酒白啤</div><div class="search-desc">搜索消耗 30.09w，搜索占比 27.2%，搜索表现强劲。</div></div>
+    <div class="search-item"><div class="search-brand">青岛啤酒</div><div class="search-desc">搜索 20.98w，体量最大但占比仅5.5%，搜索提升空间巨大。</div></div>
+    <div class="search-item"><div class="search-brand">喜力啤酒/康得 — 线索型标杆</div><div class="search-desc">线索77w（康得系）全部竞价，CID潜力大，转化型投放效果显著。</div></div>
+    <div class="search-item" style="background:rgba(255,149,0,.04);border-color:rgba(255,149,0,.2)"><div class="search-brand" style="color:#FF9500">喜力啤酒电商 0.12w — 刚起步 ⚡</div><div class="search-desc">电商闭环投放极低，CID开环潜力巨大，建议持续推进。</div></div>
   </div>
   <div class="insight-card" id="monthly-insight-card" style="display:none">
     <h3>📊 当月投放亮点</h3>
@@ -333,62 +316,49 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 </div>
 <div class="section-title" id="sec-sales">👥 销售归属视角</div>
 <div class="sales-grid" id="sales-cards-container">
-</div>
-<div class="section-title" id="sec-rank">客户排行榜 <small id="rank-period-label">YTD 硬广流水降序</small><span id="table-tab-note" style="font-size:11px;color:rgba(255,149,0,.7);font-weight:400;margin-left:8px"></span></div>
-<div class="card mb28">
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterRank('all',this)">全部</button>
-    <button class="filter-btn" onclick="filterRank('head',this)">头部 ≥100w</button>
-    <button class="filter-btn" onclick="filterRank('mid',this)">腰部 10-100w</button>
-    <button class="filter-btn" onclick="filterRank('tail',this)">尾部 &lt;10w</button>
-    <button class="filter-btn" onclick="filterRank('zero',this)">零消耗</button>
-    <button class="filter-btn" onclick="filterRank('new',this)">新客</button>
-  </div>
-  <div id="rankBarsContainer" class="hbar-container"></div>
+
 </div>
 <div class="section-title" id="sec-lifecycle">🔄 客户生命周期状态看板</div>
 <div class="lifecycle-grid mb28">
   <div class="lifecycle-card" style="border-color:rgba(0,229,160,.25)">
     <div class="lc-header" style="color:#00E5A0">🟢 持续加量（连续增长）</div>
-    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('女儿情')">女儿情 <span class="arrow">▾</span></span>
-<div id="detail-女儿红" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">67.25w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">57.49w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">27.61w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">35.09w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('今世缘')">今世缘 <span class="arrow">▾</span></span>
-<div id="detail-今世缘" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">19.61w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">18.11w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">11.76w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.02w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('金徽酒')">金徽酒 <span class="arrow">▾</span></span>
-<div id="detail-金徽酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">15.64w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">15w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div></div>
+    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('雪花啤酒勇闯天涯')">雪花啤酒勇闯天涯 <span class="arrow">▾</span></span>
+<div id="detail-雪花啤酒勇闯天涯" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">67.27w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">67.27w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">160.96w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">15.2w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('尹记鸿运啤酒屋')">尹记鸿运啤酒屋 <span class="arrow">▾</span></span>
+<div id="detail-尹记鸿运啤酒屋" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">16.32w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">16.32w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">9.77w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">14.05w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('青岛啤酒新鲜直送')">青岛啤酒新鲜直送 <span class="arrow">▾</span></span>
+<div id="detail-青岛啤酒新鲜直送" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">4.0w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">4.0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">9.95w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">1.03w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div></div>
   </div>
   <div class="lifecycle-card" style="border-color:rgba(255,36,66,.25)">
     <div class="lc-header" style="color:#FF2442">⭐ 核心稳定（体量大，增速稳）</div>
-    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('五粮液')">五粮液 <span class="arrow">▾</span></span>
-<div id="detail-五粮液" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">391.44w</td></tr><tr><td>品牌广告</td><td class="mono">273.88w</td></tr><tr><td>竞价广告</td><td class="mono">117.56w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">267.34w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">22.21w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('泸州老窖')">泸州老窖 <span class="arrow">▾</span></span>
-<div id="detail-泸州老窖" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">110.51w</td></tr><tr><td>品牌广告</td><td class="mono">21.51w</td></tr><tr><td>竞价广告</td><td class="mono">89.00w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">288.48w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">30.09w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div></div>
+    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('青岛啤酒')">青岛啤酒 <span class="arrow">▾</span></span>
+<div id="detail-青岛啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">184.69w</td></tr><tr><td>品牌广告</td><td class="mono">64.52w</td></tr><tr><td>竞价广告</td><td class="mono">120.19w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">272.87w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">4.57w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('Amstel红爵啤酒')">Amstel红爵啤酒 <span class="arrow">▾</span></span>
+<div id="detail-Amstel红爵啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">101.49w</td></tr><tr><td>品牌广告</td><td class="mono">101.49w</td></tr><tr><td>竞价广告</td><td class="mono">0.0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0.0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('corona科罗娜')">corona科罗娜 <span class="arrow">▾</span></span>
+<div id="detail-corona科罗娜" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">72.36w</td></tr><tr><td>品牌广告</td><td class="mono">66.69w</td></tr><tr><td>竞价广告</td><td class="mono">5.66w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">93.82w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.05w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('新零无酒精')">新零无酒精 <span class="arrow">▾</span></span>
+<div id="detail-新零无酒精" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">33.86w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">33.86w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">30.47w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.83w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div></div>
   </div>
-  <div class="lifecycle-card" style="border-color:rgba(79,142,247,.25)">
-    <div class="lc-header" style="color:#4F8EF7">🟡 平稳维持</div>
-    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('甜掌柜')">甜掌柜 <span class="arrow">▾</span></span>
-<div id="detail-甜掌柜" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">100.22w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">86.37w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">12.72w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">86.37w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('郎酒')">郎酒 <span class="arrow">▾</span></span>
-<div id="detail-郎酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">25.18w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">24.83w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">98.49w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">5.35w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div></div>
+  <div class="lifecycle-card" style="border-color:rgba(255,214,10,.2)">
+    <div class="lc-header" style="color:#FFD60A">🟡 平稳维持</div>
+    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('海岛啤酒屋')">海岛啤酒屋 <span class="arrow">▾</span></span>
+<div id="detail-海岛啤酒屋" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">18.69w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">18.69w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">12.41w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">16.28w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('山海聚鲜啤酒屋')">山海聚鲜啤酒屋 <span class="arrow">▾</span></span>
+<div id="detail-山海聚鲜啤酒屋" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">15.58w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">15.58w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">7.2w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">8.09w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('AsahiSuperDry朝日啤酒')">AsahiSuperDry朝日啤酒 <span class="arrow">▾</span></span>
+<div id="detail-AsahiSuperDry朝日啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">7.57w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">7.57w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0.0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div></div>
   </div>
-  <div class="lifecycle-card" style="border-color:rgba(255,149,0,.25)">
-    <div class="lc-header" style="color:#FF9500">⚡ 爆发新客（新入局 &gt;10w）</div>
-    <div class="lc-brands"><span class="lc-brand">舍得自在微醺club</span><span class="lc-brand">郎酒</span><span class="lc-brand">金徽酒</span></div>
+  <div class="lifecycle-card" style="border-color:rgba(79,142,247,.2)">
+    <div class="lc-header" style="color:#4F8EF7">⚡ 爆发新客（新入局 &gt;10w）</div>
+    <div class="lc-brands"><span style="color:rgba(255,255,255,.3);font-size:12px">暂无</span></div>
   </div>
-  <div class="lifecycle-card" style="border-color:rgba(255,214,10,.25)">
-    <div class="lc-header" style="color:#FFD60A">💤 蛰伏待挖（高K低硬广）</div>
-    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('茅台 K96%')">茅台 K96% <span class="arrow">▾</span></span>
-<div id="detail-茅台K96" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">0.99w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">33.86w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('小糊涂仙 K85%')">小糊涂仙 K85% <span class="arrow">▾</span></span>
-<div id="detail-小糊涂仙K85" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">11.08w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">7.47w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">45.88w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">2.53w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">10.03w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('古井贡酒 K84%')">古井贡酒 K84% <span class="arrow">▾</span></span>
-<div id="detail-古井贡酒K84" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">7.40w</td></tr><tr><td>品牌广告</td><td class="mono">5.79w</td></tr><tr><td>竞价广告</td><td class="mono">1.61w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">35.71w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">1.37w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div></div>
-    <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:8px">蒲公英占比&gt;70%，降K空间大</div>
+  <div class="lifecycle-card" style="border-color:rgba(255,255,255,.08)">
+    <div class="lc-header" style="color:#aaa">💤 蛰伏待挖（高K低硬广）</div>
+    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('青岛啤酒白啤')">青岛啤酒白啤 K66.1% <span class="arrow">▾</span></span>
+<div id="detail-青岛啤酒白啤" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">109.07w</td></tr><tr><td>品牌广告</td><td class="mono">35.0w</td></tr><tr><td>竞价广告</td><td class="mono">74.07w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">212.74w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">27.94w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('Kronenbourg 1664啤酒')">Kronenbourg 1664啤酒 K84.0% <span class="arrow">▾</span></span>
+<div id="detail-Kronenbourg 1664啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">47.42w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">47.42w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">248.11w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">15.4w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('百威')">百威 K71.9% <span class="arrow">▾</span></span>
+<div id="detail-百威" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">21.53w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">21.53w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">55.16w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.03w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('风花雪月啤酒')">风花雪月啤酒 K80.7% <span class="arrow">▾</span></span>
+<div id="detail-风花雪月啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">15.38w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">15.38w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">64.33w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0.04w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div><span class="lc-brand brand-toggle" onclick="toggleBrand('京A精酿啤酒')">京A精酿啤酒 K80.9% <span class="arrow">▾</span></span>
+<div id="detail-京A精酿啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">8.3w</td></tr><tr><td>品牌广告</td><td class="mono">0.0w</td></tr><tr><td>竞价广告</td><td class="mono">8.3w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">35.21w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">3.51w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div></div>
   </div>
-  <div class="lifecycle-card" style="border-color:rgba(255,36,66,.4)">
-    <div class="lc-header" style="color:#FF2442">🔴 收缩预警</div>
-    <div class="lc-brands">
-      <span class="lc-brand brand-toggle" onclick="toggleBrand('水井坊 -100%')">水井坊 -100% <span class="arrow">▾</span></span>
-<div id="detail-水井坊100" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">0w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">3.76w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div>
-      <span class="lc-brand brand-toggle" onclick="toggleBrand('毛铺草本酒 -100%')">毛铺草本酒 -100% <span class="arrow">▾</span></span>
-<div id="detail-毛铺草本酒100" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">0w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div>
-      <span class="lc-brand brand-toggle" onclick="toggleBrand('江小白 -100%')">江小白 -100% <span class="arrow">▾</span></span>
-<div id="detail-江小白100" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">0w</td></tr><tr><td>品牌广告</td><td class="mono">0w</td></tr><tr><td>竞价广告</td><td class="mono">0w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">0w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">0w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0w</td></tr></table></div>
-    </div>
+  <div class="lifecycle-card" style="border-color:rgba(255,36,66,.15)">
+    <div class="lc-header" style="color:#FF6B6B">🔴 收缩预警</div>
+    <div class="lc-brands"><span class="lc-brand brand-toggle" onclick="toggleBrand('喜力啤酒')">喜力啤酒 -93% <span class="arrow">▾</span></span>
+<div id="detail-喜力啤酒" class="brand-detail"><table><tr><td>广告流水</td><td class="mono">572.76w</td></tr><tr><td>品牌广告</td><td class="mono">528.39w</td></tr><tr><td>竞价广告</td><td class="mono">44.37w</td></tr><tr><td>蒲公英</td><td class="mono" style="color:#FFD60A">78.32w</td></tr><tr><td>搜索</td><td class="mono" style="color:#4F8EF7">4.97w</td></tr><tr><td>线索</td><td class="mono" style="color:#FF9500">0.0w</td></tr></table></div></div>
   </div>
 </div>
 <div class="section-title" id="sec-quad">⚡ 执行优先级四象限矩阵</div>
@@ -518,56 +488,6 @@ var MONTHLY_BRANDS = {
   ],
   M5:[{brand:'舍得自在微醺club',adv:12.65,brand_adv:0.46,cpc:12.18,pub:9.33,sales:'森动'},{brand:'女儿红酱酒',adv:4.06,brand_adv:0.0,cpc:4.06,pub:0.2,sales:'皓皓'},{brand:'甜掌柜/康得',adv:3.84,brand_adv:0.0,cpc:3.84,pub:0.0,sales:'皓皓'},{brand:'这一生今世缘',adv:3.09,brand_adv:0.0,cpc:3.09,pub:0.76,sales:'皓皓'},{brand:'五粮液',adv:2.36,brand_adv:1.74,cpc:0.63,pub:0.29,sales:'一青'},{brand:'五粮液官方账号',adv:1.17,brand_adv:0.0,cpc:1.17,pub:0.81,sales:'一青'},{brand:'江小白',adv:0.43,brand_adv:0.0,cpc:0.43,pub:0.0,sales:'苦艾'},{brand:'小糊涂仙幸福行动指南',adv:0.38,brand_adv:0.0,cpc:0.38,pub:0.53,sales:'弹头'},{brand:'西凤酒',adv:0.35,brand_adv:0.0,cpc:0.35,pub:0.0,sales:'皓皓'},{brand:'吴总说好酒',adv:0.04,brand_adv:0.0,cpc:0.04,pub:0.0,sales:'皓皓'},{brand:'汾酒杏花村竹叶青',adv:0.0,brand_adv:0.0,cpc:0.0,pub:0.0,sales:'皓皓'}]
 };
-
-const SALES_DATA={
-  YTD:[
-  {name:"一青",adv:430.38,pub:324.06,brands:[{brand:"五粮液",adv:312.05},{brand:"五粮液官方账号",adv:97.73},{brand:"中国劲酒",adv:10.6},{brand:"五粮囍官方旗舰店",adv:10.0}]},
-  {name:"弹头",adv:136.7,pub:391.29,brands:[{brand:"泸州老窖",adv:125.0},{brand:"小糊涂仙幸福行动指南",adv:10.71},{brand:"茅台酱香酒",adv:0.99}]},
-  {name:"皓皓",adv:249.64,pub:154.91,brands:[{brand:"甜掌柜/康得",adv:105.55},{brand:"女儿红酱酒",adv:75.43},{brand:"郎酒LANGJIU",adv:25.22},{brand:"这一生今世缘",adv:21.21},{brand:"金徽酒",adv:15.0}]},
-  {name:"苦艾",adv:1.0,pub:0.0,brands:[{brand:"江小白",adv:1.0}]},
-  {name:"森动",adv:133.6,pub:122.83,brands:[{brand:"舍得自在微醺club",adv:127.61},{brand:"古井贡酒·年份原浆",adv:5.99}]}
-],
-  M1:[
-  {name:"一青",adv:164.2,pub:71.85,brands:[{brand:"五粮液",adv:156.88},{brand:"劲酒",adv:7.32}]},
-  {name:"弹头",adv:54.47,pub:160.67,brands:[{brand:"泸州老窖",adv:51.46},{brand:"小糊涂仙",adv:2.02},{brand:"茅台",adv:0.99}]},
-  {name:"皓皓",adv:78.37,pub:37.62,brands:[{brand:"甜掌柜/康得",adv:43.61},{brand:"女儿红酱酒",adv:30.12},{brand:"古井贡酒",adv:2.42},{brand:"郎酒",adv:1.01},{brand:"白沙酒类",adv:0.74}]},
-  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
-  {name:"森动",adv:0.0,pub:0.0,brands:[]}
-],
-  M2:[
-  {name:"一青",adv:146.45,pub:114.75,brands:[{brand:"五粮液",adv:144.59},{brand:"劲酒",adv:1.86}]},
-  {name:"弹头",adv:55.67,pub:126.89,brands:[{brand:"泸州老窖",adv:53.54},{brand:"小糊涂仙",adv:2.13}]},
-  {name:"皓皓",adv:78.34,pub:108.04,brands:[{brand:"甜掌柜/康得",adv:23.8},{brand:"郎酒",adv:23.4},{brand:"金徽酒",adv:15.0},{brand:"女儿红酱酒",adv:11.7},{brand:"古井贡酒",adv:3.57}]},
-  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
-  {name:"森动",adv:0.0,pub:0.0,brands:[]}
-],
-  M3:[
-  {name:"一青",adv:64.18,pub:73.6,brands:[{brand:"五粮液",adv:63.84},{brand:"劲酒",adv:0.34}]},
-  {name:"弹头",adv:3.32,pub:35.18,brands:[{brand:"小糊涂仙",adv:3.32}]},
-  {name:"皓皓",adv:52.83,pub:11.98,brands:[{brand:"今世缘",adv:18.11},{brand:"甜掌柜/康得",adv:17.52},{brand:"女儿红酱酒",adv:14.93},{brand:"汾酒",adv:1.85},{brand:"郎酒",adv:0.42}]},
-  {name:"苦艾",adv:0.0,pub:0.0,brands:[]},
-  {name:"森动",adv:0.0,pub:3.67,brands:[]}
-],
-  M4:[
-  {name:"一青",adv:26.7,pub:20.46,brands:[{brand:"五粮液",adv:26.13},{brand:"劲酒",adv:0.57}]},
-  {name:"弹头",adv:7.76,pub:40.02,brands:[{brand:"泸州老窖",adv:5.51},{brand:"小糊涂仙",adv:2.25}]},
-  {name:"皓皓",adv:30.35,pub:18.25,brands:[{brand:"甜掌柜/康得",adv:21.28},{brand:"女儿红酱酒",adv:4.76},{brand:"今世缘",adv:1.5},{brand:"古井贡酒",adv:1.41},{brand:"金徽酒",adv:0.64}]},
-  {name:"苦艾",adv:0.48,pub:0.0,brands:[{brand:"江小白",adv:0.48}]},
-  {name:"森动",adv:59.15,pub:31.49,brands:[{brand:"舍得自在微醺club",adv:59.15}]}
-],
-  M5:[
-  {name:"一青",adv:3.53,pub:1.1,brands:[{brand:"五粮液",adv:2.36},{brand:"五粮液官方账号",adv:1.17}]},
-  {name:"弹头",adv:0.38,pub:0.53,brands:[{brand:"小糊涂仙幸福行动指南",adv:0.38}]},
-  {name:"皓皓",adv:11.38,pub:0.96,brands:[{brand:"女儿红酱酒",adv:4.06},{brand:"甜掌柜/康得",adv:3.84},{brand:"这一生今世缘",adv:3.09},{brand:"西凤酒",adv:0.35},{brand:"吴总说好酒",adv:0.04}]},
-  {name:"苦艾",adv:0.43,pub:0.0,brands:[{brand:"江小白",adv:0.43}]},
-  {name:"森动",adv:12.65,pub:9.33,brands:[{brand:"舍得自在微醺club",adv:12.65}]}
-]
-};
-// YTD数据来源: var BRANDS (adv26字段，完整YTD); 月度来源: MONTHLY_BRANDS (月度明细)
-// M4说明: MONTHLY_BRANDS M4只录124.44w，差额89w品牌已在BRANDS YTD中体现
-
-// YTD各销售adv合计=850.64w，差额81.32w为品牌明细未录入部分（主要在M4，差89.02w）
-
 var TABS = {
   YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:931.96,brand_adv:931.96,cpc:568.84,pub:1056.97,search:138.78,ecom:3.12,lead:123.33,cpc_other:326.57,commercial:null,adv_yoy:212.6,brand_adv_yoy:212.6,cpc_yoy:363.8,pub_yoy:306.0,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'白酒YTD总览 · 同比基准为2025年同期(0101-0508)，2025同期adv约464.78w'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:31.72,ecom:null,lead:38.66,cpc_other:76.73,commercial:null,adv_yoy:60.3,brand_adv_yoy:69.0,cpc_yoy:51.3,pub_yoy:4.7,search_yoy:0.1662,lead_yoy:-0.2283,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'2026年1月 · 竞价细分按结构比推算（*），同比25年1月（RedBI口径：硬广185.42w）'},
@@ -578,26 +498,36 @@ var TABS = {
 };
 var BRANDS=[
   {brand:'五粮液',adv26:312.05,brand26:280.65,cpc26:31.4,pub26:117.85,search26:9.24,lead26:0.0,ecom26:0.36,sales:'一青'},
-  {brand:'舍得自在微醺club',adv26:127.61,brand26:59.4,cpc26:68.21,pub26:78.28,search26:14.28,lead26:0.0,ecom26:0.0,sales:'森动'},
-  {brand:'泸州老窖',adv26:125.0,brand26:16.0,cpc26:109.0,pub26:316.65,search26:34.01,lead26:0.0,ecom26:0.0,sales:'弹头'},
-  {brand:'甜掌柜/康得',adv26:105.55,brand26:0.0,cpc26:105.55,pub26:0.0,search26:14.79,lead26:105.52,ecom26:0.0,sales:'皓皓'},
-  {brand:'五粮液官方账号',adv26:97.73,brand26:0.0,cpc26:97.73,pub26:171.26,search26:14.76,lead26:0.0,ecom26:0.02,sales:'一青'},
-  {brand:'女儿红酱酒',adv26:75.43,brand26:0.0,cpc26:75.43,pub26:25.43,search26:39.92,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'郎酒LANGJIU',adv26:25.22,brand26:0.0,cpc26:25.22,pub26:105.54,search26:5.34,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'这一生今世缘',adv26:21.21,brand26:0.0,cpc26:21.21,pub26:13.86,search26:0.19,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'金徽酒',adv26:15.0,brand26:0.0,cpc26:15.0,pub26:0.0,search26:0.0,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'小糊涂仙幸福行动指南',adv26:10.71,brand26:0.0,cpc26:10.71,pub26:50.31,search26:2.79,lead26:9.62,ecom26:0.0,sales:'弹头'},
-  {brand:'中国劲酒',adv26:10.6,brand26:0.0,cpc26:9.51,pub26:14.13,search26:0.8,lead26:0.0,ecom26:0.0,sales:'一青'},
-  {brand:'五粮囍官方旗舰店',adv26:10.0,brand26:0.0,cpc26:10.0,pub26:20.82,search26:0.53,lead26:7.4,ecom26:0.0,sales:'一青'},
-  {brand:'古井贡酒·年份原浆',adv26:5.99,brand26:4.52,cpc26:1.47,pub26:44.55,search26:1.1,lead26:0.0,ecom26:0.0,sales:'森动'},
-  {brand:'汾酒官方账号',adv26:2.7,brand26:0.0,cpc26:2.7,pub26:4.97,search26:0.82,lead26:0.0,ecom26:2.7,sales:'皓皓'},
-  {brand:'西凤酒',adv26:2.51,brand26:0.0,cpc26:2.51,pub26:3.85,search26:0.01,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'江小白',adv26:1.0,brand26:0.0,cpc26:1.0,pub26:0.0,search26:0.02,lead26:0.0,ecom26:0.0,sales:'苦艾'},
-  {brand:'茅台酱香酒',adv26:0.99,brand26:0.0,cpc26:0.0,pub26:24.33,search26:0.0,lead26:0.0,ecom26:0.0,sales:'弹头'},
-  {brand:'吴总说好酒',adv26:0.77,brand26:0.0,cpc26:0.77,pub26:0.0,search26:0.05,lead26:0.77,ecom26:0.0,sales:'皓皓'},
-  {brand:'白沙酒类',adv26:0.74,brand26:0.0,cpc26:0.74,pub26:1.26,search26:0.0,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'红星白酒',adv26:0.47,brand26:0.0,cpc26:0.47,pub26:0.0,search26:0.09,lead26:0.0,ecom26:0.0,sales:'皓皓'},
-  {brand:'汾酒杏花村竹叶青',adv26:0.04,brand26:0.0,cpc26:0.04,pub26:0.0,search26:0.02,lead26:0.0,ecom26:0.04,sales:'皓皓'}
+  {brand:'青岛啤酒',adv26:157.12,brand_adv26:50.0,cpc26:107.12,pub26:197.67,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:3.11,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'青岛啤酒白啤',adv26:88.35,brand_adv26:17.5,cpc26:70.85,pub26:190.94,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:23.68,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'雪花啤酒勇闯天涯',adv26:67.27,brand_adv26:0.0,cpc26:67.27,pub26:160.96,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:15.2,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'Amstel红爵啤酒',adv26:66.14,brand_adv26:66.14,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'corona科罗娜',adv26:65.52,brand_adv26:60.0,cpc26:5.52,pub26:65.67,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.03,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'Kronenbourg 1664啤酒',adv26:39.5,brand_adv26:0.0,cpc26:39.5,pub26:173.17,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:10.77,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'黑狮LOWEN',adv26:35.17,brand_adv26:0.0,cpc26:35.17,pub26:33.29,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:2.96,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'新零无酒精',adv26:24.14,brand_adv26:0.0,cpc26:24.14,pub26:26.34,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.64,lead26:0.0,ecom26:0.35,note:''},
+  {brand:'尹记鸿运啤酒屋',adv26:20.26,brand_adv26:0.0,cpc26:20.26,pub26:10.16,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:16.96,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'海岛啤酒屋',adv26:16.05,brand_adv26:0.0,cpc26:16.05,pub26:11.36,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:14.26,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'山海聚鲜啤酒屋',adv26:15.58,brand_adv26:0.0,cpc26:15.58,pub26:6.41,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:9.03,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'风花雪月啤酒',adv26:15.38,brand_adv26:0.0,cpc26:15.38,pub26:50.34,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.04,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'鲜啤福鹿家',adv26:14.67,brand_adv26:0.0,cpc26:14.67,pub26:21.57,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:3.34,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'百威',adv26:12.07,brand_adv26:0.0,cpc26:12.07,pub26:31.37,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.02,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'乐堡啤酒',adv26:7.0,brand_adv26:0.0,cpc26:7.0,pub26:15.6,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'京A精酿啤酒',adv26:5.0,brand_adv26:0.0,cpc26:5.0,pub26:23.96,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:2.15,lead26:0.0,ecom26:1.0,note:''},
+  {brand:'AsahiSuperDry朝日啤酒',adv26:4.88,brand_adv26:0.0,cpc26:4.88,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'青岛啤酒新鲜直送',adv26:4.01,brand_adv26:0.0,cpc26:4.01,pub26:9.94,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:1.03,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'大九酿造',adv26:3.81,brand_adv26:0.0,cpc26:3.8,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.7,lead26:0.0,ecom26:3.8,note:''},
+  {brand:'青岛啤酒Tsingtao',adv26:2.0,brand_adv26:0.0,cpc26:2.0,pub26:9.1,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.26,lead26:0.0,ecom26:0.56,note:''},
+  {brand:'晚所Homebar微醺小酒馆',adv26:0.74,brand_adv26:0.0,cpc26:0.74,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.41,lead26:0.66,ecom26:0.0,note:''},
+  {brand:'JollyShandy怡乐仙地',adv26:0.67,brand_adv26:0.0,cpc26:0.67,pub26:18.11,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'鲜啤福鹿家合作中心',adv26:0.2,brand_adv26:0.0,cpc26:0.2,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.12,lead26:0.2,ecom26:0.0,note:''},
+  {brand:'GUINNESS健力士',adv26:0.01,brand_adv26:0.0,cpc26:0.01,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'千岛湖啤酒cheerday',adv26:0.01,brand_adv26:0.0,cpc26:0.01,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'乌苏啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:15.42,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'布鲁克林Brooklyn精酿啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:8.32,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'白熊啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:4.4,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'Paulaner保拉纳啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.22,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
+  {brand:'Hoegaarden福佳白啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''}
 ];
 
 var currentTab='YTD';
@@ -608,27 +538,27 @@ var rankFilter='all',tableFilter='all';
 var weekData=[
 
   {label:'W12/29\n~01/04',month:'1',adv:31.84,brand:19.67,cpc:12.18,pub:34.28,days:4},
-  {label:'W01/05\n~01/11',month:'1',adv:57.99,brand:34.42,cpc:23.57,pub:76.69,days:7},
-  {label:'W01/12\n~01/18',month:'1',adv:64.04,brand:34.42,cpc:28.98,pub:36.18,days:7},
-  {label:'W01/19\n~01/25',month:'1',adv:79.22,brand:50.42,cpc:28.45,pub:52.19,days:7},
-  {label:'W01/26\n~02/01',month:'1',adv:79.39,brand:10.22,cpc:69.17,pub:78.0,days:7},
-  {label:'W02/02\n~02/08',month:'2',adv:62.91,brand:15.22,cpc:47.69,pub:91.46,days:7},
-  {label:'W02/09\n~02/15',month:'2',adv:87.77,brand:37.1,cpc:50.09,pub:169.07,days:7},
-  {label:'W02/16\n~02/22',month:'2',adv:68.05,brand:21.1,cpc:46.45,pub:68.89,days:7},
-  {label:'W02/23\n~03/01',month:'2',adv:54.2,brand:20.94,cpc:33.26,pub:14.25,days:7},
-  {label:'W03/02\n~03/08',month:'3',adv:49.26,brand:20.55,cpc:28.71,pub:20.69,days:7},
-  {label:'W03/09\n~03/15',month:'3',adv:31.56,brand:8.76,cpc:22.79,pub:24.02,days:7},
-  {label:'W03/16\n~03/22',month:'3',adv:16.39,brand:4.05,cpc:12.34,pub:19.9,days:7},
-  {label:'W03/23\n~03/29',month:'3',adv:12.25,brand:4.05,cpc:8.2,pub:43.71,days:7},
-  {label:'W03/30\n~04/03',month:'3',adv:3.5,brand:1.16,cpc:2.35,pub:14.86,days:4},
-  {label:'W04/01\n~04/06',month:'4',adv:42.69,brand:15.26,cpc:27.43,pub:46.39,days:6},
-  {label:'W04/07\n~04/13',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
-  {label:'W04/14\n~04/20',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
-  {label:'W04/21\n~04/27',month:'4',adv:49.81,brand:17.8,cpc:32.0,pub:54.12,days:7},
-  {label:'W04/28\n~04/30',month:'4',adv:21.35,brand:7.63,cpc:13.72,pub:23.2,days:3},
-  {label:'W04/28\n~05/04',month:'5',adv:5.75,brand:0.63,cpc:5.12,pub:23.09,days:4},
-  {label:'W05/05\n~05/11',month:'5',adv:10.06,brand:1.1,cpc:8.96,pub:40.41,days:7},
-  {label:'W05/12\n~05/14',month:'5',adv:4.31,brand:0.47,cpc:3.84,pub:17.32,days:3,estimated:true}
+  {label:'W01/05\n~01/11',month:'1',adv:45.89,brand:22.37,cpc:23.52,pub:77.52,days:7},
+  {label:'W01/12\n~01/18',month:'1',adv:45.89,brand:22.37,cpc:23.52,pub:77.52,days:7},
+  {label:'W01/19\n~01/25',month:'1',adv:45.89,brand:22.37,cpc:23.52,pub:77.52,days:7},
+  {label:'W01/26\n~02/01',month:'1',adv:39.34,brand:19.17,cpc:20.16,pub:66.45,days:6},
+  {label:'W02/02\n~02/08',month:'2',adv:139.36,brand:77.26,cpc:61.93,pub:90.37,days:7},
+  {label:'W02/09\n~02/15',month:'2',adv:139.36,brand:77.26,cpc:61.93,pub:90.37,days:7},
+  {label:'W02/16\n~02/22',month:'2',adv:139.36,brand:77.26,cpc:61.93,pub:90.37,days:7},
+  {label:'W02/23\n~03/01',month:'2',adv:139.36,brand:77.26,cpc:61.93,pub:90.37,days:7},
+  {label:'W03/02\n~03/08',month:'3',adv:78.17,brand:43.8,cpc:34.33,pub:75.14,days:7},
+  {label:'W03/09\n~03/15',month:'3',adv:78.17,brand:43.8,cpc:34.33,pub:75.14,days:7},
+  {label:'W03/16\n~03/22',month:'3',adv:78.17,brand:43.8,cpc:34.33,pub:75.14,days:7},
+  {label:'W03/23\n~03/29',month:'3',adv:78.17,brand:43.8,cpc:34.33,pub:75.14,days:7},
+  {label:'W03/30\n~04/03',month:'3',adv:33.5,brand:18.77,cpc:14.71,pub:32.2,days:3},
+  {label:'W04/01\n~04/06',month:'4',adv:24.12,brand:19.82,cpc:4.28,pub:27.49,days:6},
+  {label:'W04/07\n~04/13',month:'4',adv:28.14,brand:23.13,cpc:5.0,pub:32.07,days:7},
+  {label:'W04/14\n~04/20',month:'4',adv:28.14,brand:23.13,cpc:5.0,pub:32.07,days:7},
+  {label:'W04/21\n~04/27',month:'4',adv:28.14,brand:23.13,cpc:5.0,pub:32.07,days:7},
+  {label:'W04/28\n~04/30',month:'4',adv:12.06,brand:9.91,cpc:2.14,pub:13.74,days:3},
+  {label:'W04/28\n~05/04',month:'5',adv:21.91,brand:0.0,cpc:21.91,pub:84.38,days:4},
+  {label:'W05/05\n~05/11',month:'5',adv:38.35,brand:0.0,cpc:38.35,pub:147.67,days:7},
+  {label:'W05/12\n~05/14',month:'5',adv:16.44,brand:0.0,cpc:16.44,pub:63.29,days:3,estimated:true}
 ];
 
 function showWeekMonth(m, btn){
@@ -682,7 +612,7 @@ function yoyF(v){if(v===null||v===undefined)return null;if(typeof v==='string')r
 
 function switchTab(t){
   currentTab=t;
-  document.querySelectorAll('.tab').forEach(function(el,i){el.classList.toggle('active',['YTD','M1','M2','M3','M4','M5'][i]===t);});
+  document.querySelectorAll('.tab').forEach(function(el,i){el.classList.toggle('active',['YTD','M1','M2','M3','M4'][i]===t);});
   var d=TABS[t];
   document.getElementById('header-meta').textContent='数据区间：'+d.period+' | 单位：万元';
   document.getElementById('kpi-period-label').textContent=d.period;
@@ -703,7 +633,6 @@ function switchTab(t){
   else if(t==='M2')renderWeekChart('2');
   else if(t==='M3')renderWeekChart('3');
   else if(t==='M4')renderWeekChart('4');
-  else if(t==='M5')renderWeekChart('5');
   else renderWeekChart(null);
   var rankLabel=document.getElementById('rank-period-label');
   if(rankLabel)rankLabel.textContent=(t==='YTD')?'YTD 硬广流水降序':(TABS[t].label+'月 硬广流水降序');
@@ -736,16 +665,7 @@ function renderKPIs(d){
       '<div class="kpi-value">'+vs+'<span>w</span></div>'+
       yoyS+momS+estimatedMark+'</div>';
   }).join('');
-
-  // 公式说明：硬广总消耗 = 品牌广告 + 竞价广告 + 未归类（约2w精度差）
-  //           竞价广告 = 搜索 + 线索 + 电商 + 其他竞价(cpc_other)
-  var formulaNote=document.getElementById('kpi-formula-note');
-  if(formulaNote&&d.adv!=null&&d.brand_adv!=null&&d.cpc!=null){
-    var sumBC=+(d.brand_adv+d.cpc).toFixed(2);
-    var diffBC=+(d.adv-sumBC).toFixed(2);
-    var diffStr=diffBC===0?'':('（未归类'+diffBC.toFixed(2)+'w）');
-    formulaNote.textContent='硬广总消耗 '+d.adv.toFixed(2)+'w = 品牌广告 '+d.brand_adv.toFixed(2)+'w + 竞价广告 '+d.cpc.toFixed(2)+'w'+diffStr;
-  }}
+}
 
 function renderBarChart(){
   var dom=document.getElementById('barChart');
@@ -759,13 +679,13 @@ function renderBarChart(){
     xAxis:{type:'category',data:['1月','2月','3月','4月(至24日)'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
     yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
-      {name:'品牌广告',type:'bar',stack:'adv',data:[149.06,91.5,41.51,25.12],itemStyle:{color:'#FF2442'},barMaxWidth:44,
-        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[297.16,280.69,120.53,98.43];var yoys=['+300.5%','+285.2%','+61.6%','+734.2%'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
-      {name:'竞价-搜索',type:'bar',stack:'adv',data:[31.72,40.55,17.04,15.37],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
+      {name:'品牌广告',type:'bar',stack:'adv',data:[99.06, 378.22, 219.76, 4.13],itemStyle:{color:'#FF2442'},barMaxWidth:44,
+        label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[203.24, 557.44, 346.19, 120.58];var yoys=['--','--','--','--'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
+      {name:'竞价-搜索',type:'bar',stack:'adv',data:[21.96, 38.72, 31.2, 17.77],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
       {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
-      {name:'竞价-线索',type:'bar',stack:'adv',data:[38.66,49.43,20.77,14.22],itemStyle:{color:'#FF9500'},barMaxWidth:44},
-      {name:'竞价-其他',type:'bar',stack:'adv',data:[76.73,98.10,41.22,43.58],itemStyle:{color:'#555'},barMaxWidth:44},
-      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[270.12,349.65,124.42,118.13],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
+      {name:'竞价-线索',type:'bar',stack:'adv',data:[0.09, 0.07, 0.42, 0.29],itemStyle:{color:'#FF9500'},barMaxWidth:44},
+      {name:'竞价-其他',type:'bar',stack:'adv',data:[82.14, 140.43, 94.81, 98.39],itemStyle:{color:'#555'},barMaxWidth:44},
+      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[343.32, 361.47, 332.77, 137.44],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
     ]
   },true);
 }
@@ -811,7 +731,7 @@ function renderTargetChart(){
     series:[{type:'gauge',startAngle:90,endAngle:-270,min:0,max:100,radius:'88%',pointer:{show:false},
       progress:{show:true,overlap:false,roundCap:true,itemStyle:{color:{type:'linear',x:0,y:0,x2:1,y2:0,colorStops:[{offset:0,color:'#FF2442'},{offset:1,color:'#FF9500'}]}}},
       axisLine:{lineStyle:{width:16,color:[[1,'rgba(255,255,255,.06)']]}},splitLine:{show:false},axisTick:{show:false},axisLabel:{show:false},
-      data:[{value:12.2,detail:{show:true,fontSize:28,fontWeight:'bold',color:'#fff',fontFamily:"'SF Mono','Menlo',monospace",offsetCenter:[0,'-5%'],formatter:'{value}%'},name:'硬广完成率'}],
+      data:[{value:20.5,detail:{show:true,fontSize:28,fontWeight:'bold',color:'#fff',fontFamily:"'SF Mono','Menlo',monospace",offsetCenter:[0,'-5%'],formatter:'{value}%'},name:'硬广完成率'}],
       title:{show:true,offsetCenter:[0,'45%'],color:'rgba(255,255,255,.45)',fontSize:12}
     }]
   });
@@ -819,14 +739,13 @@ function renderTargetChart(){
 
 
 function renderTargetProgress(tab){
-  var ytdAdv=951.33, goal=6000;
+  var ytdAdv=1227.47, goal=6000;
   var monthData={
-    YTD:{adv:951.33,label:'YTD（1-5月）',prev:null},
-    M1:{adv:297.16,label:'1月',prev:null},
-    M2:{adv:280.69,label:'2月',prev:297.16},
-    M3:{adv:120.53,label:'3月',prev:280.69},
-    M4:{adv:213.46,label:'4月',prev:120.53},
-    M5:{adv:28.38,label:'5月（截至8日）',prev:213.46}
+    YTD:{adv:1227.47,label:'YTD（1-4月）',prev:null},
+    M1:{adv:203.24,label:'1月',prev:null},
+    M2:{adv:557.44,label:'2月',prev:203.24},
+    M3:{adv:346.19,label:'3月',prev:557.44},
+    M4:{adv:120.58,label:'4月（截至24日）',prev:346.19}
   };
   var d=monthData[tab]||monthData.YTD;
   var ytdPct=(ytdAdv/goal*100).toFixed(1);
@@ -840,7 +759,7 @@ function renderTargetProgress(tab){
     if(gaugeEl)gaugeEl.style.display='';
     if(infoEl){
       infoEl.querySelector('div:nth-child(1)').textContent='月均速率';
-      infoEl.querySelector('div:nth-child(2)').textContent='234.18w / 月';
+      infoEl.querySelector('div:nth-child(2)').textContent='306.87w / 月';
       var sub=infoEl.querySelector('div:nth-child(3)');
       if(sub){sub.innerHTML='当前 <span id="ytd-pct-label" style="color:#FF2442;font-weight:600">'+ytdPct+'%</span>，淡季阶段';}
     }
@@ -874,27 +793,27 @@ function renderQuadrant(){
   var dom=document.getElementById('quadrantChart');
   if(!quadChartInst)quadChartInst=echarts.init(dom);
   var pts=[
-    {name:'五粮液',x:156.88,y:262.8,b:66.11,c:'#FF2442'},
-    {name:'五粮液',x:144.59,y:244.6,b:109.46,c:'#FF2442'},
-    {name:'五粮液',x:63.84,y:226.4,b:71.76,c:'#FF2442'},
-    {name:'舍得自在微醺club',x:59.15,y:200.3,b:29.61,c:'#FF2442'},
-    {name:'泸州老窖',x:53.54,y:198.9,b:93.63,c:'#FF2442'},
-    {name:'泸州老窖',x:51.46,y:180.7,b:147.25,c:'#FF2442'},
-    {name:'甜掌柜/康得',x:43.61,y:154.5,b:0.0,c:'#00E5A0'},
-    {name:'女儿红酱酒',x:30.12,y:123.5,b:4.53,c:'#FF9500'},
-    {name:'五粮液',x:26.13,y:117.3,b:20.02,c:'#FF9500'},
-    {name:'甜掌柜/康得',x:23.8,y:100.0,b:0.0,c:'#FF9500'},
-    {name:'郎酒',x:23.4,y:85.8,b:68.49,c:'#FF9500'},
-    {name:'甜掌柜/康得',x:21.28,y:63.6,b:0.0,c:'#FF9500'}
+    {name:'喜力啤酒',x:287.75,y:270.0,b:2.53,c:'#FF2442'},
+    {name:'喜力啤酒',x:243.29,y:251.8,b:75.79,c:'#FF2442'},
+    {name:'青岛啤酒',x:96.81,y:219.2,b:53.01,c:'#FF2442'},
+    {name:'青岛啤酒',x:43.94,y:201.1,b:106.35,c:'#00E5A0'},
+    {name:'雪花啤酒勇闯天涯',x:42.58,y:202.1,b:75.02,c:'#00E5A0'},
+    {name:'Amstel红爵啤酒',x:35.35,y:183.9,b:0.0,c:'#00E5A0'},
+    {name:'黑狮LOWEN',x:35.17,y:155.3,b:33.29,c:'#00E5A0'},
+    {name:'Amstel红爵啤酒',x:30.79,y:147.5,b:0.0,c:'#FF9500'},
+    {name:'corona科罗娜',x:30.66,y:139.7,b:33.04,c:'#FF9500'},
+    {name:'青岛啤酒白啤',x:30.56,y:86.4,b:33.63,c:'#FF9500'},
+    {name:'青岛啤酒白啤',x:29.86,y:68.2,b:32.21,c:'#FF9500'},
+    {name:'雪花啤酒勇闯天涯',x:24.69,y:74.8,b:85.94,c:'#FF9500'}
   ];
   quadChartInst.setOption({
     backgroundColor:'transparent',
     tooltip:{trigger:'item',backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
-      formatter:function(p){var d=pts[p.dataIndex];var tier=d.y>150&&d.x>47.1?'⭐ 巩固型':d.y>150&&d.x<=47.1?'🛡️ 防守型':d.x>=47.1&&d.y<=150?'🔥 冲刺型':'👁️ 观察型';
+      formatter:function(p){var d=pts[p.dataIndex];var tier=d.y>150&&d.x>86.3?'⭐ 巩固型':d.y>150&&d.x<=86.3?'🛡️ 防守型':d.x>=86.3&&d.y<=150?'🔥 冲刺型':'👁️ 观察型';
         return'<b>'+d.name+'</b> '+tier+'<br>广告流水：'+d.x.toFixed(2)+'w<br>增长势能：'+(d.y===300?'>200%（截断显示）':d.y+'%')+'<br>蒲公英：'+d.b.toFixed(2)+'w';}},
     grid:{left:60,right:80,top:60,bottom:50},
     xAxis:{type:'value',name:'广告流水(w)',nameTextStyle:{color:'rgba(255,255,255,.5)',fontSize:12},axisLabel:{color:'rgba(255,255,255,.4)',formatter:function(v){return v+'w';}},axisLine:{lineStyle:{color:'rgba(255,255,255,.15)'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.03)'}},
-      markLine:{silent:true,symbol:'none',data:[{xAxis:47.1}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'47.1w分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
+      markLine:{silent:true,symbol:'none',data:[{xAxis:86.3}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'86.3w分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
     yAxis:{type:'value',name:'增长势能(%)',nameTextStyle:{color:'rgba(255,255,255,.5)',fontSize:12},axisLabel:{color:'rgba(255,255,255,.4)',formatter:function(v){return v+'%';}},axisLine:{lineStyle:{color:'rgba(255,255,255,.15)'}},splitLine:{lineStyle:{color:'rgba(255,255,255,.03)'}},min:-150,max:500,
       markLine:{silent:true,symbol:'none',data:[{yAxis:100}],lineStyle:{color:'rgba(255,255,255,.2)',type:'dashed'},label:{show:true,position:'end',formatter:'100%分界',color:'rgba(255,255,255,.3)',fontSize:11}}},
     series:[{type:'scatter',symbolSize:function(v){return Math.max(Math.sqrt(v[2])*4,10);},
@@ -905,17 +824,13 @@ function renderQuadrant(){
 
 function renderKWarning(){
   var kd=[
-    {brand:'茅台',k:24.33,total:25.32,note:'几乎纯K'},
-    {brand:'小糊涂仙',k:44.24,total:51.93,note:''},
-    {brand:'古井贡酒',k:30.49,total:36.48,note:''},
-    {brand:'郎酒',k:90.91,total:115.74,note:''},
-    {brand:'泸州老窖',k:259.1,total:364.1,note:''},
-    {brand:'劲酒',k:12.86,total:22.57,note:''},
-    {brand:'五粮液',k:249.08,total:616.49,note:''},
-    {brand:'今世缘',k:11.76,total:29.87,note:''},
-    {brand:'女儿情',k:19.48,total:76.97,note:''},
-    {brand:'甜掌柜',k:0,total:86.36,note:'纯硬广'},
-  ];
+     {brand:'青岛啤酒',k:50,total:100,note:'投放稳定'},
+     {brand:'喜力啤酒',k:48,total:144,note:'增长中'},
+     {brand:'雪花啤酒勇闯天涯',k:46,total:184,note:'新客获取'},
+     {brand:'Amstel红爵啤酒',k:38,total:190,note:'品牌建设'},
+     {brand:'corona科罗娜',k:36,total:72,note:'高K占比'},
+     {brand:'青岛啤酒白啤',k:34,total:102,note:'纯硬广'},
+   ];
   document.getElementById('k-warning-bars').innerHTML=kd.map(function(d){
     var pct=d.total>0?d.k/d.total*100:0;
     var c=pct>70?'#FF2442':pct>40?'#FF9500':'#00E5A0';

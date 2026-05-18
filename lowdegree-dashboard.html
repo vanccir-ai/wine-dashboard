@@ -1201,7 +1201,8 @@ function renderMonthlyMomWarning(tab){
     M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，三生石/三生石集中投放，蒲公英▼ -5.1%'},
   };
   var d=momData[tab];
-  if(!d||tab==='YTD'){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前显示YTD总览，环比预警展示月度对比</div>';return;}
+  if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
+  if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }

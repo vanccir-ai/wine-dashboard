@@ -806,7 +806,7 @@ function renderQuadrant(){
   {name:'小糊涂仙',x:2.5,y:15.1,b:0.0,c:'#F5A623'},
   {name:'古井贡酒',x:1.9,y:11.9,b:5.8,c:'#00E5A0'},
   {name:'汾酒',x:0.8,y:1.7,b:0.0,c:'#A855F7'},
-];;
+];;;
   quadChartInst.setOption({
     backgroundColor:'transparent',
     tooltip:{trigger:'item',backgroundColor:'rgba(20,22,30,.95)',borderColor:'rgba(255,255,255,.15)',textStyle:{color:'#F0F0F0',fontSize:12},
@@ -835,7 +835,7 @@ function renderKWarning(){
   {brand:'小糊涂仙',k:100,total:9,note:'纯竞价'},
   {brand:'古井贡酒',k:21,total:7,note:'投放稳定'},
   {brand:'汾酒',k:100,total:3,note:'纯竞价'},
-];;
+];;;
   document.getElementById('k-warning-bars').innerHTML=kd.map(function(d){
     var pct=d.total>0?d.k/d.total*100:0;
     var c=pct>70?'#FF2442':pct>40?'#FF9500':'#00E5A0';

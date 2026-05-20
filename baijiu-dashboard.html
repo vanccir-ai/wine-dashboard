@@ -691,8 +691,8 @@ var PIE_DATA = {
   M1:{adv:297.16,brand:149.06,search:31.72,lead:38.66,ecom:0,other:76.73,pub:270.12},
   M2:{adv:280.69,brand:91.5,search:40.55,lead:49.43,ecom:0,other:98.10,pub:349.65},
   M3:{adv:120.53,brand:41.51,search:17.04,lead:20.77,ecom:0,other:41.22,pub:124.42},
-  M4:{adv:98.43,brand:25.12,search:15.37,lead:14.22,ecom:0.12,other:43.58,pub:118.13},
-  M5:{adv:28.38,brand:2.2,search:5.62,lead:4.26,ecom:0.0,other:16.3,pub:28.67}
+  M4:{adv:213.46,brand:25.12,search:15.37,lead:14.22,ecom:0.12,other:43.58,pub:231.96},
+  M5:{adv:20.12,brand:2.2,search:5.62,lead:4.26,ecom:0.0,other:16.3,pub:80.82}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1179,11 +1179,11 @@ function renderMonthlyMomWarning(tab){
   if(!el)return;
   var momData={
     M1:{label:'1月（年度首月）',note:'1月为年度首月，无环比数据。春节旺季，五粮液品牌广告 130.65w 领跑。'},
-    M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'五粮液品牌广告收缩，竞价端郎酒/金徽酒补位，蒲公英持续高位'},
-    M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，五粮液IP投放告一段落；今世缘/女儿红新客维持竞价'},
-    M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，舍得/郎酒集中投放，蒲公英▼ -5.1%'},
+    M2:{label:'2月 vs 1月',adv_mom:-0.0554,brand_mom:-0.3862,cpc_mom:0.2786,curr:280.69,prev:297.16,note:'五粮液品牌广告收缩，竞价端郎酒/金徽酒补位，蒲公英持续高位'},
+    M3:{label:'3月 vs 2月',adv_mom:-0.5706,brand_mom:-0.5463,cpc_mom:-0.5798,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，五粮液IP投放告一段落；今世缘/女儿红新客维持竞价'},
+    M4:{label:'4月 vs 3月',adv_mom:0.7710,brand_mom:0.8381,cpc_mom:0.7355,pub_mom:0.8643,curr:213.46,prev:120.53,note:'4月1-24日，舍得/郎酒集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-0.971,brand_mom:-0.777,cpc_mom:-1.165,curr:2.20,prev:76.30,note:'5月白酒进入淡季前最后冲刺窗口，茅台/五粮液品牌广告维持高位，竞价端郎酒/今世缘加大投放'}};
+  M5:{label:'5月 vs 4月',adv_mom:-0.9057,brand_mom:-0.9712,cpc_mom:-0.8091,curr:20.12,prev:213.46,note:'5月白酒进入淡季前最后冲刺窗口，茅台/五粮液品牌广告维持高位，竞价端郎酒/今世缘加大投放'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

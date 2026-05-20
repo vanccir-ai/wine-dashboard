@@ -626,7 +626,7 @@ var TABS = {
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:413.77,brand_adv:143.71,cpc:270.01,pub:398.6,search:65.3,ecom:3.09,lead:1.39,cpc_other:203.32,commercial:null,adv_yoy:734.6,brand_adv_yoy:7585.0,cpc_yoy:472.8,pub_yoy:1497.6,search_yoy:null,lead_yoy:null,adv_mom:0.9972,brand_adv_mom:5.8629,cpc_mom:0.4503,pub_mom:0.1637,note:'洋酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:286.0,brand_adv:14.14,cpc:271.86,pub:268.13,search:46.74,ecom:4.48,lead:0.57,cpc_other:224.55,commercial:null,adv_yoy:147.4,brand_adv_yoy:583.1,cpc_yoy:141.4,pub_yoy:137.6,search_yoy:null,lead_yoy:null,adv_mom:-0.3088,brand_adv_mom:-0.9016,cpc_mom:0.0069,pub_mom:-0.3273,note:'洋酒 3月'},
   M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:85.33,brand_adv:8.07,cpc:77.25,pub:162.96,search:19.91,ecom:3.14,lead:0.24,cpc_other:57.1,commercial:null,adv_yoy:24.8,brand_adv_yoy:303.5,cpc_yoy:18.5,pub_yoy:-11.1,search_yoy:null,lead_yoy:null,adv_mom:-0.7016,brand_adv_mom:-0.4293,cpc_mom:-0.7158,pub_mom:-0.3922,note:'洋酒 4月'},
-  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:85.83,brand_adv:0,cpc:85.83,pub:196.67,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:0.006,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'洋酒M5截至2026-05-14，数据为YTD反推'}
+  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:116.47,brand_adv:0,cpc:85.83,pub:196.67,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:168.9,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:0.006,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'洋酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
   {brand:"THE MACALLAN 麦卡伦",adv26:377.56,brand_adv26:162.26,cpc26:215.30,pub26:500.24,sales:"苦艾"},
@@ -824,7 +824,7 @@ var PIE_DATA = {
   M2:{adv:413.77,brand:143.71,search:65.3,lead:1.39,ecom:3.09,other:203.32,pub:398.60},
   M3:{adv:286.00,brand:14.14,search:46.74,lead:0.57,ecom:4.48,other:224.55,pub:268.13},
   M4:{adv:85.33,brand:8.07,search:19.91,lead:0.24,ecom:3.14,other:57.1,pub:162.96},
-  M5:{adv:85.83,brand:0,search:0,lead:0,ecom:0,other:85.83,pub:196.67}
+  M5:{adv:116.47,brand:0,search:0,lead:0,ecom:0,other:85.83,pub:196.67}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1398,7 +1398,7 @@ function renderMonthlyMomWarning(tab){
     M3:{label:'3月 vs 2月',adv_mom:-0.3088,brand_mom:-0.9016,cpc_mom:0.0069,curr:286.00,prev:413.77,note:'春节后节律性大幅收缩，百龄坛IP投放告一段落；百龄坛/人头马新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.7016,brand_mom:-0.4293,cpc_mom:-0.7158,pub_mom:-0.3922,curr:85.33,prev:286.00,note:'4月1-24日，绝对伏特加/轩尼诗集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:0.0059,brand_mom:-1.0000,cpc_mom:0.1111,curr:85.83,prev:85.33,note:'5月洋酒进入夏季调整期，苏格登/格兰菲迪维持基础投放，麦卡伦/人头马收缩'}};
+  M5:{label:'5月 vs 4月',adv_mom:0.3649,brand_mom:-1.0000,cpc_mom:0.1111,curr:116.47,prev:85.33,note:'5月洋酒进入夏季调整期，苏格登/格兰菲迪维持基础投放，麦卡伦/人头马收缩'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

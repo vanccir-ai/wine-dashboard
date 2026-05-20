@@ -172,7 +172,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <span class="badge badge-red">小红书</span>
       <span class="badge badge-orange">v3</span>
     </div>
-    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-14 | 单位：万元</div>
+    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-19 | 单位：万元</div>
   </div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('YTD')">YTD总览</div>
@@ -248,7 +248,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div style="margin-top:16px;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid #FF2442;">
   <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px;">📌 结构解读</div>
   <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.8;">
-    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。数据截至 4月24日。
+    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。数据截至 2026-05-19月24日。
   </div>
 </div>
   </div>
@@ -560,7 +560,7 @@ var MONTHLY_BRANDS = {
   ]
 };
 var TABS = {
-  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:1304.15,brand_adv:1304.15,cpc:602.98,pub:1470.34,search:109.65,ecom:5.71,lead:0.86,cpc_other:415.78,commercial:null,adv_yoy:267.3,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'啤酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
+  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-19',adv:1323.31,brand_adv:701.17,cpc:622.14,pub:1528.04,search:109.65,ecom:5.71,lead:0.86,cpc_other:415.78,commercial:258.0,adv_yoy:258.0,brand_adv_yoy:258.0,cpc_yoy:258.0,pub_yoy:258.0,search_yoy:258.0,lead_yoy:258.0,adv_mom:258.0,brand_adv_mom:258.0,cpc_mom:258.0,pub_mom:258.0,note:'啤酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:203.24,brand_adv:99.06,cpc:104.19,pub:343.32,search:21.96,ecom:0.71,lead:0.09,cpc_other:82.14,commercial:null,adv_yoy:34.8,brand_adv_yoy:143.8,cpc_yoy:-4.8,pub_yoy:48.1,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'啤酒 1月'},
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:557.44,brand_adv:378.22,cpc:179.22,pub:361.47,search:38.72,ecom:2.7,lead:0.07,cpc_other:140.43,commercial:null,adv_yoy:1094.2,brand_adv_yoy:null,cpc_yoy:283.9,pub_yoy:896.3,search_yoy:null,lead_yoy:null,adv_mom:1.7428,brand_adv_mom:2.8181,cpc_mom:0.7201,pub_mom:0.0529,note:'啤酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:346.19,brand_adv:219.76,cpc:126.43,pub:332.77,search:31.2,ecom:0.91,lead:0.42,cpc_other:94.81,commercial:null,adv_yoy:1107.1,brand_adv_yoy:null,cpc_yoy:340.8,pub_yoy:791.7,search_yoy:null,lead_yoy:null,adv_mom:-0.379,brand_adv_mom:-0.419,cpc_mom:-0.2946,pub_mom:-0.0794,note:'啤酒 3月'},
@@ -568,37 +568,29 @@ var TABS = {
   M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:76.7,brand_adv:0,cpc:76.7,pub:295.34,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.364,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'啤酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
-  {brand:'喜力啤酒',adv26:561.9,brand_adv26:507.53,cpc26:54.37,pub26:90.68,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:4.97,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'青岛啤酒',adv26:157.12,brand_adv26:50.0,cpc26:107.12,pub26:197.67,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:3.11,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'青岛啤酒白啤',adv26:88.35,brand_adv26:17.5,cpc26:70.85,pub26:190.94,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:23.68,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'雪花啤酒勇闯天涯',adv26:67.27,brand_adv26:0.0,cpc26:67.27,pub26:160.96,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:15.2,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Amstel红爵啤酒',adv26:66.14,brand_adv26:66.14,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'corona科罗娜',adv26:65.52,brand_adv26:60.0,cpc26:5.52,pub26:65.67,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.03,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Kronenbourg 1664啤酒',adv26:39.5,brand_adv26:0.0,cpc26:39.5,pub26:173.17,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:10.77,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'黑狮LOWEN',adv26:35.17,brand_adv26:0.0,cpc26:35.17,pub26:33.29,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:2.96,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'新零无酒精',adv26:24.14,brand_adv26:0.0,cpc26:24.14,pub26:26.34,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.64,lead26:0.0,ecom26:0.35,note:''},
-  {brand:'尹记鸿运啤酒屋',adv26:20.26,brand_adv26:0.0,cpc26:20.26,pub26:10.16,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:16.96,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'海岛啤酒屋',adv26:16.05,brand_adv26:0.0,cpc26:16.05,pub26:11.36,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:14.26,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'山海聚鲜啤酒屋',adv26:15.58,brand_adv26:0.0,cpc26:15.58,pub26:6.41,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:9.03,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'风花雪月啤酒',adv26:15.38,brand_adv26:0.0,cpc26:15.38,pub26:50.34,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.04,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'鲜啤福鹿家',adv26:14.67,brand_adv26:0.0,cpc26:14.67,pub26:21.57,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:3.34,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'百威',adv26:12.07,brand_adv26:0.0,cpc26:12.07,pub26:31.37,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.02,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'乐堡啤酒',adv26:7.0,brand_adv26:0.0,cpc26:7.0,pub26:15.6,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'京A精酿啤酒',adv26:5.0,brand_adv26:0.0,cpc26:5.0,pub26:23.96,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:2.15,lead26:0.0,ecom26:1.0,note:''},
-  {brand:'AsahiSuperDry朝日啤酒',adv26:4.88,brand_adv26:0.0,cpc26:4.88,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'青岛啤酒新鲜直送',adv26:4.01,brand_adv26:0.0,cpc26:4.01,pub26:9.94,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:1.03,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'大九酿造',adv26:3.81,brand_adv26:0.0,cpc26:3.8,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.7,lead26:0.0,ecom26:3.8,note:''},
-  {brand:'青岛啤酒Tsingtao',adv26:2.0,brand_adv26:0.0,cpc26:2.0,pub26:9.1,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.26,lead26:0.0,ecom26:0.56,note:''},
-  {brand:'晚所Homebar微醺小酒馆',adv26:0.74,brand_adv26:0.0,cpc26:0.74,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.41,lead26:0.66,ecom26:0.0,note:''},
-  {brand:'JollyShandy怡乐仙地',adv26:0.67,brand_adv26:0.0,cpc26:0.67,pub26:18.11,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'鲜啤福鹿家合作中心',adv26:0.2,brand_adv26:0.0,cpc26:0.2,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.12,lead26:0.2,ecom26:0.0,note:''},
-  {brand:'GUINNESS健力士',adv26:0.01,brand_adv26:0.0,cpc26:0.01,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'千岛湖啤酒cheerday',adv26:0.01,brand_adv26:0.0,cpc26:0.01,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'乌苏啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:15.42,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'布鲁克林Brooklyn精酿啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:8.32,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'白熊啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:4.4,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Paulaner保拉纳啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.22,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Hoegaarden福佳白啤酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''}
+  {brand:"喜力啤酒",adv26:576.64,brand_adv26:507.53,cpc26:69.11,pub26:103.22,sales:"喷火"},
+  {brand:"青岛啤酒",adv26:169.54,brand_adv26:50.00,cpc26:119.54,pub26:237.44,sales:"苦艾"},
+  {brand:"青岛啤酒白啤",adv26:109.66,brand_adv26:17.50,cpc26:92.16,pub26:299.70,sales:"苦艾"},
+  {brand:"雪花啤酒勇闯天涯",adv26:84.54,brand_adv26:0.00,cpc26:84.54,pub26:224.44,sales:"弹头"},
+  {brand:"corona科罗娜",adv26:66.50,brand_adv26:60.00,cpc26:6.50,pub26:84.94,sales:"一青"},
+  {brand:"Amstel红爵啤酒",adv26:66.14,brand_adv26:66.14,cpc26:0.00,pub26:0.00,sales:"喷火"},
+  {brand:"Kronenbourg 1664啤酒",adv26:41.46,brand_adv26:0.00,cpc26:41.46,pub26:219.71,sales:"喷火"},
+  {brand:"黑狮LOWEN",adv26:35.17,brand_adv26:0.00,cpc26:35.17,pub26:33.29,sales:"弹头"},
+  {brand:"尹记鸿运啤酒屋",adv26:30.73,brand_adv26:0.00,cpc26:30.73,pub26:11.01,sales:"喷火"},
+  {brand:"新零无酒精",adv26:28.58,brand_adv26:0.00,cpc26:28.58,pub26:31.84,sales:"弹头"},
+  {brand:"山海聚鲜啤酒屋",adv26:21.76,brand_adv26:0.00,cpc26:21.76,pub26:7.40,sales:"喷火"},
+  {brand:"海岛啤酒屋",adv26:18.87,brand_adv26:0.00,cpc26:18.87,pub26:12.56,sales:"喷火"},
+  {brand:"风花雪月啤酒",adv26:18.03,brand_adv26:0.00,cpc26:18.03,pub26:66.26,sales:"弹头"},
+  {brand:"鲜啤福鹿家",adv26:14.91,brand_adv26:0.00,cpc26:14.91,pub26:26.85,sales:"皓皓"},
+  {brand:"百威",adv26:12.07,brand_adv26:0.00,cpc26:12.07,pub26:31.37,sales:"一青"},
+  {brand:"千岛湖啤酒cheerday",adv26:8.19,brand_adv26:0.00,cpc26:8.19,pub26:6.52,sales:"皓皓"},
+  {brand:"乐堡啤酒",adv26:7.00,brand_adv26:0.00,cpc26:7.00,pub26:27.55,sales:"喷火"},
+  {brand:"京A精酿啤酒",adv26:5.00,brand_adv26:0.00,cpc26:5.00,pub26:23.96,sales:"喷火"},
+  {brand:"青岛啤酒新鲜直送",adv26:4.84,brand_adv26:0.00,cpc26:4.84,pub26:9.94,sales:"苦艾"},
+  {brand:"青岛啤酒Tsingtao",adv26:2.17,brand_adv26:0.00,cpc26:2.17,pub26:12.02,sales:"苦艾"},
+  {brand:"JollyShandy怡乐仙地",adv26:0.96,brand_adv26:0.00,cpc26:0.96,pub26:18.11,sales:"喷火"},
+  {brand:"布鲁克林Brooklyn精酿啤酒",adv26:0.54,brand_adv26:0.00,cpc26:0.54,pub26:9.47,sales:"喷火"},
+  {brand:"乌苏啤酒",adv26:0.00,brand_adv26:0.00,cpc26:0.00,pub26:30.43,sales:"弹头"}
 ];
 
 var currentTab='YTD';
@@ -761,7 +753,7 @@ function renderBarChart(){
 }
 
 var PIE_DATA = {
-  YTD:{adv:1304.15,brand:701.17,search:109.65,lead:0.86,ecom:5.71,other:415.78,pub:1470.34},
+  YTD:{adv:1323.31,brand:701.17,search:109.65,lead:0.86,ecom:5.71,other:415.78,pub:1528.04},
   M1:{adv:203.24,brand:99.06,search:21.96,lead:0.09,ecom:0.71,other:82.14,pub:343.32},
   M2:{adv:557.44,brand:378.22,search:38.72,lead:0.07,ecom:2.7,other:140.43,pub:361.47},
   M3:{adv:346.19,brand:219.76,search:31.2,lead:0.42,ecom:0.91,other:94.81,pub:332.77},

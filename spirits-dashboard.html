@@ -172,7 +172,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <span class="badge badge-red">小红书</span>
       <span class="badge badge-orange">v3</span>
     </div>
-    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-14 | 单位：万元</div>
+    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-19 | 单位：万元</div>
   </div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('YTD')">YTD总览</div>
@@ -248,7 +248,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div style="margin-top:16px;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid #FF2442;">
   <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px;">📌 结构解读</div>
   <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.8;">
-    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。芝华士自在微醺club 4月贡献59w成最大增量。数据截至 4月24日。
+    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。芝华士自在微醺club 4月贡献59w成最大增量。数据截至 2026-05-19月24日。
   </div>
 </div>
   </div>
@@ -621,7 +621,7 @@ var MONTHLY_BRANDS = {
   ]
 };
 var TABS = {
-  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:1078.11,brand_adv:1078.11,cpc:885.12,pub:1368.88,search:193.82,ecom:16.21,lead:3.16,cpc_other:608.31,commercial:null,adv_yoy:151.6,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'洋酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
+  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-19',adv:1108.75,brand_adv:194.21,cpc:914.42,pub:1386.17,search:193.82,ecom:16.21,lead:3.16,cpc_other:608.31,commercial:152.1,adv_yoy:152.1,brand_adv_yoy:152.1,cpc_yoy:152.1,pub_yoy:152.1,search_yoy:152.1,lead_yoy:152.1,adv_mom:152.1,brand_adv_mom:152.1,cpc_mom:152.1,pub_mom:152.1,note:'洋酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:207.18,brand_adv:20.94,cpc:186.17,pub:342.52,search:61.87,ecom:5.5,lead:0.97,cpc_other:123.33,commercial:null,adv_yoy:27.1,brand_adv_yoy:656.0,cpc_yoy:16.4,pub_yoy:147.8,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'洋酒 1月'},
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:413.77,brand_adv:143.71,cpc:270.01,pub:398.6,search:65.3,ecom:3.09,lead:1.39,cpc_other:203.32,commercial:null,adv_yoy:734.6,brand_adv_yoy:7585.0,cpc_yoy:472.8,pub_yoy:1497.6,search_yoy:null,lead_yoy:null,adv_mom:0.9972,brand_adv_mom:5.8629,cpc_mom:0.4503,pub_mom:0.1637,note:'洋酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:286.0,brand_adv:14.14,cpc:271.86,pub:268.13,search:46.74,ecom:4.48,lead:0.57,cpc_other:224.55,commercial:null,adv_yoy:147.4,brand_adv_yoy:583.1,cpc_yoy:141.4,pub_yoy:137.6,search_yoy:null,lead_yoy:null,adv_mom:-0.3088,brand_adv_mom:-0.9016,cpc_mom:0.0069,pub_mom:-0.3273,note:'洋酒 3月'},
@@ -629,44 +629,34 @@ var TABS = {
   M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:85.83,brand_adv:0,cpc:85.83,pub:196.67,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:0.006,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'洋酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
-  {brand:'THE MACALLAN 麦卡伦',adv26:345.59,brand_adv26:160.08,cpc26:185.52,pub26:377.26,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:52.35,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'格兰菲迪',adv26:107.29,brand_adv26:6.0,cpc26:101.29,pub26:83.53,adv25:0,is_new:false,yoy:null,sales:'一青',search26:8.87,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'JimBeam金宾波本威士忌',adv26:86.52,brand_adv26:0.0,cpc26:86.52,pub26:85.12,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:14.86,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'苏格登单一麦芽威士忌',adv26:68.12,brand_adv26:0.0,cpc26:68.12,pub26:37.94,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:17.31,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'百利得单一调和威士忌',adv26:62.84,brand_adv26:0.0,cpc26:62.84,pub26:133.35,adv25:0,is_new:false,yoy:null,sales:'一青',search26:3.05,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'尊尼获加 Johnnie Walker',adv26:58.13,brand_adv26:0.0,cpc26:58.13,pub26:33.77,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:19.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'格兰威特单一麦芽威士忌',adv26:35.47,brand_adv26:0.0,cpc26:35.47,pub26:16.54,adv25:0,is_new:false,yoy:null,sales:'一青',search26:4.96,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Remy Martin人头马',adv26:30.82,brand_adv26:6.51,cpc26:24.31,pub26:93.79,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:11.23,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Don Julio  唐.胡里奥',adv26:25.82,brand_adv26:0.0,cpc26:25.82,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:11.08,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Bacardi百加得',adv26:25.03,brand_adv26:0.0,cpc26:24.91,pub26:11.77,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:8.41,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'马爹利MARTELL',adv26:20.49,brand_adv26:7.49,cpc26:13.0,pub26:8.01,adv25:0,is_new:false,yoy:null,sales:'一青',search26:3.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'TALISKER泰斯卡',adv26:18.67,brand_adv26:0.0,cpc26:18.67,pub26:12.91,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:6.07,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'THE BALVENIE苏格兰百富',adv26:17.99,brand_adv26:0.0,cpc26:17.99,pub26:42.92,adv25:0,is_new:false,yoy:null,sales:'一青',search26:4.24,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'叠川 THE CHUAN',adv26:15.88,brand_adv26:0.0,cpc26:15.88,pub26:44.29,adv25:0,is_new:false,yoy:null,sales:'一青',search26:9.35,lead26:2.78,ecom26:0.0,note:''},
-  {brand:'百瑞卡baraka',adv26:9.48,brand_adv26:0.0,cpc26:9.48,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'弹头',search26:6.62,lead26:0.0,ecom26:9.41,note:''},
-  {brand:'WILDMOOR远慕威士忌',adv26:7.81,brand_adv26:0.0,cpc26:7.81,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:1.8,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Smirnoff 斯米诺伏特加',adv26:7.69,brand_adv26:0.0,cpc26:7.69,pub26:2.2,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:2.57,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'SKYY深蓝伏特加',adv26:6.91,brand_adv26:0.0,cpc26:6.91,pub26:9.21,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'路易十三LOUISXIII',adv26:6.78,brand_adv26:6.78,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'BACARDI 百加得',adv26:6.59,brand_adv26:0.0,cpc26:6.59,pub26:1.58,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:1.44,lead26:0.0,ecom26:6.59,note:''},
-  {brand:'芝华士CHIVAS',adv26:5.43,brand_adv26:0.0,cpc26:5.43,pub26:4.51,adv25:0,is_new:false,yoy:null,sales:'一青',search26:5.43,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'高原骑士HighlandPark',adv26:4.42,brand_adv26:0.0,cpc26:4.42,pub26:56.94,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'亨利爵士金酒',adv26:4.12,brand_adv26:0.0,cpc26:4.12,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.66,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'轩尼诗Hennessy',adv26:2.8,brand_adv26:0.0,cpc26:2.8,pub26:42.01,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.06,lead26:0.38,ecom26:0.0,note:''},
-  {brand:'三得利世家',adv26:2.58,brand_adv26:0.0,cpc26:2.58,pub26:52.9,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.34,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'CODIGO 秘曜龙舌兰',adv26:1.95,brand_adv26:0.0,cpc26:1.95,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.02,lead26:0.0,ecom26:0.19,note:''},
-  {brand:'绝对伏特加中国',adv26:1.77,brand_adv26:0.0,cpc26:1.77,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.29,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'阿佩罗橙光',adv26:1.55,brand_adv26:0.0,cpc26:1.55,pub26:6.24,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.27,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'三得利角瓶',adv26:1.52,brand_adv26:0.0,cpc26:1.52,pub26:12.31,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'三只猴子 Monkey Shoulder',adv26:1.26,brand_adv26:0.0,cpc26:1.26,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.53,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'帝亚吉欧会客厅',adv26:0.86,brand_adv26:0.0,cpc26:0.86,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Tanqueray 添加利金酒',adv26:0.1,brand_adv26:0.0,cpc26:0.1,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'崃州烈酒',adv26:0.01,brand_adv26:0.0,cpc26:0.01,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.01,lead26:0.0,ecom26:0.01,note:''},
-  {brand:'杰克丹尼威士忌',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:3.13,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'LAPHROAIG拉弗格',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'宝树行',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'君度橙酒',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'马爹利名士',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'一青',search26:0.0,lead26:0.0,ecom26:0.0,note:''}
+  {brand:"THE MACALLAN 麦卡伦",adv26:377.56,brand_adv26:162.26,cpc26:215.30,pub26:500.24,sales:"苦艾"},
+  {brand:"格兰菲迪",adv26:108.25,brand_adv26:6.00,cpc26:102.25,pub26:84.41,sales:"一青"},
+  {brand:"JimBeam金宾波本威士忌",adv26:91.15,brand_adv26:0.00,cpc26:91.15,pub26:85.12,sales:"皓皓"},
+  {brand:"苏格登单一麦芽威士忌",adv26:77.85,brand_adv26:0.00,cpc26:77.85,pub26:37.94,sales:"喷火"},
+  {brand:"尊尼获加 Johnnie Walker",adv26:72.68,brand_adv26:0.00,cpc26:72.68,pub26:51.19,sales:"喷火"},
+  {brand:"百利得单一调和威士忌",adv26:70.70,brand_adv26:0.00,cpc26:70.70,pub26:135.64,sales:"一青"},
+  {brand:"格兰威特单一麦芽威士忌",adv26:35.47,brand_adv26:0.00,cpc26:35.47,pub26:16.54,sales:"一青"},
+  {brand:"Remy Martin人头马",adv26:32.53,brand_adv26:8.22,cpc26:24.31,pub26:94.67,sales:"苦艾"},
+  {brand:"Bacardi百加得",adv26:31.95,brand_adv26:0.00,cpc26:31.83,pub26:23.35,sales:"皓皓"},
+  {brand:"Don Julio  唐.胡里奥",adv26:25.82,brand_adv26:0.00,cpc26:25.82,pub26:0.00,sales:"喷火"},
+  {brand:"TALISKER泰斯卡",adv26:24.29,brand_adv26:0.00,cpc26:24.29,pub26:15.71,sales:"喷火"},
+  {brand:"马爹利MARTELL",adv26:22.23,brand_adv26:9.23,cpc26:13.00,pub26:8.01,sales:"一青"},
+  {brand:"THE BALVENIE苏格兰百富",adv26:17.99,brand_adv26:0.00,cpc26:17.99,pub26:42.92,sales:"一青"},
+  {brand:"叠川 THE CHUAN",adv26:17.74,brand_adv26:0.00,cpc26:17.74,pub26:45.46,sales:"一青"},
+  {brand:"阿佩罗橙光",adv26:17.39,brand_adv26:0.00,cpc26:17.39,pub26:16.41,sales:"喷火"},
+  {brand:"百瑞卡baraka",adv26:11.31,brand_adv26:0.00,cpc26:11.31,pub26:0.00,sales:"弹头"},
+  {brand:"路易十三LOUISXIII",adv26:8.49,brand_adv26:8.49,cpc26:0.00,pub26:0.00,sales:"苦艾"},
+  {brand:"Smirnoff 斯米诺伏特加",adv26:7.86,brand_adv26:0.00,cpc26:7.86,pub26:2.20,sales:"喷火"},
+  {brand:"WILDMOOR远慕威士忌",adv26:7.81,brand_adv26:0.00,cpc26:7.81,pub26:0.00,sales:"一青"},
+  {brand:"轩尼诗Hennessy",adv26:7.80,brand_adv26:0.00,cpc26:7.80,pub26:56.82,sales:"苦艾"},
+  {brand:"BACARDI 百加得",adv26:7.25,brand_adv26:0.00,cpc26:7.25,pub26:13.44,sales:"皓皓"},
+  {brand:"芝华士CHIVAS",adv26:7.00,brand_adv26:0.00,cpc26:7.00,pub26:4.51,sales:"一青"},
+  {brand:"SKYY深蓝伏特加",adv26:6.91,brand_adv26:0.00,cpc26:6.91,pub26:9.21,sales:"喷火"},
+  {brand:"君度橙酒",adv26:6.19,brand_adv26:0.00,cpc26:6.19,pub26:9.48,sales:"苦艾"},
+  {brand:"高原骑士HighlandPark",adv26:4.42,brand_adv26:0.00,cpc26:4.42,pub26:56.94,sales:"苦艾"},
+  {brand:"三得利角瓶",adv26:4.33,brand_adv26:0.00,cpc26:4.33,pub26:18.36,sales:"皓皓"},
+  {brand:"Tanqueray 添加利金酒",adv26:3.18,brand_adv26:0.00,cpc26:3.18,pub26:4.70,sales:"喷火"},
+  {brand:"三得利世家",adv26:2.58,brand_adv26:0.00,cpc26:2.58,pub26:52.90,sales:"皓皓"}
 ];
 
 var currentTab='YTD';
@@ -829,7 +819,7 @@ function renderBarChart(){
 }
 
 var PIE_DATA = {
-  YTD:{adv:1078.11,brand:192.86,search:193.82,lead:3.16,ecom:16.21,other:608.31,pub:1368.88},
+  YTD:{adv:1108.75,brand:192.86,search:193.82,lead:3.16,ecom:16.21,other:608.31,pub:1386.17},
   M1:{adv:207.18,brand:20.94,search:61.87,lead:0.97,ecom:5.5,other:123.33,pub:342.52},
   M2:{adv:413.77,brand:143.71,search:65.3,lead:1.39,ecom:3.09,other:203.32,pub:398.6},
   M3:{adv:286.0,brand:14.14,search:46.74,lead:0.57,ecom:4.48,other:224.55,pub:268.13},

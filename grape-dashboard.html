@@ -526,7 +526,7 @@ var TABS = {
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:141.17,brand_adv:4.92,cpc:136.25,pub:88.88,search:7.17,ecom:25.85,lead:0.0,cpc_other:129.08,commercial:null,adv_yoy:783.4,brand_adv_yoy:186.0,cpc_yoy:855.5,pub_yoy:1938.5,search_yoy:null,lead_yoy:null,adv_mom:-0.2562,brand_adv_mom:-0.8235,cpc_mom:-0.1586,pub_mom:-0.0055,note:'葡萄酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:41.34,brand_adv:5.45,cpc:35.88,pub:25.87,search:6.16,ecom:23.2,lead:2.02,cpc_other:27.7,commercial:null,adv_yoy:-29.2,brand_adv_yoy:-78.3,cpc_yoy:7.7,pub_yoy:473.6,search_yoy:null,lead_yoy:null,adv_mom:-0.7072,brand_adv_mom:0.1077,cpc_mom:-0.7367,pub_mom:-0.7089,note:'葡萄酒 3月'},
   M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:25.26,brand_adv:1.58,cpc:23.68,pub:10.94,search:4.8,ecom:15.25,lead:1.9,cpc_other:16.98,commercial:null,adv_yoy:-82.0,brand_adv_yoy:-96.9,cpc_yoy:-73.3,pub_yoy:-84.1,search_yoy:null,lead_yoy:null,adv_mom:-0.389,brand_adv_mom:-0.7101,cpc_mom:-0.34,pub_mom:-0.5771,note:'葡萄酒 4月'},
-  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:6.05,brand_adv:0,cpc:6.05,pub:11.85,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.76,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'葡萄酒M5截至2026-05-14，数据为YTD反推'}
+  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:20.19,brand_adv:0,cpc:6.05,pub:11.85,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:-77.2,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.76,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'葡萄酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
   {brand:"Penfolds奔富",adv26:256.09,brand_adv26:39.83,cpc26:216.26,pub26:138.25,sales:"皓皓"},
@@ -708,7 +708,7 @@ var PIE_DATA = {
   M2:{adv:141.17,brand:4.92,search:7.17,lead:0.0,ecom:25.85,other:129.08,pub:88.88},
   M3:{adv:41.34,brand:5.45,search:6.16,lead:2.02,ecom:23.2,other:27.7,pub:25.87},
   M4:{adv:25.26,brand:1.58,search:4.8,lead:1.9,ecom:15.25,other:16.98,pub:10.94},
-  M5:{adv:6.05,brand:0,search:0,lead:0,ecom:0,other:6.05,pub:11.85}
+  M5:{adv:20.19,brand:0,search:0,lead:0,ecom:0,other:6.05,pub:11.85}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1219,7 +1219,7 @@ function renderMonthlyMomWarning(tab){
     M3:{label:'3月 vs 2月',adv_mom:-0.7072,brand_mom:0.1077,cpc_mom:-0.7367,curr:41.34,prev:141.17,note:'春节后节律性大幅收缩，长尾猫IP投放告一段落；Penfolds奔富/酌也新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.3890,brand_mom:-0.7101,cpc_mom:-0.3400,pub_mom:-0.5771,curr:25.26,prev:41.34,note:'4月1-24日，葡乐/葡乐集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-0.7605,brand_mom:-1.0000,cpc_mom:-0.7445,curr:6.05,prev:25.26,note:'5月葡萄酒母亲节+520双节营销，Penfolds奔富/侍酒猫品牌广告集中释放'}};
+  M5:{label:'5月 vs 4月',adv_mom:-0.2007,brand_mom:-1.0000,cpc_mom:-0.7445,curr:20.19,prev:25.26,note:'5月葡萄酒母亲节+520双节营销，Penfolds奔富/侍酒猫品牌广告集中释放'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

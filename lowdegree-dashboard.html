@@ -514,7 +514,7 @@ var TABS = {
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:95.32,brand_adv:1.88,cpc:92.27,pub:96.33,search:12.7,ecom:4.52,lead:0.0,cpc_other:79.57,commercial:null,adv_yoy:301.0,brand_adv_yoy:null,cpc_yoy:300.3,pub_yoy:1818.9,search_yoy:null,lead_yoy:null,adv_mom:0.0441,brand_adv_mom:-0.6025,cpc_mom:0.0798,pub_mom:-0.1631,note:'低度酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:32.35,brand_adv:2.09,cpc:30.1,pub:68.42,search:3.84,ecom:3.94,lead:0.0,cpc_other:26.26,commercial:null,adv_yoy:-41.6,brand_adv_yoy:-89.3,cpc_yoy:-12.7,pub_yoy:9.0,search_yoy:null,lead_yoy:null,adv_mom:-0.6606,brand_adv_mom:0.1117,cpc_mom:-0.6738,pub_mom:-0.2897,note:'低度酒 3月'},
   M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:66.11,brand_adv:0.0,cpc:66.11,pub:109.97,search:8.32,ecom:0.63,lead:0.0,cpc_other:57.79,commercial:null,adv_yoy:-57.7,brand_adv_yoy:-100.0,cpc_yoy:1.6,pub_yoy:102.7,search_yoy:null,lead_yoy:null,adv_mom:1.0436,brand_adv_mom:-1.0,cpc_mom:1.1963,pub_mom:0.6073,note:'低度酒 4月'},
-  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:59.32,brand_adv:0,cpc:59.32,pub:91.5,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.103,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'低度酒M5截至2026-05-14，数据为YTD反推'}
+  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:124.75,brand_adv:0,cpc:59.32,pub:91.5,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:26.1,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.103,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'低度酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
   {brand:"RIO锐澳鸡尾酒",adv26:136.27,brand_adv26:0.00,cpc26:134.27,pub26:104.71,sales:"一青"},
@@ -697,7 +697,7 @@ var PIE_DATA = {
   M2:{adv:95.32,brand:1.88,search:12.7,lead:0.0,ecom:4.52,other:79.57,pub:96.33},
   M3:{adv:32.35,brand:2.09,search:3.84,lead:0.0,ecom:3.94,other:26.26,pub:68.42},
   M4:{adv:66.11,brand:0.0,search:8.32,lead:0.0,ecom:0.63,other:57.79,pub:109.97},
-  M5:{adv:59.32,brand:0,search:0,lead:0,ecom:0,other:59.32,pub:91.50}
+  M5:{adv:124.75,brand:0,search:0,lead:0,ecom:0,other:59.32,pub:91.50}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1195,7 +1195,7 @@ function renderMonthlyMomWarning(tab){
     M3:{label:'3月 vs 2月',adv_mom:-0.6606,brand_mom:0.1117,cpc_mom:-0.6738,curr:32.35,prev:95.32,note:'春节后节律性大幅收缩，009酃酃酒IP投放告一段落；RIO锐澳鸡尾酒/通明山新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:1.0436,brand_mom:-1.0000,cpc_mom:1.1963,pub_mom:0.6073,curr:66.11,prev:32.35,note:'4月1-24日，三生石/三生石集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-0.1027,brand_mom:0.0000,cpc_mom:-0.1027,curr:59.32,prev:66.11,note:'5月低度酒进入夏季消费高峰，RIO锐澳品牌广告持续领跑，果立方/009新品投放'}};
+  M5:{label:'5月 vs 4月',adv_mom:0.8870,brand_mom:0.0000,cpc_mom:-0.1027,curr:124.75,prev:66.11,note:'5月低度酒进入夏季消费高峰，RIO锐澳品牌广告持续领跑，果立方/009新品投放'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

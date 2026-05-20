@@ -821,8 +821,8 @@ function renderBarChart(){
 var PIE_DATA = {
   YTD:{adv:1108.75,brand:192.86,search:193.82,lead:3.16,ecom:16.21,other:608.31,pub:1386.17},
   M1:{adv:207.18,brand:20.94,search:61.87,lead:0.97,ecom:5.5,other:123.33,pub:342.52},
-  M2:{adv:413.77,brand:143.71,search:65.3,lead:1.39,ecom:3.09,other:203.32,pub:398.6},
-  M3:{adv:286.0,brand:14.14,search:46.74,lead:0.57,ecom:4.48,other:224.55,pub:268.13},
+  M2:{adv:413.77,brand:143.71,search:65.3,lead:1.39,ecom:3.09,other:203.32,pub:398.60},
+  M3:{adv:286.00,brand:14.14,search:46.74,lead:0.57,ecom:4.48,other:224.55,pub:268.13},
   M4:{adv:85.33,brand:8.07,search:19.91,lead:0.24,ecom:3.14,other:57.1,pub:162.96},
   M5:{adv:85.83,brand:0,search:0,lead:0,ecom:0,other:85.83,pub:196.67}
 };
@@ -1394,11 +1394,11 @@ function renderMonthlyMomWarning(tab){
   if(!el)return;
   var momData={
     M1:{label:'1月（年度首月）',note:'1月为年度首月，无环比数据。春节旺季，人头马品牌广告 130.65w 领跑。'},
-    M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'芝华士品牌广告收缩，竞价端格兰菲迪/苏格登补位，蒲公英持续高位'},
-    M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，百龄坛IP投放告一段落；百龄坛/人头马新客维持竞价'},
-    M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，绝对伏特加/轩尼诗集中投放，蒲公英▼ -5.1%'},
+    M2:{label:'2月 vs 1月',adv_mom:0.9972,brand_mom:5.8629,cpc_mom:0.4503,curr:413.77,prev:207.18,note:'芝华士品牌广告收缩，竞价端格兰菲迪/苏格登补位，蒲公英持续高位'},
+    M3:{label:'3月 vs 2月',adv_mom:-0.3088,brand_mom:-0.9016,cpc_mom:0.0069,curr:286.00,prev:413.77,note:'春节后节律性大幅收缩，百龄坛IP投放告一段落；百龄坛/人头马新客维持竞价'},
+    M4:{label:'4月 vs 3月',adv_mom:-0.7016,brand_mom:-0.4293,cpc_mom:-0.7158,pub_mom:-0.3922,curr:85.33,prev:286.00,note:'4月1-24日，绝对伏特加/轩尼诗集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-1.000,brand_mom:-0.800,cpc_mom:-1.200,curr:0.00,prev:8.07,note:'5月洋酒进入夏季调整期，苏格登/格兰菲迪维持基础投放，麦卡伦/人头马收缩'}};
+  M5:{label:'5月 vs 4月',adv_mom:0.0059,brand_mom:-1.0000,cpc_mom:0.1111,curr:85.83,prev:85.33,note:'5月洋酒进入夏季调整期，苏格登/格兰菲迪维持基础投放，麦卡伦/人头马收缩'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

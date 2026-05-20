@@ -1130,7 +1130,7 @@ function renderMonthlyInsight(tab){
   var el=document.getElementById('insight-top-brands');
   if(!card||!el)return;
   card.style.display='';
-  if(tab==='YTD'){var _yb=MONTHLY_BRANDS;var _agg={};Object.keys(_yb).forEach(function(_m){_yb[_m].forEach(function(_b){var _n=_b.brand;if(_n.indexOf('甜掌柜')>=0||(_n.indexOf('康得')>=0&&_n.indexOf('舍得')<0))_n='甜掌柜/康得';if(!_agg[_n])_agg[_n]={a:0,b:0,c:0,p:0};_agg[_n].a+=_b.adv;_agg[_n].b+=_b.brand_adv;_agg[_n].c+=_b.cpc;_agg[_n].p+=_b.pub})});var _st=Object.keys(_agg).map(function(_k){return{n:_k,a:_agg[_k].a}}).sort(function(a,b){return b.a-a.a});var _t3=_st.slice(0,3);var _yoy=String(Math.round((850.64/290.79-1)*1000)/10);el.innerHTML='<div class=\"ytd-insight\"><div class=\"yi-title\">📊 YTD白酒商业化总览</div><div>硬广合计：<b>'+String((332.93+515.62).toFixed(2))+'w</b>（品牌'+String(332.93)+'w + 竞价'+String(515.62)+'w）</div><div>蒲公英：<b style=\"color:#00E5A0\">'+String((866.39).toFixed(2))+'w</b></div><div class=\"yi-yoy\">同比2025年：+'+_yoy+'%（2025 YTD adv≈290.79w）</div><div class=\"yi-top\">TOP3：'+_t3.map(function(t){return t.n+'('+t.a.toFixed(1)+'w)'}).join(' / ')+'</div><div class=\"yi-note\">⚠️ 详情请切换至各月份标签</div></div>';return;}
+  if(tab==='YTD'){var _yb=MONTHLY_BRANDS;var _agg={};Object.keys(_yb).forEach(function(_m){_yb[_m].forEach(function(_b){var _n=_b.brand;if(_n.indexOf('甜掌柜')>=0||(_n.indexOf('康得')>=0&&_n.indexOf('舍得')<0))_n='甜掌柜/康得';if(!_agg[_n])_agg[_n]={a:0,b:0,c:0,p:0};_agg[_n].a+=_b.adv;_agg[_n].b+=_b.brand_adv;_agg[_n].c+=_b.cpc;_agg[_n].p+=_b.pub})});var _st=Object.keys(_agg).map(function(_k){return{n:_k,a:_agg[_k].a}}).sort(function(a,b){return b.a-a.a});var _t3=_st.slice(0,3);var _yoy=String(Math.round((941.36/465.17-1)*1000)/10);el.innerHTML='<div class=\"ytd-insight\"><div class=\"yi-title\">📊 YTD白酒商业化总览</div><div>硬广合计：<b>'+String((374.49+564.78).toFixed(2))+'w</b>（品牌'+String(374.49)+'w + 竞价'+String(564.78)+'w）</div><div>蒲公英：<b style=\"color:#00E5A0\">'+String((1091.36).toFixed(2))+'w</b></div><div class=\"yi-yoy\">同比2025年：+'+_yoy+'%（2025 YTD adv≈465.17w）</div><div class=\"yi-top\">TOP3：'+_t3.map(function(t){return t.n+'('+t.a.toFixed(1)+'w)'}).join(' / ')+'</div><div class=\"yi-note\">⚠️ 详情请切换至各月份标签</div></div>';return;}
   var brands=MONTHLY_BRANDS[tab];
   if(!brands||!brands.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px">暂无数据</div>';return;}
   var withAdv=brands.filter(function(b){return b.adv>0;}).sort(function(a,b){return b.adv-a.adv;});
@@ -1184,15 +1184,14 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:-0.0554,brand_mom:-0.3862,cpc_mom:0.2786,curr:280.69,prev:297.16,note:'五粮液品牌广告收缩，竞价端郎酒/金徽酒补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.5706,brand_mom:-0.5463,cpc_mom:-0.5798,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，五粮液IP投放告一段落；今世缘/女儿红新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:0.7710,brand_mom:0.8381,cpc_mom:0.7355,pub_mom:0.8643,curr:213.46,prev:120.53,note:'4月1-24日，舍得/郎酒集中投放，蒲公英▼ -5.1%'},
-  
-  M5:{label:'5月 vs 4月',adv_mom:-0.6533,brand_mom:-0.7887,cpc_mom:-0.6032,pub_mom:-0.5509,curr:74.01,prev:213.46,note:'5月1-19日，白酒淡季来临；甜掌柜/康得线索广告12.94w逆势发力，蒲公英随市场节律大幅收缩'}};
+    M5:{label:'5月 vs 4月',adv_mom:-0.6533,brand_mom:-0.7887,cpc_mom:-0.6032,pub_mom:-0.5509,curr:74.01,prev:213.46,note:'5月1-19日，白酒淡季来临；甜掌柜/康得线索广告12.94w逆势发力，蒲公英随市场节律大幅收缩'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }
-  function fmtM(v){var p=parseFloat(v).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  function fmtM(v){var p=(parseFloat(v)*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
   el.innerHTML='<div class="mom-cards">'+
     '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
     '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+

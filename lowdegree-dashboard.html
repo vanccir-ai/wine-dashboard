@@ -1195,15 +1195,14 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:0.0441,brand_mom:-0.6025,cpc_mom:0.0798,curr:95.32,prev:91.29,note:'果立方品牌广告收缩，竞价端通明山/009酃酃酒补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.6606,brand_mom:0.1117,cpc_mom:-0.6738,curr:32.35,prev:95.32,note:'春节后节律性大幅收缩，009酃酃酒IP投放告一段落；RIO锐澳鸡尾酒/通明山新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:1.0436,brand_mom:-1.0000,cpc_mom:1.1963,pub_mom:0.6073,curr:66.11,prev:32.35,note:'4月1-24日，三生石/三生石集中投放，蒲公英▼ -5.1%'},
-  
-  M5:{label:'5月 vs 4月',adv_mom:0.6152,brand_mom:0.0,cpc_mom:-0.1227,pub_mom:-0.0339,curr:106.78,prev:66.11,note:'5月1-19日低度酒夏季高峰来临，品牌广告48.78w与竞价58.00w并进；蒲公英106.24w保持强势。'}};
+    M5:{label:'5月 vs 4月',adv_mom:0.6152,brand_mom:0.0,cpc_mom:-0.1227,pub_mom:-0.0339,curr:106.78,prev:66.11,note:'5月1-19日低度酒夏季高峰来临，品牌广告48.78w与竞价58.00w并进；蒲公英106.24w保持强势。'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }
-  function fmtM(v){var p=parseFloat(v).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  function fmtM(v){var p=(parseFloat(v)*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
   el.innerHTML='<div class="mom-cards">'+
     '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
     '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+

@@ -490,7 +490,7 @@ var MONTHLY_BRANDS = {
   M5:[{brand:'舍得自在微醺club',adv:12.65,brand_adv:0.46,cpc:12.18,pub:9.33,sales:'森动'},{brand:'女儿红酱酒',adv:4.06,brand_adv:0.0,cpc:4.06,pub:0.2,sales:'皓皓'},{brand:'甜掌柜/康得',adv:3.84,brand_adv:0.0,cpc:3.84,pub:0.0,sales:'皓皓'},{brand:'这一生今世缘',adv:3.09,brand_adv:0.0,cpc:3.09,pub:0.76,sales:'皓皓'},{brand:'五粮液',adv:2.36,brand_adv:1.74,cpc:0.63,pub:0.29,sales:'一青'},{brand:'五粮液官方账号',adv:1.17,brand_adv:0.0,cpc:1.17,pub:0.81,sales:'一青'},{brand:'江小白',adv:0.43,brand_adv:0.0,cpc:0.43,pub:0.0,sales:'苦艾'},{brand:'小糊涂仙幸福行动指南',adv:0.38,brand_adv:0.0,cpc:0.38,pub:0.53,sales:'弹头'},{brand:'西凤酒',adv:0.35,brand_adv:0.0,cpc:0.35,pub:0.0,sales:'皓皓'},{brand:'吴总说好酒',adv:0.04,brand_adv:0.0,cpc:0.04,pub:0.0,sales:'皓皓'},{brand:'汾酒杏花村竹叶青',adv:0.0,brand_adv:0.0,cpc:0.0,pub:0.0,sales:'皓皓'}]
 };
 var TABS = {
-  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:931.96,brand_adv:931.96,cpc:568.84,pub:1056.97,search:138.78,ecom:3.12,lead:123.33,cpc_other:326.57,commercial:null,adv_yoy:212.6,brand_adv_yoy:212.6,cpc_yoy:363.8,pub_yoy:306.0,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'白酒YTD总览 · 同比基准为2025年同期(0101-0508)，2025同期adv约464.78w'},
+  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:931.96,brand_adv:364.76,cpc:564.91,pub:1056.97,search:138.78,ecom:3.12,lead:123.33,cpc_other:326.57,commercial:null,adv_yoy:212.6,brand_adv_yoy:212.6,cpc_yoy:363.8,pub_yoy:306.0,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'白酒YTD总览 · 同比基准为2025年同期(0101-0508)，2025同期adv约464.78w'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:297.16,brand_adv:149.06,cpc:147.11,pub:270.12,search:31.72,ecom:null,lead:38.66,cpc_other:76.73,commercial:null,adv_yoy:60.3,brand_adv_yoy:69.0,cpc_yoy:51.3,pub_yoy:4.7,search_yoy:0.1662,lead_yoy:-0.2283,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'2026年1月 · 竞价细分按结构比推算（*），同比25年1月（RedBI口径：硬广185.42w）'},
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:280.69,brand_adv:91.5,cpc:188.09,pub:349.65,search:40.55,ecom:null,lead:49.43,cpc_other:98.10,commercial:null,adv_yoy:61.9,brand_adv_yoy:-11.0,cpc_yoy:166.6,pub_yoy:719.2,search_yoy:0.7524,lead_yoy:0.1166,adv_mom:-0.055,brand_adv_mom:-0.386,cpc_mom:0.279,pub_mom:null,note:'2026年2月 · 竞价细分按结构比推算（*），同比25年2月（RedBI口径：硬广173.37w）'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:120.53,brand_adv:41.51,cpc:79.03,pub:124.42,search:17.04,ecom:0,lead:20.77,cpc_other:41.22,commercial:null,adv_yoy:61.6,brand_adv_yoy:-34.7,cpc_yoy:1017.8,pub_yoy:93.0,search_yoy:8.43,lead_yoy:0.733,adv_mom:-0.571,brand_adv_mom:-0.546,cpc_mom:-0.580,pub_mom:null,note:'品牌广告同比-34.7%，IP消耗收缩；竞价同比+1018%，今世缘持续投放，女儿红加量投放'},
@@ -689,7 +689,7 @@ function renderBarChart(){
 }
 
 var PIE_DATA = {
-  YTD:{adv:951.33,brand:360.57,search:138.78,lead:123.33,ecom:3.12,other:326.57,pub:1024.64},
+  YTD:{adv:931.96,brand:364.76,search:135.95,lead:120.82,ecom:3.06,other:319.92,pub:1056.97},
   M1:{adv:297.16,brand:149.06,search:31.72,lead:38.66,ecom:0,other:76.73,pub:270.12},
   M2:{adv:280.69,brand:91.5,search:40.55,lead:49.43,ecom:0,other:98.10,pub:349.65},
   M3:{adv:120.53,brand:41.51,search:17.04,lead:20.77,ecom:0,other:41.22,pub:124.42},
@@ -1129,7 +1129,7 @@ function renderMonthlyInsight(tab){
   var card=document.getElementById('monthly-insight-card');
   var el=document.getElementById('insight-top-brands');
   if(!card||!el)return;
-  card.style.display=(tab==='YTD')?'none':'';
+  card.style.display='';
   if(tab==='YTD'){var _yb=MONTHLY_BRANDS;var _agg={};Object.keys(_yb).forEach(function(_m){_yb[_m].forEach(function(_b){var _n=_b.brand;if(_n.indexOf('甜掌柜')>=0||(_n.indexOf('康得')>=0&&_n.indexOf('舍得')<0))_n='甜掌柜/康得';if(!_agg[_n])_agg[_n]={a:0,b:0,c:0,p:0};_agg[_n].a+=_b.adv;_agg[_n].b+=_b.brand_adv;_agg[_n].c+=_b.cpc;_agg[_n].p+=_b.pub})});var _st=Object.keys(_agg).map(function(_k){return{n:_k,a:_agg[_k].a}}).sort(function(a,b){return b.a-a.a});var _t3=_st.slice(0,3);var _yoy=String(Math.round((850.64/290.79-1)*1000)/10);el.innerHTML='<div class=\"ytd-insight\"><div class=\"yi-title\">📊 YTD白酒商业化总览</div><div>硬广合计：<b>'+String((332.93+515.62).toFixed(2))+'w</b>（品牌'+String(332.93)+'w + 竞价'+String(515.62)+'w）</div><div>蒲公英：<b style=\"color:#00E5A0\">'+String((866.39).toFixed(2))+'w</b></div><div class=\"yi-yoy\">同比2025年：+'+_yoy+'%（2025 YTD adv≈290.79w）</div><div class=\"yi-top\">TOP3：'+_t3.map(function(t){return t.n+'('+t.a.toFixed(1)+'w)'}).join(' / ')+'</div><div class=\"yi-note\">⚠️ 详情请切换至各月份标签</div></div>';return;}
   var brands=MONTHLY_BRANDS[tab];
   if(!brands||!brands.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px">暂无数据</div>';return;}

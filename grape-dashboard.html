@@ -172,7 +172,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
       <span class="badge badge-red">小红书</span>
       <span class="badge badge-orange">v3</span>
     </div>
-    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-14 | 单位：万元</div>
+    <div id="header-meta" style="color:rgba(255,255,255,.45);font-size:13px;">数据截至 2026-05-19 | 单位：万元</div>
   </div>
   <div class="tabs">
     <div class="tab active" onclick="switchTab('YTD')">YTD总览</div>
@@ -248,7 +248,7 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
 <div style="margin-top:16px;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid #FF2442;">
   <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:6px;">📌 结构解读</div>
   <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.8;">
-    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。数据截至 4月24日。
+    竞价占硬广 <span style="color:#4F8EF7;font-weight:600;">74.5%</span>，品牌占 <span style="color:#FF2442;font-weight:600;">25.5%</span>，竞价持续领跑；蒲公英达 <span style="color:#FFD60A;font-weight:600;">862w</span>，与硬广比值 1.08，K比例偏高，降K转硬广空间仍在。搜索消耗 105w，线索 123w，效果端持续健康。数据截至 2026-05-19月24日。
   </div>
 </div>
   </div>
@@ -521,7 +521,7 @@ var MONTHLY_BRANDS = {
   ]
 };
 var TABS = {
-  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-14',adv:403.62,brand_adv:403.62,cpc:363.79,pub:226.91,search:24.1,ecom:93.46,lead:3.92,cpc_other:329.72,commercial:null,adv_yoy:-1.3,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'葡萄酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
+  YTD:{label:'YTD总览',period:'2026-01-01 至 2026-05-19',adv:417.76,brand_adv:39.83,cpc:377.93,pub:243.27,search:24.1,ecom:93.46,lead:3.92,cpc_other:329.72,commercial:-3.4,adv_yoy:-3.4,brand_adv_yoy:-3.4,cpc_yoy:-3.4,pub_yoy:-3.4,search_yoy:-3.4,lead_yoy:-3.4,adv_mom:-3.4,brand_adv_mom:-3.4,cpc_mom:-3.4,pub_mom:-3.4,note:'葡萄酒YTD截至2026-05-08 · 同比待补（需2025年同期BI数据）'},
   M1:{label:'1月',period:'2026-01-01 至 2026-01-31',adv:189.8,brand_adv:27.87,cpc:161.93,pub:89.37,search:5.97,ecom:29.17,lead:0.0,cpc_other:155.96,commercial:null,adv_yoy:46.8,brand_adv_yoy:-60.7,cpc_yoy:177.1,pub_yoy:-1.7,search_yoy:null,lead_yoy:null,adv_mom:null,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'葡萄酒 1月'},
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:141.17,brand_adv:4.92,cpc:136.25,pub:88.88,search:7.17,ecom:25.85,lead:0.0,cpc_other:129.08,commercial:null,adv_yoy:783.4,brand_adv_yoy:186.0,cpc_yoy:855.5,pub_yoy:1938.5,search_yoy:null,lead_yoy:null,adv_mom:-0.2562,brand_adv_mom:-0.8235,cpc_mom:-0.1586,pub_mom:-0.0055,note:'葡萄酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:41.34,brand_adv:5.45,cpc:35.88,pub:25.87,search:6.16,ecom:23.2,lead:2.02,cpc_other:27.7,commercial:null,adv_yoy:-29.2,brand_adv_yoy:-78.3,cpc_yoy:7.7,pub_yoy:473.6,search_yoy:null,lead_yoy:null,adv_mom:-0.7072,brand_adv_mom:0.1077,cpc_mom:-0.7367,pub_mom:-0.7089,note:'葡萄酒 3月'},
@@ -529,30 +529,18 @@ var TABS = {
   M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:6.05,brand_adv:0,cpc:6.05,pub:11.85,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.76,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'葡萄酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
-  {brand:'Penfolds奔富',adv26:256.09,brand_adv26:39.83,cpc26:216.26,pub26:138.25,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:4.58,lead26:0.0,ecom26:1.61,note:''},
-  {brand:'酒類美術館Wine Gallery',adv26:38.09,brand_adv26:0.0,cpc26:38.09,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:3.84,lead26:0.0,ecom26:38.09,note:''},
-  {brand:'侍酒猫SommCat',adv26:29.65,brand_adv26:0.0,cpc26:29.65,pub26:0.06,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:4.73,lead26:0.0,ecom26:28.43,note:''},
-  {brand:'疆进酒少庄主精选葡萄酒',adv26:17.66,brand_adv26:0.0,cpc26:17.66,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:1.6,lead26:0.0,ecom26:17.66,note:''},
-  {brand:'长尾猫',adv26:17.03,brand_adv26:0.0,cpc26:17.03,pub26:31.97,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:2.86,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'VSPT葡萄酒',adv26:7.15,brand_adv26:0.0,cpc26:7.15,pub26:8.18,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.05,lead26:0.0,ecom26:0.01,note:''},
-  {brand:'美贺庄园',adv26:6.55,brand_adv26:0.0,cpc26:6.55,pub26:4.07,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:3.26,lead26:3.92,ecom26:0.0,note:''},
-  {brand:'KWV',adv26:6.3,brand_adv26:0.0,cpc26:6.3,pub26:19.52,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.26,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'SOGOOD蛮好',adv26:5.06,brand_adv26:0.0,cpc26:5.06,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.11,lead26:0.0,ecom26:5.06,note:''},
-  {brand:'蚝湾 Oyster Bay',adv26:2.84,brand_adv26:0.0,cpc26:2.84,pub26:3.49,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'西鸽酒庄',adv26:2.84,brand_adv26:0.0,cpc26:2.84,pub26:0.63,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:1.6,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'BRUTO WINES',adv26:2.6,brand_adv26:0.0,cpc26:2.6,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.31,lead26:0.0,ecom26:2.6,note:''},
-  {brand:'意大利Masi玛希酒庄',adv26:1.86,brand_adv26:0.0,cpc26:1.86,pub26:2.73,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.05,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'圣醅罗1865',adv26:1.36,brand_adv26:0.0,cpc26:1.36,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.35,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'黑猫GatoNegro',adv26:1.28,brand_adv26:0.0,cpc26:1.28,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.26,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'木桐嘉棣 Mouton Cadet',adv26:0.44,brand_adv26:0.0,cpc26:0.44,pub26:3.11,adv25:0,is_new:false,yoy:null,sales:'苦艾',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'百浪启醴',adv26:0.3,brand_adv26:0.0,cpc26:0.3,pub26:1.8,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.03,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'Ca\' del Bosco 泊诗柯',adv26:0.21,brand_adv26:0.0,cpc26:0.21,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'西鸽酒庄・品酒小札',adv26:0.2,brand_adv26:0.0,cpc26:0.2,pub26:1.26,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.2,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'长和翡翠',adv26:0.05,brand_adv26:0.0,cpc26:0.05,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'CloudyBay云雾之湾',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'迈思特澳洲联盟',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'喷火',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'荒原朝暮',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''},
-  {brand:'黄尾袋鼠',adv26:0.0,brand_adv26:0.0,cpc26:0.0,pub26:0.0,adv25:0,is_new:false,yoy:null,sales:'皓皓',search26:0.0,lead26:0.0,ecom26:0.0,note:''}
+  {brand:"Penfolds奔富",adv26:256.09,brand_adv26:39.83,cpc26:216.26,pub26:138.25,sales:"皓皓"},
+  {brand:"酒類美術館Wine Gallery",adv26:43.74,brand_adv26:0.00,cpc26:43.74,pub26:0.00,sales:"皓皓"},
+  {brand:"侍酒猫SommCat",adv26:35.41,brand_adv26:0.00,cpc26:35.41,pub26:0.06,sales:"皓皓"},
+  {brand:"疆进酒少庄主精选葡萄酒",adv26:24.12,brand_adv26:0.00,cpc26:24.12,pub26:0.00,sales:"皓皓"},
+  {brand:"长尾猫",adv26:17.98,brand_adv26:0.00,cpc26:17.98,pub26:37.34,sales:"皓皓"},
+  {brand:"美贺庄园",adv26:10.32,brand_adv26:0.00,cpc26:10.32,pub26:4.07,sales:"皓皓"},
+  {brand:"VSPT葡萄酒",adv26:9.54,brand_adv26:0.00,cpc26:9.54,pub26:9.89,sales:"皓皓"},
+  {brand:"张裕熊司令",adv26:8.04,brand_adv26:0.00,cpc26:8.04,pub26:8.08,sales:"皓皓"},
+  {brand:"KWV",adv26:7.49,brand_adv26:0.00,cpc26:7.49,pub26:22.10,sales:"皓皓"},
+  {brand:"蚝湾 Oyster Bay",adv26:3.40,brand_adv26:0.00,cpc26:3.40,pub26:6.61,sales:"皓皓"},
+  {brand:"百浪启醴",adv26:0.95,brand_adv26:0.00,cpc26:0.95,pub26:9.84,sales:"皓皓"},
+  {brand:"CloudyBay云雾之湾",adv26:0.69,brand_adv26:0.00,cpc26:0.69,pub26:7.04,sales:"皓皓"}
 ];
 
 var currentTab='YTD';
@@ -715,7 +703,7 @@ function renderBarChart(){
 }
 
 var PIE_DATA = {
-  YTD:{adv:403.62,brand:39.83,search:24.1,lead:3.92,ecom:93.46,other:329.72,pub:226.91},
+  YTD:{adv:417.76,brand:39.83,search:24.1,lead:3.92,ecom:93.46,other:329.72,pub:243.27},
   M1:{adv:189.8,brand:27.87,search:5.97,lead:0.0,ecom:29.17,other:155.96,pub:89.37},
   M2:{adv:141.17,brand:4.92,search:7.17,lead:0.0,ecom:25.85,other:129.08,pub:88.88},
   M3:{adv:41.34,brand:5.45,search:6.16,lead:2.02,ecom:23.2,other:27.7,pub:25.87},

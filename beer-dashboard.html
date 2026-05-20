@@ -1246,7 +1246,7 @@ function renderMonthlyInsight(tab){
   var el=document.getElementById('insight-top-brands');
   if(!card||!el)return;
   card.style.display=(tab==='YTD')?'none':'';
-  if(tab==='YTD')return;
+  /* YTD insight enabled */
   var brands=MONTHLY_BRANDS[tab];
   if(!brands||!brands.length){el.innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px">暂无数据</div>';return;}
   var withAdv=brands.filter(function(b){return b.adv>0;}).sort(function(a,b){return b.adv-a.adv;});

@@ -1219,15 +1219,14 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:-0.2562,brand_mom:-0.8235,cpc_mom:-0.1586,curr:141.17,prev:189.80,note:'疆进酒少庄主精选葡萄酒品牌广告收缩，竞价端酌也/长尾猫补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.7072,brand_mom:0.1077,cpc_mom:-0.7367,curr:41.34,prev:141.17,note:'春节后节律性大幅收缩，长尾猫IP投放告一段落；Penfolds奔富/酌也新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.3890,brand_mom:-0.7101,cpc_mom:-0.3400,pub_mom:-0.5771,curr:25.26,prev:41.34,note:'4月1-24日，葡乐/葡乐集中投放，蒲公英▼ -5.1%'},
-  
-  M5:{label:'5月 vs 4月',adv_mom:0.2165,brand_mom:-1.0,cpc_mom:0.2977,pub_mom:1.3446,curr:30.73,prev:25.26,note:'5月1-19日葡萄酒母亲节+520双节营销，竞价-闭环电商13.71w为主力，蒲公英25.65w小幅拉升。'}};
+    M5:{label:'5月 vs 4月',adv_mom:0.2165,brand_mom:-1.0,cpc_mom:0.2977,pub_mom:1.3446,curr:30.73,prev:25.26,note:'5月1-19日葡萄酒母亲节+520双节营销，竞价-闭环电商13.71w为主力，蒲公英25.65w小幅拉升。'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }
-  function fmtM(v){var p=parseFloat(v).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  function fmtM(v){var p=(parseFloat(v)*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
   el.innerHTML='<div class="mom-cards">'+
     '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
     '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+

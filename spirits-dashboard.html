@@ -1398,15 +1398,14 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:0.9972,brand_mom:5.8629,cpc_mom:0.4503,curr:413.77,prev:207.18,note:'芝华士品牌广告收缩，竞价端格兰菲迪/苏格登补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.3088,brand_mom:-0.9016,cpc_mom:0.0069,curr:286.00,prev:413.77,note:'春节后节律性大幅收缩，百龄坛IP投放告一段落；百龄坛/人头马新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.7016,brand_mom:-0.4293,cpc_mom:-0.7158,pub_mom:-0.3922,curr:85.33,prev:286.00,note:'4月1-24日，绝对伏特加/轩尼诗集中投放，蒲公英▼ -5.1%'},
-  
-  M5:{label:'5月 vs 4月',adv_mom:0.0067,brand_mom:-0.3482,cpc_mom:0.0439,pub_mom:-0.3668,curr:85.9,prev:85.33,note:'5月1-19日洋酒夏季调整期，蒲公英103.18w稳健，搜索广告27.48w为竞价主要来源。'}};
+    M5:{label:'5月 vs 4月',adv_mom:0.0067,brand_mom:-0.3482,cpc_mom:0.0439,pub_mom:-0.3668,curr:85.9,prev:85.33,note:'5月1-19日洋酒夏季调整期，蒲公英103.18w稳健，搜索广告27.48w为竞价主要来源。'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }
-  function fmtM(v){var p=parseFloat(v).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  function fmtM(v){var p=(parseFloat(v)*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
   el.innerHTML='<div class="mom-cards">'+
     '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
     '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+

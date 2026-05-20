@@ -261,23 +261,24 @@ body{background:#0f1117;color:#F0F0F0;font-family:'PingFang SC','SF Pro Display'
     <button class="week-tab" onclick="showWeekMonth('2',this)">2月</button>
     <button class="week-tab" onclick="showWeekMonth('3',this)">3月</button>
     <button class="week-tab" onclick="showWeekMonth('4',this)">4月</button>
+    <button class="week-tab" onclick="showWeekMonth('5',this)">5月</button>
   </div>
   <div id="weekChart" style="height:280px;"></div>
 </div>
-<div class="section-title" id="sec-mom">⚠️ 月度环比预警 <small>4月 vs 3月</small></div>
+<div class="section-title" id="sec-mom">⚠️ 月度环比预警 <small>5月 vs 4月</small></div>
 <div class="mom-warning mb28">
   <div id="mom-warning-container" style="display:flex;gap:20px;align-items:flex-start;flex:1">
   <div class="mom-cards">
-    <div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">▼ -18.3%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">120.53 → 98.43w</div></div>
-    <div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">▼ -39.5%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">41.51 → 25.12w</div></div>
-    <div class="mom-card"><div class="mom-card-label">竞价广告</div><div class="mom-card-val">▼ -7.2%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">79.03 → 73.30w</div></div>
+    <div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val" style="color:#00E5A0">▲ 61.5%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">66.11 → 106.78w</div></div>
+    <div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val" style="color:#00E5A0">▲ 0.0%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">0.0 → 48.78w</div></div>
+    <div class="mom-card"><div class="mom-card-label">竞价广告</div><div class="mom-card-val" style="color:#FF4D4F">▼ 12.3%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">66.11 → 58.0w</div></div>
     <div style="flex:1;background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.2);border-radius:8px;padding:12px;text-align:center;">
-      <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:4px">竞价同比（3月）</div>
-      <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#00E5A0">+530.4%</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">健康信号 ✅</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);margin-bottom:4px">蒲公英环比（M5）</div>
+      <div style="font-size:22px;font-weight:700;font-family:'SF Mono','Menlo',monospace;color:#FF4D4F">▼ 3.4%</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">109.97 → 106.24w</div>
     </div>
   </div>
-  <div class="mom-note">竞价端持续稳健运行，蒲公英为赛道主力收入来源，硬广随品牌节奏波动。</div>
+  <div class="mom-note">5月1-19日低度酒夏季高峰来临，品牌广告48.78w与竞价58.00w并进；蒲公英106.24w保持强势。</div>
   </div>
 </div>
 <div class="section-title" id="sec-insight">📊 智能洞察 <small id="insight-period-label" style="font-size:12px;color:rgba(255,255,255,.4)">YTD总览</small></div>
@@ -677,16 +678,16 @@ function renderBarChart(){
       formatter:function(p){var h='<b>'+p[0].name+'</b><br>';p.forEach(function(x){if(x.value&&x.value>0)h+=x.marker+x.seriesName+'：<b>'+x.value.toFixed(2)+'w</b><br>';});return h;}},
     legend:{data:['品牌广告','竞价-搜索','竞价-闭环','竞价-线索','竞价-其他','蒲公英(独立)'],textStyle:{color:'rgba(255,255,255,.55)',fontSize:11},bottom:4,top:'auto',itemGap:12},
     grid:{left:50,right:24,top:52,bottom:68,containLabel:false},
-    xAxis:{type:'category',data:['1月','2月','3月','4月(至24日)'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
+    xAxis:{type:'category',data:['1月','2月','3月','4月(至24日)','5月(至19日)'],axisLabel:{color:'rgba(255,255,255,.7)',fontSize:12},axisLine:{lineStyle:{color:'rgba(255,255,255,.1)'}}},
     yAxis:{type:'value',name:'万元',nameTextStyle:{color:'rgba(255,255,255,.4)',fontSize:11},axisLabel:{color:'rgba(255,255,255,.4)',fontSize:11,formatter:function(v){return v+'w';}},splitLine:{lineStyle:{color:'rgba(255,255,255,.06)'}}},
     series:[
-      {name:'品牌广告',type:'bar',stack:'adv',data:[4.73, 1.88, 2.09, 0.0],itemStyle:{color:'#FF2442'},barMaxWidth:44,
+      {name:'品牌广告',type:'bar',stack:'adv',data:[4.73, 1.88, 2.09, 0.0, 48.78],itemStyle:{color:'#FF2442'},barMaxWidth:44,
         label:{show:true,position:'top',distance:60,formatter:function(p){var totals=[91.29, 95.32, 32.35, 66.11];var yoys=['--','--','--','--'];return totals[p.dataIndex]+'w\n'+yoys[p.dataIndex];},color:'rgba(255,255,255,.85)',fontSize:11,fontWeight:'bold',lineHeight:16}},
-      {name:'竞价-搜索',type:'bar',stack:'adv',data:[11.1, 12.7, 3.84, 8.32],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
-      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0,0],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
-      {name:'竞价-线索',type:'bar',stack:'adv',data:[0.0, 0.0, 0.0, 0.0],itemStyle:{color:'#FF9500'},barMaxWidth:44},
-      {name:'竞价-其他',type:'bar',stack:'adv',data:[74.35, 79.57, 26.26, 57.79],itemStyle:{color:'#555'},barMaxWidth:44},
-      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[115.11, 96.33, 68.42, 109.97],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
+      {name:'竞价-搜索',type:'bar',stack:'adv',data:[11.1, 12.7, 3.84, 8.32, 7.29],itemStyle:{color:'#4F8EF7'},barMaxWidth:44},
+      {name:'竞价-闭环',type:'bar',stack:'adv',data:[0,0,0,0, 0.56],itemStyle:{color:'#00E5A0'},barMaxWidth:44},
+      {name:'竞价-线索',type:'bar',stack:'adv',data:[0.0, 0.0, 0.0, 0.0, 0.0],itemStyle:{color:'#FF9500'},barMaxWidth:44},
+      {name:'竞价-其他',type:'bar',stack:'adv',data:[74.35, 79.57, 26.26, 57.79, 106.24],itemStyle:{color:'#555'},barMaxWidth:44},
+      {name:'蒲公英(独立)',type:'bar',stack:'pub',barGap:'20%',data:[115.11, 96.33, 68.42, 109.97, 50.15],itemStyle:{color:'rgba(255,214,10,.45)',borderColor:'#FFD60A',borderWidth:1,borderType:'dashed'},barMaxWidth:18}
     ]
   },true);
 }
@@ -1195,7 +1196,7 @@ function renderMonthlyMomWarning(tab){
     M3:{label:'3月 vs 2月',adv_mom:-0.6606,brand_mom:0.1117,cpc_mom:-0.6738,curr:32.35,prev:95.32,note:'春节后节律性大幅收缩，009酃酃酒IP投放告一段落；RIO锐澳鸡尾酒/通明山新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:1.0436,brand_mom:-1.0000,cpc_mom:1.1963,pub_mom:0.6073,curr:66.11,prev:32.35,note:'4月1-24日，三生石/三生石集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:0.8870,brand_mom:0.0000,cpc_mom:-0.1027,curr:124.75,prev:66.11,note:'5月低度酒进入夏季消费高峰，RIO锐澳品牌广告持续领跑，果立方/009新品投放'}};
+  M5:{label:'5月 vs 4月',adv_mom:0.6152,brand_mom:0.0,cpc_mom:-0.1227,pub_mom:-0.0339,curr:106.78,prev:66.11,note:'5月1-19日低度酒夏季高峰来临，品牌广告48.78w与竞价58.00w并进；蒲公英106.24w保持强势。'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

@@ -704,7 +704,7 @@ function renderBarChart(){
 
 var PIE_DATA = {
   YTD:{adv:417.76,brand:39.83,search:24.1,lead:3.92,ecom:93.46,other:329.72,pub:243.27},
-  M1:{adv:189.8,brand:27.87,search:5.97,lead:0.0,ecom:29.17,other:155.96,pub:89.37},
+  M1:{adv:189.80,brand:27.87,search:5.97,lead:0.0,ecom:29.17,other:155.96,pub:89.37},
   M2:{adv:141.17,brand:4.92,search:7.17,lead:0.0,ecom:25.85,other:129.08,pub:88.88},
   M3:{adv:41.34,brand:5.45,search:6.16,lead:2.02,ecom:23.2,other:27.7,pub:25.87},
   M4:{adv:25.26,brand:1.58,search:4.8,lead:1.9,ecom:15.25,other:16.98,pub:10.94},
@@ -1215,11 +1215,11 @@ function renderMonthlyMomWarning(tab){
   if(!el)return;
   var momData={
     M1:{label:'1月（年度首月）',note:'1月为年度首月，无环比数据。春节旺季，侍酒猫SommCat品牌广告 130.65w 领跑。'},
-    M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'疆进酒少庄主精选葡萄酒品牌广告收缩，竞价端酌也/长尾猫补位，蒲公英持续高位'},
-    M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，长尾猫IP投放告一段落；Penfolds奔富/酌也新客维持竞价'},
-    M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，葡乐/葡乐集中投放，蒲公英▼ -5.1%'},
+    M2:{label:'2月 vs 1月',adv_mom:-0.2562,brand_mom:-0.8235,cpc_mom:-0.1586,curr:141.17,prev:189.80,note:'疆进酒少庄主精选葡萄酒品牌广告收缩，竞价端酌也/长尾猫补位，蒲公英持续高位'},
+    M3:{label:'3月 vs 2月',adv_mom:-0.7072,brand_mom:0.1077,cpc_mom:-0.7367,curr:41.34,prev:141.17,note:'春节后节律性大幅收缩，长尾猫IP投放告一段落；Penfolds奔富/酌也新客维持竞价'},
+    M4:{label:'4月 vs 3月',adv_mom:-0.3890,brand_mom:-0.7101,cpc_mom:-0.3400,pub_mom:-0.5771,curr:25.26,prev:41.34,note:'4月1-24日，葡乐/葡乐集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-1.000,brand_mom:-0.800,cpc_mom:-1.200,curr:0.00,prev:1.58,note:'5月葡萄酒母亲节+520双节营销，Penfolds奔富/侍酒猫品牌广告集中释放'}};
+  M5:{label:'5月 vs 4月',adv_mom:-0.7605,brand_mom:-1.0000,cpc_mom:-0.7445,curr:6.05,prev:25.26,note:'5月葡萄酒母亲节+520双节营销，Penfolds奔富/侍酒猫品牌广告集中释放'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

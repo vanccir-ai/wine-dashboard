@@ -1301,15 +1301,14 @@ function renderMonthlyMomWarning(tab){
     M2:{label:'2月 vs 1月',adv_mom:1.7428,brand_mom:2.8181,cpc_mom:0.7201,curr:557.44,prev:203.24,note:'Amstel红爵啤酒品牌广告收缩，竞价端嘉士伯/corona科罗娜补位，蒲公英持续高位'},
     M3:{label:'3月 vs 2月',adv_mom:-0.3790,brand_mom:-0.4190,cpc_mom:-0.2946,curr:346.19,prev:557.44,note:'春节后节律性大幅收缩，corona科罗娜IP投放告一段落；青岛啤酒/嘉士伯新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.6517,brand_mom:-0.9812,cpc_mom:-0.0789,pub_mom:-0.5870,curr:120.58,prev:346.19,note:'4月1-24日，乌苏啤酒/乌苏啤酒集中投放，蒲公英▼ -5.1%'},
-  
-  M5:{label:'5月 vs 4月',adv_mom:-0.2553,brand_mom:-1.0,cpc_mom:-0.2289,pub_mom:0.6571,curr:89.8,prev:120.58,note:'5月1-19日啤酒旺季开启，品牌广告大幅收缩；蒲公英227.75w强势拉动，竞价搜索29.26w入夏冲刺。'}};
+    M5:{label:'5月 vs 4月',adv_mom:-0.2553,brand_mom:-1.0,cpc_mom:-0.2289,pub_mom:0.6571,curr:89.8,prev:120.58,note:'5月1-19日啤酒旺季开启，品牌广告大幅收缩；蒲公英227.75w强势拉动，竞价搜索29.26w入夏冲刺。'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
   if(!d.adv_mom){
     el.innerHTML='<div class="mom-note" style="flex:1">'+d.note+'</div>';return;
   }
-  function fmtM(v){var p=parseFloat(v).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
+  function fmtM(v){var p=(parseFloat(v)*100).toFixed(1);return v>=0?'<span style="color:#00E5A0">↑+'+p+'%</span>':'<span style="color:#FF2442">↓'+p+'%</span>';}
   el.innerHTML='<div class="mom-cards">'+
     '<div class="mom-card"><div class="mom-card-label">硬广总消耗</div><div class="mom-card-val">'+fmtM(d.adv_mom)+'</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:4px">'+d.prev.toFixed(2)+'→'+d.curr.toFixed(2)+'w</div></div>'+
     '<div class="mom-card"><div class="mom-card-label">品牌广告</div><div class="mom-card-val">'+fmtM(d.brand_mom)+'</div></div>'+

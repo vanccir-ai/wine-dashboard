@@ -758,7 +758,7 @@ var PIE_DATA = {
   M2:{adv:557.44,brand:378.22,search:38.72,lead:0.07,ecom:2.7,other:140.43,pub:361.47},
   M3:{adv:346.19,brand:219.76,search:31.2,lead:0.42,ecom:0.91,other:94.81,pub:332.77},
   M4:{adv:120.58,brand:4.13,search:17.77,lead:0.29,ecom:1.38,other:98.39,pub:137.44},
-  M5:{adv:76.7,brand:0,search:0,lead:0,ecom:0,other:76.7,pub:295.34}
+  M5:{adv:76.70,brand:0,search:0,lead:0,ecom:0,other:76.7,pub:295.34}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1297,11 +1297,11 @@ function renderMonthlyMomWarning(tab){
   if(!el)return;
   var momData={
     M1:{label:'1月（年度首月）',note:'1月为年度首月，无环比数据。春节旺季，雪花啤酒勇闯天涯品牌广告 130.65w 领跑。'},
-    M2:{label:'2月 vs 1月',adv_mom:-0.055,brand_mom:-0.386,cpc_mom:0.279,curr:280.69,prev:297.16,note:'Amstel红爵啤酒品牌广告收缩，竞价端嘉士伯/corona科罗娜补位，蒲公英持续高位'},
-    M3:{label:'3月 vs 2月',adv_mom:-0.571,brand_mom:-0.546,cpc_mom:-0.580,curr:120.53,prev:280.69,note:'春节后节律性大幅收缩，corona科罗娜IP投放告一段落；青岛啤酒/嘉士伯新客维持竞价'},
-    M4:{label:'4月 vs 3月',adv_mom:-0.183,brand_mom:-0.395,cpc_mom:-0.072,pub_mom:-0.051,curr:98.43,prev:120.53,note:'4月1-24日，乌苏啤酒/乌苏啤酒集中投放，蒲公英▼ -5.1%'},
+    M2:{label:'2月 vs 1月',adv_mom:1.7428,brand_mom:2.8181,cpc_mom:0.7201,curr:557.44,prev:203.24,note:'Amstel红爵啤酒品牌广告收缩，竞价端嘉士伯/corona科罗娜补位，蒲公英持续高位'},
+    M3:{label:'3月 vs 2月',adv_mom:-0.3790,brand_mom:-0.4190,cpc_mom:-0.2946,curr:346.19,prev:557.44,note:'春节后节律性大幅收缩，corona科罗娜IP投放告一段落；青岛啤酒/嘉士伯新客维持竞价'},
+    M4:{label:'4月 vs 3月',adv_mom:-0.6517,brand_mom:-0.9812,cpc_mom:-0.0789,pub_mom:-0.5870,curr:120.58,prev:346.19,note:'4月1-24日，乌苏啤酒/乌苏啤酒集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-1.000,brand_mom:-0.800,cpc_mom:-1.200,curr:0.00,prev:4.13,note:'5月啤酒入夏旺季启动，青岛啤酒/雪花啤酒品牌广告加码，科罗娜/喜力夏季营销预热'}};
+  M5:{label:'5月 vs 4月',adv_mom:-0.3639,brand_mom:-1.0000,cpc_mom:-0.3413,curr:76.70,prev:120.58,note:'5月啤酒入夏旺季启动，青岛啤酒/雪花啤酒品牌广告加码，科罗娜/喜力夏季营销预热'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}

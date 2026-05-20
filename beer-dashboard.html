@@ -565,7 +565,7 @@ var TABS = {
   M2:{label:'2月',period:'2026-02-01 至 2026-02-28',adv:557.44,brand_adv:378.22,cpc:179.22,pub:361.47,search:38.72,ecom:2.7,lead:0.07,cpc_other:140.43,commercial:null,adv_yoy:1094.2,brand_adv_yoy:null,cpc_yoy:283.9,pub_yoy:896.3,search_yoy:null,lead_yoy:null,adv_mom:1.7428,brand_adv_mom:2.8181,cpc_mom:0.7201,pub_mom:0.0529,note:'啤酒 2月'},
   M3:{label:'3月',period:'2026-03-01 至 2026-03-31',adv:346.19,brand_adv:219.76,cpc:126.43,pub:332.77,search:31.2,ecom:0.91,lead:0.42,cpc_other:94.81,commercial:null,adv_yoy:1107.1,brand_adv_yoy:null,cpc_yoy:340.8,pub_yoy:791.7,search_yoy:null,lead_yoy:null,adv_mom:-0.379,brand_adv_mom:-0.419,cpc_mom:-0.2946,pub_mom:-0.0794,note:'啤酒 3月'},
   M4:{label:'4月',period:'2026-04-01 至 2026-04-24',adv:120.58,brand_adv:4.13,cpc:116.45,pub:137.44,search:17.77,ecom:1.38,lead:0.29,cpc_other:98.39,commercial:null,adv_yoy:37.2,brand_adv_yoy:-74.2,cpc_yoy:61.9,pub_yoy:-68.9,search_yoy:null,lead_yoy:null,adv_mom:-0.6517,brand_adv_mom:-0.9812,cpc_mom:-0.0789,pub_mom:-0.587,note:'啤酒 4月'},
-  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:76.7,brand_adv:0,cpc:76.7,pub:295.34,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:null,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.364,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'啤酒M5截至2026-05-14，数据为YTD反推'}
+  M5:{label:'M5月度',period:'2026-05-01 至 2026-05-14',adv:95.86,brand_adv:0,cpc:76.7,pub:295.34,search:null,lead:null,ecom:null,cpc_other:null,adv_yoy:72.2,brand_adv_yoy:null,cpc_yoy:null,pub_yoy:null,adv_mom:-0.364,brand_adv_mom:null,cpc_mom:null,pub_mom:null,note:'啤酒M5截至2026-05-14，数据为YTD反推'}
 };
 var BRANDS=[
   {brand:"喜力啤酒",adv26:576.64,brand_adv26:507.53,cpc26:69.11,pub26:103.22,sales:"喷火"},
@@ -758,7 +758,7 @@ var PIE_DATA = {
   M2:{adv:557.44,brand:378.22,search:38.72,lead:0.07,ecom:2.7,other:140.43,pub:361.47},
   M3:{adv:346.19,brand:219.76,search:31.2,lead:0.42,ecom:0.91,other:94.81,pub:332.77},
   M4:{adv:120.58,brand:4.13,search:17.77,lead:0.29,ecom:1.38,other:98.39,pub:137.44},
-  M5:{adv:76.70,brand:0,search:0,lead:0,ecom:0,other:76.7,pub:295.34}
+  M5:{adv:95.86,brand:0,search:0,lead:0,ecom:0,other:76.7,pub:295.34}
 };
 function renderPieChart(tab){
   tab=tab||'YTD';
@@ -1301,7 +1301,7 @@ function renderMonthlyMomWarning(tab){
     M3:{label:'3月 vs 2月',adv_mom:-0.3790,brand_mom:-0.4190,cpc_mom:-0.2946,curr:346.19,prev:557.44,note:'春节后节律性大幅收缩，corona科罗娜IP投放告一段落；青岛啤酒/嘉士伯新客维持竞价'},
     M4:{label:'4月 vs 3月',adv_mom:-0.6517,brand_mom:-0.9812,cpc_mom:-0.0789,pub_mom:-0.5870,curr:120.58,prev:346.19,note:'4月1-24日，乌苏啤酒/乌苏啤酒集中投放，蒲公英▼ -5.1%'},
   
-  M5:{label:'5月 vs 4月',adv_mom:-0.3639,brand_mom:-1.0000,cpc_mom:-0.3413,curr:76.70,prev:120.58,note:'5月啤酒入夏旺季启动，青岛啤酒/雪花啤酒品牌广告加码，科罗娜/喜力夏季营销预热'}};
+  M5:{label:'5月 vs 4月',adv_mom:-0.2050,brand_mom:-1.0000,cpc_mom:-0.3413,curr:95.86,prev:120.58,note:'5月啤酒入夏旺季启动，青岛啤酒/雪花啤酒品牌广告加码，科罗娜/喜力夏季营销预热'}};
   var d=momData[tab];
   if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">当前视图无环比数据</div>';return;}
   if(tab==='YTD'){var lastKey=Object.keys(momData).sort().pop();d=momData[lastKey];if(!d){el.innerHTML='<div style="color:rgba(255,255,255,.35);font-size:12px;padding:8px">暂无月度环比数据</div>';return;}}
